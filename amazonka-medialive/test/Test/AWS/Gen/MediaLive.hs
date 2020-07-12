@@ -14,11 +14,11 @@
 module Test.AWS.Gen.MediaLive where
 
 import Data.Proxy
-import Network.AWS.MediaLive
 import Test.AWS.Fixture
-import Test.AWS.MediaLive.Internal
 import Test.AWS.Prelude
 import Test.Tasty
+import Network.AWS.MediaLive
+import Test.AWS.MediaLive.Internal
 
 -- Auto-generated: the actual test selection needs to be manually placed into
 -- the top-level so that real test data can be incrementally added.
@@ -28,7 +28,19 @@ import Test.Tasty
 -- fixtures :: TestTree
 -- fixtures =
 --     [ testGroup "request"
---         [ requestListInputs $
+--         [ requestUpdateChannelClass $
+--             updateChannelClass
+--
+--         , requestListMultiplexes $
+--             listMultiplexes
+--
+--         , requestCreateMultiplex $
+--             createMultiplex
+--
+--         , requestListInputDevices $
+--             listInputDevices
+--
+--         , requestListInputs $
 --             listInputs
 --
 --         , requestListChannels $
@@ -40,11 +52,26 @@ import Test.Tasty
 --         , requestCreateInput $
 --             createInput
 --
+--         , requestListTagsForResource $
+--             listTagsForResource
+--
 --         , requestDeleteChannel $
 --             deleteChannel
 --
 --         , requestUpdateChannel $
 --             updateChannel
+--
+--         , requestDescribeReservation $
+--             describeReservation
+--
+--         , requestCreateTags $
+--             createTags
+--
+--         , requestStopMultiplex $
+--             stopMultiplex
+--
+--         , requestDeleteTags $
+--             deleteTags
 --
 --         , requestCreateInputSecurityGroup $
 --             createInputSecurityGroup
@@ -55,6 +82,15 @@ import Test.Tasty
 --         , requestListInputSecurityGroups $
 --             listInputSecurityGroups
 --
+--         , requestDeleteReservation $
+--             deleteReservation
+--
+--         , requestUpdateReservation $
+--             updateReservation
+--
+--         , requestDeleteSchedule $
+--             deleteSchedule
+--
 --         , requestCreateChannel $
 --             createChannel
 --
@@ -64,11 +100,47 @@ import Test.Tasty
 --         , requestUpdateInput $
 --             updateInput
 --
+--         , requestUpdateInputDevice $
+--             updateInputDevice
+--
+--         , requestDescribeOffering $
+--             describeOffering
+--
+--         , requestDeleteMultiplexProgram $
+--             deleteMultiplexProgram
+--
+--         , requestUpdateMultiplexProgram $
+--             updateMultiplexProgram
+--
+--         , requestListMultiplexPrograms $
+--             listMultiplexPrograms
+--
+--         , requestDescribeMultiplex $
+--             describeMultiplex
+--
+--         , requestBatchUpdateSchedule $
+--             batchUpdateSchedule
+--
+--         , requestCreateMultiplexProgram $
+--             createMultiplexProgram
+--
+--         , requestDescribeSchedule $
+--             describeSchedule
+--
+--         , requestStartMultiplex $
+--             startMultiplex
+--
 --         , requestStopChannel $
 --             stopChannel
 --
 --         , requestDescribeInput $
 --             describeInput
+--
+--         , requestPurchaseOffering $
+--             purchaseOffering
+--
+--         , requestDescribeInputDevice $
+--             describeInputDevice
 --
 --         , requestDescribeChannel $
 --             describeChannel
@@ -79,10 +151,37 @@ import Test.Tasty
 --         , requestDeleteInputSecurityGroup $
 --             deleteInputSecurityGroup
 --
+--         , requestListReservations $
+--             listReservations
+--
+--         , requestDeleteMultiplex $
+--             deleteMultiplex
+--
+--         , requestUpdateMultiplex $
+--             updateMultiplex
+--
+--         , requestDescribeMultiplexProgram $
+--             describeMultiplexProgram
+--
+--         , requestListOfferings $
+--             listOfferings
+--
 --           ]
 
 --     , testGroup "response"
---         [ responseListInputs $
+--         [ responseUpdateChannelClass $
+--             updateChannelClassResponse
+--
+--         , responseListMultiplexes $
+--             listMultiplexesResponse
+--
+--         , responseCreateMultiplex $
+--             createMultiplexResponse
+--
+--         , responseListInputDevices $
+--             listInputDevicesResponse
+--
+--         , responseListInputs $
 --             listInputsResponse
 --
 --         , responseListChannels $
@@ -94,11 +193,26 @@ import Test.Tasty
 --         , responseCreateInput $
 --             createInputResponse
 --
+--         , responseListTagsForResource $
+--             listTagsForResourceResponse
+--
 --         , responseDeleteChannel $
 --             deleteChannelResponse
 --
 --         , responseUpdateChannel $
 --             updateChannelResponse
+--
+--         , responseDescribeReservation $
+--             describeReservationResponse
+--
+--         , responseCreateTags $
+--             createTagsResponse
+--
+--         , responseStopMultiplex $
+--             stopMultiplexResponse
+--
+--         , responseDeleteTags $
+--             deleteTagsResponse
 --
 --         , responseCreateInputSecurityGroup $
 --             createInputSecurityGroupResponse
@@ -109,6 +223,15 @@ import Test.Tasty
 --         , responseListInputSecurityGroups $
 --             listInputSecurityGroupsResponse
 --
+--         , responseDeleteReservation $
+--             deleteReservationResponse
+--
+--         , responseUpdateReservation $
+--             updateReservationResponse
+--
+--         , responseDeleteSchedule $
+--             deleteScheduleResponse
+--
 --         , responseCreateChannel $
 --             createChannelResponse
 --
@@ -118,11 +241,47 @@ import Test.Tasty
 --         , responseUpdateInput $
 --             updateInputResponse
 --
+--         , responseUpdateInputDevice $
+--             updateInputDeviceResponse
+--
+--         , responseDescribeOffering $
+--             describeOfferingResponse
+--
+--         , responseDeleteMultiplexProgram $
+--             deleteMultiplexProgramResponse
+--
+--         , responseUpdateMultiplexProgram $
+--             updateMultiplexProgramResponse
+--
+--         , responseListMultiplexPrograms $
+--             listMultiplexProgramsResponse
+--
+--         , responseDescribeMultiplex $
+--             describeMultiplexResponse
+--
+--         , responseBatchUpdateSchedule $
+--             batchUpdateScheduleResponse
+--
+--         , responseCreateMultiplexProgram $
+--             createMultiplexProgramResponse
+--
+--         , responseDescribeSchedule $
+--             describeScheduleResponse
+--
+--         , responseStartMultiplex $
+--             startMultiplexResponse
+--
 --         , responseStopChannel $
 --             stopChannelResponse
 --
 --         , responseDescribeInput $
 --             describeInputResponse
+--
+--         , responsePurchaseOffering $
+--             purchaseOfferingResponse
+--
+--         , responseDescribeInputDevice $
+--             describeInputDeviceResponse
 --
 --         , responseDescribeChannel $
 --             describeChannelResponse
@@ -133,10 +292,45 @@ import Test.Tasty
 --         , responseDeleteInputSecurityGroup $
 --             deleteInputSecurityGroupResponse
 --
+--         , responseListReservations $
+--             listReservationsResponse
+--
+--         , responseDeleteMultiplex $
+--             deleteMultiplexResponse
+--
+--         , responseUpdateMultiplex $
+--             updateMultiplexResponse
+--
+--         , responseDescribeMultiplexProgram $
+--             describeMultiplexProgramResponse
+--
+--         , responseListOfferings $
+--             listOfferingsResponse
+--
 --           ]
 --     ]
 
 -- Requests
+
+requestUpdateChannelClass :: UpdateChannelClass -> TestTree
+requestUpdateChannelClass = req
+    "UpdateChannelClass"
+    "fixture/UpdateChannelClass.yaml"
+
+requestListMultiplexes :: ListMultiplexes -> TestTree
+requestListMultiplexes = req
+    "ListMultiplexes"
+    "fixture/ListMultiplexes.yaml"
+
+requestCreateMultiplex :: CreateMultiplex -> TestTree
+requestCreateMultiplex = req
+    "CreateMultiplex"
+    "fixture/CreateMultiplex.yaml"
+
+requestListInputDevices :: ListInputDevices -> TestTree
+requestListInputDevices = req
+    "ListInputDevices"
+    "fixture/ListInputDevices.yaml"
 
 requestListInputs :: ListInputs -> TestTree
 requestListInputs = req
@@ -158,6 +352,11 @@ requestCreateInput = req
     "CreateInput"
     "fixture/CreateInput.yaml"
 
+requestListTagsForResource :: ListTagsForResource -> TestTree
+requestListTagsForResource = req
+    "ListTagsForResource"
+    "fixture/ListTagsForResource.yaml"
+
 requestDeleteChannel :: DeleteChannel -> TestTree
 requestDeleteChannel = req
     "DeleteChannel"
@@ -167,6 +366,26 @@ requestUpdateChannel :: UpdateChannel -> TestTree
 requestUpdateChannel = req
     "UpdateChannel"
     "fixture/UpdateChannel.yaml"
+
+requestDescribeReservation :: DescribeReservation -> TestTree
+requestDescribeReservation = req
+    "DescribeReservation"
+    "fixture/DescribeReservation.yaml"
+
+requestCreateTags :: CreateTags -> TestTree
+requestCreateTags = req
+    "CreateTags"
+    "fixture/CreateTags.yaml"
+
+requestStopMultiplex :: StopMultiplex -> TestTree
+requestStopMultiplex = req
+    "StopMultiplex"
+    "fixture/StopMultiplex.yaml"
+
+requestDeleteTags :: DeleteTags -> TestTree
+requestDeleteTags = req
+    "DeleteTags"
+    "fixture/DeleteTags.yaml"
 
 requestCreateInputSecurityGroup :: CreateInputSecurityGroup -> TestTree
 requestCreateInputSecurityGroup = req
@@ -183,6 +402,21 @@ requestListInputSecurityGroups = req
     "ListInputSecurityGroups"
     "fixture/ListInputSecurityGroups.yaml"
 
+requestDeleteReservation :: DeleteReservation -> TestTree
+requestDeleteReservation = req
+    "DeleteReservation"
+    "fixture/DeleteReservation.yaml"
+
+requestUpdateReservation :: UpdateReservation -> TestTree
+requestUpdateReservation = req
+    "UpdateReservation"
+    "fixture/UpdateReservation.yaml"
+
+requestDeleteSchedule :: DeleteSchedule -> TestTree
+requestDeleteSchedule = req
+    "DeleteSchedule"
+    "fixture/DeleteSchedule.yaml"
+
 requestCreateChannel :: CreateChannel -> TestTree
 requestCreateChannel = req
     "CreateChannel"
@@ -198,6 +432,56 @@ requestUpdateInput = req
     "UpdateInput"
     "fixture/UpdateInput.yaml"
 
+requestUpdateInputDevice :: UpdateInputDevice -> TestTree
+requestUpdateInputDevice = req
+    "UpdateInputDevice"
+    "fixture/UpdateInputDevice.yaml"
+
+requestDescribeOffering :: DescribeOffering -> TestTree
+requestDescribeOffering = req
+    "DescribeOffering"
+    "fixture/DescribeOffering.yaml"
+
+requestDeleteMultiplexProgram :: DeleteMultiplexProgram -> TestTree
+requestDeleteMultiplexProgram = req
+    "DeleteMultiplexProgram"
+    "fixture/DeleteMultiplexProgram.yaml"
+
+requestUpdateMultiplexProgram :: UpdateMultiplexProgram -> TestTree
+requestUpdateMultiplexProgram = req
+    "UpdateMultiplexProgram"
+    "fixture/UpdateMultiplexProgram.yaml"
+
+requestListMultiplexPrograms :: ListMultiplexPrograms -> TestTree
+requestListMultiplexPrograms = req
+    "ListMultiplexPrograms"
+    "fixture/ListMultiplexPrograms.yaml"
+
+requestDescribeMultiplex :: DescribeMultiplex -> TestTree
+requestDescribeMultiplex = req
+    "DescribeMultiplex"
+    "fixture/DescribeMultiplex.yaml"
+
+requestBatchUpdateSchedule :: BatchUpdateSchedule -> TestTree
+requestBatchUpdateSchedule = req
+    "BatchUpdateSchedule"
+    "fixture/BatchUpdateSchedule.yaml"
+
+requestCreateMultiplexProgram :: CreateMultiplexProgram -> TestTree
+requestCreateMultiplexProgram = req
+    "CreateMultiplexProgram"
+    "fixture/CreateMultiplexProgram.yaml"
+
+requestDescribeSchedule :: DescribeSchedule -> TestTree
+requestDescribeSchedule = req
+    "DescribeSchedule"
+    "fixture/DescribeSchedule.yaml"
+
+requestStartMultiplex :: StartMultiplex -> TestTree
+requestStartMultiplex = req
+    "StartMultiplex"
+    "fixture/StartMultiplex.yaml"
+
 requestStopChannel :: StopChannel -> TestTree
 requestStopChannel = req
     "StopChannel"
@@ -207,6 +491,16 @@ requestDescribeInput :: DescribeInput -> TestTree
 requestDescribeInput = req
     "DescribeInput"
     "fixture/DescribeInput.yaml"
+
+requestPurchaseOffering :: PurchaseOffering -> TestTree
+requestPurchaseOffering = req
+    "PurchaseOffering"
+    "fixture/PurchaseOffering.yaml"
+
+requestDescribeInputDevice :: DescribeInputDevice -> TestTree
+requestDescribeInputDevice = req
+    "DescribeInputDevice"
+    "fixture/DescribeInputDevice.yaml"
 
 requestDescribeChannel :: DescribeChannel -> TestTree
 requestDescribeChannel = req
@@ -223,7 +517,60 @@ requestDeleteInputSecurityGroup = req
     "DeleteInputSecurityGroup"
     "fixture/DeleteInputSecurityGroup.yaml"
 
+requestListReservations :: ListReservations -> TestTree
+requestListReservations = req
+    "ListReservations"
+    "fixture/ListReservations.yaml"
+
+requestDeleteMultiplex :: DeleteMultiplex -> TestTree
+requestDeleteMultiplex = req
+    "DeleteMultiplex"
+    "fixture/DeleteMultiplex.yaml"
+
+requestUpdateMultiplex :: UpdateMultiplex -> TestTree
+requestUpdateMultiplex = req
+    "UpdateMultiplex"
+    "fixture/UpdateMultiplex.yaml"
+
+requestDescribeMultiplexProgram :: DescribeMultiplexProgram -> TestTree
+requestDescribeMultiplexProgram = req
+    "DescribeMultiplexProgram"
+    "fixture/DescribeMultiplexProgram.yaml"
+
+requestListOfferings :: ListOfferings -> TestTree
+requestListOfferings = req
+    "ListOfferings"
+    "fixture/ListOfferings.yaml"
+
 -- Responses
+
+responseUpdateChannelClass :: UpdateChannelClassResponse -> TestTree
+responseUpdateChannelClass = res
+    "UpdateChannelClassResponse"
+    "fixture/UpdateChannelClassResponse.proto"
+    mediaLive
+    (Proxy :: Proxy UpdateChannelClass)
+
+responseListMultiplexes :: ListMultiplexesResponse -> TestTree
+responseListMultiplexes = res
+    "ListMultiplexesResponse"
+    "fixture/ListMultiplexesResponse.proto"
+    mediaLive
+    (Proxy :: Proxy ListMultiplexes)
+
+responseCreateMultiplex :: CreateMultiplexResponse -> TestTree
+responseCreateMultiplex = res
+    "CreateMultiplexResponse"
+    "fixture/CreateMultiplexResponse.proto"
+    mediaLive
+    (Proxy :: Proxy CreateMultiplex)
+
+responseListInputDevices :: ListInputDevicesResponse -> TestTree
+responseListInputDevices = res
+    "ListInputDevicesResponse"
+    "fixture/ListInputDevicesResponse.proto"
+    mediaLive
+    (Proxy :: Proxy ListInputDevices)
 
 responseListInputs :: ListInputsResponse -> TestTree
 responseListInputs = res
@@ -253,6 +600,13 @@ responseCreateInput = res
     mediaLive
     (Proxy :: Proxy CreateInput)
 
+responseListTagsForResource :: ListTagsForResourceResponse -> TestTree
+responseListTagsForResource = res
+    "ListTagsForResourceResponse"
+    "fixture/ListTagsForResourceResponse.proto"
+    mediaLive
+    (Proxy :: Proxy ListTagsForResource)
+
 responseDeleteChannel :: DeleteChannelResponse -> TestTree
 responseDeleteChannel = res
     "DeleteChannelResponse"
@@ -266,6 +620,34 @@ responseUpdateChannel = res
     "fixture/UpdateChannelResponse.proto"
     mediaLive
     (Proxy :: Proxy UpdateChannel)
+
+responseDescribeReservation :: DescribeReservationResponse -> TestTree
+responseDescribeReservation = res
+    "DescribeReservationResponse"
+    "fixture/DescribeReservationResponse.proto"
+    mediaLive
+    (Proxy :: Proxy DescribeReservation)
+
+responseCreateTags :: CreateTagsResponse -> TestTree
+responseCreateTags = res
+    "CreateTagsResponse"
+    "fixture/CreateTagsResponse.proto"
+    mediaLive
+    (Proxy :: Proxy CreateTags)
+
+responseStopMultiplex :: StopMultiplexResponse -> TestTree
+responseStopMultiplex = res
+    "StopMultiplexResponse"
+    "fixture/StopMultiplexResponse.proto"
+    mediaLive
+    (Proxy :: Proxy StopMultiplex)
+
+responseDeleteTags :: DeleteTagsResponse -> TestTree
+responseDeleteTags = res
+    "DeleteTagsResponse"
+    "fixture/DeleteTagsResponse.proto"
+    mediaLive
+    (Proxy :: Proxy DeleteTags)
 
 responseCreateInputSecurityGroup :: CreateInputSecurityGroupResponse -> TestTree
 responseCreateInputSecurityGroup = res
@@ -288,6 +670,27 @@ responseListInputSecurityGroups = res
     mediaLive
     (Proxy :: Proxy ListInputSecurityGroups)
 
+responseDeleteReservation :: DeleteReservationResponse -> TestTree
+responseDeleteReservation = res
+    "DeleteReservationResponse"
+    "fixture/DeleteReservationResponse.proto"
+    mediaLive
+    (Proxy :: Proxy DeleteReservation)
+
+responseUpdateReservation :: UpdateReservationResponse -> TestTree
+responseUpdateReservation = res
+    "UpdateReservationResponse"
+    "fixture/UpdateReservationResponse.proto"
+    mediaLive
+    (Proxy :: Proxy UpdateReservation)
+
+responseDeleteSchedule :: DeleteScheduleResponse -> TestTree
+responseDeleteSchedule = res
+    "DeleteScheduleResponse"
+    "fixture/DeleteScheduleResponse.proto"
+    mediaLive
+    (Proxy :: Proxy DeleteSchedule)
+
 responseCreateChannel :: CreateChannelResponse -> TestTree
 responseCreateChannel = res
     "CreateChannelResponse"
@@ -309,6 +712,76 @@ responseUpdateInput = res
     mediaLive
     (Proxy :: Proxy UpdateInput)
 
+responseUpdateInputDevice :: UpdateInputDeviceResponse -> TestTree
+responseUpdateInputDevice = res
+    "UpdateInputDeviceResponse"
+    "fixture/UpdateInputDeviceResponse.proto"
+    mediaLive
+    (Proxy :: Proxy UpdateInputDevice)
+
+responseDescribeOffering :: DescribeOfferingResponse -> TestTree
+responseDescribeOffering = res
+    "DescribeOfferingResponse"
+    "fixture/DescribeOfferingResponse.proto"
+    mediaLive
+    (Proxy :: Proxy DescribeOffering)
+
+responseDeleteMultiplexProgram :: DeleteMultiplexProgramResponse -> TestTree
+responseDeleteMultiplexProgram = res
+    "DeleteMultiplexProgramResponse"
+    "fixture/DeleteMultiplexProgramResponse.proto"
+    mediaLive
+    (Proxy :: Proxy DeleteMultiplexProgram)
+
+responseUpdateMultiplexProgram :: UpdateMultiplexProgramResponse -> TestTree
+responseUpdateMultiplexProgram = res
+    "UpdateMultiplexProgramResponse"
+    "fixture/UpdateMultiplexProgramResponse.proto"
+    mediaLive
+    (Proxy :: Proxy UpdateMultiplexProgram)
+
+responseListMultiplexPrograms :: ListMultiplexProgramsResponse -> TestTree
+responseListMultiplexPrograms = res
+    "ListMultiplexProgramsResponse"
+    "fixture/ListMultiplexProgramsResponse.proto"
+    mediaLive
+    (Proxy :: Proxy ListMultiplexPrograms)
+
+responseDescribeMultiplex :: DescribeMultiplexResponse -> TestTree
+responseDescribeMultiplex = res
+    "DescribeMultiplexResponse"
+    "fixture/DescribeMultiplexResponse.proto"
+    mediaLive
+    (Proxy :: Proxy DescribeMultiplex)
+
+responseBatchUpdateSchedule :: BatchUpdateScheduleResponse -> TestTree
+responseBatchUpdateSchedule = res
+    "BatchUpdateScheduleResponse"
+    "fixture/BatchUpdateScheduleResponse.proto"
+    mediaLive
+    (Proxy :: Proxy BatchUpdateSchedule)
+
+responseCreateMultiplexProgram :: CreateMultiplexProgramResponse -> TestTree
+responseCreateMultiplexProgram = res
+    "CreateMultiplexProgramResponse"
+    "fixture/CreateMultiplexProgramResponse.proto"
+    mediaLive
+    (Proxy :: Proxy CreateMultiplexProgram)
+
+responseDescribeSchedule :: DescribeScheduleResponse -> TestTree
+responseDescribeSchedule = res
+    "DescribeScheduleResponse"
+    "fixture/DescribeScheduleResponse.proto"
+    mediaLive
+    (Proxy :: Proxy DescribeSchedule)
+
+responseStartMultiplex :: StartMultiplexResponse -> TestTree
+responseStartMultiplex = res
+    "StartMultiplexResponse"
+    "fixture/StartMultiplexResponse.proto"
+    mediaLive
+    (Proxy :: Proxy StartMultiplex)
+
 responseStopChannel :: StopChannelResponse -> TestTree
 responseStopChannel = res
     "StopChannelResponse"
@@ -322,6 +795,20 @@ responseDescribeInput = res
     "fixture/DescribeInputResponse.proto"
     mediaLive
     (Proxy :: Proxy DescribeInput)
+
+responsePurchaseOffering :: PurchaseOfferingResponse -> TestTree
+responsePurchaseOffering = res
+    "PurchaseOfferingResponse"
+    "fixture/PurchaseOfferingResponse.proto"
+    mediaLive
+    (Proxy :: Proxy PurchaseOffering)
+
+responseDescribeInputDevice :: DescribeInputDeviceResponse -> TestTree
+responseDescribeInputDevice = res
+    "DescribeInputDeviceResponse"
+    "fixture/DescribeInputDeviceResponse.proto"
+    mediaLive
+    (Proxy :: Proxy DescribeInputDevice)
 
 responseDescribeChannel :: DescribeChannelResponse -> TestTree
 responseDescribeChannel = res
@@ -343,3 +830,38 @@ responseDeleteInputSecurityGroup = res
     "fixture/DeleteInputSecurityGroupResponse.proto"
     mediaLive
     (Proxy :: Proxy DeleteInputSecurityGroup)
+
+responseListReservations :: ListReservationsResponse -> TestTree
+responseListReservations = res
+    "ListReservationsResponse"
+    "fixture/ListReservationsResponse.proto"
+    mediaLive
+    (Proxy :: Proxy ListReservations)
+
+responseDeleteMultiplex :: DeleteMultiplexResponse -> TestTree
+responseDeleteMultiplex = res
+    "DeleteMultiplexResponse"
+    "fixture/DeleteMultiplexResponse.proto"
+    mediaLive
+    (Proxy :: Proxy DeleteMultiplex)
+
+responseUpdateMultiplex :: UpdateMultiplexResponse -> TestTree
+responseUpdateMultiplex = res
+    "UpdateMultiplexResponse"
+    "fixture/UpdateMultiplexResponse.proto"
+    mediaLive
+    (Proxy :: Proxy UpdateMultiplex)
+
+responseDescribeMultiplexProgram :: DescribeMultiplexProgramResponse -> TestTree
+responseDescribeMultiplexProgram = res
+    "DescribeMultiplexProgramResponse"
+    "fixture/DescribeMultiplexProgramResponse.proto"
+    mediaLive
+    (Proxy :: Proxy DescribeMultiplexProgram)
+
+responseListOfferings :: ListOfferingsResponse -> TestTree
+responseListOfferings = res
+    "ListOfferingsResponse"
+    "fixture/ListOfferingsResponse.proto"
+    mediaLive
+    (Proxy :: Proxy ListOfferings)

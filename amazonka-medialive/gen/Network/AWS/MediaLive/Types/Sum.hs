@@ -19,15 +19,14 @@ module Network.AWS.MediaLive.Types.Sum where
 
 import Network.AWS.Prelude
 
--- | Placeholder documentation for AacCodingMode
-data AacCodingMode
-  = ACMAdReceiverMix
-  | ACMCodingMode10
-  | ACMCodingMode11
-  | ACMCodingMode20
-  | ACMCodingMode51
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Aac Coding Mode
+data AacCodingMode = ACMAdReceiverMix
+                   | ACMCodingMode10
+                   | ACMCodingMode11
+                   | ACMCodingMode20
+                   | ACMCodingMode51
+                       deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                 Typeable, Generic)
 
 instance FromText AacCodingMode where
     parser = takeLowerText >>= \case
@@ -59,12 +58,11 @@ instance ToJSON AacCodingMode where
 instance FromJSON AacCodingMode where
     parseJSON = parseJSONText "AacCodingMode"
 
--- | Placeholder documentation for AacInputType
-data AacInputType
-  = BroadcasterMixedAd
-  | Normal
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Aac Input Type
+data AacInputType = BroadcasterMixedAd
+                  | Normal
+                      deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                Typeable, Generic)
 
 instance FromText AacInputType where
     parser = takeLowerText >>= \case
@@ -90,27 +88,26 @@ instance ToJSON AacInputType where
 instance FromJSON AacInputType where
     parseJSON = parseJSONText "AacInputType"
 
--- | Placeholder documentation for AacProfile
-data AacProfile
-  = HEV1
-  | HEV2
-  | LC
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Aac Profile
+data AacProfile = APHEV1
+                | APHEV2
+                | APLC
+                    deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                              Typeable, Generic)
 
 instance FromText AacProfile where
     parser = takeLowerText >>= \case
-        "hev1" -> pure HEV1
-        "hev2" -> pure HEV2
-        "lc" -> pure LC
+        "hev1" -> pure APHEV1
+        "hev2" -> pure APHEV2
+        "lc" -> pure APLC
         e -> fromTextError $ "Failure parsing AacProfile from value: '" <> e
            <> "'. Accepted values: hev1, hev2, lc"
 
 instance ToText AacProfile where
     toText = \case
-        HEV1 -> "HEV1"
-        HEV2 -> "HEV2"
-        LC -> "LC"
+        APHEV1 -> "HEV1"
+        APHEV2 -> "HEV2"
+        APLC -> "LC"
 
 instance Hashable     AacProfile
 instance NFData       AacProfile
@@ -124,12 +121,11 @@ instance ToJSON AacProfile where
 instance FromJSON AacProfile where
     parseJSON = parseJSONText "AacProfile"
 
--- | Placeholder documentation for AacRateControlMode
-data AacRateControlMode
-  = ARCMCbr
-  | ARCMVbr
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Aac Rate Control Mode
+data AacRateControlMode = ARCMCbr
+                        | ARCMVbr
+                            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                      Typeable, Generic)
 
 instance FromText AacRateControlMode where
     parser = takeLowerText >>= \case
@@ -155,12 +151,11 @@ instance ToJSON AacRateControlMode where
 instance FromJSON AacRateControlMode where
     parseJSON = parseJSONText "AacRateControlMode"
 
--- | Placeholder documentation for AacRawFormat
-data AacRawFormat
-  = ARFLatmLoas
-  | ARFNone
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Aac Raw Format
+data AacRawFormat = ARFLatmLoas
+                  | ARFNone
+                      deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                Typeable, Generic)
 
 instance FromText AacRawFormat where
     parser = takeLowerText >>= \case
@@ -186,12 +181,11 @@ instance ToJSON AacRawFormat where
 instance FromJSON AacRawFormat where
     parseJSON = parseJSONText "AacRawFormat"
 
--- | Placeholder documentation for AacSpec
-data AacSpec
-  = ASMPEG2
-  | ASMPEG4
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Aac Spec
+data AacSpec = ASMPEG2
+             | ASMPEG4
+                 deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                           Typeable, Generic)
 
 instance FromText AacSpec where
     parser = takeLowerText >>= \case
@@ -217,14 +211,13 @@ instance ToJSON AacSpec where
 instance FromJSON AacSpec where
     parseJSON = parseJSONText "AacSpec"
 
--- | Placeholder documentation for AacVbrQuality
-data AacVbrQuality
-  = AVQHigh
-  | AVQLow
-  | AVQMediumHigh
-  | AVQMediumLow
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Aac Vbr Quality
+data AacVbrQuality = AVQHigh
+                   | AVQLow
+                   | AVQMediumHigh
+                   | AVQMediumLow
+                       deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                 Typeable, Generic)
 
 instance FromText AacVbrQuality where
     parser = takeLowerText >>= \case
@@ -254,18 +247,17 @@ instance ToJSON AacVbrQuality where
 instance FromJSON AacVbrQuality where
     parseJSON = parseJSONText "AacVbrQuality"
 
--- | Placeholder documentation for Ac3BitstreamMode
-data Ac3BitstreamMode
-  = ABMCommentary
-  | ABMCompleteMain
-  | ABMDialogue
-  | ABMEmergency
-  | ABMHearingImpaired
-  | ABMMusicAndEffects
-  | ABMVisuallyImpaired
-  | ABMVoiceOver
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Ac3 Bitstream Mode
+data Ac3BitstreamMode = ABMCommentary
+                      | ABMCompleteMain
+                      | ABMDialogue
+                      | ABMEmergency
+                      | ABMHearingImpaired
+                      | ABMMusicAndEffects
+                      | ABMVisuallyImpaired
+                      | ABMVoiceOver
+                          deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                    Typeable, Generic)
 
 instance FromText Ac3BitstreamMode where
     parser = takeLowerText >>= \case
@@ -303,14 +295,13 @@ instance ToJSON Ac3BitstreamMode where
 instance FromJSON Ac3BitstreamMode where
     parseJSON = parseJSONText "Ac3BitstreamMode"
 
--- | Placeholder documentation for Ac3CodingMode
-data Ac3CodingMode
-  = CodingMode10
-  | CodingMode11
-  | CodingMode20
-  | CodingMode32Lfe
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Ac3 Coding Mode
+data Ac3CodingMode = CodingMode10
+                   | CodingMode11
+                   | CodingMode20
+                   | CodingMode32Lfe
+                       deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                 Typeable, Generic)
 
 instance FromText Ac3CodingMode where
     parser = takeLowerText >>= \case
@@ -340,12 +331,11 @@ instance ToJSON Ac3CodingMode where
 instance FromJSON Ac3CodingMode where
     parseJSON = parseJSONText "Ac3CodingMode"
 
--- | Placeholder documentation for Ac3DrcProfile
-data Ac3DrcProfile
-  = ADPFilmStandard
-  | ADPNone
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Ac3 Drc Profile
+data Ac3DrcProfile = ADPFilmStandard
+                   | ADPNone
+                       deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                 Typeable, Generic)
 
 instance FromText Ac3DrcProfile where
     parser = takeLowerText >>= \case
@@ -371,12 +361,11 @@ instance ToJSON Ac3DrcProfile where
 instance FromJSON Ac3DrcProfile where
     parseJSON = parseJSONText "Ac3DrcProfile"
 
--- | Placeholder documentation for Ac3LfeFilter
-data Ac3LfeFilter
-  = ALFDisabled
-  | ALFEnabled
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Ac3 Lfe Filter
+data Ac3LfeFilter = ALFDisabled
+                  | ALFEnabled
+                      deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                Typeable, Generic)
 
 instance FromText Ac3LfeFilter where
     parser = takeLowerText >>= \case
@@ -402,12 +391,11 @@ instance ToJSON Ac3LfeFilter where
 instance FromJSON Ac3LfeFilter where
     parseJSON = parseJSONText "Ac3LfeFilter"
 
--- | Placeholder documentation for Ac3MetadataControl
-data Ac3MetadataControl
-  = AMCFollowInput
-  | AMCUseConfigured
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Ac3 Metadata Control
+data Ac3MetadataControl = AMCFollowInput
+                        | AMCUseConfigured
+                            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                      Typeable, Generic)
 
 instance FromText Ac3MetadataControl where
     parser = takeLowerText >>= \case
@@ -433,13 +421,12 @@ instance ToJSON Ac3MetadataControl where
 instance FromJSON Ac3MetadataControl where
     parseJSON = parseJSONText "Ac3MetadataControl"
 
--- | Placeholder documentation for AfdSignaling
-data AfdSignaling
-  = ASAuto
-  | ASFixed
-  | ASNone
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Afd Signaling
+data AfdSignaling = ASAuto
+                  | ASFixed
+                  | ASNone
+                      deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                Typeable, Generic)
 
 instance FromText AfdSignaling where
     parser = takeLowerText >>= \case
@@ -467,12 +454,12 @@ instance ToJSON AfdSignaling where
 instance FromJSON AfdSignaling where
     parseJSON = parseJSONText "AfdSignaling"
 
--- | Placeholder documentation for AudioDescriptionAudioTypeControl
-data AudioDescriptionAudioTypeControl
-  = ADATCFollowInput
-  | ADATCUseConfigured
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Audio Description Audio Type Control
+data AudioDescriptionAudioTypeControl = ADATCFollowInput
+                                      | ADATCUseConfigured
+                                          deriving (Eq, Ord, Read, Show, Enum,
+                                                    Bounded, Data, Typeable,
+                                                    Generic)
 
 instance FromText AudioDescriptionAudioTypeControl where
     parser = takeLowerText >>= \case
@@ -498,12 +485,12 @@ instance ToJSON AudioDescriptionAudioTypeControl where
 instance FromJSON AudioDescriptionAudioTypeControl where
     parseJSON = parseJSONText "AudioDescriptionAudioTypeControl"
 
--- | Placeholder documentation for AudioDescriptionLanguageCodeControl
-data AudioDescriptionLanguageCodeControl
-  = ADLCCFollowInput
-  | ADLCCUseConfigured
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Audio Description Language Code Control
+data AudioDescriptionLanguageCodeControl = ADLCCFollowInput
+                                         | ADLCCUseConfigured
+                                             deriving (Eq, Ord, Read, Show,
+                                                       Enum, Bounded, Data,
+                                                       Typeable, Generic)
 
 instance FromText AudioDescriptionLanguageCodeControl where
     parser = takeLowerText >>= \case
@@ -529,12 +516,12 @@ instance ToJSON AudioDescriptionLanguageCodeControl where
 instance FromJSON AudioDescriptionLanguageCodeControl where
     parseJSON = parseJSONText "AudioDescriptionLanguageCodeControl"
 
--- | Placeholder documentation for AudioLanguageSelectionPolicy
-data AudioLanguageSelectionPolicy
-  = Loose
-  | Strict
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Audio Language Selection Policy
+data AudioLanguageSelectionPolicy = Loose
+                                  | Strict
+                                      deriving (Eq, Ord, Read, Show, Enum,
+                                                Bounded, Data, Typeable,
+                                                Generic)
 
 instance FromText AudioLanguageSelectionPolicy where
     parser = takeLowerText >>= \case
@@ -560,12 +547,11 @@ instance ToJSON AudioLanguageSelectionPolicy where
 instance FromJSON AudioLanguageSelectionPolicy where
     parseJSON = parseJSONText "AudioLanguageSelectionPolicy"
 
--- | Placeholder documentation for AudioNormalizationAlgorithm
-data AudioNormalizationAlgorithm
-  = Itu17701
-  | Itu17702
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Audio Normalization Algorithm
+data AudioNormalizationAlgorithm = Itu17701
+                                 | Itu17702
+                                     deriving (Eq, Ord, Read, Show, Enum,
+                                               Bounded, Data, Typeable, Generic)
 
 instance FromText AudioNormalizationAlgorithm where
     parser = takeLowerText >>= \case
@@ -591,11 +577,11 @@ instance ToJSON AudioNormalizationAlgorithm where
 instance FromJSON AudioNormalizationAlgorithm where
     parseJSON = parseJSONText "AudioNormalizationAlgorithm"
 
--- | Placeholder documentation for AudioNormalizationAlgorithmControl
-data AudioNormalizationAlgorithmControl =
-  CorrectAudio
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Audio Normalization Algorithm Control
+data AudioNormalizationAlgorithmControl = CorrectAudio
+                                            deriving (Eq, Ord, Read, Show, Enum,
+                                                      Bounded, Data, Typeable,
+                                                      Generic)
 
 instance FromText AudioNormalizationAlgorithmControl where
     parser = takeLowerText >>= \case
@@ -619,14 +605,43 @@ instance ToJSON AudioNormalizationAlgorithmControl where
 instance FromJSON AudioNormalizationAlgorithmControl where
     parseJSON = parseJSONText "AudioNormalizationAlgorithmControl"
 
--- | Placeholder documentation for AudioOnlyHlsTrackType
-data AudioOnlyHlsTrackType
-  = AlternateAudioAutoSelect
-  | AlternateAudioAutoSelectDefault
-  | AlternateAudioNotAutoSelect
-  | AudioOnlyVariantStream
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
+-- | Audio Only Hls Segment Type
+data AudioOnlyHlsSegmentType = Aac
+                             | FMP4
+                                 deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                           Data, Typeable, Generic)
 
+instance FromText AudioOnlyHlsSegmentType where
+    parser = takeLowerText >>= \case
+        "aac" -> pure Aac
+        "fmp4" -> pure FMP4
+        e -> fromTextError $ "Failure parsing AudioOnlyHlsSegmentType from value: '" <> e
+           <> "'. Accepted values: aac, fmp4"
+
+instance ToText AudioOnlyHlsSegmentType where
+    toText = \case
+        Aac -> "AAC"
+        FMP4 -> "FMP4"
+
+instance Hashable     AudioOnlyHlsSegmentType
+instance NFData       AudioOnlyHlsSegmentType
+instance ToByteString AudioOnlyHlsSegmentType
+instance ToQuery      AudioOnlyHlsSegmentType
+instance ToHeader     AudioOnlyHlsSegmentType
+
+instance ToJSON AudioOnlyHlsSegmentType where
+    toJSON = toJSONText
+
+instance FromJSON AudioOnlyHlsSegmentType where
+    parseJSON = parseJSONText "AudioOnlyHlsSegmentType"
+
+-- | Audio Only Hls Track Type
+data AudioOnlyHlsTrackType = AlternateAudioAutoSelect
+                           | AlternateAudioAutoSelectDefault
+                           | AlternateAudioNotAutoSelect
+                           | AudioOnlyVariantStream
+                               deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                         Data, Typeable, Generic)
 
 instance FromText AudioOnlyHlsTrackType where
     parser = takeLowerText >>= \case
@@ -656,14 +671,13 @@ instance ToJSON AudioOnlyHlsTrackType where
 instance FromJSON AudioOnlyHlsTrackType where
     parseJSON = parseJSONText "AudioOnlyHlsTrackType"
 
--- | Placeholder documentation for AudioType
-data AudioType
-  = CleanEffects
-  | HearingImpaired
-  | Undefined
-  | VisualImpairedCommentary
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Audio Type
+data AudioType = CleanEffects
+               | HearingImpaired
+               | Undefined
+               | VisualImpairedCommentary
+                   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                             Typeable, Generic)
 
 instance FromText AudioType where
     parser = takeLowerText >>= \case
@@ -693,12 +707,11 @@ instance ToJSON AudioType where
 instance FromJSON AudioType where
     parseJSON = parseJSONText "AudioType"
 
--- | Placeholder documentation for AuthenticationScheme
-data AuthenticationScheme
-  = Akamai
-  | Common
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Authentication Scheme
+data AuthenticationScheme = Akamai
+                          | Common
+                              deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                        Data, Typeable, Generic)
 
 instance FromText AuthenticationScheme where
     parser = takeLowerText >>= \case
@@ -724,12 +737,11 @@ instance ToJSON AuthenticationScheme where
 instance FromJSON AuthenticationScheme where
     parseJSON = parseJSONText "AuthenticationScheme"
 
--- | Placeholder documentation for AvailBlankingState
-data AvailBlankingState
-  = ABSDisabled
-  | ABSEnabled
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Avail Blanking State
+data AvailBlankingState = ABSDisabled
+                        | ABSEnabled
+                            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                      Typeable, Generic)
 
 instance FromText AvailBlankingState where
     parser = takeLowerText >>= \case
@@ -755,12 +767,12 @@ instance ToJSON AvailBlankingState where
 instance FromJSON AvailBlankingState where
     parseJSON = parseJSONText "AvailBlankingState"
 
--- | Placeholder documentation for BlackoutSlateNetworkEndBlackout
-data BlackoutSlateNetworkEndBlackout
-  = BSNEBDisabled
-  | BSNEBEnabled
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Blackout Slate Network End Blackout
+data BlackoutSlateNetworkEndBlackout = BSNEBDisabled
+                                     | BSNEBEnabled
+                                         deriving (Eq, Ord, Read, Show, Enum,
+                                                   Bounded, Data, Typeable,
+                                                   Generic)
 
 instance FromText BlackoutSlateNetworkEndBlackout where
     parser = takeLowerText >>= \case
@@ -786,12 +798,11 @@ instance ToJSON BlackoutSlateNetworkEndBlackout where
 instance FromJSON BlackoutSlateNetworkEndBlackout where
     parseJSON = parseJSONText "BlackoutSlateNetworkEndBlackout"
 
--- | Placeholder documentation for BlackoutSlateState
-data BlackoutSlateState
-  = BSSDisabled
-  | BSSEnabled
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Blackout Slate State
+data BlackoutSlateState = BSSDisabled
+                        | BSSEnabled
+                            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                      Typeable, Generic)
 
 instance FromText BlackoutSlateState where
     parser = takeLowerText >>= \case
@@ -817,13 +828,12 @@ instance ToJSON BlackoutSlateState where
 instance FromJSON BlackoutSlateState where
     parseJSON = parseJSONText "BlackoutSlateState"
 
--- | Placeholder documentation for BurnInAlignment
-data BurnInAlignment
-  = BIACentered
-  | BIALeft'
-  | BIASmart
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Burn In Alignment
+data BurnInAlignment = BIACentered
+                     | BIALeft'
+                     | BIASmart
+                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                   Typeable, Generic)
 
 instance FromText BurnInAlignment where
     parser = takeLowerText >>= \case
@@ -851,13 +861,12 @@ instance ToJSON BurnInAlignment where
 instance FromJSON BurnInAlignment where
     parseJSON = parseJSONText "BurnInAlignment"
 
--- | Placeholder documentation for BurnInBackgroundColor
-data BurnInBackgroundColor
-  = BIBCBlack
-  | BIBCNone
-  | BIBCWhite
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Burn In Background Color
+data BurnInBackgroundColor = BIBCBlack
+                           | BIBCNone
+                           | BIBCWhite
+                               deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                         Data, Typeable, Generic)
 
 instance FromText BurnInBackgroundColor where
     parser = takeLowerText >>= \case
@@ -885,16 +894,15 @@ instance ToJSON BurnInBackgroundColor where
 instance FromJSON BurnInBackgroundColor where
     parseJSON = parseJSONText "BurnInBackgroundColor"
 
--- | Placeholder documentation for BurnInFontColor
-data BurnInFontColor
-  = BIFCBlack
-  | BIFCBlue
-  | BIFCGreen
-  | BIFCRed
-  | BIFCWhite
-  | BIFCYellow
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Burn In Font Color
+data BurnInFontColor = BIFCBlack
+                     | BIFCBlue
+                     | BIFCGreen
+                     | BIFCRed
+                     | BIFCWhite
+                     | BIFCYellow
+                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                   Typeable, Generic)
 
 instance FromText BurnInFontColor where
     parser = takeLowerText >>= \case
@@ -928,16 +936,15 @@ instance ToJSON BurnInFontColor where
 instance FromJSON BurnInFontColor where
     parseJSON = parseJSONText "BurnInFontColor"
 
--- | Placeholder documentation for BurnInOutlineColor
-data BurnInOutlineColor
-  = BIOCBlack
-  | BIOCBlue
-  | BIOCGreen
-  | BIOCRed
-  | BIOCWhite
-  | BIOCYellow
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Burn In Outline Color
+data BurnInOutlineColor = BIOCBlack
+                        | BIOCBlue
+                        | BIOCGreen
+                        | BIOCRed
+                        | BIOCWhite
+                        | BIOCYellow
+                            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                      Typeable, Generic)
 
 instance FromText BurnInOutlineColor where
     parser = takeLowerText >>= \case
@@ -971,13 +978,12 @@ instance ToJSON BurnInOutlineColor where
 instance FromJSON BurnInOutlineColor where
     parseJSON = parseJSONText "BurnInOutlineColor"
 
--- | Placeholder documentation for BurnInShadowColor
-data BurnInShadowColor
-  = BISCBlack
-  | BISCNone
-  | BISCWhite
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Burn In Shadow Color
+data BurnInShadowColor = BISCBlack
+                       | BISCNone
+                       | BISCWhite
+                           deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                     Typeable, Generic)
 
 instance FromText BurnInShadowColor where
     parser = takeLowerText >>= \case
@@ -1005,12 +1011,11 @@ instance ToJSON BurnInShadowColor where
 instance FromJSON BurnInShadowColor where
     parseJSON = parseJSONText "BurnInShadowColor"
 
--- | Placeholder documentation for BurnInTeletextGridControl
-data BurnInTeletextGridControl
-  = BITGCFixed
-  | BITGCScaled
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Burn In Teletext Grid Control
+data BurnInTeletextGridControl = BITGCFixed
+                               | BITGCScaled
+                                   deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                             Data, Typeable, Generic)
 
 instance FromText BurnInTeletextGridControl where
     parser = takeLowerText >>= \case
@@ -1036,23 +1041,23 @@ instance ToJSON BurnInTeletextGridControl where
 instance FromJSON BurnInTeletextGridControl where
     parseJSON = parseJSONText "BurnInTeletextGridControl"
 
--- | Placeholder documentation for ChannelClass
-data ChannelClass
-  = Standard
-  | SinglePipeline
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
+-- | A standard channel has two encoding pipelines and a single pipeline channel only has one.
+data ChannelClass = CCSinglePipeline
+                  | CCStandard
+                      deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                Typeable, Generic)
 
 instance FromText ChannelClass where
     parser = takeLowerText >>= \case
-        "standard" -> pure Standard
-        "single_pipeline" -> pure SinglePipeline
+        "single_pipeline" -> pure CCSinglePipeline
+        "standard" -> pure CCStandard
         e -> fromTextError $ "Failure parsing ChannelClass from value: '" <> e
-           <> "'. Accepted values: standard, single_pipeline"
+           <> "'. Accepted values: single_pipeline, standard"
 
 instance ToText ChannelClass where
     toText = \case
-        Standard -> "STANDARD"
-        SinglePipeline -> "SINGLE_PIPELINE"
+        CCSinglePipeline -> "SINGLE_PIPELINE"
+        CCStandard -> "STANDARD"
 
 instance Hashable     ChannelClass
 instance NFData       ChannelClass
@@ -1067,18 +1072,19 @@ instance FromJSON ChannelClass where
     parseJSON = parseJSONText "ChannelClass"
 
 -- | Placeholder documentation for ChannelState
-data ChannelState
-  = CreateFailed
-  | Creating
-  | Deleted
-  | Deleting
-  | Idle
-  | Recovering
-  | Running
-  | Starting
-  | Stopping
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+data ChannelState = CreateFailed
+                  | Creating
+                  | Deleted
+                  | Deleting
+                  | Idle
+                  | Recovering
+                  | Running
+                  | Starting
+                  | Stopping
+                  | UpdateFailed
+                  | Updating
+                      deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                Typeable, Generic)
 
 instance FromText ChannelState where
     parser = takeLowerText >>= \case
@@ -1091,8 +1097,10 @@ instance FromText ChannelState where
         "running" -> pure Running
         "starting" -> pure Starting
         "stopping" -> pure Stopping
+        "update_failed" -> pure UpdateFailed
+        "updating" -> pure Updating
         e -> fromTextError $ "Failure parsing ChannelState from value: '" <> e
-           <> "'. Accepted values: create_failed, creating, deleted, deleting, idle, recovering, running, starting, stopping"
+           <> "'. Accepted values: create_failed, creating, deleted, deleting, idle, recovering, running, starting, stopping, update_failed, updating"
 
 instance ToText ChannelState where
     toText = \case
@@ -1105,6 +1113,8 @@ instance ToText ChannelState where
         Running -> "RUNNING"
         Starting -> "STARTING"
         Stopping -> "STOPPING"
+        UpdateFailed -> "UPDATE_FAILED"
+        Updating -> "UPDATING"
 
 instance Hashable     ChannelState
 instance NFData       ChannelState
@@ -1115,14 +1125,40 @@ instance ToHeader     ChannelState
 instance FromJSON ChannelState where
     parseJSON = parseJSONText "ChannelState"
 
--- | Placeholder documentation for DvbSdtOutputSdt
-data DvbSdtOutputSdt
-  = SdtFollow
-  | SdtFollowIfPresent
-  | SdtManual
-  | SdtNone
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
+-- | The status of the action to synchronize the device configuration. If you change the configuration of the input device (for example, the maximum bitrate), MediaLive sends the new data to the device. The device might not update itself immediately. SYNCED means the device has updated its configuration. SYNCING means that it has not updated its configuration.
+data DeviceSettingsSyncState = Synced
+                             | Syncing
+                                 deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                           Data, Typeable, Generic)
 
+instance FromText DeviceSettingsSyncState where
+    parser = takeLowerText >>= \case
+        "synced" -> pure Synced
+        "syncing" -> pure Syncing
+        e -> fromTextError $ "Failure parsing DeviceSettingsSyncState from value: '" <> e
+           <> "'. Accepted values: synced, syncing"
+
+instance ToText DeviceSettingsSyncState where
+    toText = \case
+        Synced -> "SYNCED"
+        Syncing -> "SYNCING"
+
+instance Hashable     DeviceSettingsSyncState
+instance NFData       DeviceSettingsSyncState
+instance ToByteString DeviceSettingsSyncState
+instance ToQuery      DeviceSettingsSyncState
+instance ToHeader     DeviceSettingsSyncState
+
+instance FromJSON DeviceSettingsSyncState where
+    parseJSON = parseJSONText "DeviceSettingsSyncState"
+
+-- | Dvb Sdt Output Sdt
+data DvbSdtOutputSdt = SdtFollow
+                     | SdtFollowIfPresent
+                     | SdtManual
+                     | SdtNone
+                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                   Typeable, Generic)
 
 instance FromText DvbSdtOutputSdt where
     parser = takeLowerText >>= \case
@@ -1152,13 +1188,12 @@ instance ToJSON DvbSdtOutputSdt where
 instance FromJSON DvbSdtOutputSdt where
     parseJSON = parseJSONText "DvbSdtOutputSdt"
 
--- | Placeholder documentation for DvbSubDestinationAlignment
-data DvbSubDestinationAlignment
-  = Centered
-  | Left'
-  | Smart
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Dvb Sub Destination Alignment
+data DvbSubDestinationAlignment = Centered
+                                | Left'
+                                | Smart
+                                    deriving (Eq, Ord, Read, Show, Enum,
+                                              Bounded, Data, Typeable, Generic)
 
 instance FromText DvbSubDestinationAlignment where
     parser = takeLowerText >>= \case
@@ -1186,13 +1221,13 @@ instance ToJSON DvbSubDestinationAlignment where
 instance FromJSON DvbSubDestinationAlignment where
     parseJSON = parseJSONText "DvbSubDestinationAlignment"
 
--- | Placeholder documentation for DvbSubDestinationBackgroundColor
-data DvbSubDestinationBackgroundColor
-  = DSDBCBlack
-  | DSDBCNone
-  | DSDBCWhite
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Dvb Sub Destination Background Color
+data DvbSubDestinationBackgroundColor = DSDBCBlack
+                                      | DSDBCNone
+                                      | DSDBCWhite
+                                          deriving (Eq, Ord, Read, Show, Enum,
+                                                    Bounded, Data, Typeable,
+                                                    Generic)
 
 instance FromText DvbSubDestinationBackgroundColor where
     parser = takeLowerText >>= \case
@@ -1220,16 +1255,15 @@ instance ToJSON DvbSubDestinationBackgroundColor where
 instance FromJSON DvbSubDestinationBackgroundColor where
     parseJSON = parseJSONText "DvbSubDestinationBackgroundColor"
 
--- | Placeholder documentation for DvbSubDestinationFontColor
-data DvbSubDestinationFontColor
-  = DSDFCBlack
-  | DSDFCBlue
-  | DSDFCGreen
-  | DSDFCRed
-  | DSDFCWhite
-  | DSDFCYellow
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Dvb Sub Destination Font Color
+data DvbSubDestinationFontColor = DSDFCBlack
+                                | DSDFCBlue
+                                | DSDFCGreen
+                                | DSDFCRed
+                                | DSDFCWhite
+                                | DSDFCYellow
+                                    deriving (Eq, Ord, Read, Show, Enum,
+                                              Bounded, Data, Typeable, Generic)
 
 instance FromText DvbSubDestinationFontColor where
     parser = takeLowerText >>= \case
@@ -1263,16 +1297,16 @@ instance ToJSON DvbSubDestinationFontColor where
 instance FromJSON DvbSubDestinationFontColor where
     parseJSON = parseJSONText "DvbSubDestinationFontColor"
 
--- | Placeholder documentation for DvbSubDestinationOutlineColor
-data DvbSubDestinationOutlineColor
-  = Black
-  | Blue
-  | Green
-  | Red
-  | White
-  | Yellow
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Dvb Sub Destination Outline Color
+data DvbSubDestinationOutlineColor = Black
+                                   | Blue
+                                   | Green
+                                   | Red
+                                   | White
+                                   | Yellow
+                                       deriving (Eq, Ord, Read, Show, Enum,
+                                                 Bounded, Data, Typeable,
+                                                 Generic)
 
 instance FromText DvbSubDestinationOutlineColor where
     parser = takeLowerText >>= \case
@@ -1306,13 +1340,13 @@ instance ToJSON DvbSubDestinationOutlineColor where
 instance FromJSON DvbSubDestinationOutlineColor where
     parseJSON = parseJSONText "DvbSubDestinationOutlineColor"
 
--- | Placeholder documentation for DvbSubDestinationShadowColor
-data DvbSubDestinationShadowColor
-  = DSDSCBlack
-  | DSDSCNone
-  | DSDSCWhite
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Dvb Sub Destination Shadow Color
+data DvbSubDestinationShadowColor = DSDSCBlack
+                                  | DSDSCNone
+                                  | DSDSCWhite
+                                      deriving (Eq, Ord, Read, Show, Enum,
+                                                Bounded, Data, Typeable,
+                                                Generic)
 
 instance FromText DvbSubDestinationShadowColor where
     parser = takeLowerText >>= \case
@@ -1340,24 +1374,24 @@ instance ToJSON DvbSubDestinationShadowColor where
 instance FromJSON DvbSubDestinationShadowColor where
     parseJSON = parseJSONText "DvbSubDestinationShadowColor"
 
--- | Placeholder documentation for DvbSubDestinationTeletextGridControl
-data DvbSubDestinationTeletextGridControl
-  = Fixed
-  | Scaled
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Dvb Sub Destination Teletext Grid Control
+data DvbSubDestinationTeletextGridControl = DSDTGCFixed
+                                          | DSDTGCScaled
+                                              deriving (Eq, Ord, Read, Show,
+                                                        Enum, Bounded, Data,
+                                                        Typeable, Generic)
 
 instance FromText DvbSubDestinationTeletextGridControl where
     parser = takeLowerText >>= \case
-        "fixed" -> pure Fixed
-        "scaled" -> pure Scaled
+        "fixed" -> pure DSDTGCFixed
+        "scaled" -> pure DSDTGCScaled
         e -> fromTextError $ "Failure parsing DvbSubDestinationTeletextGridControl from value: '" <> e
            <> "'. Accepted values: fixed, scaled"
 
 instance ToText DvbSubDestinationTeletextGridControl where
     toText = \case
-        Fixed -> "FIXED"
-        Scaled -> "SCALED"
+        DSDTGCFixed -> "FIXED"
+        DSDTGCScaled -> "SCALED"
 
 instance Hashable     DvbSubDestinationTeletextGridControl
 instance NFData       DvbSubDestinationTeletextGridControl
@@ -1371,12 +1405,11 @@ instance ToJSON DvbSubDestinationTeletextGridControl where
 instance FromJSON DvbSubDestinationTeletextGridControl where
     parseJSON = parseJSONText "DvbSubDestinationTeletextGridControl"
 
--- | Placeholder documentation for Eac3AttenuationControl
-data Eac3AttenuationControl
-  = EACAttenuate3DB
-  | EACNone
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Eac3 Attenuation Control
+data Eac3AttenuationControl = EACAttenuate3DB
+                            | EACNone
+                                deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                          Data, Typeable, Generic)
 
 instance FromText Eac3AttenuationControl where
     parser = takeLowerText >>= \case
@@ -1402,15 +1435,14 @@ instance ToJSON Eac3AttenuationControl where
 instance FromJSON Eac3AttenuationControl where
     parseJSON = parseJSONText "Eac3AttenuationControl"
 
--- | Placeholder documentation for Eac3BitstreamMode
-data Eac3BitstreamMode
-  = EBMCommentary
-  | EBMCompleteMain
-  | EBMEmergency
-  | EBMHearingImpaired
-  | EBMVisuallyImpaired
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Eac3 Bitstream Mode
+data Eac3BitstreamMode = EBMCommentary
+                       | EBMCompleteMain
+                       | EBMEmergency
+                       | EBMHearingImpaired
+                       | EBMVisuallyImpaired
+                           deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                     Typeable, Generic)
 
 instance FromText Eac3BitstreamMode where
     parser = takeLowerText >>= \case
@@ -1442,13 +1474,12 @@ instance ToJSON Eac3BitstreamMode where
 instance FromJSON Eac3BitstreamMode where
     parseJSON = parseJSONText "Eac3BitstreamMode"
 
--- | Placeholder documentation for Eac3CodingMode
-data Eac3CodingMode
-  = ECMCodingMode10
-  | ECMCodingMode20
-  | ECMCodingMode32
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Eac3 Coding Mode
+data Eac3CodingMode = ECMCodingMode10
+                    | ECMCodingMode20
+                    | ECMCodingMode32
+                        deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                  Typeable, Generic)
 
 instance FromText Eac3CodingMode where
     parser = takeLowerText >>= \case
@@ -1476,12 +1507,11 @@ instance ToJSON Eac3CodingMode where
 instance FromJSON Eac3CodingMode where
     parseJSON = parseJSONText "Eac3CodingMode"
 
--- | Placeholder documentation for Eac3DcFilter
-data Eac3DcFilter
-  = EDFDisabled
-  | EDFEnabled
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Eac3 Dc Filter
+data Eac3DcFilter = EDFDisabled
+                  | EDFEnabled
+                      deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                Typeable, Generic)
 
 instance FromText Eac3DcFilter where
     parser = takeLowerText >>= \case
@@ -1507,16 +1537,15 @@ instance ToJSON Eac3DcFilter where
 instance FromJSON Eac3DcFilter where
     parseJSON = parseJSONText "Eac3DcFilter"
 
--- | Placeholder documentation for Eac3DrcLine
-data Eac3DrcLine
-  = EDLFilmLight
-  | EDLFilmStandard
-  | EDLMusicLight
-  | EDLMusicStandard
-  | EDLNone
-  | EDLSpeech
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Eac3 Drc Line
+data Eac3DrcLine = EDLFilmLight
+                 | EDLFilmStandard
+                 | EDLMusicLight
+                 | EDLMusicStandard
+                 | EDLNone
+                 | EDLSpeech
+                     deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                               Typeable, Generic)
 
 instance FromText Eac3DrcLine where
     parser = takeLowerText >>= \case
@@ -1550,16 +1579,15 @@ instance ToJSON Eac3DrcLine where
 instance FromJSON Eac3DrcLine where
     parseJSON = parseJSONText "Eac3DrcLine"
 
--- | Placeholder documentation for Eac3DrcRf
-data Eac3DrcRf
-  = EDRFilmLight
-  | EDRFilmStandard
-  | EDRMusicLight
-  | EDRMusicStandard
-  | EDRNone
-  | EDRSpeech
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Eac3 Drc Rf
+data Eac3DrcRf = EDRFilmLight
+               | EDRFilmStandard
+               | EDRMusicLight
+               | EDRMusicStandard
+               | EDRNone
+               | EDRSpeech
+                   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                             Typeable, Generic)
 
 instance FromText Eac3DrcRf where
     parser = takeLowerText >>= \case
@@ -1593,12 +1621,11 @@ instance ToJSON Eac3DrcRf where
 instance FromJSON Eac3DrcRf where
     parseJSON = parseJSONText "Eac3DrcRf"
 
--- | Placeholder documentation for Eac3LfeControl
-data Eac3LfeControl
-  = Lfe
-  | NoLfe
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Eac3 Lfe Control
+data Eac3LfeControl = Lfe
+                    | NoLfe
+                        deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                  Typeable, Generic)
 
 instance FromText Eac3LfeControl where
     parser = takeLowerText >>= \case
@@ -1624,12 +1651,11 @@ instance ToJSON Eac3LfeControl where
 instance FromJSON Eac3LfeControl where
     parseJSON = parseJSONText "Eac3LfeControl"
 
--- | Placeholder documentation for Eac3LfeFilter
-data Eac3LfeFilter
-  = ELFDisabled
-  | ELFEnabled
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Eac3 Lfe Filter
+data Eac3LfeFilter = ELFDisabled
+                   | ELFEnabled
+                       deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                 Typeable, Generic)
 
 instance FromText Eac3LfeFilter where
     parser = takeLowerText >>= \case
@@ -1655,12 +1681,11 @@ instance ToJSON Eac3LfeFilter where
 instance FromJSON Eac3LfeFilter where
     parseJSON = parseJSONText "Eac3LfeFilter"
 
--- | Placeholder documentation for Eac3MetadataControl
-data Eac3MetadataControl
-  = EMCFollowInput
-  | EMCUseConfigured
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Eac3 Metadata Control
+data Eac3MetadataControl = EMCFollowInput
+                         | EMCUseConfigured
+                             deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                       Typeable, Generic)
 
 instance FromText Eac3MetadataControl where
     parser = takeLowerText >>= \case
@@ -1686,12 +1711,11 @@ instance ToJSON Eac3MetadataControl where
 instance FromJSON Eac3MetadataControl where
     parseJSON = parseJSONText "Eac3MetadataControl"
 
--- | Placeholder documentation for Eac3PassthroughControl
-data Eac3PassthroughControl
-  = NoPassthrough
-  | WhenPossible
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Eac3 Passthrough Control
+data Eac3PassthroughControl = NoPassthrough
+                            | WhenPossible
+                                deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                          Data, Typeable, Generic)
 
 instance FromText Eac3PassthroughControl where
     parser = takeLowerText >>= \case
@@ -1717,12 +1741,11 @@ instance ToJSON Eac3PassthroughControl where
 instance FromJSON Eac3PassthroughControl where
     parseJSON = parseJSONText "Eac3PassthroughControl"
 
--- | Placeholder documentation for Eac3PhaseControl
-data Eac3PhaseControl
-  = NoShift
-  | Shift90Degrees
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Eac3 Phase Control
+data Eac3PhaseControl = NoShift
+                      | Shift90Degrees
+                          deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                    Typeable, Generic)
 
 instance FromText Eac3PhaseControl where
     parser = takeLowerText >>= \case
@@ -1748,14 +1771,13 @@ instance ToJSON Eac3PhaseControl where
 instance FromJSON Eac3PhaseControl where
     parseJSON = parseJSONText "Eac3PhaseControl"
 
--- | Placeholder documentation for Eac3StereoDownmix
-data Eac3StereoDownmix
-  = DPL2
-  | LoRo
-  | LtRt
-  | NotIndicated
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Eac3 Stereo Downmix
+data Eac3StereoDownmix = DPL2
+                       | LoRo
+                       | LtRt
+                       | NotIndicated
+                           deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                     Typeable, Generic)
 
 instance FromText Eac3StereoDownmix where
     parser = takeLowerText >>= \case
@@ -1785,13 +1807,12 @@ instance ToJSON Eac3StereoDownmix where
 instance FromJSON Eac3StereoDownmix where
     parseJSON = parseJSONText "Eac3StereoDownmix"
 
--- | Placeholder documentation for Eac3SurroundExMode
-data Eac3SurroundExMode
-  = ESEMDisabled
-  | ESEMEnabled
-  | ESEMNotIndicated
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Eac3 Surround Ex Mode
+data Eac3SurroundExMode = ESEMDisabled
+                        | ESEMEnabled
+                        | ESEMNotIndicated
+                            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                      Typeable, Generic)
 
 instance FromText Eac3SurroundExMode where
     parser = takeLowerText >>= \case
@@ -1819,13 +1840,12 @@ instance ToJSON Eac3SurroundExMode where
 instance FromJSON Eac3SurroundExMode where
     parseJSON = parseJSONText "Eac3SurroundExMode"
 
--- | Placeholder documentation for Eac3SurroundMode
-data Eac3SurroundMode
-  = ESMDisabled
-  | ESMEnabled
-  | ESMNotIndicated
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Eac3 Surround Mode
+data Eac3SurroundMode = ESMDisabled
+                      | ESMEnabled
+                      | ESMNotIndicated
+                          deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                    Typeable, Generic)
 
 instance FromText Eac3SurroundMode where
     parser = takeLowerText >>= \case
@@ -1853,12 +1873,11 @@ instance ToJSON Eac3SurroundMode where
 instance FromJSON Eac3SurroundMode where
     parseJSON = parseJSONText "Eac3SurroundMode"
 
--- | Placeholder documentation for EmbeddedConvert608To708
-data EmbeddedConvert608To708
-  = ECTDisabled
-  | ECTUpconvert
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Embedded Convert608 To708
+data EmbeddedConvert608To708 = ECTDisabled
+                             | ECTUpconvert
+                                 deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                           Data, Typeable, Generic)
 
 instance FromText EmbeddedConvert608To708 where
     parser = takeLowerText >>= \case
@@ -1884,24 +1903,23 @@ instance ToJSON EmbeddedConvert608To708 where
 instance FromJSON EmbeddedConvert608To708 where
     parseJSON = parseJSONText "EmbeddedConvert608To708"
 
--- | Placeholder documentation for EmbeddedScte20Detection
-data EmbeddedScte20Detection
-  = Auto
-  | Off
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Embedded Scte20 Detection
+data EmbeddedScte20Detection = ESDAuto
+                             | ESDOff
+                                 deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                           Data, Typeable, Generic)
 
 instance FromText EmbeddedScte20Detection where
     parser = takeLowerText >>= \case
-        "auto" -> pure Auto
-        "off" -> pure Off
+        "auto" -> pure ESDAuto
+        "off" -> pure ESDOff
         e -> fromTextError $ "Failure parsing EmbeddedScte20Detection from value: '" <> e
            <> "'. Accepted values: auto, off"
 
 instance ToText EmbeddedScte20Detection where
     toText = \case
-        Auto -> "AUTO"
-        Off -> "OFF"
+        ESDAuto -> "AUTO"
+        ESDOff -> "OFF"
 
 instance Hashable     EmbeddedScte20Detection
 instance NFData       EmbeddedScte20Detection
@@ -1915,12 +1933,44 @@ instance ToJSON EmbeddedScte20Detection where
 instance FromJSON EmbeddedScte20Detection where
     parseJSON = parseJSONText "EmbeddedScte20Detection"
 
--- | Placeholder documentation for FecOutputIncludeFec
-data FecOutputIncludeFec
-  = Column
-  | ColumnAndRow
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
+-- | Feature Activations Input Prepare Schedule Actions
+data FeatureActivationsInputPrepareScheduleActions = FAIPSADisabled
+                                                   | FAIPSAEnabled
+                                                       deriving (Eq, Ord, Read,
+                                                                 Show, Enum,
+                                                                 Bounded, Data,
+                                                                 Typeable,
+                                                                 Generic)
 
+instance FromText FeatureActivationsInputPrepareScheduleActions where
+    parser = takeLowerText >>= \case
+        "disabled" -> pure FAIPSADisabled
+        "enabled" -> pure FAIPSAEnabled
+        e -> fromTextError $ "Failure parsing FeatureActivationsInputPrepareScheduleActions from value: '" <> e
+           <> "'. Accepted values: disabled, enabled"
+
+instance ToText FeatureActivationsInputPrepareScheduleActions where
+    toText = \case
+        FAIPSADisabled -> "DISABLED"
+        FAIPSAEnabled -> "ENABLED"
+
+instance Hashable     FeatureActivationsInputPrepareScheduleActions
+instance NFData       FeatureActivationsInputPrepareScheduleActions
+instance ToByteString FeatureActivationsInputPrepareScheduleActions
+instance ToQuery      FeatureActivationsInputPrepareScheduleActions
+instance ToHeader     FeatureActivationsInputPrepareScheduleActions
+
+instance ToJSON FeatureActivationsInputPrepareScheduleActions where
+    toJSON = toJSONText
+
+instance FromJSON FeatureActivationsInputPrepareScheduleActions where
+    parseJSON = parseJSONText "FeatureActivationsInputPrepareScheduleActions"
+
+-- | Fec Output Include Fec
+data FecOutputIncludeFec = Column
+                         | ColumnAndRow
+                             deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                       Typeable, Generic)
 
 instance FromText FecOutputIncludeFec where
     parser = takeLowerText >>= \case
@@ -1946,21 +1996,20 @@ instance ToJSON FecOutputIncludeFec where
 instance FromJSON FecOutputIncludeFec where
     parseJSON = parseJSONText "FecOutputIncludeFec"
 
--- | Placeholder documentation for FixedAfd
-data FixedAfd
-  = Afd0000
-  | Afd0010
-  | Afd0011
-  | Afd0100
-  | Afd1000
-  | Afd1001
-  | Afd1010
-  | Afd1011
-  | Afd1101
-  | Afd1110
-  | Afd1111
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Fixed Afd
+data FixedAfd = Afd0000
+              | Afd0010
+              | Afd0011
+              | Afd0100
+              | Afd1000
+              | Afd1001
+              | Afd1010
+              | Afd1011
+              | Afd1101
+              | Afd1110
+              | Afd1111
+                  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                            Typeable, Generic)
 
 instance FromText FixedAfd where
     parser = takeLowerText >>= \case
@@ -2004,12 +2053,132 @@ instance ToJSON FixedAfd where
 instance FromJSON FixedAfd where
     parseJSON = parseJSONText "FixedAfd"
 
--- | Placeholder documentation for GlobalConfigurationInputEndAction
-data GlobalConfigurationInputEndAction
-  = GCIEANone
-  | GCIEASwitchAndLoopInputs
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
+-- | Fmp4 Nielsen Id3 Behavior
+data Fmp4NielsenId3Behavior = FNIBNoPassthrough
+                            | FNIBPassthrough
+                                deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                          Data, Typeable, Generic)
 
+instance FromText Fmp4NielsenId3Behavior where
+    parser = takeLowerText >>= \case
+        "no_passthrough" -> pure FNIBNoPassthrough
+        "passthrough" -> pure FNIBPassthrough
+        e -> fromTextError $ "Failure parsing Fmp4NielsenId3Behavior from value: '" <> e
+           <> "'. Accepted values: no_passthrough, passthrough"
+
+instance ToText Fmp4NielsenId3Behavior where
+    toText = \case
+        FNIBNoPassthrough -> "NO_PASSTHROUGH"
+        FNIBPassthrough -> "PASSTHROUGH"
+
+instance Hashable     Fmp4NielsenId3Behavior
+instance NFData       Fmp4NielsenId3Behavior
+instance ToByteString Fmp4NielsenId3Behavior
+instance ToQuery      Fmp4NielsenId3Behavior
+instance ToHeader     Fmp4NielsenId3Behavior
+
+instance ToJSON Fmp4NielsenId3Behavior where
+    toJSON = toJSONText
+
+instance FromJSON Fmp4NielsenId3Behavior where
+    parseJSON = parseJSONText "Fmp4NielsenId3Behavior"
+
+-- | Fmp4 Timed Metadata Behavior
+data Fmp4TimedMetadataBehavior = FTMBNoPassthrough
+                               | FTMBPassthrough
+                                   deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                             Data, Typeable, Generic)
+
+instance FromText Fmp4TimedMetadataBehavior where
+    parser = takeLowerText >>= \case
+        "no_passthrough" -> pure FTMBNoPassthrough
+        "passthrough" -> pure FTMBPassthrough
+        e -> fromTextError $ "Failure parsing Fmp4TimedMetadataBehavior from value: '" <> e
+           <> "'. Accepted values: no_passthrough, passthrough"
+
+instance ToText Fmp4TimedMetadataBehavior where
+    toText = \case
+        FTMBNoPassthrough -> "NO_PASSTHROUGH"
+        FTMBPassthrough -> "PASSTHROUGH"
+
+instance Hashable     Fmp4TimedMetadataBehavior
+instance NFData       Fmp4TimedMetadataBehavior
+instance ToByteString Fmp4TimedMetadataBehavior
+instance ToQuery      Fmp4TimedMetadataBehavior
+instance ToHeader     Fmp4TimedMetadataBehavior
+
+instance ToJSON Fmp4TimedMetadataBehavior where
+    toJSON = toJSONText
+
+instance FromJSON Fmp4TimedMetadataBehavior where
+    parseJSON = parseJSONText "Fmp4TimedMetadataBehavior"
+
+-- | Follow reference point.
+data FollowPoint = End
+                 | Start
+                     deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                               Typeable, Generic)
+
+instance FromText FollowPoint where
+    parser = takeLowerText >>= \case
+        "end" -> pure End
+        "start" -> pure Start
+        e -> fromTextError $ "Failure parsing FollowPoint from value: '" <> e
+           <> "'. Accepted values: end, start"
+
+instance ToText FollowPoint where
+    toText = \case
+        End -> "END"
+        Start -> "START"
+
+instance Hashable     FollowPoint
+instance NFData       FollowPoint
+instance ToByteString FollowPoint
+instance ToQuery      FollowPoint
+instance ToHeader     FollowPoint
+
+instance ToJSON FollowPoint where
+    toJSON = toJSONText
+
+instance FromJSON FollowPoint where
+    parseJSON = parseJSONText "FollowPoint"
+
+-- | Frame Capture Interval Unit
+data FrameCaptureIntervalUnit = Milliseconds
+                              | Seconds
+                                  deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                            Data, Typeable, Generic)
+
+instance FromText FrameCaptureIntervalUnit where
+    parser = takeLowerText >>= \case
+        "milliseconds" -> pure Milliseconds
+        "seconds" -> pure Seconds
+        e -> fromTextError $ "Failure parsing FrameCaptureIntervalUnit from value: '" <> e
+           <> "'. Accepted values: milliseconds, seconds"
+
+instance ToText FrameCaptureIntervalUnit where
+    toText = \case
+        Milliseconds -> "MILLISECONDS"
+        Seconds -> "SECONDS"
+
+instance Hashable     FrameCaptureIntervalUnit
+instance NFData       FrameCaptureIntervalUnit
+instance ToByteString FrameCaptureIntervalUnit
+instance ToQuery      FrameCaptureIntervalUnit
+instance ToHeader     FrameCaptureIntervalUnit
+
+instance ToJSON FrameCaptureIntervalUnit where
+    toJSON = toJSONText
+
+instance FromJSON FrameCaptureIntervalUnit where
+    parseJSON = parseJSONText "FrameCaptureIntervalUnit"
+
+-- | Global Configuration Input End Action
+data GlobalConfigurationInputEndAction = GCIEANone
+                                       | GCIEASwitchAndLoopInputs
+                                           deriving (Eq, Ord, Read, Show, Enum,
+                                                     Bounded, Data, Typeable,
+                                                     Generic)
 
 instance FromText GlobalConfigurationInputEndAction where
     parser = takeLowerText >>= \case
@@ -2035,12 +2204,12 @@ instance ToJSON GlobalConfigurationInputEndAction where
 instance FromJSON GlobalConfigurationInputEndAction where
     parseJSON = parseJSONText "GlobalConfigurationInputEndAction"
 
--- | Placeholder documentation for GlobalConfigurationLowFramerateInputs
-data GlobalConfigurationLowFramerateInputs
-  = GCLFIDisabled
-  | GCLFIEnabled
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Global Configuration Low Framerate Inputs
+data GlobalConfigurationLowFramerateInputs = GCLFIDisabled
+                                           | GCLFIEnabled
+                                               deriving (Eq, Ord, Read, Show,
+                                                         Enum, Bounded, Data,
+                                                         Typeable, Generic)
 
 instance FromText GlobalConfigurationLowFramerateInputs where
     parser = takeLowerText >>= \case
@@ -2066,12 +2235,43 @@ instance ToJSON GlobalConfigurationLowFramerateInputs where
 instance FromJSON GlobalConfigurationLowFramerateInputs where
     parseJSON = parseJSONText "GlobalConfigurationLowFramerateInputs"
 
--- | Placeholder documentation for GlobalConfigurationOutputTimingSource
-data GlobalConfigurationOutputTimingSource
-  = GCOTSInputClock
-  | GCOTSSystemClock
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
+-- | Global Configuration Output Locking Mode
+data GlobalConfigurationOutputLockingMode = EpochLocking
+                                          | PipelineLocking
+                                              deriving (Eq, Ord, Read, Show,
+                                                        Enum, Bounded, Data,
+                                                        Typeable, Generic)
 
+instance FromText GlobalConfigurationOutputLockingMode where
+    parser = takeLowerText >>= \case
+        "epoch_locking" -> pure EpochLocking
+        "pipeline_locking" -> pure PipelineLocking
+        e -> fromTextError $ "Failure parsing GlobalConfigurationOutputLockingMode from value: '" <> e
+           <> "'. Accepted values: epoch_locking, pipeline_locking"
+
+instance ToText GlobalConfigurationOutputLockingMode where
+    toText = \case
+        EpochLocking -> "EPOCH_LOCKING"
+        PipelineLocking -> "PIPELINE_LOCKING"
+
+instance Hashable     GlobalConfigurationOutputLockingMode
+instance NFData       GlobalConfigurationOutputLockingMode
+instance ToByteString GlobalConfigurationOutputLockingMode
+instance ToQuery      GlobalConfigurationOutputLockingMode
+instance ToHeader     GlobalConfigurationOutputLockingMode
+
+instance ToJSON GlobalConfigurationOutputLockingMode where
+    toJSON = toJSONText
+
+instance FromJSON GlobalConfigurationOutputLockingMode where
+    parseJSON = parseJSONText "GlobalConfigurationOutputLockingMode"
+
+-- | Global Configuration Output Timing Source
+data GlobalConfigurationOutputTimingSource = GCOTSInputClock
+                                           | GCOTSSystemClock
+                                               deriving (Eq, Ord, Read, Show,
+                                                         Enum, Bounded, Data,
+                                                         Typeable, Generic)
 
 instance FromText GlobalConfigurationOutputTimingSource where
     parser = takeLowerText >>= \case
@@ -2097,36 +2297,35 @@ instance ToJSON GlobalConfigurationOutputTimingSource where
 instance FromJSON GlobalConfigurationOutputTimingSource where
     parseJSON = parseJSONText "GlobalConfigurationOutputTimingSource"
 
--- | Placeholder documentation for H264AdaptiveQuantization
-data H264AdaptiveQuantization
-  = HAQHigh
-  | HAQHigher
-  | HAQLow
-  | HAQMax
-  | HAQMedium
-  | HAQOff
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | H264 Adaptive Quantization
+data H264AdaptiveQuantization = HHigh
+                              | HHigher
+                              | HLow
+                              | HMax
+                              | HMedium
+                              | HOff
+                                  deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                            Data, Typeable, Generic)
 
 instance FromText H264AdaptiveQuantization where
     parser = takeLowerText >>= \case
-        "high" -> pure HAQHigh
-        "higher" -> pure HAQHigher
-        "low" -> pure HAQLow
-        "max" -> pure HAQMax
-        "medium" -> pure HAQMedium
-        "off" -> pure HAQOff
+        "high" -> pure HHigh
+        "higher" -> pure HHigher
+        "low" -> pure HLow
+        "max" -> pure HMax
+        "medium" -> pure HMedium
+        "off" -> pure HOff
         e -> fromTextError $ "Failure parsing H264AdaptiveQuantization from value: '" <> e
            <> "'. Accepted values: high, higher, low, max, medium, off"
 
 instance ToText H264AdaptiveQuantization where
     toText = \case
-        HAQHigh -> "HIGH"
-        HAQHigher -> "HIGHER"
-        HAQLow -> "LOW"
-        HAQMax -> "MAX"
-        HAQMedium -> "MEDIUM"
-        HAQOff -> "OFF"
+        HHigh -> "HIGH"
+        HHigher -> "HIGHER"
+        HLow -> "LOW"
+        HMax -> "MAX"
+        HMedium -> "MEDIUM"
+        HOff -> "OFF"
 
 instance Hashable     H264AdaptiveQuantization
 instance NFData       H264AdaptiveQuantization
@@ -2140,24 +2339,23 @@ instance ToJSON H264AdaptiveQuantization where
 instance FromJSON H264AdaptiveQuantization where
     parseJSON = parseJSONText "H264AdaptiveQuantization"
 
--- | Placeholder documentation for H264ColorMetadata
-data H264ColorMetadata
-  = Ignore
-  | Insert
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | H264 Color Metadata
+data H264ColorMetadata = HIgnore
+                       | HInsert
+                           deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                     Typeable, Generic)
 
 instance FromText H264ColorMetadata where
     parser = takeLowerText >>= \case
-        "ignore" -> pure Ignore
-        "insert" -> pure Insert
+        "ignore" -> pure HIgnore
+        "insert" -> pure HInsert
         e -> fromTextError $ "Failure parsing H264ColorMetadata from value: '" <> e
            <> "'. Accepted values: ignore, insert"
 
 instance ToText H264ColorMetadata where
     toText = \case
-        Ignore -> "IGNORE"
-        Insert -> "INSERT"
+        HIgnore -> "IGNORE"
+        HInsert -> "INSERT"
 
 instance Hashable     H264ColorMetadata
 instance NFData       H264ColorMetadata
@@ -2171,12 +2369,11 @@ instance ToJSON H264ColorMetadata where
 instance FromJSON H264ColorMetadata where
     parseJSON = parseJSONText "H264ColorMetadata"
 
--- | Placeholder documentation for H264EntropyEncoding
-data H264EntropyEncoding
-  = Cabac
-  | Cavlc
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | H264 Entropy Encoding
+data H264EntropyEncoding = Cabac
+                         | Cavlc
+                             deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                       Typeable, Generic)
 
 instance FromText H264EntropyEncoding where
     parser = takeLowerText >>= \case
@@ -2202,12 +2399,11 @@ instance ToJSON H264EntropyEncoding where
 instance FromJSON H264EntropyEncoding where
     parseJSON = parseJSONText "H264EntropyEncoding"
 
--- | Placeholder documentation for H264FlickerAq
-data H264FlickerAq
-  = Disabled
-  | Enabled
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | H264 Flicker Aq
+data H264FlickerAq = Disabled
+                   | Enabled
+                       deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                 Typeable, Generic)
 
 instance FromText H264FlickerAq where
     parser = takeLowerText >>= \case
@@ -2233,12 +2429,41 @@ instance ToJSON H264FlickerAq where
 instance FromJSON H264FlickerAq where
     parseJSON = parseJSONText "H264FlickerAq"
 
--- | Placeholder documentation for H264FramerateControl
-data H264FramerateControl
-  = HFCInitializeFromSource
-  | HFCSpecified
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
+-- | H264 Force Field Pictures
+data H264ForceFieldPictures = HFFPDisabled
+                            | HFFPEnabled
+                                deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                          Data, Typeable, Generic)
 
+instance FromText H264ForceFieldPictures where
+    parser = takeLowerText >>= \case
+        "disabled" -> pure HFFPDisabled
+        "enabled" -> pure HFFPEnabled
+        e -> fromTextError $ "Failure parsing H264ForceFieldPictures from value: '" <> e
+           <> "'. Accepted values: disabled, enabled"
+
+instance ToText H264ForceFieldPictures where
+    toText = \case
+        HFFPDisabled -> "DISABLED"
+        HFFPEnabled -> "ENABLED"
+
+instance Hashable     H264ForceFieldPictures
+instance NFData       H264ForceFieldPictures
+instance ToByteString H264ForceFieldPictures
+instance ToQuery      H264ForceFieldPictures
+instance ToHeader     H264ForceFieldPictures
+
+instance ToJSON H264ForceFieldPictures where
+    toJSON = toJSONText
+
+instance FromJSON H264ForceFieldPictures where
+    parseJSON = parseJSONText "H264ForceFieldPictures"
+
+-- | H264 Framerate Control
+data H264FramerateControl = HFCInitializeFromSource
+                          | HFCSpecified
+                              deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                        Data, Typeable, Generic)
 
 instance FromText H264FramerateControl where
     parser = takeLowerText >>= \case
@@ -2264,12 +2489,11 @@ instance ToJSON H264FramerateControl where
 instance FromJSON H264FramerateControl where
     parseJSON = parseJSONText "H264FramerateControl"
 
--- | Placeholder documentation for H264GopBReference
-data H264GopBReference
-  = HGBRDisabled
-  | HGBREnabled
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | H264 Gop BReference
+data H264GopBReference = HGBRDisabled
+                       | HGBREnabled
+                           deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                     Typeable, Generic)
 
 instance FromText H264GopBReference where
     parser = takeLowerText >>= \case
@@ -2295,24 +2519,23 @@ instance ToJSON H264GopBReference where
 instance FromJSON H264GopBReference where
     parseJSON = parseJSONText "H264GopBReference"
 
--- | Placeholder documentation for H264GopSizeUnits
-data H264GopSizeUnits
-  = Frames
-  | Seconds
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | H264 Gop Size Units
+data H264GopSizeUnits = HFrames
+                      | HSeconds
+                          deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                    Typeable, Generic)
 
 instance FromText H264GopSizeUnits where
     parser = takeLowerText >>= \case
-        "frames" -> pure Frames
-        "seconds" -> pure Seconds
+        "frames" -> pure HFrames
+        "seconds" -> pure HSeconds
         e -> fromTextError $ "Failure parsing H264GopSizeUnits from value: '" <> e
            <> "'. Accepted values: frames, seconds"
 
 instance ToText H264GopSizeUnits where
     toText = \case
-        Frames -> "FRAMES"
-        Seconds -> "SECONDS"
+        HFrames -> "FRAMES"
+        HSeconds -> "SECONDS"
 
 instance Hashable     H264GopSizeUnits
 instance NFData       H264GopSizeUnits
@@ -2326,27 +2549,26 @@ instance ToJSON H264GopSizeUnits where
 instance FromJSON H264GopSizeUnits where
     parseJSON = parseJSONText "H264GopSizeUnits"
 
--- | Placeholder documentation for H264Level
-data H264Level
-  = H264Level1
-  | H264Level11
-  | H264Level12
-  | H264Level13
-  | H264Level2
-  | H264Level21
-  | H264Level22
-  | H264Level3
-  | H264Level31
-  | H264Level32
-  | H264Level4
-  | H264Level41
-  | H264Level42
-  | H264Level5
-  | H264Level51
-  | H264Level52
-  | H264LevelAuto
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | H264 Level
+data H264Level = H264Level1
+               | H264Level11
+               | H264Level12
+               | H264Level13
+               | H264Level2
+               | H264Level21
+               | H264Level22
+               | H264Level3
+               | H264Level31
+               | H264Level32
+               | H264Level4
+               | H264Level41
+               | H264Level42
+               | H264Level5
+               | H264Level51
+               | H264Level52
+               | H264LevelAuto
+                   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                             Typeable, Generic)
 
 instance FromText H264Level where
     parser = takeLowerText >>= \case
@@ -2402,13 +2624,12 @@ instance ToJSON H264Level where
 instance FromJSON H264Level where
     parseJSON = parseJSONText "H264Level"
 
--- | Placeholder documentation for H264LookAheadRateControl
-data H264LookAheadRateControl
-  = HLARCHigh
-  | HLARCLow
-  | HLARCMedium
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | H264 Look Ahead Rate Control
+data H264LookAheadRateControl = HLARCHigh
+                              | HLARCLow
+                              | HLARCMedium
+                                  deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                            Data, Typeable, Generic)
 
 instance FromText H264LookAheadRateControl where
     parser = takeLowerText >>= \case
@@ -2436,12 +2657,11 @@ instance ToJSON H264LookAheadRateControl where
 instance FromJSON H264LookAheadRateControl where
     parseJSON = parseJSONText "H264LookAheadRateControl"
 
--- | Placeholder documentation for H264ParControl
-data H264ParControl
-  = InitializeFromSource
-  | Specified
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | H264 Par Control
+data H264ParControl = InitializeFromSource
+                    | Specified
+                        deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                  Typeable, Generic)
 
 instance FromText H264ParControl where
     parser = takeLowerText >>= \case
@@ -2467,36 +2687,35 @@ instance ToJSON H264ParControl where
 instance FromJSON H264ParControl where
     parseJSON = parseJSONText "H264ParControl"
 
--- | Placeholder documentation for H264Profile
-data H264Profile
-  = Baseline
-  | High
-  | High10BIT
-  | High422
-  | High42210BIT
-  | Main
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | H264 Profile
+data H264Profile = HPBaseline
+                 | HPHigh
+                 | HPHigh10BIT
+                 | HPHigh422
+                 | HPHigh42210BIT
+                 | HPMain
+                     deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                               Typeable, Generic)
 
 instance FromText H264Profile where
     parser = takeLowerText >>= \case
-        "baseline" -> pure Baseline
-        "high" -> pure High
-        "high_10bit" -> pure High10BIT
-        "high_422" -> pure High422
-        "high_422_10bit" -> pure High42210BIT
-        "main" -> pure Main
+        "baseline" -> pure HPBaseline
+        "high" -> pure HPHigh
+        "high_10bit" -> pure HPHigh10BIT
+        "high_422" -> pure HPHigh422
+        "high_422_10bit" -> pure HPHigh42210BIT
+        "main" -> pure HPMain
         e -> fromTextError $ "Failure parsing H264Profile from value: '" <> e
            <> "'. Accepted values: baseline, high, high_10bit, high_422, high_422_10bit, main"
 
 instance ToText H264Profile where
     toText = \case
-        Baseline -> "BASELINE"
-        High -> "HIGH"
-        High10BIT -> "HIGH_10BIT"
-        High422 -> "HIGH_422"
-        High42210BIT -> "HIGH_422_10BIT"
-        Main -> "MAIN"
+        HPBaseline -> "BASELINE"
+        HPHigh -> "HIGH"
+        HPHigh10BIT -> "HIGH_10BIT"
+        HPHigh422 -> "HIGH_422"
+        HPHigh42210BIT -> "HIGH_422_10BIT"
+        HPMain -> "MAIN"
 
 instance Hashable     H264Profile
 instance NFData       H264Profile
@@ -2510,24 +2729,59 @@ instance ToJSON H264Profile where
 instance FromJSON H264Profile where
     parseJSON = parseJSONText "H264Profile"
 
--- | Placeholder documentation for H264RateControlMode
-data H264RateControlMode
-  = Cbr
-  | Vbr
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
+-- | H264 Quality Level
+data H264QualityLevel = EnhancedQuality
+                      | StandardQuality
+                          deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                    Typeable, Generic)
 
+instance FromText H264QualityLevel where
+    parser = takeLowerText >>= \case
+        "enhanced_quality" -> pure EnhancedQuality
+        "standard_quality" -> pure StandardQuality
+        e -> fromTextError $ "Failure parsing H264QualityLevel from value: '" <> e
+           <> "'. Accepted values: enhanced_quality, standard_quality"
+
+instance ToText H264QualityLevel where
+    toText = \case
+        EnhancedQuality -> "ENHANCED_QUALITY"
+        StandardQuality -> "STANDARD_QUALITY"
+
+instance Hashable     H264QualityLevel
+instance NFData       H264QualityLevel
+instance ToByteString H264QualityLevel
+instance ToQuery      H264QualityLevel
+instance ToHeader     H264QualityLevel
+
+instance ToJSON H264QualityLevel where
+    toJSON = toJSONText
+
+instance FromJSON H264QualityLevel where
+    parseJSON = parseJSONText "H264QualityLevel"
+
+-- | H264 Rate Control Mode
+data H264RateControlMode = HRCMCbr
+                         | HRCMMultiplex
+                         | HRCMQvbr
+                         | HRCMVbr
+                             deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                       Typeable, Generic)
 
 instance FromText H264RateControlMode where
     parser = takeLowerText >>= \case
-        "cbr" -> pure Cbr
-        "vbr" -> pure Vbr
+        "cbr" -> pure HRCMCbr
+        "multiplex" -> pure HRCMMultiplex
+        "qvbr" -> pure HRCMQvbr
+        "vbr" -> pure HRCMVbr
         e -> fromTextError $ "Failure parsing H264RateControlMode from value: '" <> e
-           <> "'. Accepted values: cbr, vbr"
+           <> "'. Accepted values: cbr, multiplex, qvbr, vbr"
 
 instance ToText H264RateControlMode where
     toText = \case
-        Cbr -> "CBR"
-        Vbr -> "VBR"
+        HRCMCbr -> "CBR"
+        HRCMMultiplex -> "MULTIPLEX"
+        HRCMQvbr -> "QVBR"
+        HRCMVbr -> "VBR"
 
 instance Hashable     H264RateControlMode
 instance NFData       H264RateControlMode
@@ -2541,24 +2795,23 @@ instance ToJSON H264RateControlMode where
 instance FromJSON H264RateControlMode where
     parseJSON = parseJSONText "H264RateControlMode"
 
--- | Placeholder documentation for H264ScanType
-data H264ScanType
-  = Interlaced
-  | Progressive
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | H264 Scan Type
+data H264ScanType = HSTInterlaced
+                  | HSTProgressive
+                      deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                Typeable, Generic)
 
 instance FromText H264ScanType where
     parser = takeLowerText >>= \case
-        "interlaced" -> pure Interlaced
-        "progressive" -> pure Progressive
+        "interlaced" -> pure HSTInterlaced
+        "progressive" -> pure HSTProgressive
         e -> fromTextError $ "Failure parsing H264ScanType from value: '" <> e
            <> "'. Accepted values: interlaced, progressive"
 
 instance ToText H264ScanType where
     toText = \case
-        Interlaced -> "INTERLACED"
-        Progressive -> "PROGRESSIVE"
+        HSTInterlaced -> "INTERLACED"
+        HSTProgressive -> "PROGRESSIVE"
 
 instance Hashable     H264ScanType
 instance NFData       H264ScanType
@@ -2572,24 +2825,23 @@ instance ToJSON H264ScanType where
 instance FromJSON H264ScanType where
     parseJSON = parseJSONText "H264ScanType"
 
--- | Placeholder documentation for H264SceneChangeDetect
-data H264SceneChangeDetect
-  = HSCDDisabled
-  | HSCDEnabled
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | H264 Scene Change Detect
+data H264SceneChangeDetect = HDisabled
+                           | HEnabled
+                               deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                         Data, Typeable, Generic)
 
 instance FromText H264SceneChangeDetect where
     parser = takeLowerText >>= \case
-        "disabled" -> pure HSCDDisabled
-        "enabled" -> pure HSCDEnabled
+        "disabled" -> pure HDisabled
+        "enabled" -> pure HEnabled
         e -> fromTextError $ "Failure parsing H264SceneChangeDetect from value: '" <> e
            <> "'. Accepted values: disabled, enabled"
 
 instance ToText H264SceneChangeDetect where
     toText = \case
-        HSCDDisabled -> "DISABLED"
-        HSCDEnabled -> "ENABLED"
+        HDisabled -> "DISABLED"
+        HEnabled -> "ENABLED"
 
 instance Hashable     H264SceneChangeDetect
 instance NFData       H264SceneChangeDetect
@@ -2603,12 +2855,11 @@ instance ToJSON H264SceneChangeDetect where
 instance FromJSON H264SceneChangeDetect where
     parseJSON = parseJSONText "H264SceneChangeDetect"
 
--- | Placeholder documentation for H264SpatialAq
-data H264SpatialAq
-  = HSADisabled
-  | HSAEnabled
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | H264 Spatial Aq
+data H264SpatialAq = HSADisabled
+                   | HSAEnabled
+                       deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                 Typeable, Generic)
 
 instance FromText H264SpatialAq where
     parser = takeLowerText >>= \case
@@ -2634,12 +2885,41 @@ instance ToJSON H264SpatialAq where
 instance FromJSON H264SpatialAq where
     parseJSON = parseJSONText "H264SpatialAq"
 
--- | Placeholder documentation for H264Syntax
-data H264Syntax
-  = HSDefault
-  | HSRP2027
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
+-- | H264 Sub Gop Length
+data H264SubGopLength = Dynamic
+                      | Fixed
+                          deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                    Typeable, Generic)
 
+instance FromText H264SubGopLength where
+    parser = takeLowerText >>= \case
+        "dynamic" -> pure Dynamic
+        "fixed" -> pure Fixed
+        e -> fromTextError $ "Failure parsing H264SubGopLength from value: '" <> e
+           <> "'. Accepted values: dynamic, fixed"
+
+instance ToText H264SubGopLength where
+    toText = \case
+        Dynamic -> "DYNAMIC"
+        Fixed -> "FIXED"
+
+instance Hashable     H264SubGopLength
+instance NFData       H264SubGopLength
+instance ToByteString H264SubGopLength
+instance ToQuery      H264SubGopLength
+instance ToHeader     H264SubGopLength
+
+instance ToJSON H264SubGopLength where
+    toJSON = toJSONText
+
+instance FromJSON H264SubGopLength where
+    parseJSON = parseJSONText "H264SubGopLength"
+
+-- | H264 Syntax
+data H264Syntax = HSDefault
+                | HSRP2027
+                    deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                              Typeable, Generic)
 
 instance FromText H264Syntax where
     parser = takeLowerText >>= \case
@@ -2665,12 +2945,11 @@ instance ToJSON H264Syntax where
 instance FromJSON H264Syntax where
     parseJSON = parseJSONText "H264Syntax"
 
--- | Placeholder documentation for H264TemporalAq
-data H264TemporalAq
-  = HTADisabled
-  | HTAEnabled
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | H264 Temporal Aq
+data H264TemporalAq = HTADisabled
+                    | HTAEnabled
+                        deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                  Typeable, Generic)
 
 instance FromText H264TemporalAq where
     parser = takeLowerText >>= \case
@@ -2696,24 +2975,24 @@ instance ToJSON H264TemporalAq where
 instance FromJSON H264TemporalAq where
     parseJSON = parseJSONText "H264TemporalAq"
 
--- | Placeholder documentation for H264TimecodeInsertionBehavior
-data H264TimecodeInsertionBehavior
-  = HTIBDisabled
-  | HTIBPicTimingSei
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | H264 Timecode Insertion Behavior
+data H264TimecodeInsertionBehavior = H26Disabled
+                                   | H26PicTimingSei
+                                       deriving (Eq, Ord, Read, Show, Enum,
+                                                 Bounded, Data, Typeable,
+                                                 Generic)
 
 instance FromText H264TimecodeInsertionBehavior where
     parser = takeLowerText >>= \case
-        "disabled" -> pure HTIBDisabled
-        "pic_timing_sei" -> pure HTIBPicTimingSei
+        "disabled" -> pure H26Disabled
+        "pic_timing_sei" -> pure H26PicTimingSei
         e -> fromTextError $ "Failure parsing H264TimecodeInsertionBehavior from value: '" <> e
            <> "'. Accepted values: disabled, pic_timing_sei"
 
 instance ToText H264TimecodeInsertionBehavior where
     toText = \case
-        HTIBDisabled -> "DISABLED"
-        HTIBPicTimingSei -> "PIC_TIMING_SEI"
+        H26Disabled -> "DISABLED"
+        H26PicTimingSei -> "PIC_TIMING_SEI"
 
 instance Hashable     H264TimecodeInsertionBehavior
 instance NFData       H264TimecodeInsertionBehavior
@@ -2727,13 +3006,455 @@ instance ToJSON H264TimecodeInsertionBehavior where
 instance FromJSON H264TimecodeInsertionBehavior where
     parseJSON = parseJSONText "H264TimecodeInsertionBehavior"
 
--- | Placeholder documentation for HlsAdMarkers
-data HlsAdMarkers
-  = Adobe
-  | Elemental
-  | ElementalSCTE35
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
+-- | H265 Adaptive Quantization
+data H265AdaptiveQuantization = HAQHigh
+                              | HAQHigher
+                              | HAQLow
+                              | HAQMax
+                              | HAQMedium
+                              | HAQOff
+                                  deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                            Data, Typeable, Generic)
 
+instance FromText H265AdaptiveQuantization where
+    parser = takeLowerText >>= \case
+        "high" -> pure HAQHigh
+        "higher" -> pure HAQHigher
+        "low" -> pure HAQLow
+        "max" -> pure HAQMax
+        "medium" -> pure HAQMedium
+        "off" -> pure HAQOff
+        e -> fromTextError $ "Failure parsing H265AdaptiveQuantization from value: '" <> e
+           <> "'. Accepted values: high, higher, low, max, medium, off"
+
+instance ToText H265AdaptiveQuantization where
+    toText = \case
+        HAQHigh -> "HIGH"
+        HAQHigher -> "HIGHER"
+        HAQLow -> "LOW"
+        HAQMax -> "MAX"
+        HAQMedium -> "MEDIUM"
+        HAQOff -> "OFF"
+
+instance Hashable     H265AdaptiveQuantization
+instance NFData       H265AdaptiveQuantization
+instance ToByteString H265AdaptiveQuantization
+instance ToQuery      H265AdaptiveQuantization
+instance ToHeader     H265AdaptiveQuantization
+
+instance ToJSON H265AdaptiveQuantization where
+    toJSON = toJSONText
+
+instance FromJSON H265AdaptiveQuantization where
+    parseJSON = parseJSONText "H265AdaptiveQuantization"
+
+-- | H265 Alternative Transfer Function
+data H265AlternativeTransferFunction = Insert
+                                     | Omit
+                                         deriving (Eq, Ord, Read, Show, Enum,
+                                                   Bounded, Data, Typeable,
+                                                   Generic)
+
+instance FromText H265AlternativeTransferFunction where
+    parser = takeLowerText >>= \case
+        "insert" -> pure Insert
+        "omit" -> pure Omit
+        e -> fromTextError $ "Failure parsing H265AlternativeTransferFunction from value: '" <> e
+           <> "'. Accepted values: insert, omit"
+
+instance ToText H265AlternativeTransferFunction where
+    toText = \case
+        Insert -> "INSERT"
+        Omit -> "OMIT"
+
+instance Hashable     H265AlternativeTransferFunction
+instance NFData       H265AlternativeTransferFunction
+instance ToByteString H265AlternativeTransferFunction
+instance ToQuery      H265AlternativeTransferFunction
+instance ToHeader     H265AlternativeTransferFunction
+
+instance ToJSON H265AlternativeTransferFunction where
+    toJSON = toJSONText
+
+instance FromJSON H265AlternativeTransferFunction where
+    parseJSON = parseJSONText "H265AlternativeTransferFunction"
+
+-- | H265 Color Metadata
+data H265ColorMetadata = HCMIgnore
+                       | HCMInsert
+                           deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                     Typeable, Generic)
+
+instance FromText H265ColorMetadata where
+    parser = takeLowerText >>= \case
+        "ignore" -> pure HCMIgnore
+        "insert" -> pure HCMInsert
+        e -> fromTextError $ "Failure parsing H265ColorMetadata from value: '" <> e
+           <> "'. Accepted values: ignore, insert"
+
+instance ToText H265ColorMetadata where
+    toText = \case
+        HCMIgnore -> "IGNORE"
+        HCMInsert -> "INSERT"
+
+instance Hashable     H265ColorMetadata
+instance NFData       H265ColorMetadata
+instance ToByteString H265ColorMetadata
+instance ToQuery      H265ColorMetadata
+instance ToHeader     H265ColorMetadata
+
+instance ToJSON H265ColorMetadata where
+    toJSON = toJSONText
+
+instance FromJSON H265ColorMetadata where
+    parseJSON = parseJSONText "H265ColorMetadata"
+
+-- | H265 Flicker Aq
+data H265FlickerAq = HFADisabled
+                   | HFAEnabled
+                       deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                 Typeable, Generic)
+
+instance FromText H265FlickerAq where
+    parser = takeLowerText >>= \case
+        "disabled" -> pure HFADisabled
+        "enabled" -> pure HFAEnabled
+        e -> fromTextError $ "Failure parsing H265FlickerAq from value: '" <> e
+           <> "'. Accepted values: disabled, enabled"
+
+instance ToText H265FlickerAq where
+    toText = \case
+        HFADisabled -> "DISABLED"
+        HFAEnabled -> "ENABLED"
+
+instance Hashable     H265FlickerAq
+instance NFData       H265FlickerAq
+instance ToByteString H265FlickerAq
+instance ToQuery      H265FlickerAq
+instance ToHeader     H265FlickerAq
+
+instance ToJSON H265FlickerAq where
+    toJSON = toJSONText
+
+instance FromJSON H265FlickerAq where
+    parseJSON = parseJSONText "H265FlickerAq"
+
+-- | H265 Gop Size Units
+data H265GopSizeUnits = HGSUFrames
+                      | HGSUSeconds
+                          deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                    Typeable, Generic)
+
+instance FromText H265GopSizeUnits where
+    parser = takeLowerText >>= \case
+        "frames" -> pure HGSUFrames
+        "seconds" -> pure HGSUSeconds
+        e -> fromTextError $ "Failure parsing H265GopSizeUnits from value: '" <> e
+           <> "'. Accepted values: frames, seconds"
+
+instance ToText H265GopSizeUnits where
+    toText = \case
+        HGSUFrames -> "FRAMES"
+        HGSUSeconds -> "SECONDS"
+
+instance Hashable     H265GopSizeUnits
+instance NFData       H265GopSizeUnits
+instance ToByteString H265GopSizeUnits
+instance ToQuery      H265GopSizeUnits
+instance ToHeader     H265GopSizeUnits
+
+instance ToJSON H265GopSizeUnits where
+    toJSON = toJSONText
+
+instance FromJSON H265GopSizeUnits where
+    parseJSON = parseJSONText "H265GopSizeUnits"
+
+-- | H265 Level
+data H265Level = H265Level1
+               | H265Level2
+               | H265Level21
+               | H265Level3
+               | H265Level31
+               | H265Level4
+               | H265Level41
+               | H265Level5
+               | H265Level51
+               | H265Level52
+               | H265Level6
+               | H265Level61
+               | H265Level62
+               | H265LevelAuto
+                   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                             Typeable, Generic)
+
+instance FromText H265Level where
+    parser = takeLowerText >>= \case
+        "h265_level_1" -> pure H265Level1
+        "h265_level_2" -> pure H265Level2
+        "h265_level_2_1" -> pure H265Level21
+        "h265_level_3" -> pure H265Level3
+        "h265_level_3_1" -> pure H265Level31
+        "h265_level_4" -> pure H265Level4
+        "h265_level_4_1" -> pure H265Level41
+        "h265_level_5" -> pure H265Level5
+        "h265_level_5_1" -> pure H265Level51
+        "h265_level_5_2" -> pure H265Level52
+        "h265_level_6" -> pure H265Level6
+        "h265_level_6_1" -> pure H265Level61
+        "h265_level_6_2" -> pure H265Level62
+        "h265_level_auto" -> pure H265LevelAuto
+        e -> fromTextError $ "Failure parsing H265Level from value: '" <> e
+           <> "'. Accepted values: h265_level_1, h265_level_2, h265_level_2_1, h265_level_3, h265_level_3_1, h265_level_4, h265_level_4_1, h265_level_5, h265_level_5_1, h265_level_5_2, h265_level_6, h265_level_6_1, h265_level_6_2, h265_level_auto"
+
+instance ToText H265Level where
+    toText = \case
+        H265Level1 -> "H265_LEVEL_1"
+        H265Level2 -> "H265_LEVEL_2"
+        H265Level21 -> "H265_LEVEL_2_1"
+        H265Level3 -> "H265_LEVEL_3"
+        H265Level31 -> "H265_LEVEL_3_1"
+        H265Level4 -> "H265_LEVEL_4"
+        H265Level41 -> "H265_LEVEL_4_1"
+        H265Level5 -> "H265_LEVEL_5"
+        H265Level51 -> "H265_LEVEL_5_1"
+        H265Level52 -> "H265_LEVEL_5_2"
+        H265Level6 -> "H265_LEVEL_6"
+        H265Level61 -> "H265_LEVEL_6_1"
+        H265Level62 -> "H265_LEVEL_6_2"
+        H265LevelAuto -> "H265_LEVEL_AUTO"
+
+instance Hashable     H265Level
+instance NFData       H265Level
+instance ToByteString H265Level
+instance ToQuery      H265Level
+instance ToHeader     H265Level
+
+instance ToJSON H265Level where
+    toJSON = toJSONText
+
+instance FromJSON H265Level where
+    parseJSON = parseJSONText "H265Level"
+
+-- | H265 Look Ahead Rate Control
+data H265LookAheadRateControl = High
+                              | Low
+                              | Medium
+                                  deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                            Data, Typeable, Generic)
+
+instance FromText H265LookAheadRateControl where
+    parser = takeLowerText >>= \case
+        "high" -> pure High
+        "low" -> pure Low
+        "medium" -> pure Medium
+        e -> fromTextError $ "Failure parsing H265LookAheadRateControl from value: '" <> e
+           <> "'. Accepted values: high, low, medium"
+
+instance ToText H265LookAheadRateControl where
+    toText = \case
+        High -> "HIGH"
+        Low -> "LOW"
+        Medium -> "MEDIUM"
+
+instance Hashable     H265LookAheadRateControl
+instance NFData       H265LookAheadRateControl
+instance ToByteString H265LookAheadRateControl
+instance ToQuery      H265LookAheadRateControl
+instance ToHeader     H265LookAheadRateControl
+
+instance ToJSON H265LookAheadRateControl where
+    toJSON = toJSONText
+
+instance FromJSON H265LookAheadRateControl where
+    parseJSON = parseJSONText "H265LookAheadRateControl"
+
+-- | H265 Profile
+data H265Profile = Main
+                 | Main10BIT
+                     deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                               Typeable, Generic)
+
+instance FromText H265Profile where
+    parser = takeLowerText >>= \case
+        "main" -> pure Main
+        "main_10bit" -> pure Main10BIT
+        e -> fromTextError $ "Failure parsing H265Profile from value: '" <> e
+           <> "'. Accepted values: main, main_10bit"
+
+instance ToText H265Profile where
+    toText = \case
+        Main -> "MAIN"
+        Main10BIT -> "MAIN_10BIT"
+
+instance Hashable     H265Profile
+instance NFData       H265Profile
+instance ToByteString H265Profile
+instance ToQuery      H265Profile
+instance ToHeader     H265Profile
+
+instance ToJSON H265Profile where
+    toJSON = toJSONText
+
+instance FromJSON H265Profile where
+    parseJSON = parseJSONText "H265Profile"
+
+-- | H265 Rate Control Mode
+data H265RateControlMode = Cbr
+                         | Multiplex
+                         | Qvbr
+                             deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                       Typeable, Generic)
+
+instance FromText H265RateControlMode where
+    parser = takeLowerText >>= \case
+        "cbr" -> pure Cbr
+        "multiplex" -> pure Multiplex
+        "qvbr" -> pure Qvbr
+        e -> fromTextError $ "Failure parsing H265RateControlMode from value: '" <> e
+           <> "'. Accepted values: cbr, multiplex, qvbr"
+
+instance ToText H265RateControlMode where
+    toText = \case
+        Cbr -> "CBR"
+        Multiplex -> "MULTIPLEX"
+        Qvbr -> "QVBR"
+
+instance Hashable     H265RateControlMode
+instance NFData       H265RateControlMode
+instance ToByteString H265RateControlMode
+instance ToQuery      H265RateControlMode
+instance ToHeader     H265RateControlMode
+
+instance ToJSON H265RateControlMode where
+    toJSON = toJSONText
+
+instance FromJSON H265RateControlMode where
+    parseJSON = parseJSONText "H265RateControlMode"
+
+-- | H265 Scan Type
+data H265ScanType = Progressive
+                      deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                Typeable, Generic)
+
+instance FromText H265ScanType where
+    parser = takeLowerText >>= \case
+        "progressive" -> pure Progressive
+        e -> fromTextError $ "Failure parsing H265ScanType from value: '" <> e
+           <> "'. Accepted values: progressive"
+
+instance ToText H265ScanType where
+    toText = \case
+        Progressive -> "PROGRESSIVE"
+
+instance Hashable     H265ScanType
+instance NFData       H265ScanType
+instance ToByteString H265ScanType
+instance ToQuery      H265ScanType
+instance ToHeader     H265ScanType
+
+instance ToJSON H265ScanType where
+    toJSON = toJSONText
+
+instance FromJSON H265ScanType where
+    parseJSON = parseJSONText "H265ScanType"
+
+-- | H265 Scene Change Detect
+data H265SceneChangeDetect = HSCDDisabled
+                           | HSCDEnabled
+                               deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                         Data, Typeable, Generic)
+
+instance FromText H265SceneChangeDetect where
+    parser = takeLowerText >>= \case
+        "disabled" -> pure HSCDDisabled
+        "enabled" -> pure HSCDEnabled
+        e -> fromTextError $ "Failure parsing H265SceneChangeDetect from value: '" <> e
+           <> "'. Accepted values: disabled, enabled"
+
+instance ToText H265SceneChangeDetect where
+    toText = \case
+        HSCDDisabled -> "DISABLED"
+        HSCDEnabled -> "ENABLED"
+
+instance Hashable     H265SceneChangeDetect
+instance NFData       H265SceneChangeDetect
+instance ToByteString H265SceneChangeDetect
+instance ToQuery      H265SceneChangeDetect
+instance ToHeader     H265SceneChangeDetect
+
+instance ToJSON H265SceneChangeDetect where
+    toJSON = toJSONText
+
+instance FromJSON H265SceneChangeDetect where
+    parseJSON = parseJSONText "H265SceneChangeDetect"
+
+-- | H265 Tier
+data H265Tier = HTHigh
+              | HTMain
+                  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                            Typeable, Generic)
+
+instance FromText H265Tier where
+    parser = takeLowerText >>= \case
+        "high" -> pure HTHigh
+        "main" -> pure HTMain
+        e -> fromTextError $ "Failure parsing H265Tier from value: '" <> e
+           <> "'. Accepted values: high, main"
+
+instance ToText H265Tier where
+    toText = \case
+        HTHigh -> "HIGH"
+        HTMain -> "MAIN"
+
+instance Hashable     H265Tier
+instance NFData       H265Tier
+instance ToByteString H265Tier
+instance ToQuery      H265Tier
+instance ToHeader     H265Tier
+
+instance ToJSON H265Tier where
+    toJSON = toJSONText
+
+instance FromJSON H265Tier where
+    parseJSON = parseJSONText "H265Tier"
+
+-- | H265 Timecode Insertion Behavior
+data H265TimecodeInsertionBehavior = HTIBDisabled
+                                   | HTIBPicTimingSei
+                                       deriving (Eq, Ord, Read, Show, Enum,
+                                                 Bounded, Data, Typeable,
+                                                 Generic)
+
+instance FromText H265TimecodeInsertionBehavior where
+    parser = takeLowerText >>= \case
+        "disabled" -> pure HTIBDisabled
+        "pic_timing_sei" -> pure HTIBPicTimingSei
+        e -> fromTextError $ "Failure parsing H265TimecodeInsertionBehavior from value: '" <> e
+           <> "'. Accepted values: disabled, pic_timing_sei"
+
+instance ToText H265TimecodeInsertionBehavior where
+    toText = \case
+        HTIBDisabled -> "DISABLED"
+        HTIBPicTimingSei -> "PIC_TIMING_SEI"
+
+instance Hashable     H265TimecodeInsertionBehavior
+instance NFData       H265TimecodeInsertionBehavior
+instance ToByteString H265TimecodeInsertionBehavior
+instance ToQuery      H265TimecodeInsertionBehavior
+instance ToHeader     H265TimecodeInsertionBehavior
+
+instance ToJSON H265TimecodeInsertionBehavior where
+    toJSON = toJSONText
+
+instance FromJSON H265TimecodeInsertionBehavior where
+    parseJSON = parseJSONText "H265TimecodeInsertionBehavior"
+
+-- | Hls Ad Markers
+data HlsAdMarkers = Adobe
+                  | Elemental
+                  | ElementalSCTE35
+                      deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                Typeable, Generic)
 
 instance FromText HlsAdMarkers where
     parser = takeLowerText >>= \case
@@ -2761,12 +3482,11 @@ instance ToJSON HlsAdMarkers where
 instance FromJSON HlsAdMarkers where
     parseJSON = parseJSONText "HlsAdMarkers"
 
--- | Placeholder documentation for HlsAkamaiHttpTransferMode
-data HlsAkamaiHTTPTransferMode
-  = AkamaiChunked
-  | AkamaiNonChunked
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Hls Akamai Http Transfer Mode
+data HlsAkamaiHTTPTransferMode = AkamaiChunked
+                               | AkamaiNonChunked
+                                   deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                             Data, Typeable, Generic)
 
 instance FromText HlsAkamaiHTTPTransferMode where
     parser = takeLowerText >>= \case
@@ -2792,13 +3512,12 @@ instance ToJSON HlsAkamaiHTTPTransferMode where
 instance FromJSON HlsAkamaiHTTPTransferMode where
     parseJSON = parseJSONText "HlsAkamaiHTTPTransferMode"
 
--- | Placeholder documentation for HlsCaptionLanguageSetting
-data HlsCaptionLanguageSetting
-  = HCLSInsert
-  | HCLSNone
-  | HCLSOmit
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Hls Caption Language Setting
+data HlsCaptionLanguageSetting = HCLSInsert
+                               | HCLSNone
+                               | HCLSOmit
+                                   deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                             Data, Typeable, Generic)
 
 instance FromText HlsCaptionLanguageSetting where
     parser = takeLowerText >>= \case
@@ -2826,12 +3545,11 @@ instance ToJSON HlsCaptionLanguageSetting where
 instance FromJSON HlsCaptionLanguageSetting where
     parseJSON = parseJSONText "HlsCaptionLanguageSetting"
 
--- | Placeholder documentation for HlsClientCache
-data HlsClientCache
-  = HCCDisabled
-  | HCCEnabled
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Hls Client Cache
+data HlsClientCache = HCCDisabled
+                    | HCCEnabled
+                        deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                  Typeable, Generic)
 
 instance FromText HlsClientCache where
     parser = takeLowerText >>= \case
@@ -2857,12 +3575,11 @@ instance ToJSON HlsClientCache where
 instance FromJSON HlsClientCache where
     parseJSON = parseJSONText "HlsClientCache"
 
--- | Placeholder documentation for HlsCodecSpecification
-data HlsCodecSpecification
-  = Rfc4281
-  | Rfc6381
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Hls Codec Specification
+data HlsCodecSpecification = Rfc4281
+                           | Rfc6381
+                               deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                         Data, Typeable, Generic)
 
 instance FromText HlsCodecSpecification where
     parser = takeLowerText >>= \case
@@ -2888,12 +3605,11 @@ instance ToJSON HlsCodecSpecification where
 instance FromJSON HlsCodecSpecification where
     parseJSON = parseJSONText "HlsCodecSpecification"
 
--- | Placeholder documentation for HlsDirectoryStructure
-data HlsDirectoryStructure
-  = SingleDirectory
-  | SubdirectoryPerStream
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Hls Directory Structure
+data HlsDirectoryStructure = SingleDirectory
+                           | SubdirectoryPerStream
+                               deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                         Data, Typeable, Generic)
 
 instance FromText HlsDirectoryStructure where
     parser = takeLowerText >>= \case
@@ -2919,12 +3635,11 @@ instance ToJSON HlsDirectoryStructure where
 instance FromJSON HlsDirectoryStructure where
     parseJSON = parseJSONText "HlsDirectoryStructure"
 
--- | Placeholder documentation for HlsEncryptionType
-data HlsEncryptionType
-  = AES128
-  | SampleAES
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Hls Encryption Type
+data HlsEncryptionType = AES128
+                       | SampleAES
+                           deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                     Typeable, Generic)
 
 instance FromText HlsEncryptionType where
     parser = takeLowerText >>= \case
@@ -2950,12 +3665,71 @@ instance ToJSON HlsEncryptionType where
 instance FromJSON HlsEncryptionType where
     parseJSON = parseJSONText "HlsEncryptionType"
 
--- | Placeholder documentation for HlsIvInManifest
-data HlsIvInManifest
-  = Exclude
-  | Include
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
+-- | Hls H265 Packaging Type
+data HlsH265PackagingType = HEV1
+                          | HVC1
+                              deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                        Data, Typeable, Generic)
 
+instance FromText HlsH265PackagingType where
+    parser = takeLowerText >>= \case
+        "hev1" -> pure HEV1
+        "hvc1" -> pure HVC1
+        e -> fromTextError $ "Failure parsing HlsH265PackagingType from value: '" <> e
+           <> "'. Accepted values: hev1, hvc1"
+
+instance ToText HlsH265PackagingType where
+    toText = \case
+        HEV1 -> "HEV1"
+        HVC1 -> "HVC1"
+
+instance Hashable     HlsH265PackagingType
+instance NFData       HlsH265PackagingType
+instance ToByteString HlsH265PackagingType
+instance ToQuery      HlsH265PackagingType
+instance ToHeader     HlsH265PackagingType
+
+instance ToJSON HlsH265PackagingType where
+    toJSON = toJSONText
+
+instance FromJSON HlsH265PackagingType where
+    parseJSON = parseJSONText "HlsH265PackagingType"
+
+-- | State of HLS ID3 Segment Tagging
+data HlsId3SegmentTaggingState = HISTSDisabled
+                               | HISTSEnabled
+                                   deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                             Data, Typeable, Generic)
+
+instance FromText HlsId3SegmentTaggingState where
+    parser = takeLowerText >>= \case
+        "disabled" -> pure HISTSDisabled
+        "enabled" -> pure HISTSEnabled
+        e -> fromTextError $ "Failure parsing HlsId3SegmentTaggingState from value: '" <> e
+           <> "'. Accepted values: disabled, enabled"
+
+instance ToText HlsId3SegmentTaggingState where
+    toText = \case
+        HISTSDisabled -> "DISABLED"
+        HISTSEnabled -> "ENABLED"
+
+instance Hashable     HlsId3SegmentTaggingState
+instance NFData       HlsId3SegmentTaggingState
+instance ToByteString HlsId3SegmentTaggingState
+instance ToQuery      HlsId3SegmentTaggingState
+instance ToHeader     HlsId3SegmentTaggingState
+
+instance ToJSON HlsId3SegmentTaggingState where
+    toJSON = toJSONText
+
+instance FromJSON HlsId3SegmentTaggingState where
+    parseJSON = parseJSONText "HlsId3SegmentTaggingState"
+
+-- | Hls Iv In Manifest
+data HlsIvInManifest = Exclude
+                     | Include
+                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                   Typeable, Generic)
 
 instance FromText HlsIvInManifest where
     parser = takeLowerText >>= \case
@@ -2981,12 +3755,11 @@ instance ToJSON HlsIvInManifest where
 instance FromJSON HlsIvInManifest where
     parseJSON = parseJSONText "HlsIvInManifest"
 
--- | Placeholder documentation for HlsIvSource
-data HlsIvSource
-  = Explicit
-  | FollowsSegmentNumber
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Hls Iv Source
+data HlsIvSource = Explicit
+                 | FollowsSegmentNumber
+                     deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                               Typeable, Generic)
 
 instance FromText HlsIvSource where
     parser = takeLowerText >>= \case
@@ -3012,12 +3785,11 @@ instance ToJSON HlsIvSource where
 instance FromJSON HlsIvSource where
     parseJSON = parseJSONText "HlsIvSource"
 
--- | Placeholder documentation for HlsManifestCompression
-data HlsManifestCompression
-  = HMCGzip
-  | HMCNone
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Hls Manifest Compression
+data HlsManifestCompression = HMCGzip
+                            | HMCNone
+                                deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                          Data, Typeable, Generic)
 
 instance FromText HlsManifestCompression where
     parser = takeLowerText >>= \case
@@ -3043,12 +3815,11 @@ instance ToJSON HlsManifestCompression where
 instance FromJSON HlsManifestCompression where
     parseJSON = parseJSONText "HlsManifestCompression"
 
--- | Placeholder documentation for HlsManifestDurationFormat
-data HlsManifestDurationFormat
-  = FloatingPoint
-  | Integer
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Hls Manifest Duration Format
+data HlsManifestDurationFormat = FloatingPoint
+                               | Integer
+                                   deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                             Data, Typeable, Generic)
 
 instance FromText HlsManifestDurationFormat where
     parser = takeLowerText >>= \case
@@ -3074,11 +3845,10 @@ instance ToJSON HlsManifestDurationFormat where
 instance FromJSON HlsManifestDurationFormat where
     parseJSON = parseJSONText "HlsManifestDurationFormat"
 
--- | Placeholder documentation for HlsMediaStoreStorageClass
-data HlsMediaStoreStorageClass =
-  Temporal
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Hls Media Store Storage Class
+data HlsMediaStoreStorageClass = Temporal
+                                   deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                             Data, Typeable, Generic)
 
 instance FromText HlsMediaStoreStorageClass where
     parser = takeLowerText >>= \case
@@ -3102,12 +3872,11 @@ instance ToJSON HlsMediaStoreStorageClass where
 instance FromJSON HlsMediaStoreStorageClass where
     parseJSON = parseJSONText "HlsMediaStoreStorageClass"
 
--- | Placeholder documentation for HlsMode
-data HlsMode
-  = Live
-  | Vod
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Hls Mode
+data HlsMode = Live
+             | Vod
+                 deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                           Typeable, Generic)
 
 instance FromText HlsMode where
     parser = takeLowerText >>= \case
@@ -3133,12 +3902,11 @@ instance ToJSON HlsMode where
 instance FromJSON HlsMode where
     parseJSON = parseJSONText "HlsMode"
 
--- | Placeholder documentation for HlsOutputSelection
-data HlsOutputSelection
-  = ManifestsAndSegments
-  | SegmentsOnly
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Hls Output Selection
+data HlsOutputSelection = ManifestsAndSegments
+                        | SegmentsOnly
+                            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                      Typeable, Generic)
 
 instance FromText HlsOutputSelection where
     parser = takeLowerText >>= \case
@@ -3164,12 +3932,11 @@ instance ToJSON HlsOutputSelection where
 instance FromJSON HlsOutputSelection where
     parseJSON = parseJSONText "HlsOutputSelection"
 
--- | Placeholder documentation for HlsProgramDateTime
-data HlsProgramDateTime
-  = HPDTExclude
-  | HPDTInclude
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Hls Program Date Time
+data HlsProgramDateTime = HPDTExclude
+                        | HPDTInclude
+                            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                      Typeable, Generic)
 
 instance FromText HlsProgramDateTime where
     parser = takeLowerText >>= \case
@@ -3195,12 +3962,41 @@ instance ToJSON HlsProgramDateTime where
 instance FromJSON HlsProgramDateTime where
     parseJSON = parseJSONText "HlsProgramDateTime"
 
--- | Placeholder documentation for HlsSegmentationMode
-data HlsSegmentationMode
-  = HSMUseInputSegmentation
-  | HSMUseSegmentDuration
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
+-- | Hls Redundant Manifest
+data HlsRedundantManifest = HRMDisabled
+                          | HRMEnabled
+                              deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                        Data, Typeable, Generic)
 
+instance FromText HlsRedundantManifest where
+    parser = takeLowerText >>= \case
+        "disabled" -> pure HRMDisabled
+        "enabled" -> pure HRMEnabled
+        e -> fromTextError $ "Failure parsing HlsRedundantManifest from value: '" <> e
+           <> "'. Accepted values: disabled, enabled"
+
+instance ToText HlsRedundantManifest where
+    toText = \case
+        HRMDisabled -> "DISABLED"
+        HRMEnabled -> "ENABLED"
+
+instance Hashable     HlsRedundantManifest
+instance NFData       HlsRedundantManifest
+instance ToByteString HlsRedundantManifest
+instance ToQuery      HlsRedundantManifest
+instance ToHeader     HlsRedundantManifest
+
+instance ToJSON HlsRedundantManifest where
+    toJSON = toJSONText
+
+instance FromJSON HlsRedundantManifest where
+    parseJSON = parseJSONText "HlsRedundantManifest"
+
+-- | Hls Segmentation Mode
+data HlsSegmentationMode = HSMUseInputSegmentation
+                         | HSMUseSegmentDuration
+                             deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                       Typeable, Generic)
 
 instance FromText HlsSegmentationMode where
     parser = takeLowerText >>= \case
@@ -3226,12 +4022,11 @@ instance ToJSON HlsSegmentationMode where
 instance FromJSON HlsSegmentationMode where
     parseJSON = parseJSONText "HlsSegmentationMode"
 
--- | Placeholder documentation for HlsStreamInfResolution
-data HlsStreamInfResolution
-  = HSIRExclude
-  | HSIRInclude
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Hls Stream Inf Resolution
+data HlsStreamInfResolution = HSIRExclude
+                            | HSIRInclude
+                                deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                          Data, Typeable, Generic)
 
 instance FromText HlsStreamInfResolution where
     parser = takeLowerText >>= \case
@@ -3257,13 +4052,12 @@ instance ToJSON HlsStreamInfResolution where
 instance FromJSON HlsStreamInfResolution where
     parseJSON = parseJSONText "HlsStreamInfResolution"
 
--- | Placeholder documentation for HlsTimedMetadataId3Frame
-data HlsTimedMetadataId3Frame
-  = HTMIFNone
-  | HTMIFPriv
-  | HTMIFTdrl
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Hls Timed Metadata Id3 Frame
+data HlsTimedMetadataId3Frame = HTMIFNone
+                              | HTMIFPriv
+                              | HTMIFTdrl
+                                  deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                            Data, Typeable, Generic)
 
 instance FromText HlsTimedMetadataId3Frame where
     parser = takeLowerText >>= \case
@@ -3291,12 +4085,11 @@ instance ToJSON HlsTimedMetadataId3Frame where
 instance FromJSON HlsTimedMetadataId3Frame where
     parseJSON = parseJSONText "HlsTimedMetadataId3Frame"
 
--- | Placeholder documentation for HlsTsFileMode
-data HlsTsFileMode
-  = SegmentedFiles
-  | SingleFile
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Hls Ts File Mode
+data HlsTsFileMode = SegmentedFiles
+                   | SingleFile
+                       deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                 Typeable, Generic)
 
 instance FromText HlsTsFileMode where
     parser = takeLowerText >>= \case
@@ -3322,12 +4115,11 @@ instance ToJSON HlsTsFileMode where
 instance FromJSON HlsTsFileMode where
     parseJSON = parseJSONText "HlsTsFileMode"
 
--- | Placeholder documentation for HlsWebdavHttpTransferMode
-data HlsWebdavHTTPTransferMode
-  = WebdavChunked
-  | WebdavNonChunked
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Hls Webdav Http Transfer Mode
+data HlsWebdavHTTPTransferMode = WebdavChunked
+                               | WebdavNonChunked
+                                   deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                             Data, Typeable, Generic)
 
 instance FromText HlsWebdavHTTPTransferMode where
     parser = takeLowerText >>= \case
@@ -3353,13 +4145,69 @@ instance ToJSON HlsWebdavHTTPTransferMode where
 instance FromJSON HlsWebdavHTTPTransferMode where
     parseJSON = parseJSONText "HlsWebdavHTTPTransferMode"
 
--- | codec in increasing order of complexity
-data InputCodec
-  = Avc
-  | Hevc
-  | MPEG2
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
+-- | When set to "standard", an I-Frame only playlist will be written out for each video output in the output group. This I-Frame only playlist will contain byte range offsets pointing to the I-frame(s) in each segment.
+data IFrameOnlyPlaylistType = IFOPTDisabled
+                            | IFOPTStandard
+                                deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                          Data, Typeable, Generic)
 
+instance FromText IFrameOnlyPlaylistType where
+    parser = takeLowerText >>= \case
+        "disabled" -> pure IFOPTDisabled
+        "standard" -> pure IFOPTStandard
+        e -> fromTextError $ "Failure parsing IFrameOnlyPlaylistType from value: '" <> e
+           <> "'. Accepted values: disabled, standard"
+
+instance ToText IFrameOnlyPlaylistType where
+    toText = \case
+        IFOPTDisabled -> "DISABLED"
+        IFOPTStandard -> "STANDARD"
+
+instance Hashable     IFrameOnlyPlaylistType
+instance NFData       IFrameOnlyPlaylistType
+instance ToByteString IFrameOnlyPlaylistType
+instance ToQuery      IFrameOnlyPlaylistType
+instance ToHeader     IFrameOnlyPlaylistType
+
+instance ToJSON IFrameOnlyPlaylistType where
+    toJSON = toJSONText
+
+instance FromJSON IFrameOnlyPlaylistType where
+    parseJSON = parseJSONText "IFrameOnlyPlaylistType"
+
+-- | A standard input has two sources and a single pipeline input only has one.
+data InputClass = ICSinglePipeline
+                | ICStandard
+                    deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                              Typeable, Generic)
+
+instance FromText InputClass where
+    parser = takeLowerText >>= \case
+        "single_pipeline" -> pure ICSinglePipeline
+        "standard" -> pure ICStandard
+        e -> fromTextError $ "Failure parsing InputClass from value: '" <> e
+           <> "'. Accepted values: single_pipeline, standard"
+
+instance ToText InputClass where
+    toText = \case
+        ICSinglePipeline -> "SINGLE_PIPELINE"
+        ICStandard -> "STANDARD"
+
+instance Hashable     InputClass
+instance NFData       InputClass
+instance ToByteString InputClass
+instance ToQuery      InputClass
+instance ToHeader     InputClass
+
+instance FromJSON InputClass where
+    parseJSON = parseJSONText "InputClass"
+
+-- | codec in increasing order of complexity
+data InputCodec = Avc
+                | Hevc
+                | MPEG2
+                    deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                              Typeable, Generic)
 
 instance FromText InputCodec where
     parser = takeLowerText >>= \case
@@ -3387,12 +4235,11 @@ instance ToJSON InputCodec where
 instance FromJSON InputCodec where
     parseJSON = parseJSONText "InputCodec"
 
--- | Placeholder documentation for InputDeblockFilter
-data InputDeblockFilter
-  = IDFDisabled
-  | IDFEnabled
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Input Deblock Filter
+data InputDeblockFilter = IDFDisabled
+                        | IDFEnabled
+                            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                      Typeable, Generic)
 
 instance FromText InputDeblockFilter where
     parser = takeLowerText >>= \case
@@ -3418,12 +4265,11 @@ instance ToJSON InputDeblockFilter where
 instance FromJSON InputDeblockFilter where
     parseJSON = parseJSONText "InputDeblockFilter"
 
--- | Placeholder documentation for InputDenoiseFilter
-data InputDenoiseFilter
-  = IDisabled
-  | IEnabled
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Input Denoise Filter
+data InputDenoiseFilter = IDisabled
+                        | IEnabled
+                            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                      Typeable, Generic)
 
 instance FromText InputDenoiseFilter where
     parser = takeLowerText >>= \case
@@ -3449,13 +4295,204 @@ instance ToJSON InputDenoiseFilter where
 instance FromJSON InputDenoiseFilter where
     parseJSON = parseJSONText "InputDenoiseFilter"
 
--- | Placeholder documentation for InputFilter
-data InputFilter
-  = IFAuto
-  | IFDisabled
-  | IFForced
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
+-- | The source at the input device that is currently active.
+data InputDeviceActiveInput = Hdmi
+                            | Sdi
+                                deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                          Data, Typeable, Generic)
 
+instance FromText InputDeviceActiveInput where
+    parser = takeLowerText >>= \case
+        "hdmi" -> pure Hdmi
+        "sdi" -> pure Sdi
+        e -> fromTextError $ "Failure parsing InputDeviceActiveInput from value: '" <> e
+           <> "'. Accepted values: hdmi, sdi"
+
+instance ToText InputDeviceActiveInput where
+    toText = \case
+        Hdmi -> "HDMI"
+        Sdi -> "SDI"
+
+instance Hashable     InputDeviceActiveInput
+instance NFData       InputDeviceActiveInput
+instance ToByteString InputDeviceActiveInput
+instance ToQuery      InputDeviceActiveInput
+instance ToHeader     InputDeviceActiveInput
+
+instance FromJSON InputDeviceActiveInput where
+    parseJSON = parseJSONText "InputDeviceActiveInput"
+
+-- | The source to activate (use) from the input device.
+data InputDeviceConfiguredInput = IDCIAuto
+                                | IDCIHdmi
+                                | IDCISdi
+                                    deriving (Eq, Ord, Read, Show, Enum,
+                                              Bounded, Data, Typeable, Generic)
+
+instance FromText InputDeviceConfiguredInput where
+    parser = takeLowerText >>= \case
+        "auto" -> pure IDCIAuto
+        "hdmi" -> pure IDCIHdmi
+        "sdi" -> pure IDCISdi
+        e -> fromTextError $ "Failure parsing InputDeviceConfiguredInput from value: '" <> e
+           <> "'. Accepted values: auto, hdmi, sdi"
+
+instance ToText InputDeviceConfiguredInput where
+    toText = \case
+        IDCIAuto -> "AUTO"
+        IDCIHdmi -> "HDMI"
+        IDCISdi -> "SDI"
+
+instance Hashable     InputDeviceConfiguredInput
+instance NFData       InputDeviceConfiguredInput
+instance ToByteString InputDeviceConfiguredInput
+instance ToQuery      InputDeviceConfiguredInput
+instance ToHeader     InputDeviceConfiguredInput
+
+instance ToJSON InputDeviceConfiguredInput where
+    toJSON = toJSONText
+
+instance FromJSON InputDeviceConfiguredInput where
+    parseJSON = parseJSONText "InputDeviceConfiguredInput"
+
+-- | The state of the connection between the input device and AWS.
+data InputDeviceConnectionState = Connected
+                                | Disconnected
+                                    deriving (Eq, Ord, Read, Show, Enum,
+                                              Bounded, Data, Typeable, Generic)
+
+instance FromText InputDeviceConnectionState where
+    parser = takeLowerText >>= \case
+        "connected" -> pure Connected
+        "disconnected" -> pure Disconnected
+        e -> fromTextError $ "Failure parsing InputDeviceConnectionState from value: '" <> e
+           <> "'. Accepted values: connected, disconnected"
+
+instance ToText InputDeviceConnectionState where
+    toText = \case
+        Connected -> "CONNECTED"
+        Disconnected -> "DISCONNECTED"
+
+instance Hashable     InputDeviceConnectionState
+instance NFData       InputDeviceConnectionState
+instance ToByteString InputDeviceConnectionState
+instance ToQuery      InputDeviceConnectionState
+instance ToHeader     InputDeviceConnectionState
+
+instance FromJSON InputDeviceConnectionState where
+    parseJSON = parseJSONText "InputDeviceConnectionState"
+
+-- | Specifies whether the input device has been configured (outside of MediaLive) to use a dynamic IP address assignment (DHCP) or a static IP address.
+data InputDeviceIPScheme = DHCP
+                         | Static
+                             deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                       Typeable, Generic)
+
+instance FromText InputDeviceIPScheme where
+    parser = takeLowerText >>= \case
+        "dhcp" -> pure DHCP
+        "static" -> pure Static
+        e -> fromTextError $ "Failure parsing InputDeviceIPScheme from value: '" <> e
+           <> "'. Accepted values: dhcp, static"
+
+instance ToText InputDeviceIPScheme where
+    toText = \case
+        DHCP -> "DHCP"
+        Static -> "STATIC"
+
+instance Hashable     InputDeviceIPScheme
+instance NFData       InputDeviceIPScheme
+instance ToByteString InputDeviceIPScheme
+instance ToQuery      InputDeviceIPScheme
+instance ToHeader     InputDeviceIPScheme
+
+instance FromJSON InputDeviceIPScheme where
+    parseJSON = parseJSONText "InputDeviceIPScheme"
+
+-- | The scan type of the video source.
+data InputDeviceScanType = IDSTInterlaced
+                         | IDSTProgressive
+                             deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                       Typeable, Generic)
+
+instance FromText InputDeviceScanType where
+    parser = takeLowerText >>= \case
+        "interlaced" -> pure IDSTInterlaced
+        "progressive" -> pure IDSTProgressive
+        e -> fromTextError $ "Failure parsing InputDeviceScanType from value: '" <> e
+           <> "'. Accepted values: interlaced, progressive"
+
+instance ToText InputDeviceScanType where
+    toText = \case
+        IDSTInterlaced -> "INTERLACED"
+        IDSTProgressive -> "PROGRESSIVE"
+
+instance Hashable     InputDeviceScanType
+instance NFData       InputDeviceScanType
+instance ToByteString InputDeviceScanType
+instance ToQuery      InputDeviceScanType
+instance ToHeader     InputDeviceScanType
+
+instance FromJSON InputDeviceScanType where
+    parseJSON = parseJSONText "InputDeviceScanType"
+
+-- | The state of the input device.
+data InputDeviceState = IDSIdle
+                      | IDSStreaming
+                          deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                    Typeable, Generic)
+
+instance FromText InputDeviceState where
+    parser = takeLowerText >>= \case
+        "idle" -> pure IDSIdle
+        "streaming" -> pure IDSStreaming
+        e -> fromTextError $ "Failure parsing InputDeviceState from value: '" <> e
+           <> "'. Accepted values: idle, streaming"
+
+instance ToText InputDeviceState where
+    toText = \case
+        IDSIdle -> "IDLE"
+        IDSStreaming -> "STREAMING"
+
+instance Hashable     InputDeviceState
+instance NFData       InputDeviceState
+instance ToByteString InputDeviceState
+instance ToQuery      InputDeviceState
+instance ToHeader     InputDeviceState
+
+instance FromJSON InputDeviceState where
+    parseJSON = parseJSONText "InputDeviceState"
+
+-- | The type of the input device. For an AWS Elemental Link device that outputs resolutions up to 1080, choose "HD".
+data InputDeviceType = IDTHD
+                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                   Typeable, Generic)
+
+instance FromText InputDeviceType where
+    parser = takeLowerText >>= \case
+        "hd" -> pure IDTHD
+        e -> fromTextError $ "Failure parsing InputDeviceType from value: '" <> e
+           <> "'. Accepted values: hd"
+
+instance ToText InputDeviceType where
+    toText = \case
+        IDTHD -> "HD"
+
+instance Hashable     InputDeviceType
+instance NFData       InputDeviceType
+instance ToByteString InputDeviceType
+instance ToQuery      InputDeviceType
+instance ToHeader     InputDeviceType
+
+instance FromJSON InputDeviceType where
+    parseJSON = parseJSONText "InputDeviceType"
+
+-- | Input Filter
+data InputFilter = IFAuto
+                 | IFDisabled
+                 | IFForced
+                     deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                               Typeable, Generic)
 
 instance FromText InputFilter where
     parser = takeLowerText >>= \case
@@ -3483,12 +4520,11 @@ instance ToJSON InputFilter where
 instance FromJSON InputFilter where
     parseJSON = parseJSONText "InputFilter"
 
--- | Placeholder documentation for InputLossActionForHlsOut
-data InputLossActionForHlsOut
-  = ILAFHOEmitOutput
-  | ILAFHOPauseOutput
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Input Loss Action For Hls Out
+data InputLossActionForHlsOut = ILAFHOEmitOutput
+                              | ILAFHOPauseOutput
+                                  deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                            Data, Typeable, Generic)
 
 instance FromText InputLossActionForHlsOut where
     parser = takeLowerText >>= \case
@@ -3514,12 +4550,12 @@ instance ToJSON InputLossActionForHlsOut where
 instance FromJSON InputLossActionForHlsOut where
     parseJSON = parseJSONText "InputLossActionForHlsOut"
 
--- | Placeholder documentation for InputLossActionForMsSmoothOut
-data InputLossActionForMsSmoothOut
-  = EmitOutput
-  | PauseOutput
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Input Loss Action For Ms Smooth Out
+data InputLossActionForMsSmoothOut = EmitOutput
+                                   | PauseOutput
+                                       deriving (Eq, Ord, Read, Show, Enum,
+                                                 Bounded, Data, Typeable,
+                                                 Generic)
 
 instance FromText InputLossActionForMsSmoothOut where
     parser = takeLowerText >>= \case
@@ -3545,13 +4581,42 @@ instance ToJSON InputLossActionForMsSmoothOut where
 instance FromJSON InputLossActionForMsSmoothOut where
     parseJSON = parseJSONText "InputLossActionForMsSmoothOut"
 
--- | Placeholder documentation for InputLossActionForUdpOut
-data InputLossActionForUdpOut
-  = DropProgram
-  | DropTs
-  | EmitProgram
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
+-- | Input Loss Action For Rtmp Out
+data InputLossActionForRtmpOut = ILAFROEmitOutput
+                               | ILAFROPauseOutput
+                                   deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                             Data, Typeable, Generic)
 
+instance FromText InputLossActionForRtmpOut where
+    parser = takeLowerText >>= \case
+        "emit_output" -> pure ILAFROEmitOutput
+        "pause_output" -> pure ILAFROPauseOutput
+        e -> fromTextError $ "Failure parsing InputLossActionForRtmpOut from value: '" <> e
+           <> "'. Accepted values: emit_output, pause_output"
+
+instance ToText InputLossActionForRtmpOut where
+    toText = \case
+        ILAFROEmitOutput -> "EMIT_OUTPUT"
+        ILAFROPauseOutput -> "PAUSE_OUTPUT"
+
+instance Hashable     InputLossActionForRtmpOut
+instance NFData       InputLossActionForRtmpOut
+instance ToByteString InputLossActionForRtmpOut
+instance ToQuery      InputLossActionForRtmpOut
+instance ToHeader     InputLossActionForRtmpOut
+
+instance ToJSON InputLossActionForRtmpOut where
+    toJSON = toJSONText
+
+instance FromJSON InputLossActionForRtmpOut where
+    parseJSON = parseJSONText "InputLossActionForRtmpOut"
+
+-- | Input Loss Action For Udp Out
+data InputLossActionForUdpOut = DropProgram
+                              | DropTs
+                              | EmitProgram
+                                  deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                            Data, Typeable, Generic)
 
 instance FromText InputLossActionForUdpOut where
     parser = takeLowerText >>= \case
@@ -3579,12 +4644,11 @@ instance ToJSON InputLossActionForUdpOut where
 instance FromJSON InputLossActionForUdpOut where
     parseJSON = parseJSONText "InputLossActionForUdpOut"
 
--- | Placeholder documentation for InputLossImageType
-data InputLossImageType
-  = Color
-  | Slate
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Input Loss Image Type
+data InputLossImageType = Color
+                        | Slate
+                            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                      Typeable, Generic)
 
 instance FromText InputLossImageType where
     parser = takeLowerText >>= \case
@@ -3611,12 +4675,11 @@ instance FromJSON InputLossImageType where
     parseJSON = parseJSONText "InputLossImageType"
 
 -- | Maximum input bitrate in megabits per second. Bitrates up to 50 Mbps are supported currently.
-data InputMaximumBitrate
-  = Max10Mbps
-  | Max20Mbps
-  | Max50Mbps
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+data InputMaximumBitrate = Max10Mbps
+                         | Max20Mbps
+                         | Max50Mbps
+                             deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                       Typeable, Generic)
 
 instance FromText InputMaximumBitrate where
     parser = takeLowerText >>= \case
@@ -3644,13 +4707,45 @@ instance ToJSON InputMaximumBitrate where
 instance FromJSON InputMaximumBitrate where
     parseJSON = parseJSONText "InputMaximumBitrate"
 
--- | Input resolution based on lines of vertical resolution in the input; SD is less than 720 lines, HD is 720 to 1080 lines, UHD is greater than 1080 lines
-data InputResolution
-  = HD
-  | SD
-  | Uhd
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
+-- | Input preference when deciding which input to make active when a previously failed input has recovered.
+--
+-- If \"EQUAL_INPUT_PREFERENCE\", then the active input will stay active as long as it is healthy.
+-- If \"PRIMARY_INPUT_PREFERRED\", then always switch back to the primary input when it is healthy.
+data InputPreference = EqualInputPreference
+                     | PrimaryInputPreferred
+                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                   Typeable, Generic)
 
+instance FromText InputPreference where
+    parser = takeLowerText >>= \case
+        "equal_input_preference" -> pure EqualInputPreference
+        "primary_input_preferred" -> pure PrimaryInputPreferred
+        e -> fromTextError $ "Failure parsing InputPreference from value: '" <> e
+           <> "'. Accepted values: equal_input_preference, primary_input_preferred"
+
+instance ToText InputPreference where
+    toText = \case
+        EqualInputPreference -> "EQUAL_INPUT_PREFERENCE"
+        PrimaryInputPreferred -> "PRIMARY_INPUT_PREFERRED"
+
+instance Hashable     InputPreference
+instance NFData       InputPreference
+instance ToByteString InputPreference
+instance ToQuery      InputPreference
+instance ToHeader     InputPreference
+
+instance ToJSON InputPreference where
+    toJSON = toJSONText
+
+instance FromJSON InputPreference where
+    parseJSON = parseJSONText "InputPreference"
+
+-- | Input resolution based on lines of vertical resolution in the input; SD is less than 720 lines, HD is 720 to 1080 lines, UHD is greater than 1080 lines
+data InputResolution = HD
+                     | SD
+                     | Uhd
+                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                   Typeable, Generic)
 
 instance FromText InputResolution where
     parser = takeLowerText >>= \case
@@ -3679,13 +4774,12 @@ instance FromJSON InputResolution where
     parseJSON = parseJSONText "InputResolution"
 
 -- | Placeholder documentation for InputSecurityGroupState
-data InputSecurityGroupState
-  = ISGSDeleted
-  | ISGSIdle
-  | ISGSInUse
-  | ISGSUpdating
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+data InputSecurityGroupState = ISGSDeleted
+                             | ISGSIdle
+                             | ISGSInUse
+                             | ISGSUpdating
+                                 deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                           Data, Typeable, Generic)
 
 instance FromText InputSecurityGroupState where
     parser = takeLowerText >>= \case
@@ -3712,12 +4806,11 @@ instance ToHeader     InputSecurityGroupState
 instance FromJSON InputSecurityGroupState where
     parseJSON = parseJSONText "InputSecurityGroupState"
 
--- | Placeholder documentation for InputSourceEndBehavior
-data InputSourceEndBehavior
-  = Continue
-  | Loop
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Input Source End Behavior
+data InputSourceEndBehavior = Continue
+                            | Loop
+                                deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                          Data, Typeable, Generic)
 
 instance FromText InputSourceEndBehavior where
     parser = takeLowerText >>= \case
@@ -3743,15 +4836,44 @@ instance ToJSON InputSourceEndBehavior where
 instance FromJSON InputSourceEndBehavior where
     parseJSON = parseJSONText "InputSourceEndBehavior"
 
--- | Placeholder documentation for InputState
-data InputState
-  = ISAttached
-  | ISCreating
-  | ISDeleted
-  | ISDeleting
-  | ISDetached
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
+-- | There are two types of input sources, static and dynamic. If an input source is dynamic you can
+--
+-- change the source url of the input dynamically using an input switch action. However, the only input type
+-- to support a dynamic url at this time is MP4_FILE. By default all input sources are static.
+data InputSourceType = ISTDynamic
+                     | ISTStatic
+                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                   Typeable, Generic)
 
+instance FromText InputSourceType where
+    parser = takeLowerText >>= \case
+        "dynamic" -> pure ISTDynamic
+        "static" -> pure ISTStatic
+        e -> fromTextError $ "Failure parsing InputSourceType from value: '" <> e
+           <> "'. Accepted values: dynamic, static"
+
+instance ToText InputSourceType where
+    toText = \case
+        ISTDynamic -> "DYNAMIC"
+        ISTStatic -> "STATIC"
+
+instance Hashable     InputSourceType
+instance NFData       InputSourceType
+instance ToByteString InputSourceType
+instance ToQuery      InputSourceType
+instance ToHeader     InputSourceType
+
+instance FromJSON InputSourceType where
+    parseJSON = parseJSONText "InputSourceType"
+
+-- | Placeholder documentation for InputState
+data InputState = ISAttached
+                | ISCreating
+                | ISDeleted
+                | ISDeleting
+                | ISDetached
+                    deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                              Typeable, Generic)
 
 instance FromText InputState where
     parser = takeLowerText >>= \case
@@ -3780,28 +4902,66 @@ instance ToHeader     InputState
 instance FromJSON InputState where
     parseJSON = parseJSONText "InputState"
 
--- | Placeholder documentation for InputType
-data InputType
-  = RtmpPull
-  | RtmpPush
-  | RtpPush
-  | URLPull
-  | UdpPush
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
+-- | Documentation update needed
+data InputTimecodeSource = ITSEmbedded
+                         | ITSZerobased
+                             deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                       Typeable, Generic)
 
+instance FromText InputTimecodeSource where
+    parser = takeLowerText >>= \case
+        "embedded" -> pure ITSEmbedded
+        "zerobased" -> pure ITSZerobased
+        e -> fromTextError $ "Failure parsing InputTimecodeSource from value: '" <> e
+           <> "'. Accepted values: embedded, zerobased"
+
+instance ToText InputTimecodeSource where
+    toText = \case
+        ITSEmbedded -> "EMBEDDED"
+        ITSZerobased -> "ZEROBASED"
+
+instance Hashable     InputTimecodeSource
+instance NFData       InputTimecodeSource
+instance ToByteString InputTimecodeSource
+instance ToQuery      InputTimecodeSource
+instance ToHeader     InputTimecodeSource
+
+instance ToJSON InputTimecodeSource where
+    toJSON = toJSONText
+
+instance FromJSON InputTimecodeSource where
+    parseJSON = parseJSONText "InputTimecodeSource"
+
+-- | Placeholder documentation for InputType
+data InputType = InputDevice
+               | MP4File
+               | Mediaconnect
+               | RtmpPull
+               | RtmpPush
+               | RtpPush
+               | URLPull
+               | UdpPush
+                   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                             Typeable, Generic)
 
 instance FromText InputType where
     parser = takeLowerText >>= \case
+        "input_device" -> pure InputDevice
+        "mp4_file" -> pure MP4File
+        "mediaconnect" -> pure Mediaconnect
         "rtmp_pull" -> pure RtmpPull
         "rtmp_push" -> pure RtmpPush
         "rtp_push" -> pure RtpPush
         "url_pull" -> pure URLPull
         "udp_push" -> pure UdpPush
         e -> fromTextError $ "Failure parsing InputType from value: '" <> e
-           <> "'. Accepted values: rtmp_pull, rtmp_push, rtp_push, url_pull, udp_push"
+           <> "'. Accepted values: input_device, mp4_file, mediaconnect, rtmp_pull, rtmp_push, rtp_push, url_pull, udp_push"
 
 instance ToText InputType where
     toText = \case
+        InputDevice -> "INPUT_DEVICE"
+        MP4File -> "MP4_FILE"
+        Mediaconnect -> "MEDIACONNECT"
         RtmpPull -> "RTMP_PULL"
         RtmpPush -> "RTMP_PUSH"
         RtpPush -> "RTP_PUSH"
@@ -3820,12 +4980,81 @@ instance ToJSON InputType where
 instance FromJSON InputType where
     parseJSON = parseJSONText "InputType"
 
--- | Placeholder documentation for M2tsAbsentInputAudioBehavior
-data M2tsAbsentInputAudioBehavior
-  = Drop
-  | EncodeSilence
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
+-- | If you specify a StopTimecode in an input (in order to clip the file), you can specify if you want the clip to exclude (the default) or include the frame specified by the timecode.
+data LastFrameClippingBehavior = ExcludeLastFrame
+                               | IncludeLastFrame
+                                   deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                             Data, Typeable, Generic)
 
+instance FromText LastFrameClippingBehavior where
+    parser = takeLowerText >>= \case
+        "exclude_last_frame" -> pure ExcludeLastFrame
+        "include_last_frame" -> pure IncludeLastFrame
+        e -> fromTextError $ "Failure parsing LastFrameClippingBehavior from value: '" <> e
+           <> "'. Accepted values: exclude_last_frame, include_last_frame"
+
+instance ToText LastFrameClippingBehavior where
+    toText = \case
+        ExcludeLastFrame -> "EXCLUDE_LAST_FRAME"
+        IncludeLastFrame -> "INCLUDE_LAST_FRAME"
+
+instance Hashable     LastFrameClippingBehavior
+instance NFData       LastFrameClippingBehavior
+instance ToByteString LastFrameClippingBehavior
+instance ToQuery      LastFrameClippingBehavior
+instance ToHeader     LastFrameClippingBehavior
+
+instance ToJSON LastFrameClippingBehavior where
+    toJSON = toJSONText
+
+instance FromJSON LastFrameClippingBehavior where
+    parseJSON = parseJSONText "LastFrameClippingBehavior"
+
+-- | The log level the user wants for their channel.
+data LogLevel = LLDebug
+              | LLDisabled
+              | LLError'
+              | LLInfo
+              | LLWarning
+                  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                            Typeable, Generic)
+
+instance FromText LogLevel where
+    parser = takeLowerText >>= \case
+        "debug" -> pure LLDebug
+        "disabled" -> pure LLDisabled
+        "error" -> pure LLError'
+        "info" -> pure LLInfo
+        "warning" -> pure LLWarning
+        e -> fromTextError $ "Failure parsing LogLevel from value: '" <> e
+           <> "'. Accepted values: debug, disabled, error, info, warning"
+
+instance ToText LogLevel where
+    toText = \case
+        LLDebug -> "DEBUG"
+        LLDisabled -> "DISABLED"
+        LLError' -> "ERROR"
+        LLInfo -> "INFO"
+        LLWarning -> "WARNING"
+
+instance Hashable     LogLevel
+instance NFData       LogLevel
+instance ToByteString LogLevel
+instance ToQuery      LogLevel
+instance ToHeader     LogLevel
+
+instance ToJSON LogLevel where
+    toJSON = toJSONText
+
+instance FromJSON LogLevel where
+    parseJSON = parseJSONText "LogLevel"
+
+-- | M2ts Absent Input Audio Behavior
+data M2tsAbsentInputAudioBehavior = Drop
+                                  | EncodeSilence
+                                      deriving (Eq, Ord, Read, Show, Enum,
+                                                Bounded, Data, Typeable,
+                                                Generic)
 
 instance FromText M2tsAbsentInputAudioBehavior where
     parser = takeLowerText >>= \case
@@ -3851,12 +5080,11 @@ instance ToJSON M2tsAbsentInputAudioBehavior where
 instance FromJSON M2tsAbsentInputAudioBehavior where
     parseJSON = parseJSONText "M2tsAbsentInputAudioBehavior"
 
--- | Placeholder documentation for M2tsArib
-data M2tsArib
-  = MADisabled
-  | MAEnabled
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | M2ts Arib
+data M2tsArib = MADisabled
+              | MAEnabled
+                  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                            Typeable, Generic)
 
 instance FromText M2tsArib where
     parser = takeLowerText >>= \case
@@ -3882,12 +5110,11 @@ instance ToJSON M2tsArib where
 instance FromJSON M2tsArib where
     parseJSON = parseJSONText "M2tsArib"
 
--- | Placeholder documentation for M2tsAribCaptionsPidControl
-data M2tsAribCaptionsPidControl
-  = MACPCAuto
-  | MACPCUseConfigured
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | M2ts Arib Captions Pid Control
+data M2tsAribCaptionsPidControl = MACPCAuto
+                                | MACPCUseConfigured
+                                    deriving (Eq, Ord, Read, Show, Enum,
+                                              Bounded, Data, Typeable, Generic)
 
 instance FromText M2tsAribCaptionsPidControl where
     parser = takeLowerText >>= \case
@@ -3913,12 +5140,11 @@ instance ToJSON M2tsAribCaptionsPidControl where
 instance FromJSON M2tsAribCaptionsPidControl where
     parseJSON = parseJSONText "M2tsAribCaptionsPidControl"
 
--- | Placeholder documentation for M2tsAudioBufferModel
-data M2tsAudioBufferModel
-  = Atsc
-  | Dvb
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | M2ts Audio Buffer Model
+data M2tsAudioBufferModel = Atsc
+                          | Dvb
+                              deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                        Data, Typeable, Generic)
 
 instance FromText M2tsAudioBufferModel where
     parser = takeLowerText >>= \case
@@ -3944,12 +5170,11 @@ instance ToJSON M2tsAudioBufferModel where
 instance FromJSON M2tsAudioBufferModel where
     parseJSON = parseJSONText "M2tsAudioBufferModel"
 
--- | Placeholder documentation for M2tsAudioInterval
-data M2tsAudioInterval
-  = VideoAndFixedIntervals
-  | VideoInterval
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | M2ts Audio Interval
+data M2tsAudioInterval = VideoAndFixedIntervals
+                       | VideoInterval
+                           deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                     Typeable, Generic)
 
 instance FromText M2tsAudioInterval where
     parser = takeLowerText >>= \case
@@ -3975,12 +5200,11 @@ instance ToJSON M2tsAudioInterval where
 instance FromJSON M2tsAudioInterval where
     parseJSON = parseJSONText "M2tsAudioInterval"
 
--- | Placeholder documentation for M2tsAudioStreamType
-data M2tsAudioStreamType
-  = MASTAtsc
-  | MASTDvb
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | M2ts Audio Stream Type
+data M2tsAudioStreamType = MASTAtsc
+                         | MASTDvb
+                             deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                       Typeable, Generic)
 
 instance FromText M2tsAudioStreamType where
     parser = takeLowerText >>= \case
@@ -4006,12 +5230,11 @@ instance ToJSON M2tsAudioStreamType where
 instance FromJSON M2tsAudioStreamType where
     parseJSON = parseJSONText "M2tsAudioStreamType"
 
--- | Placeholder documentation for M2tsBufferModel
-data M2tsBufferModel
-  = MBMMultiplex
-  | MBMNone
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | M2ts Buffer Model
+data M2tsBufferModel = MBMMultiplex
+                     | MBMNone
+                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                   Typeable, Generic)
 
 instance FromText M2tsBufferModel where
     parser = takeLowerText >>= \case
@@ -4037,12 +5260,11 @@ instance ToJSON M2tsBufferModel where
 instance FromJSON M2tsBufferModel where
     parseJSON = parseJSONText "M2tsBufferModel"
 
--- | Placeholder documentation for M2tsCcDescriptor
-data M2tsCCDescriptor
-  = MCCDDisabled
-  | MCCDEnabled
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | M2ts Cc Descriptor
+data M2tsCCDescriptor = MCCDDisabled
+                      | MCCDEnabled
+                          deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                    Typeable, Generic)
 
 instance FromText M2tsCCDescriptor where
     parser = takeLowerText >>= \case
@@ -4068,12 +5290,11 @@ instance ToJSON M2tsCCDescriptor where
 instance FromJSON M2tsCCDescriptor where
     parseJSON = parseJSONText "M2tsCCDescriptor"
 
--- | Placeholder documentation for M2tsEbifControl
-data M2tsEbifControl
-  = MECNone
-  | MECPassthrough
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | M2ts Ebif Control
+data M2tsEbifControl = MECNone
+                     | MECPassthrough
+                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                   Typeable, Generic)
 
 instance FromText M2tsEbifControl where
     parser = takeLowerText >>= \case
@@ -4099,12 +5320,11 @@ instance ToJSON M2tsEbifControl where
 instance FromJSON M2tsEbifControl where
     parseJSON = parseJSONText "M2tsEbifControl"
 
--- | Placeholder documentation for M2tsEbpPlacement
-data M2tsEbpPlacement
-  = VideoAndAudioPids
-  | VideoPid
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | M2ts Ebp Placement
+data M2tsEbpPlacement = VideoAndAudioPids
+                      | VideoPid
+                          deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                    Typeable, Generic)
 
 instance FromText M2tsEbpPlacement where
     parser = takeLowerText >>= \case
@@ -4130,12 +5350,11 @@ instance ToJSON M2tsEbpPlacement where
 instance FromJSON M2tsEbpPlacement where
     parseJSON = parseJSONText "M2tsEbpPlacement"
 
--- | Placeholder documentation for M2tsEsRateInPes
-data M2tsEsRateInPes
-  = MERIPExclude
-  | MERIPInclude
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | M2ts Es Rate In Pes
+data M2tsEsRateInPes = MERIPExclude
+                     | MERIPInclude
+                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                   Typeable, Generic)
 
 instance FromText M2tsEsRateInPes where
     parser = takeLowerText >>= \case
@@ -4161,12 +5380,11 @@ instance ToJSON M2tsEsRateInPes where
 instance FromJSON M2tsEsRateInPes where
     parseJSON = parseJSONText "M2tsEsRateInPes"
 
--- | Placeholder documentation for M2tsKlv
-data M2tsKlv
-  = MKNone
-  | MKPassthrough
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | M2ts Klv
+data M2tsKlv = MKNone
+             | MKPassthrough
+                 deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                           Typeable, Generic)
 
 instance FromText M2tsKlv where
     parser = takeLowerText >>= \case
@@ -4192,12 +5410,41 @@ instance ToJSON M2tsKlv where
 instance FromJSON M2tsKlv where
     parseJSON = parseJSONText "M2tsKlv"
 
--- | Placeholder documentation for M2tsPcrControl
-data M2tsPcrControl
-  = ConfiguredPcrPeriod
-  | PcrEveryPesPacket
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
+-- | M2ts Nielsen Id3 Behavior
+data M2tsNielsenId3Behavior = MNIBNoPassthrough
+                            | MNIBPassthrough
+                                deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                          Data, Typeable, Generic)
 
+instance FromText M2tsNielsenId3Behavior where
+    parser = takeLowerText >>= \case
+        "no_passthrough" -> pure MNIBNoPassthrough
+        "passthrough" -> pure MNIBPassthrough
+        e -> fromTextError $ "Failure parsing M2tsNielsenId3Behavior from value: '" <> e
+           <> "'. Accepted values: no_passthrough, passthrough"
+
+instance ToText M2tsNielsenId3Behavior where
+    toText = \case
+        MNIBNoPassthrough -> "NO_PASSTHROUGH"
+        MNIBPassthrough -> "PASSTHROUGH"
+
+instance Hashable     M2tsNielsenId3Behavior
+instance NFData       M2tsNielsenId3Behavior
+instance ToByteString M2tsNielsenId3Behavior
+instance ToQuery      M2tsNielsenId3Behavior
+instance ToHeader     M2tsNielsenId3Behavior
+
+instance ToJSON M2tsNielsenId3Behavior where
+    toJSON = toJSONText
+
+instance FromJSON M2tsNielsenId3Behavior where
+    parseJSON = parseJSONText "M2tsNielsenId3Behavior"
+
+-- | M2ts Pcr Control
+data M2tsPcrControl = ConfiguredPcrPeriod
+                    | PcrEveryPesPacket
+                        deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                  Typeable, Generic)
 
 instance FromText M2tsPcrControl where
     parser = takeLowerText >>= \case
@@ -4223,12 +5470,11 @@ instance ToJSON M2tsPcrControl where
 instance FromJSON M2tsPcrControl where
     parseJSON = parseJSONText "M2tsPcrControl"
 
--- | Placeholder documentation for M2tsRateMode
-data M2tsRateMode
-  = MRMCbr
-  | MRMVbr
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | M2ts Rate Mode
+data M2tsRateMode = MRMCbr
+                  | MRMVbr
+                      deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                Typeable, Generic)
 
 instance FromText M2tsRateMode where
     parser = takeLowerText >>= \case
@@ -4254,12 +5500,11 @@ instance ToJSON M2tsRateMode where
 instance FromJSON M2tsRateMode where
     parseJSON = parseJSONText "M2tsRateMode"
 
--- | Placeholder documentation for M2tsScte35Control
-data M2tsScte35Control
-  = MSCNone
-  | MSCPassthrough
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | M2ts Scte35 Control
+data M2tsScte35Control = MSCNone
+                       | MSCPassthrough
+                           deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                     Typeable, Generic)
 
 instance FromText M2tsScte35Control where
     parser = takeLowerText >>= \case
@@ -4285,16 +5530,15 @@ instance ToJSON M2tsScte35Control where
 instance FromJSON M2tsScte35Control where
     parseJSON = parseJSONText "M2tsScte35Control"
 
--- | Placeholder documentation for M2tsSegmentationMarkers
-data M2tsSegmentationMarkers
-  = MSMEbp
-  | MSMEbpLegacy
-  | MSMNone
-  | MSMPsiSegstart
-  | MSMRaiAdapt
-  | MSMRaiSegstart
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | M2ts Segmentation Markers
+data M2tsSegmentationMarkers = MSMEbp
+                             | MSMEbpLegacy
+                             | MSMNone
+                             | MSMPsiSegstart
+                             | MSMRaiAdapt
+                             | MSMRaiSegstart
+                                 deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                           Data, Typeable, Generic)
 
 instance FromText M2tsSegmentationMarkers where
     parser = takeLowerText >>= \case
@@ -4328,12 +5572,11 @@ instance ToJSON M2tsSegmentationMarkers where
 instance FromJSON M2tsSegmentationMarkers where
     parseJSON = parseJSONText "M2tsSegmentationMarkers"
 
--- | Placeholder documentation for M2tsSegmentationStyle
-data M2tsSegmentationStyle
-  = MaintainCadence
-  | ResetCadence
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | M2ts Segmentation Style
+data M2tsSegmentationStyle = MaintainCadence
+                           | ResetCadence
+                               deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                         Data, Typeable, Generic)
 
 instance FromText M2tsSegmentationStyle where
     parser = takeLowerText >>= \case
@@ -4359,12 +5602,11 @@ instance ToJSON M2tsSegmentationStyle where
 instance FromJSON M2tsSegmentationStyle where
     parseJSON = parseJSONText "M2tsSegmentationStyle"
 
--- | Placeholder documentation for M2tsTimedMetadataBehavior
-data M2tsTimedMetadataBehavior
-  = MTMBNoPassthrough
-  | MTMBPassthrough
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | M2ts Timed Metadata Behavior
+data M2tsTimedMetadataBehavior = MTMBNoPassthrough
+                               | MTMBPassthrough
+                                   deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                             Data, Typeable, Generic)
 
 instance FromText M2tsTimedMetadataBehavior where
     parser = takeLowerText >>= \case
@@ -4390,12 +5632,41 @@ instance ToJSON M2tsTimedMetadataBehavior where
 instance FromJSON M2tsTimedMetadataBehavior where
     parseJSON = parseJSONText "M2tsTimedMetadataBehavior"
 
--- | Placeholder documentation for M3u8PcrControl
-data M3u8PcrControl
-  = MPCConfiguredPcrPeriod
-  | MPCPcrEveryPesPacket
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
+-- | M3u8 Nielsen Id3 Behavior
+data M3u8NielsenId3Behavior = MNoPassthrough
+                            | MPassthrough
+                                deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                          Data, Typeable, Generic)
 
+instance FromText M3u8NielsenId3Behavior where
+    parser = takeLowerText >>= \case
+        "no_passthrough" -> pure MNoPassthrough
+        "passthrough" -> pure MPassthrough
+        e -> fromTextError $ "Failure parsing M3u8NielsenId3Behavior from value: '" <> e
+           <> "'. Accepted values: no_passthrough, passthrough"
+
+instance ToText M3u8NielsenId3Behavior where
+    toText = \case
+        MNoPassthrough -> "NO_PASSTHROUGH"
+        MPassthrough -> "PASSTHROUGH"
+
+instance Hashable     M3u8NielsenId3Behavior
+instance NFData       M3u8NielsenId3Behavior
+instance ToByteString M3u8NielsenId3Behavior
+instance ToQuery      M3u8NielsenId3Behavior
+instance ToHeader     M3u8NielsenId3Behavior
+
+instance ToJSON M3u8NielsenId3Behavior where
+    toJSON = toJSONText
+
+instance FromJSON M3u8NielsenId3Behavior where
+    parseJSON = parseJSONText "M3u8NielsenId3Behavior"
+
+-- | M3u8 Pcr Control
+data M3u8PcrControl = MPCConfiguredPcrPeriod
+                    | MPCPcrEveryPesPacket
+                        deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                  Typeable, Generic)
 
 instance FromText M3u8PcrControl where
     parser = takeLowerText >>= \case
@@ -4421,12 +5692,11 @@ instance ToJSON M3u8PcrControl where
 instance FromJSON M3u8PcrControl where
     parseJSON = parseJSONText "M3u8PcrControl"
 
--- | Placeholder documentation for M3u8Scte35Behavior
-data M3u8Scte35Behavior
-  = MSBNoPassthrough
-  | MSBPassthrough
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | M3u8 Scte35 Behavior
+data M3u8Scte35Behavior = MSBNoPassthrough
+                        | MSBPassthrough
+                            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                      Typeable, Generic)
 
 instance FromText M3u8Scte35Behavior where
     parser = takeLowerText >>= \case
@@ -4452,24 +5722,23 @@ instance ToJSON M3u8Scte35Behavior where
 instance FromJSON M3u8Scte35Behavior where
     parseJSON = parseJSONText "M3u8Scte35Behavior"
 
--- | Placeholder documentation for M3u8TimedMetadataBehavior
-data M3u8TimedMetadataBehavior
-  = MNoPassthrough
-  | MPassthrough
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | M3u8 Timed Metadata Behavior
+data M3u8TimedMetadataBehavior = M3uNoPassthrough
+                               | M3uPassthrough
+                                   deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                             Data, Typeable, Generic)
 
 instance FromText M3u8TimedMetadataBehavior where
     parser = takeLowerText >>= \case
-        "no_passthrough" -> pure MNoPassthrough
-        "passthrough" -> pure MPassthrough
+        "no_passthrough" -> pure M3uNoPassthrough
+        "passthrough" -> pure M3uPassthrough
         e -> fromTextError $ "Failure parsing M3u8TimedMetadataBehavior from value: '" <> e
            <> "'. Accepted values: no_passthrough, passthrough"
 
 instance ToText M3u8TimedMetadataBehavior where
     toText = \case
-        MNoPassthrough -> "NO_PASSTHROUGH"
-        MPassthrough -> "PASSTHROUGH"
+        M3uNoPassthrough -> "NO_PASSTHROUGH"
+        M3uPassthrough -> "PASSTHROUGH"
 
 instance Hashable     M3u8TimedMetadataBehavior
 instance NFData       M3u8TimedMetadataBehavior
@@ -4483,12 +5752,11 @@ instance ToJSON M3u8TimedMetadataBehavior where
 instance FromJSON M3u8TimedMetadataBehavior where
     parseJSON = parseJSONText "M3u8TimedMetadataBehavior"
 
--- | Placeholder documentation for Mp2CodingMode
-data Mp2CodingMode
-  = MCMCodingMode10
-  | MCMCodingMode20
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Mp2 Coding Mode
+data Mp2CodingMode = MCMCodingMode10
+                   | MCMCodingMode20
+                       deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                 Typeable, Generic)
 
 instance FromText Mp2CodingMode where
     parser = takeLowerText >>= \case
@@ -4514,12 +5782,90 @@ instance ToJSON Mp2CodingMode where
 instance FromJSON Mp2CodingMode where
     parseJSON = parseJSONText "Mp2CodingMode"
 
--- | Placeholder documentation for NetworkInputServerValidation
-data NetworkInputServerValidation
-  = CheckCryptographyAndValidateName
-  | CheckCryptographyOnly
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
+-- | Ms Smooth H265 Packaging Type
+data MsSmoothH265PackagingType = MSHPTHEV1
+                               | MSHPTHVC1
+                                   deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                             Data, Typeable, Generic)
 
+instance FromText MsSmoothH265PackagingType where
+    parser = takeLowerText >>= \case
+        "hev1" -> pure MSHPTHEV1
+        "hvc1" -> pure MSHPTHVC1
+        e -> fromTextError $ "Failure parsing MsSmoothH265PackagingType from value: '" <> e
+           <> "'. Accepted values: hev1, hvc1"
+
+instance ToText MsSmoothH265PackagingType where
+    toText = \case
+        MSHPTHEV1 -> "HEV1"
+        MSHPTHVC1 -> "HVC1"
+
+instance Hashable     MsSmoothH265PackagingType
+instance NFData       MsSmoothH265PackagingType
+instance ToByteString MsSmoothH265PackagingType
+instance ToQuery      MsSmoothH265PackagingType
+instance ToHeader     MsSmoothH265PackagingType
+
+instance ToJSON MsSmoothH265PackagingType where
+    toJSON = toJSONText
+
+instance FromJSON MsSmoothH265PackagingType where
+    parseJSON = parseJSONText "MsSmoothH265PackagingType"
+
+-- | The current state of the multiplex.
+data MultiplexState = MSCreateFailed
+                    | MSCreating
+                    | MSDeleted
+                    | MSDeleting
+                    | MSIdle
+                    | MSRecovering
+                    | MSRunning
+                    | MSStarting
+                    | MSStopping
+                        deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                  Typeable, Generic)
+
+instance FromText MultiplexState where
+    parser = takeLowerText >>= \case
+        "create_failed" -> pure MSCreateFailed
+        "creating" -> pure MSCreating
+        "deleted" -> pure MSDeleted
+        "deleting" -> pure MSDeleting
+        "idle" -> pure MSIdle
+        "recovering" -> pure MSRecovering
+        "running" -> pure MSRunning
+        "starting" -> pure MSStarting
+        "stopping" -> pure MSStopping
+        e -> fromTextError $ "Failure parsing MultiplexState from value: '" <> e
+           <> "'. Accepted values: create_failed, creating, deleted, deleting, idle, recovering, running, starting, stopping"
+
+instance ToText MultiplexState where
+    toText = \case
+        MSCreateFailed -> "CREATE_FAILED"
+        MSCreating -> "CREATING"
+        MSDeleted -> "DELETED"
+        MSDeleting -> "DELETING"
+        MSIdle -> "IDLE"
+        MSRecovering -> "RECOVERING"
+        MSRunning -> "RUNNING"
+        MSStarting -> "STARTING"
+        MSStopping -> "STOPPING"
+
+instance Hashable     MultiplexState
+instance NFData       MultiplexState
+instance ToByteString MultiplexState
+instance ToQuery      MultiplexState
+instance ToHeader     MultiplexState
+
+instance FromJSON MultiplexState where
+    parseJSON = parseJSONText "MultiplexState"
+
+-- | Network Input Server Validation
+data NetworkInputServerValidation = CheckCryptographyAndValidateName
+                                  | CheckCryptographyOnly
+                                      deriving (Eq, Ord, Read, Show, Enum,
+                                                Bounded, Data, Typeable,
+                                                Generic)
 
 instance FromText NetworkInputServerValidation where
     parser = takeLowerText >>= \case
@@ -4545,12 +5891,403 @@ instance ToJSON NetworkInputServerValidation where
 instance FromJSON NetworkInputServerValidation where
     parseJSON = parseJSONText "NetworkInputServerValidation"
 
--- | Placeholder documentation for RtmpCacheFullBehavior
-data RtmpCacheFullBehavior
-  = DisconnectImmediately
-  | WaitForServer
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
+-- | State of Nielsen PCM to ID3 tagging
+data NielsenPcmToId3TaggingState = NPTITSDisabled
+                                 | NPTITSEnabled
+                                     deriving (Eq, Ord, Read, Show, Enum,
+                                               Bounded, Data, Typeable, Generic)
 
+instance FromText NielsenPcmToId3TaggingState where
+    parser = takeLowerText >>= \case
+        "disabled" -> pure NPTITSDisabled
+        "enabled" -> pure NPTITSEnabled
+        e -> fromTextError $ "Failure parsing NielsenPcmToId3TaggingState from value: '" <> e
+           <> "'. Accepted values: disabled, enabled"
+
+instance ToText NielsenPcmToId3TaggingState where
+    toText = \case
+        NPTITSDisabled -> "DISABLED"
+        NPTITSEnabled -> "ENABLED"
+
+instance Hashable     NielsenPcmToId3TaggingState
+instance NFData       NielsenPcmToId3TaggingState
+instance ToByteString NielsenPcmToId3TaggingState
+instance ToQuery      NielsenPcmToId3TaggingState
+instance ToHeader     NielsenPcmToId3TaggingState
+
+instance ToJSON NielsenPcmToId3TaggingState where
+    toJSON = toJSONText
+
+instance FromJSON NielsenPcmToId3TaggingState where
+    parseJSON = parseJSONText "NielsenPcmToId3TaggingState"
+
+-- | Units for duration, e.g. 'MONTHS'
+data OfferingDurationUnits = Months
+                               deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                         Data, Typeable, Generic)
+
+instance FromText OfferingDurationUnits where
+    parser = takeLowerText >>= \case
+        "months" -> pure Months
+        e -> fromTextError $ "Failure parsing OfferingDurationUnits from value: '" <> e
+           <> "'. Accepted values: months"
+
+instance ToText OfferingDurationUnits where
+    toText = \case
+        Months -> "MONTHS"
+
+instance Hashable     OfferingDurationUnits
+instance NFData       OfferingDurationUnits
+instance ToByteString OfferingDurationUnits
+instance ToQuery      OfferingDurationUnits
+instance ToHeader     OfferingDurationUnits
+
+instance FromJSON OfferingDurationUnits where
+    parseJSON = parseJSONText "OfferingDurationUnits"
+
+-- | Offering type, e.g. 'NO_UPFRONT'
+data OfferingType = NoUpfront
+                      deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                Typeable, Generic)
+
+instance FromText OfferingType where
+    parser = takeLowerText >>= \case
+        "no_upfront" -> pure NoUpfront
+        e -> fromTextError $ "Failure parsing OfferingType from value: '" <> e
+           <> "'. Accepted values: no_upfront"
+
+instance ToText OfferingType where
+    toText = \case
+        NoUpfront -> "NO_UPFRONT"
+
+instance Hashable     OfferingType
+instance NFData       OfferingType
+instance ToByteString OfferingType
+instance ToQuery      OfferingType
+instance ToHeader     OfferingType
+
+instance FromJSON OfferingType where
+    parseJSON = parseJSONText "OfferingType"
+
+-- | Pipeline ID
+data PipelineId = PIPipeline0
+                | PIPipeline1
+                    deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                              Typeable, Generic)
+
+instance FromText PipelineId where
+    parser = takeLowerText >>= \case
+        "pipeline_0" -> pure PIPipeline0
+        "pipeline_1" -> pure PIPipeline1
+        e -> fromTextError $ "Failure parsing PipelineId from value: '" <> e
+           <> "'. Accepted values: pipeline_0, pipeline_1"
+
+instance ToText PipelineId where
+    toText = \case
+        PIPipeline0 -> "PIPELINE_0"
+        PIPipeline1 -> "PIPELINE_1"
+
+instance Hashable     PipelineId
+instance NFData       PipelineId
+instance ToByteString PipelineId
+instance ToQuery      PipelineId
+instance ToHeader     PipelineId
+
+instance ToJSON PipelineId where
+    toJSON = toJSONText
+
+instance FromJSON PipelineId where
+    parseJSON = parseJSONText "PipelineId"
+
+-- | Indicates which pipeline is preferred by the multiplex for program ingest.
+--
+-- If set to \"PIPELINE_0\" or \"PIPELINE_1\" and an unhealthy ingest causes the multiplex to switch to the non-preferred pipeline,
+-- it will switch back once that ingest is healthy again. If set to \"CURRENTLY_ACTIVE\",
+-- it will not switch back to the other pipeline based on it recovering to a healthy state,
+-- it will only switch if the active pipeline becomes unhealthy.
+data PreferredChannelPipeline = CurrentlyActive
+                              | Pipeline0
+                              | Pipeline1
+                                  deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                            Data, Typeable, Generic)
+
+instance FromText PreferredChannelPipeline where
+    parser = takeLowerText >>= \case
+        "currently_active" -> pure CurrentlyActive
+        "pipeline_0" -> pure Pipeline0
+        "pipeline_1" -> pure Pipeline1
+        e -> fromTextError $ "Failure parsing PreferredChannelPipeline from value: '" <> e
+           <> "'. Accepted values: currently_active, pipeline_0, pipeline_1"
+
+instance ToText PreferredChannelPipeline where
+    toText = \case
+        CurrentlyActive -> "CURRENTLY_ACTIVE"
+        Pipeline0 -> "PIPELINE_0"
+        Pipeline1 -> "PIPELINE_1"
+
+instance Hashable     PreferredChannelPipeline
+instance NFData       PreferredChannelPipeline
+instance ToByteString PreferredChannelPipeline
+instance ToQuery      PreferredChannelPipeline
+instance ToHeader     PreferredChannelPipeline
+
+instance ToJSON PreferredChannelPipeline where
+    toJSON = toJSONText
+
+instance FromJSON PreferredChannelPipeline where
+    parseJSON = parseJSONText "PreferredChannelPipeline"
+
+-- | Codec, 'MPEG2', 'AVC', 'HEVC', or 'AUDIO'
+data ReservationCodec = RCAudio
+                      | RCAvc
+                      | RCHevc
+                      | RCMPEG2
+                          deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                    Typeable, Generic)
+
+instance FromText ReservationCodec where
+    parser = takeLowerText >>= \case
+        "audio" -> pure RCAudio
+        "avc" -> pure RCAvc
+        "hevc" -> pure RCHevc
+        "mpeg2" -> pure RCMPEG2
+        e -> fromTextError $ "Failure parsing ReservationCodec from value: '" <> e
+           <> "'. Accepted values: audio, avc, hevc, mpeg2"
+
+instance ToText ReservationCodec where
+    toText = \case
+        RCAudio -> "AUDIO"
+        RCAvc -> "AVC"
+        RCHevc -> "HEVC"
+        RCMPEG2 -> "MPEG2"
+
+instance Hashable     ReservationCodec
+instance NFData       ReservationCodec
+instance ToByteString ReservationCodec
+instance ToQuery      ReservationCodec
+instance ToHeader     ReservationCodec
+
+instance FromJSON ReservationCodec where
+    parseJSON = parseJSONText "ReservationCodec"
+
+-- | Maximum bitrate in megabits per second
+data ReservationMaximumBitrate = RMBMax10Mbps
+                               | RMBMax20Mbps
+                               | RMBMax50Mbps
+                                   deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                             Data, Typeable, Generic)
+
+instance FromText ReservationMaximumBitrate where
+    parser = takeLowerText >>= \case
+        "max_10_mbps" -> pure RMBMax10Mbps
+        "max_20_mbps" -> pure RMBMax20Mbps
+        "max_50_mbps" -> pure RMBMax50Mbps
+        e -> fromTextError $ "Failure parsing ReservationMaximumBitrate from value: '" <> e
+           <> "'. Accepted values: max_10_mbps, max_20_mbps, max_50_mbps"
+
+instance ToText ReservationMaximumBitrate where
+    toText = \case
+        RMBMax10Mbps -> "MAX_10_MBPS"
+        RMBMax20Mbps -> "MAX_20_MBPS"
+        RMBMax50Mbps -> "MAX_50_MBPS"
+
+instance Hashable     ReservationMaximumBitrate
+instance NFData       ReservationMaximumBitrate
+instance ToByteString ReservationMaximumBitrate
+instance ToQuery      ReservationMaximumBitrate
+instance ToHeader     ReservationMaximumBitrate
+
+instance FromJSON ReservationMaximumBitrate where
+    parseJSON = parseJSONText "ReservationMaximumBitrate"
+
+-- | Maximum framerate in frames per second (Outputs only)
+data ReservationMaximumFramerate = Max30Fps
+                                 | Max60Fps
+                                     deriving (Eq, Ord, Read, Show, Enum,
+                                               Bounded, Data, Typeable, Generic)
+
+instance FromText ReservationMaximumFramerate where
+    parser = takeLowerText >>= \case
+        "max_30_fps" -> pure Max30Fps
+        "max_60_fps" -> pure Max60Fps
+        e -> fromTextError $ "Failure parsing ReservationMaximumFramerate from value: '" <> e
+           <> "'. Accepted values: max_30_fps, max_60_fps"
+
+instance ToText ReservationMaximumFramerate where
+    toText = \case
+        Max30Fps -> "MAX_30_FPS"
+        Max60Fps -> "MAX_60_FPS"
+
+instance Hashable     ReservationMaximumFramerate
+instance NFData       ReservationMaximumFramerate
+instance ToByteString ReservationMaximumFramerate
+instance ToQuery      ReservationMaximumFramerate
+instance ToHeader     ReservationMaximumFramerate
+
+instance FromJSON ReservationMaximumFramerate where
+    parseJSON = parseJSONText "ReservationMaximumFramerate"
+
+-- | Resolution based on lines of vertical resolution; SD is less than 720 lines, HD is 720 to 1080 lines, FHD is 1080 lines, UHD is greater than 1080 lines
+data ReservationResolution = RRFhd
+                           | RRHD
+                           | RRSD
+                           | RRUhd
+                               deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                         Data, Typeable, Generic)
+
+instance FromText ReservationResolution where
+    parser = takeLowerText >>= \case
+        "fhd" -> pure RRFhd
+        "hd" -> pure RRHD
+        "sd" -> pure RRSD
+        "uhd" -> pure RRUhd
+        e -> fromTextError $ "Failure parsing ReservationResolution from value: '" <> e
+           <> "'. Accepted values: fhd, hd, sd, uhd"
+
+instance ToText ReservationResolution where
+    toText = \case
+        RRFhd -> "FHD"
+        RRHD -> "HD"
+        RRSD -> "SD"
+        RRUhd -> "UHD"
+
+instance Hashable     ReservationResolution
+instance NFData       ReservationResolution
+instance ToByteString ReservationResolution
+instance ToQuery      ReservationResolution
+instance ToHeader     ReservationResolution
+
+instance FromJSON ReservationResolution where
+    parseJSON = parseJSONText "ReservationResolution"
+
+-- | Resource type, 'INPUT', 'OUTPUT', 'MULTIPLEX', or 'CHANNEL'
+data ReservationResourceType = RRTChannel
+                             | RRTInput
+                             | RRTMultiplex
+                             | RRTOutput
+                                 deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                           Data, Typeable, Generic)
+
+instance FromText ReservationResourceType where
+    parser = takeLowerText >>= \case
+        "channel" -> pure RRTChannel
+        "input" -> pure RRTInput
+        "multiplex" -> pure RRTMultiplex
+        "output" -> pure RRTOutput
+        e -> fromTextError $ "Failure parsing ReservationResourceType from value: '" <> e
+           <> "'. Accepted values: channel, input, multiplex, output"
+
+instance ToText ReservationResourceType where
+    toText = \case
+        RRTChannel -> "CHANNEL"
+        RRTInput -> "INPUT"
+        RRTMultiplex -> "MULTIPLEX"
+        RRTOutput -> "OUTPUT"
+
+instance Hashable     ReservationResourceType
+instance NFData       ReservationResourceType
+instance ToByteString ReservationResourceType
+instance ToQuery      ReservationResourceType
+instance ToHeader     ReservationResourceType
+
+instance FromJSON ReservationResourceType where
+    parseJSON = parseJSONText "ReservationResourceType"
+
+-- | Special features, 'ADVANCED_AUDIO' or 'AUDIO_NORMALIZATION'
+data ReservationSpecialFeature = AdvancedAudio
+                               | AudioNormalization
+                                   deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                             Data, Typeable, Generic)
+
+instance FromText ReservationSpecialFeature where
+    parser = takeLowerText >>= \case
+        "advanced_audio" -> pure AdvancedAudio
+        "audio_normalization" -> pure AudioNormalization
+        e -> fromTextError $ "Failure parsing ReservationSpecialFeature from value: '" <> e
+           <> "'. Accepted values: advanced_audio, audio_normalization"
+
+instance ToText ReservationSpecialFeature where
+    toText = \case
+        AdvancedAudio -> "ADVANCED_AUDIO"
+        AudioNormalization -> "AUDIO_NORMALIZATION"
+
+instance Hashable     ReservationSpecialFeature
+instance NFData       ReservationSpecialFeature
+instance ToByteString ReservationSpecialFeature
+instance ToQuery      ReservationSpecialFeature
+instance ToHeader     ReservationSpecialFeature
+
+instance FromJSON ReservationSpecialFeature where
+    parseJSON = parseJSONText "ReservationSpecialFeature"
+
+-- | Current reservation state
+data ReservationState = RSActive
+                      | RSCanceled
+                      | RSDeleted
+                      | RSExpired
+                          deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                    Typeable, Generic)
+
+instance FromText ReservationState where
+    parser = takeLowerText >>= \case
+        "active" -> pure RSActive
+        "canceled" -> pure RSCanceled
+        "deleted" -> pure RSDeleted
+        "expired" -> pure RSExpired
+        e -> fromTextError $ "Failure parsing ReservationState from value: '" <> e
+           <> "'. Accepted values: active, canceled, deleted, expired"
+
+instance ToText ReservationState where
+    toText = \case
+        RSActive -> "ACTIVE"
+        RSCanceled -> "CANCELED"
+        RSDeleted -> "DELETED"
+        RSExpired -> "EXPIRED"
+
+instance Hashable     ReservationState
+instance NFData       ReservationState
+instance ToByteString ReservationState
+instance ToQuery      ReservationState
+instance ToHeader     ReservationState
+
+instance FromJSON ReservationState where
+    parseJSON = parseJSONText "ReservationState"
+
+-- | Video quality, e.g. 'STANDARD' (Outputs only)
+data ReservationVideoQuality = Enhanced
+                             | Premium
+                             | Standard
+                                 deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                           Data, Typeable, Generic)
+
+instance FromText ReservationVideoQuality where
+    parser = takeLowerText >>= \case
+        "enhanced" -> pure Enhanced
+        "premium" -> pure Premium
+        "standard" -> pure Standard
+        e -> fromTextError $ "Failure parsing ReservationVideoQuality from value: '" <> e
+           <> "'. Accepted values: enhanced, premium, standard"
+
+instance ToText ReservationVideoQuality where
+    toText = \case
+        Enhanced -> "ENHANCED"
+        Premium -> "PREMIUM"
+        Standard -> "STANDARD"
+
+instance Hashable     ReservationVideoQuality
+instance NFData       ReservationVideoQuality
+instance ToByteString ReservationVideoQuality
+instance ToQuery      ReservationVideoQuality
+instance ToHeader     ReservationVideoQuality
+
+instance FromJSON ReservationVideoQuality where
+    parseJSON = parseJSONText "ReservationVideoQuality"
+
+-- | Rtmp Cache Full Behavior
+data RtmpCacheFullBehavior = DisconnectImmediately
+                           | WaitForServer
+                               deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                         Data, Typeable, Generic)
 
 instance FromText RtmpCacheFullBehavior where
     parser = takeLowerText >>= \case
@@ -4576,13 +6313,12 @@ instance ToJSON RtmpCacheFullBehavior where
 instance FromJSON RtmpCacheFullBehavior where
     parseJSON = parseJSONText "RtmpCacheFullBehavior"
 
--- | Placeholder documentation for RtmpCaptionData
-data RtmpCaptionData
-  = All
-  | FIELD1608
-  | FIELD1AndFIELD2608
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Rtmp Caption Data
+data RtmpCaptionData = All
+                     | FIELD1608
+                     | FIELD1AndFIELD2608
+                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
+                                   Typeable, Generic)
 
 instance FromText RtmpCaptionData where
     parser = takeLowerText >>= \case
@@ -4610,12 +6346,11 @@ instance ToJSON RtmpCaptionData where
 instance FromJSON RtmpCaptionData where
     parseJSON = parseJSONText "RtmpCaptionData"
 
--- | Placeholder documentation for RtmpOutputCertificateMode
-data RtmpOutputCertificateMode
-  = ROCMSelfSigned
-  | ROCMVerifyAuthenticity
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Rtmp Output Certificate Mode
+data RtmpOutputCertificateMode = ROCMSelfSigned
+                               | ROCMVerifyAuthenticity
+                                   deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                             Data, Typeable, Generic)
 
 instance FromText RtmpOutputCertificateMode where
     parser = takeLowerText >>= \case
@@ -4641,12 +6376,11 @@ instance ToJSON RtmpOutputCertificateMode where
 instance FromJSON RtmpOutputCertificateMode where
     parseJSON = parseJSONText "RtmpOutputCertificateMode"
 
--- | Placeholder documentation for Scte20Convert608To708
-data Scte20Convert608To708
-  = SCTDisabled
-  | SCTUpconvert
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Scte20 Convert608 To708
+data Scte20Convert608To708 = SCTDisabled
+                           | SCTUpconvert
+                               deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                         Data, Typeable, Generic)
 
 instance FromText Scte20Convert608To708 where
     parser = takeLowerText >>= \case
@@ -4672,12 +6406,12 @@ instance ToJSON Scte20Convert608To708 where
 instance FromJSON Scte20Convert608To708 where
     parseJSON = parseJSONText "Scte20Convert608To708"
 
--- | Placeholder documentation for Scte35AposNoRegionalBlackoutBehavior
-data Scte35AposNoRegionalBlackoutBehavior
-  = SANRBBFollow
-  | SANRBBIgnore
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Scte35 Apos No Regional Blackout Behavior
+data Scte35AposNoRegionalBlackoutBehavior = SANRBBFollow
+                                          | SANRBBIgnore
+                                              deriving (Eq, Ord, Read, Show,
+                                                        Enum, Bounded, Data,
+                                                        Typeable, Generic)
 
 instance FromText Scte35AposNoRegionalBlackoutBehavior where
     parser = takeLowerText >>= \case
@@ -4703,12 +6437,12 @@ instance ToJSON Scte35AposNoRegionalBlackoutBehavior where
 instance FromJSON Scte35AposNoRegionalBlackoutBehavior where
     parseJSON = parseJSONText "Scte35AposNoRegionalBlackoutBehavior"
 
--- | Placeholder documentation for Scte35AposWebDeliveryAllowedBehavior
-data Scte35AposWebDeliveryAllowedBehavior
-  = SAWDABFollow
-  | SAWDABIgnore
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Scte35 Apos Web Delivery Allowed Behavior
+data Scte35AposWebDeliveryAllowedBehavior = SAWDABFollow
+                                          | SAWDABIgnore
+                                              deriving (Eq, Ord, Read, Show,
+                                                        Enum, Bounded, Data,
+                                                        Typeable, Generic)
 
 instance FromText Scte35AposWebDeliveryAllowedBehavior where
     parser = takeLowerText >>= \case
@@ -4734,12 +6468,142 @@ instance ToJSON Scte35AposWebDeliveryAllowedBehavior where
 instance FromJSON Scte35AposWebDeliveryAllowedBehavior where
     parseJSON = parseJSONText "Scte35AposWebDeliveryAllowedBehavior"
 
--- | Placeholder documentation for Scte35SpliceInsertNoRegionalBlackoutBehavior
-data Scte35SpliceInsertNoRegionalBlackoutBehavior
-  = SSINRBBFollow
-  | SSINRBBIgnore
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
+-- | Corresponds to the archive_allowed parameter. A value of ARCHIVE_NOT_ALLOWED corresponds to 0 (false) in the SCTE-35 specification. If you include one of the "restriction" flags then you must include all four of them.
+data Scte35ArchiveAllowedFlag = ArchiveAllowed
+                              | ArchiveNotAllowed
+                                  deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                            Data, Typeable, Generic)
 
+instance FromText Scte35ArchiveAllowedFlag where
+    parser = takeLowerText >>= \case
+        "archive_allowed" -> pure ArchiveAllowed
+        "archive_not_allowed" -> pure ArchiveNotAllowed
+        e -> fromTextError $ "Failure parsing Scte35ArchiveAllowedFlag from value: '" <> e
+           <> "'. Accepted values: archive_allowed, archive_not_allowed"
+
+instance ToText Scte35ArchiveAllowedFlag where
+    toText = \case
+        ArchiveAllowed -> "ARCHIVE_ALLOWED"
+        ArchiveNotAllowed -> "ARCHIVE_NOT_ALLOWED"
+
+instance Hashable     Scte35ArchiveAllowedFlag
+instance NFData       Scte35ArchiveAllowedFlag
+instance ToByteString Scte35ArchiveAllowedFlag
+instance ToQuery      Scte35ArchiveAllowedFlag
+instance ToHeader     Scte35ArchiveAllowedFlag
+
+instance ToJSON Scte35ArchiveAllowedFlag where
+    toJSON = toJSONText
+
+instance FromJSON Scte35ArchiveAllowedFlag where
+    parseJSON = parseJSONText "Scte35ArchiveAllowedFlag"
+
+-- | Corresponds to the device_restrictions parameter in a segmentation_descriptor. If you include one of the "restriction" flags then you must include all four of them.
+data Scte35DeviceRestrictions = SDRNone
+                              | SDRRestrictGROUP0
+                              | SDRRestrictGROUP1
+                              | SDRRestrictGROUP2
+                                  deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                            Data, Typeable, Generic)
+
+instance FromText Scte35DeviceRestrictions where
+    parser = takeLowerText >>= \case
+        "none" -> pure SDRNone
+        "restrict_group0" -> pure SDRRestrictGROUP0
+        "restrict_group1" -> pure SDRRestrictGROUP1
+        "restrict_group2" -> pure SDRRestrictGROUP2
+        e -> fromTextError $ "Failure parsing Scte35DeviceRestrictions from value: '" <> e
+           <> "'. Accepted values: none, restrict_group0, restrict_group1, restrict_group2"
+
+instance ToText Scte35DeviceRestrictions where
+    toText = \case
+        SDRNone -> "NONE"
+        SDRRestrictGROUP0 -> "RESTRICT_GROUP0"
+        SDRRestrictGROUP1 -> "RESTRICT_GROUP1"
+        SDRRestrictGROUP2 -> "RESTRICT_GROUP2"
+
+instance Hashable     Scte35DeviceRestrictions
+instance NFData       Scte35DeviceRestrictions
+instance ToByteString Scte35DeviceRestrictions
+instance ToQuery      Scte35DeviceRestrictions
+instance ToHeader     Scte35DeviceRestrictions
+
+instance ToJSON Scte35DeviceRestrictions where
+    toJSON = toJSONText
+
+instance FromJSON Scte35DeviceRestrictions where
+    parseJSON = parseJSONText "Scte35DeviceRestrictions"
+
+-- | Corresponds to the no_regional_blackout_flag parameter. A value of REGIONAL_BLACKOUT corresponds to 0 (false) in the SCTE-35 specification. If you include one of the "restriction" flags then you must include all four of them.
+data Scte35NoRegionalBlackoutFlag = NoRegionalBlackout
+                                  | RegionalBlackout
+                                      deriving (Eq, Ord, Read, Show, Enum,
+                                                Bounded, Data, Typeable,
+                                                Generic)
+
+instance FromText Scte35NoRegionalBlackoutFlag where
+    parser = takeLowerText >>= \case
+        "no_regional_blackout" -> pure NoRegionalBlackout
+        "regional_blackout" -> pure RegionalBlackout
+        e -> fromTextError $ "Failure parsing Scte35NoRegionalBlackoutFlag from value: '" <> e
+           <> "'. Accepted values: no_regional_blackout, regional_blackout"
+
+instance ToText Scte35NoRegionalBlackoutFlag where
+    toText = \case
+        NoRegionalBlackout -> "NO_REGIONAL_BLACKOUT"
+        RegionalBlackout -> "REGIONAL_BLACKOUT"
+
+instance Hashable     Scte35NoRegionalBlackoutFlag
+instance NFData       Scte35NoRegionalBlackoutFlag
+instance ToByteString Scte35NoRegionalBlackoutFlag
+instance ToQuery      Scte35NoRegionalBlackoutFlag
+instance ToHeader     Scte35NoRegionalBlackoutFlag
+
+instance ToJSON Scte35NoRegionalBlackoutFlag where
+    toJSON = toJSONText
+
+instance FromJSON Scte35NoRegionalBlackoutFlag where
+    parseJSON = parseJSONText "Scte35NoRegionalBlackoutFlag"
+
+-- | Corresponds to SCTE-35 segmentation_event_cancel_indicator. SEGMENTATION_EVENT_NOT_CANCELED corresponds to 0 in the SCTE-35 specification and indicates that this is an insertion request. SEGMENTATION_EVENT_CANCELED corresponds to 1 in the SCTE-35 specification and indicates that this is a cancelation request, in which case complete this field and the existing event ID to cancel.
+data Scte35SegmentationCancelIndicator = SegmentationEventCanceled
+                                       | SegmentationEventNotCanceled
+                                           deriving (Eq, Ord, Read, Show, Enum,
+                                                     Bounded, Data, Typeable,
+                                                     Generic)
+
+instance FromText Scte35SegmentationCancelIndicator where
+    parser = takeLowerText >>= \case
+        "segmentation_event_canceled" -> pure SegmentationEventCanceled
+        "segmentation_event_not_canceled" -> pure SegmentationEventNotCanceled
+        e -> fromTextError $ "Failure parsing Scte35SegmentationCancelIndicator from value: '" <> e
+           <> "'. Accepted values: segmentation_event_canceled, segmentation_event_not_canceled"
+
+instance ToText Scte35SegmentationCancelIndicator where
+    toText = \case
+        SegmentationEventCanceled -> "SEGMENTATION_EVENT_CANCELED"
+        SegmentationEventNotCanceled -> "SEGMENTATION_EVENT_NOT_CANCELED"
+
+instance Hashable     Scte35SegmentationCancelIndicator
+instance NFData       Scte35SegmentationCancelIndicator
+instance ToByteString Scte35SegmentationCancelIndicator
+instance ToQuery      Scte35SegmentationCancelIndicator
+instance ToHeader     Scte35SegmentationCancelIndicator
+
+instance ToJSON Scte35SegmentationCancelIndicator where
+    toJSON = toJSONText
+
+instance FromJSON Scte35SegmentationCancelIndicator where
+    parseJSON = parseJSONText "Scte35SegmentationCancelIndicator"
+
+-- | Scte35 Splice Insert No Regional Blackout Behavior
+data Scte35SpliceInsertNoRegionalBlackoutBehavior = SSINRBBFollow
+                                                  | SSINRBBIgnore
+                                                      deriving (Eq, Ord, Read,
+                                                                Show, Enum,
+                                                                Bounded, Data,
+                                                                Typeable,
+                                                                Generic)
 
 instance FromText Scte35SpliceInsertNoRegionalBlackoutBehavior where
     parser = takeLowerText >>= \case
@@ -4765,12 +6629,14 @@ instance ToJSON Scte35SpliceInsertNoRegionalBlackoutBehavior where
 instance FromJSON Scte35SpliceInsertNoRegionalBlackoutBehavior where
     parseJSON = parseJSONText "Scte35SpliceInsertNoRegionalBlackoutBehavior"
 
--- | Placeholder documentation for Scte35SpliceInsertWebDeliveryAllowedBehavior
-data Scte35SpliceInsertWebDeliveryAllowedBehavior
-  = SSIWDABFollow
-  | SSIWDABIgnore
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Scte35 Splice Insert Web Delivery Allowed Behavior
+data Scte35SpliceInsertWebDeliveryAllowedBehavior = SSIWDABFollow
+                                                  | SSIWDABIgnore
+                                                      deriving (Eq, Ord, Read,
+                                                                Show, Enum,
+                                                                Bounded, Data,
+                                                                Typeable,
+                                                                Generic)
 
 instance FromText Scte35SpliceInsertWebDeliveryAllowedBehavior where
     parser = takeLowerText >>= \case
@@ -4796,12 +6662,43 @@ instance ToJSON Scte35SpliceInsertWebDeliveryAllowedBehavior where
 instance FromJSON Scte35SpliceInsertWebDeliveryAllowedBehavior where
     parseJSON = parseJSONText "Scte35SpliceInsertWebDeliveryAllowedBehavior"
 
--- | Placeholder documentation for SmoothGroupAudioOnlyTimecodeControl
-data SmoothGroupAudioOnlyTimecodeControl
-  = SGAOTCPassthrough
-  | SGAOTCUseConfiguredClock
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
+-- | Corresponds to the web_delivery_allowed_flag parameter. A value of WEB_DELIVERY_NOT_ALLOWED corresponds to 0 (false) in the SCTE-35 specification. If you include one of the "restriction" flags then you must include all four of them.
+data Scte35WebDeliveryAllowedFlag = WebDeliveryAllowed
+                                  | WebDeliveryNotAllowed
+                                      deriving (Eq, Ord, Read, Show, Enum,
+                                                Bounded, Data, Typeable,
+                                                Generic)
 
+instance FromText Scte35WebDeliveryAllowedFlag where
+    parser = takeLowerText >>= \case
+        "web_delivery_allowed" -> pure WebDeliveryAllowed
+        "web_delivery_not_allowed" -> pure WebDeliveryNotAllowed
+        e -> fromTextError $ "Failure parsing Scte35WebDeliveryAllowedFlag from value: '" <> e
+           <> "'. Accepted values: web_delivery_allowed, web_delivery_not_allowed"
+
+instance ToText Scte35WebDeliveryAllowedFlag where
+    toText = \case
+        WebDeliveryAllowed -> "WEB_DELIVERY_ALLOWED"
+        WebDeliveryNotAllowed -> "WEB_DELIVERY_NOT_ALLOWED"
+
+instance Hashable     Scte35WebDeliveryAllowedFlag
+instance NFData       Scte35WebDeliveryAllowedFlag
+instance ToByteString Scte35WebDeliveryAllowedFlag
+instance ToQuery      Scte35WebDeliveryAllowedFlag
+instance ToHeader     Scte35WebDeliveryAllowedFlag
+
+instance ToJSON Scte35WebDeliveryAllowedFlag where
+    toJSON = toJSONText
+
+instance FromJSON Scte35WebDeliveryAllowedFlag where
+    parseJSON = parseJSONText "Scte35WebDeliveryAllowedFlag"
+
+-- | Smooth Group Audio Only Timecode Control
+data SmoothGroupAudioOnlyTimecodeControl = SGAOTCPassthrough
+                                         | SGAOTCUseConfiguredClock
+                                             deriving (Eq, Ord, Read, Show,
+                                                       Enum, Bounded, Data,
+                                                       Typeable, Generic)
 
 instance FromText SmoothGroupAudioOnlyTimecodeControl where
     parser = takeLowerText >>= \case
@@ -4827,12 +6724,11 @@ instance ToJSON SmoothGroupAudioOnlyTimecodeControl where
 instance FromJSON SmoothGroupAudioOnlyTimecodeControl where
     parseJSON = parseJSONText "SmoothGroupAudioOnlyTimecodeControl"
 
--- | Placeholder documentation for SmoothGroupCertificateMode
-data SmoothGroupCertificateMode
-  = SelfSigned
-  | VerifyAuthenticity
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Smooth Group Certificate Mode
+data SmoothGroupCertificateMode = SelfSigned
+                                | VerifyAuthenticity
+                                    deriving (Eq, Ord, Read, Show, Enum,
+                                              Bounded, Data, Typeable, Generic)
 
 instance FromText SmoothGroupCertificateMode where
     parser = takeLowerText >>= \case
@@ -4858,13 +6754,12 @@ instance ToJSON SmoothGroupCertificateMode where
 instance FromJSON SmoothGroupCertificateMode where
     parseJSON = parseJSONText "SmoothGroupCertificateMode"
 
--- | Placeholder documentation for SmoothGroupEventIdMode
-data SmoothGroupEventIdMode
-  = NoEventId
-  | UseConfigured
-  | UseTimestamp
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Smooth Group Event Id Mode
+data SmoothGroupEventIdMode = NoEventId
+                            | UseConfigured
+                            | UseTimestamp
+                                deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                          Data, Typeable, Generic)
 
 instance FromText SmoothGroupEventIdMode where
     parser = takeLowerText >>= \case
@@ -4892,12 +6787,12 @@ instance ToJSON SmoothGroupEventIdMode where
 instance FromJSON SmoothGroupEventIdMode where
     parseJSON = parseJSONText "SmoothGroupEventIdMode"
 
--- | Placeholder documentation for SmoothGroupEventStopBehavior
-data SmoothGroupEventStopBehavior
-  = SGESBNone
-  | SGESBSendEos
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Smooth Group Event Stop Behavior
+data SmoothGroupEventStopBehavior = SGESBNone
+                                  | SGESBSendEos
+                                      deriving (Eq, Ord, Read, Show, Enum,
+                                                Bounded, Data, Typeable,
+                                                Generic)
 
 instance FromText SmoothGroupEventStopBehavior where
     parser = takeLowerText >>= \case
@@ -4923,12 +6818,11 @@ instance ToJSON SmoothGroupEventStopBehavior where
 instance FromJSON SmoothGroupEventStopBehavior where
     parseJSON = parseJSONText "SmoothGroupEventStopBehavior"
 
--- | Placeholder documentation for SmoothGroupSegmentationMode
-data SmoothGroupSegmentationMode
-  = UseInputSegmentation
-  | UseSegmentDuration
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Smooth Group Segmentation Mode
+data SmoothGroupSegmentationMode = UseInputSegmentation
+                                 | UseSegmentDuration
+                                     deriving (Eq, Ord, Read, Show, Enum,
+                                               Bounded, Data, Typeable, Generic)
 
 instance FromText SmoothGroupSegmentationMode where
     parser = takeLowerText >>= \case
@@ -4954,24 +6848,26 @@ instance ToJSON SmoothGroupSegmentationMode where
 instance FromJSON SmoothGroupSegmentationMode where
     parseJSON = parseJSONText "SmoothGroupSegmentationMode"
 
--- | Placeholder documentation for SmoothGroupSparseTrackType
-data SmoothGroupSparseTrackType
-  = SGSTTNone
-  | SGSTTScte35
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Smooth Group Sparse Track Type
+data SmoothGroupSparseTrackType = SGSTTNone
+                                | SGSTTScte35
+                                | SGSTTScte35WithoutSegmentation
+                                    deriving (Eq, Ord, Read, Show, Enum,
+                                              Bounded, Data, Typeable, Generic)
 
 instance FromText SmoothGroupSparseTrackType where
     parser = takeLowerText >>= \case
         "none" -> pure SGSTTNone
         "scte_35" -> pure SGSTTScte35
+        "scte_35_without_segmentation" -> pure SGSTTScte35WithoutSegmentation
         e -> fromTextError $ "Failure parsing SmoothGroupSparseTrackType from value: '" <> e
-           <> "'. Accepted values: none, scte_35"
+           <> "'. Accepted values: none, scte_35, scte_35_without_segmentation"
 
 instance ToText SmoothGroupSparseTrackType where
     toText = \case
         SGSTTNone -> "NONE"
         SGSTTScte35 -> "SCTE_35"
+        SGSTTScte35WithoutSegmentation -> "SCTE_35_WITHOUT_SEGMENTATION"
 
 instance Hashable     SmoothGroupSparseTrackType
 instance NFData       SmoothGroupSparseTrackType
@@ -4985,12 +6881,12 @@ instance ToJSON SmoothGroupSparseTrackType where
 instance FromJSON SmoothGroupSparseTrackType where
     parseJSON = parseJSONText "SmoothGroupSparseTrackType"
 
--- | Placeholder documentation for SmoothGroupStreamManifestBehavior
-data SmoothGroupStreamManifestBehavior
-  = DoNotSend
-  | Send
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Smooth Group Stream Manifest Behavior
+data SmoothGroupStreamManifestBehavior = DoNotSend
+                                       | Send
+                                           deriving (Eq, Ord, Read, Show, Enum,
+                                                     Bounded, Data, Typeable,
+                                                     Generic)
 
 instance FromText SmoothGroupStreamManifestBehavior where
     parser = takeLowerText >>= \case
@@ -5016,12 +6912,12 @@ instance ToJSON SmoothGroupStreamManifestBehavior where
 instance FromJSON SmoothGroupStreamManifestBehavior where
     parseJSON = parseJSONText "SmoothGroupStreamManifestBehavior"
 
--- | Placeholder documentation for SmoothGroupTimestampOffsetMode
-data SmoothGroupTimestampOffsetMode
-  = UseConfiguredOffset
-  | UseEventStartDate
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Smooth Group Timestamp Offset Mode
+data SmoothGroupTimestampOffsetMode = UseConfiguredOffset
+                                    | UseEventStartDate
+                                        deriving (Eq, Ord, Read, Show, Enum,
+                                                  Bounded, Data, Typeable,
+                                                  Generic)
 
 instance FromText SmoothGroupTimestampOffsetMode where
     parser = takeLowerText >>= \case
@@ -5047,13 +6943,151 @@ instance ToJSON SmoothGroupTimestampOffsetMode where
 instance FromJSON SmoothGroupTimestampOffsetMode where
     parseJSON = parseJSONText "SmoothGroupTimestampOffsetMode"
 
--- | Placeholder documentation for TimecodeConfigSource
-data TimecodeConfigSource
-  = Embedded
-  | Systemclock
-  | Zerobased
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
+-- | Smpte2038 Data Preference
+data Smpte2038DataPreference = Ignore
+                             | Prefer
+                                 deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                           Data, Typeable, Generic)
 
+instance FromText Smpte2038DataPreference where
+    parser = takeLowerText >>= \case
+        "ignore" -> pure Ignore
+        "prefer" -> pure Prefer
+        e -> fromTextError $ "Failure parsing Smpte2038DataPreference from value: '" <> e
+           <> "'. Accepted values: ignore, prefer"
+
+instance ToText Smpte2038DataPreference where
+    toText = \case
+        Ignore -> "IGNORE"
+        Prefer -> "PREFER"
+
+instance Hashable     Smpte2038DataPreference
+instance NFData       Smpte2038DataPreference
+instance ToByteString Smpte2038DataPreference
+instance ToQuery      Smpte2038DataPreference
+instance ToHeader     Smpte2038DataPreference
+
+instance ToJSON Smpte2038DataPreference where
+    toJSON = toJSONText
+
+instance FromJSON Smpte2038DataPreference where
+    parseJSON = parseJSONText "Smpte2038DataPreference"
+
+-- | Temporal Filter Post Filter Sharpening
+data TemporalFilterPostFilterSharpening = TFPFSAuto
+                                        | TFPFSDisabled
+                                        | TFPFSEnabled
+                                            deriving (Eq, Ord, Read, Show, Enum,
+                                                      Bounded, Data, Typeable,
+                                                      Generic)
+
+instance FromText TemporalFilterPostFilterSharpening where
+    parser = takeLowerText >>= \case
+        "auto" -> pure TFPFSAuto
+        "disabled" -> pure TFPFSDisabled
+        "enabled" -> pure TFPFSEnabled
+        e -> fromTextError $ "Failure parsing TemporalFilterPostFilterSharpening from value: '" <> e
+           <> "'. Accepted values: auto, disabled, enabled"
+
+instance ToText TemporalFilterPostFilterSharpening where
+    toText = \case
+        TFPFSAuto -> "AUTO"
+        TFPFSDisabled -> "DISABLED"
+        TFPFSEnabled -> "ENABLED"
+
+instance Hashable     TemporalFilterPostFilterSharpening
+instance NFData       TemporalFilterPostFilterSharpening
+instance ToByteString TemporalFilterPostFilterSharpening
+instance ToQuery      TemporalFilterPostFilterSharpening
+instance ToHeader     TemporalFilterPostFilterSharpening
+
+instance ToJSON TemporalFilterPostFilterSharpening where
+    toJSON = toJSONText
+
+instance FromJSON TemporalFilterPostFilterSharpening where
+    parseJSON = parseJSONText "TemporalFilterPostFilterSharpening"
+
+-- | Temporal Filter Strength
+data TemporalFilterStrength = Auto
+                            | Strength1
+                            | Strength10
+                            | Strength11
+                            | Strength12
+                            | Strength13
+                            | Strength14
+                            | Strength15
+                            | Strength16
+                            | Strength2
+                            | Strength3
+                            | Strength4
+                            | Strength5
+                            | Strength6
+                            | Strength7
+                            | Strength8
+                            | Strength9
+                                deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                          Data, Typeable, Generic)
+
+instance FromText TemporalFilterStrength where
+    parser = takeLowerText >>= \case
+        "auto" -> pure Auto
+        "strength_1" -> pure Strength1
+        "strength_10" -> pure Strength10
+        "strength_11" -> pure Strength11
+        "strength_12" -> pure Strength12
+        "strength_13" -> pure Strength13
+        "strength_14" -> pure Strength14
+        "strength_15" -> pure Strength15
+        "strength_16" -> pure Strength16
+        "strength_2" -> pure Strength2
+        "strength_3" -> pure Strength3
+        "strength_4" -> pure Strength4
+        "strength_5" -> pure Strength5
+        "strength_6" -> pure Strength6
+        "strength_7" -> pure Strength7
+        "strength_8" -> pure Strength8
+        "strength_9" -> pure Strength9
+        e -> fromTextError $ "Failure parsing TemporalFilterStrength from value: '" <> e
+           <> "'. Accepted values: auto, strength_1, strength_10, strength_11, strength_12, strength_13, strength_14, strength_15, strength_16, strength_2, strength_3, strength_4, strength_5, strength_6, strength_7, strength_8, strength_9"
+
+instance ToText TemporalFilterStrength where
+    toText = \case
+        Auto -> "AUTO"
+        Strength1 -> "STRENGTH_1"
+        Strength10 -> "STRENGTH_10"
+        Strength11 -> "STRENGTH_11"
+        Strength12 -> "STRENGTH_12"
+        Strength13 -> "STRENGTH_13"
+        Strength14 -> "STRENGTH_14"
+        Strength15 -> "STRENGTH_15"
+        Strength16 -> "STRENGTH_16"
+        Strength2 -> "STRENGTH_2"
+        Strength3 -> "STRENGTH_3"
+        Strength4 -> "STRENGTH_4"
+        Strength5 -> "STRENGTH_5"
+        Strength6 -> "STRENGTH_6"
+        Strength7 -> "STRENGTH_7"
+        Strength8 -> "STRENGTH_8"
+        Strength9 -> "STRENGTH_9"
+
+instance Hashable     TemporalFilterStrength
+instance NFData       TemporalFilterStrength
+instance ToByteString TemporalFilterStrength
+instance ToQuery      TemporalFilterStrength
+instance ToHeader     TemporalFilterStrength
+
+instance ToJSON TemporalFilterStrength where
+    toJSON = toJSONText
+
+instance FromJSON TemporalFilterStrength where
+    parseJSON = parseJSONText "TemporalFilterStrength"
+
+-- | Timecode Config Source
+data TimecodeConfigSource = Embedded
+                          | Systemclock
+                          | Zerobased
+                              deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                        Data, Typeable, Generic)
 
 instance FromText TimecodeConfigSource where
     parser = takeLowerText >>= \case
@@ -5081,12 +7115,11 @@ instance ToJSON TimecodeConfigSource where
 instance FromJSON TimecodeConfigSource where
     parseJSON = parseJSONText "TimecodeConfigSource"
 
--- | Placeholder documentation for TtmlDestinationStyleControl
-data TtmlDestinationStyleControl
-  = TDSCPassthrough
-  | TDSCUseConfigured
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Ttml Destination Style Control
+data TtmlDestinationStyleControl = TDSCPassthrough
+                                 | TDSCUseConfigured
+                                     deriving (Eq, Ord, Read, Show, Enum,
+                                               Bounded, Data, Typeable, Generic)
 
 instance FromText TtmlDestinationStyleControl where
     parser = takeLowerText >>= \case
@@ -5112,13 +7145,12 @@ instance ToJSON TtmlDestinationStyleControl where
 instance FromJSON TtmlDestinationStyleControl where
     parseJSON = parseJSONText "TtmlDestinationStyleControl"
 
--- | Placeholder documentation for UdpTimedMetadataId3Frame
-data UdpTimedMetadataId3Frame
-  = UTMIFNone
-  | UTMIFPriv
-  | UTMIFTdrl
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Udp Timed Metadata Id3 Frame
+data UdpTimedMetadataId3Frame = UTMIFNone
+                              | UTMIFPriv
+                              | UTMIFTdrl
+                                  deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                            Data, Typeable, Generic)
 
 instance FromText UdpTimedMetadataId3Frame where
     parser = takeLowerText >>= \case
@@ -5146,13 +7178,13 @@ instance ToJSON UdpTimedMetadataId3Frame where
 instance FromJSON UdpTimedMetadataId3Frame where
     parseJSON = parseJSONText "UdpTimedMetadataId3Frame"
 
--- | Placeholder documentation for VideoDescriptionRespondToAfd
-data VideoDescriptionRespondToAfd
-  = None
-  | Passthrough
-  | Respond
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Video Description Respond To Afd
+data VideoDescriptionRespondToAfd = None
+                                  | Passthrough
+                                  | Respond
+                                      deriving (Eq, Ord, Read, Show, Enum,
+                                                Bounded, Data, Typeable,
+                                                Generic)
 
 instance FromText VideoDescriptionRespondToAfd where
     parser = takeLowerText >>= \case
@@ -5180,12 +7212,12 @@ instance ToJSON VideoDescriptionRespondToAfd where
 instance FromJSON VideoDescriptionRespondToAfd where
     parseJSON = parseJSONText "VideoDescriptionRespondToAfd"
 
--- | Placeholder documentation for VideoDescriptionScalingBehavior
-data VideoDescriptionScalingBehavior
-  = Default
-  | StretchToOutput
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Video Description Scaling Behavior
+data VideoDescriptionScalingBehavior = Default
+                                     | StretchToOutput
+                                         deriving (Eq, Ord, Read, Show, Enum,
+                                                   Bounded, Data, Typeable,
+                                                   Generic)
 
 instance FromText VideoDescriptionScalingBehavior where
     parser = takeLowerText >>= \case
@@ -5211,13 +7243,12 @@ instance ToJSON VideoDescriptionScalingBehavior where
 instance FromJSON VideoDescriptionScalingBehavior where
     parseJSON = parseJSONText "VideoDescriptionScalingBehavior"
 
--- | Placeholder documentation for VideoSelectorColorSpace
-data VideoSelectorColorSpace
-  = Follow
-  | Rec601
-  | Rec709
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Video Selector Color Space
+data VideoSelectorColorSpace = Follow
+                             | Rec601
+                             | Rec709
+                                 deriving (Eq, Ord, Read, Show, Enum, Bounded,
+                                           Data, Typeable, Generic)
 
 instance FromText VideoSelectorColorSpace where
     parser = takeLowerText >>= \case
@@ -5245,12 +7276,12 @@ instance ToJSON VideoSelectorColorSpace where
 instance FromJSON VideoSelectorColorSpace where
     parseJSON = parseJSONText "VideoSelectorColorSpace"
 
--- | Placeholder documentation for VideoSelectorColorSpaceUsage
-data VideoSelectorColorSpaceUsage
-  = Fallback
-  | Force
-  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
-
+-- | Video Selector Color Space Usage
+data VideoSelectorColorSpaceUsage = Fallback
+                                  | Force
+                                      deriving (Eq, Ord, Read, Show, Enum,
+                                                Bounded, Data, Typeable,
+                                                Generic)
 
 instance FromText VideoSelectorColorSpaceUsage where
     parser = takeLowerText >>= \case
