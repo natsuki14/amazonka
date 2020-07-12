@@ -26,11 +26,16 @@ module Network.AWS.MediaLive.CreateInput
     , CreateInput
     -- * Request Lenses
     , ciRequestId
+    , ciInputDevices
     , ciSources
     , ciInputSecurityGroups
     , ciDestinations
     , ciName
+    , ciVPC
     , ciType
+    , ciMediaConnectFlows
+    , ciTags
+    , ciRoleARN
 
     -- * Destructuring the Response
     , createInputResponse
@@ -50,21 +55,30 @@ import Network.AWS.Response
 -- | The name of the input
 --
 -- /See:/ 'createInput' smart constructor.
-data CreateInput = CreateInput'
-  { _ciRequestId           :: !(Maybe Text)
-  , _ciSources             :: !(Maybe [InputSourceRequest])
-  , _ciInputSecurityGroups :: !(Maybe [Text])
-  , _ciDestinations        :: !(Maybe [InputDestinationRequest])
-  , _ciName                :: !(Maybe Text)
-  , _ciType                :: !(Maybe InputType)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateInput = CreateInput'{_ciRequestId ::
+                                !(Maybe Text),
+                                _ciInputDevices ::
+                                !(Maybe [InputDeviceSettings]),
+                                _ciSources :: !(Maybe [InputSourceRequest]),
+                                _ciInputSecurityGroups :: !(Maybe [Text]),
+                                _ciDestinations ::
+                                !(Maybe [InputDestinationRequest]),
+                                _ciName :: !(Maybe Text),
+                                _ciVPC :: !(Maybe InputVPCRequest),
+                                _ciType :: !(Maybe InputType),
+                                _ciMediaConnectFlows ::
+                                !(Maybe [MediaConnectFlowRequest]),
+                                _ciTags :: !(Maybe (Map Text Text)),
+                                _ciRoleARN :: !(Maybe Text)}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateInput' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'ciRequestId' - Unique identifier of the request to ensure the request is handled exactly once in case of retries.
+--
+-- * 'ciInputDevices' - Settings for the devices.
 --
 -- * 'ciSources' - The source URLs for a PULL-type input. Every PULL type input needs exactly two source URLs for redundancy. Only specify sources for PULL type Inputs. Leave Destinations empty.
 --
@@ -74,23 +88,33 @@ data CreateInput = CreateInput'
 --
 -- * 'ciName' - Name of the input.
 --
+-- * 'ciVPC' - Undocumented member.
+--
 -- * 'ciType' - Undocumented member.
+--
+-- * 'ciMediaConnectFlows' - A list of the MediaConnect Flows that you want to use in this input. You can specify as few as one Flow and presently, as many as two. The only requirement is when you have more than one is that each Flow is in a separate Availability Zone as this ensures your EML input is redundant to AZ issues.
+--
+-- * 'ciTags' - A collection of key-value pairs.
+--
+-- * 'ciRoleARN' - The Amazon Resource Name (ARN) of the role this input assumes during and after creation.
 createInput
     :: CreateInput
-createInput =
-  CreateInput'
-    { _ciRequestId = Nothing
-    , _ciSources = Nothing
-    , _ciInputSecurityGroups = Nothing
-    , _ciDestinations = Nothing
-    , _ciName = Nothing
-    , _ciType = Nothing
-    }
-
+createInput
+  = CreateInput'{_ciRequestId = Nothing,
+                 _ciInputDevices = Nothing, _ciSources = Nothing,
+                 _ciInputSecurityGroups = Nothing,
+                 _ciDestinations = Nothing, _ciName = Nothing,
+                 _ciVPC = Nothing, _ciType = Nothing,
+                 _ciMediaConnectFlows = Nothing, _ciTags = Nothing,
+                 _ciRoleARN = Nothing}
 
 -- | Unique identifier of the request to ensure the request is handled exactly once in case of retries.
 ciRequestId :: Lens' CreateInput (Maybe Text)
 ciRequestId = lens _ciRequestId (\ s a -> s{_ciRequestId = a})
+
+-- | Settings for the devices.
+ciInputDevices :: Lens' CreateInput [InputDeviceSettings]
+ciInputDevices = lens _ciInputDevices (\ s a -> s{_ciInputDevices = a}) . _Default . _Coerce
 
 -- | The source URLs for a PULL-type input. Every PULL type input needs exactly two source URLs for redundancy. Only specify sources for PULL type Inputs. Leave Destinations empty.
 ciSources :: Lens' CreateInput [InputSourceRequest]
@@ -109,8 +133,24 @@ ciName :: Lens' CreateInput (Maybe Text)
 ciName = lens _ciName (\ s a -> s{_ciName = a})
 
 -- | Undocumented member.
+ciVPC :: Lens' CreateInput (Maybe InputVPCRequest)
+ciVPC = lens _ciVPC (\ s a -> s{_ciVPC = a})
+
+-- | Undocumented member.
 ciType :: Lens' CreateInput (Maybe InputType)
 ciType = lens _ciType (\ s a -> s{_ciType = a})
+
+-- | A list of the MediaConnect Flows that you want to use in this input. You can specify as few as one Flow and presently, as many as two. The only requirement is when you have more than one is that each Flow is in a separate Availability Zone as this ensures your EML input is redundant to AZ issues.
+ciMediaConnectFlows :: Lens' CreateInput [MediaConnectFlowRequest]
+ciMediaConnectFlows = lens _ciMediaConnectFlows (\ s a -> s{_ciMediaConnectFlows = a}) . _Default . _Coerce
+
+-- | A collection of key-value pairs.
+ciTags :: Lens' CreateInput (HashMap Text Text)
+ciTags = lens _ciTags (\ s a -> s{_ciTags = a}) . _Default . _Map
+
+-- | The Amazon Resource Name (ARN) of the role this input assumes during and after creation.
+ciRoleARN :: Lens' CreateInput (Maybe Text)
+ciRoleARN = lens _ciRoleARN (\ s a -> s{_ciRoleARN = a})
 
 instance AWSRequest CreateInput where
         type Rs CreateInput = CreateInputResponse
@@ -137,11 +177,16 @@ instance ToJSON CreateInput where
           = object
               (catMaybes
                  [("requestId" .=) <$> _ciRequestId,
+                  ("inputDevices" .=) <$> _ciInputDevices,
                   ("sources" .=) <$> _ciSources,
                   ("inputSecurityGroups" .=) <$>
                     _ciInputSecurityGroups,
                   ("destinations" .=) <$> _ciDestinations,
-                  ("name" .=) <$> _ciName, ("type" .=) <$> _ciType])
+                  ("name" .=) <$> _ciName, ("vpc" .=) <$> _ciVPC,
+                  ("type" .=) <$> _ciType,
+                  ("mediaConnectFlows" .=) <$> _ciMediaConnectFlows,
+                  ("tags" .=) <$> _ciTags,
+                  ("roleArn" .=) <$> _ciRoleARN])
 
 instance ToPath CreateInput where
         toPath = const "/prod/inputs"
@@ -152,11 +197,10 @@ instance ToQuery CreateInput where
 -- | Placeholder documentation for CreateInputResponse
 --
 -- /See:/ 'createInputResponse' smart constructor.
-data CreateInputResponse = CreateInputResponse'
-  { _cirsInput          :: !(Maybe Input)
-  , _cirsResponseStatus :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateInputResponse = CreateInputResponse'{_cirsInput
+                                                :: !(Maybe Input),
+                                                _cirsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateInputResponse' with the minimum fields required to make a request.
 --
@@ -168,10 +212,9 @@ data CreateInputResponse = CreateInputResponse'
 createInputResponse
     :: Int -- ^ 'cirsResponseStatus'
     -> CreateInputResponse
-createInputResponse pResponseStatus_ =
-  CreateInputResponse'
-    {_cirsInput = Nothing, _cirsResponseStatus = pResponseStatus_}
-
+createInputResponse pResponseStatus_
+  = CreateInputResponse'{_cirsInput = Nothing,
+                         _cirsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 cirsInput :: Lens' CreateInputResponse (Maybe Input)

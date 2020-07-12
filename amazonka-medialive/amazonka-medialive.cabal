@@ -45,24 +45,53 @@ library
 
     exposed-modules:
           Network.AWS.MediaLive
+        , Network.AWS.MediaLive.BatchUpdateSchedule
         , Network.AWS.MediaLive.CreateChannel
         , Network.AWS.MediaLive.CreateInput
         , Network.AWS.MediaLive.CreateInputSecurityGroup
+        , Network.AWS.MediaLive.CreateMultiplex
+        , Network.AWS.MediaLive.CreateMultiplexProgram
+        , Network.AWS.MediaLive.CreateTags
         , Network.AWS.MediaLive.DeleteChannel
         , Network.AWS.MediaLive.DeleteInput
         , Network.AWS.MediaLive.DeleteInputSecurityGroup
+        , Network.AWS.MediaLive.DeleteMultiplex
+        , Network.AWS.MediaLive.DeleteMultiplexProgram
+        , Network.AWS.MediaLive.DeleteReservation
+        , Network.AWS.MediaLive.DeleteSchedule
+        , Network.AWS.MediaLive.DeleteTags
         , Network.AWS.MediaLive.DescribeChannel
         , Network.AWS.MediaLive.DescribeInput
+        , Network.AWS.MediaLive.DescribeInputDevice
         , Network.AWS.MediaLive.DescribeInputSecurityGroup
+        , Network.AWS.MediaLive.DescribeMultiplex
+        , Network.AWS.MediaLive.DescribeMultiplexProgram
+        , Network.AWS.MediaLive.DescribeOffering
+        , Network.AWS.MediaLive.DescribeReservation
+        , Network.AWS.MediaLive.DescribeSchedule
         , Network.AWS.MediaLive.ListChannels
+        , Network.AWS.MediaLive.ListInputDevices
         , Network.AWS.MediaLive.ListInputSecurityGroups
         , Network.AWS.MediaLive.ListInputs
+        , Network.AWS.MediaLive.ListMultiplexPrograms
+        , Network.AWS.MediaLive.ListMultiplexes
+        , Network.AWS.MediaLive.ListOfferings
+        , Network.AWS.MediaLive.ListReservations
+        , Network.AWS.MediaLive.ListTagsForResource
+        , Network.AWS.MediaLive.PurchaseOffering
         , Network.AWS.MediaLive.StartChannel
+        , Network.AWS.MediaLive.StartMultiplex
         , Network.AWS.MediaLive.StopChannel
+        , Network.AWS.MediaLive.StopMultiplex
         , Network.AWS.MediaLive.Types
         , Network.AWS.MediaLive.UpdateChannel
+        , Network.AWS.MediaLive.UpdateChannelClass
         , Network.AWS.MediaLive.UpdateInput
+        , Network.AWS.MediaLive.UpdateInputDevice
         , Network.AWS.MediaLive.UpdateInputSecurityGroup
+        , Network.AWS.MediaLive.UpdateMultiplex
+        , Network.AWS.MediaLive.UpdateMultiplexProgram
+        , Network.AWS.MediaLive.UpdateReservation
         , Network.AWS.MediaLive.Waiters
 
     other-modules:

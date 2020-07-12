@@ -34,12 +34,18 @@ module Network.AWS.MediaLive.DescribeInput
     , diirsState
     , diirsSecurityGroups
     , diirsARN
+    , diirsInputDevices
     , diirsSources
     , diirsDestinations
     , diirsName
     , diirsAttachedChannels
     , diirsId
+    , diirsInputClass
     , diirsType
+    , diirsMediaConnectFlows
+    , diirsInputSourceType
+    , diirsTags
+    , diirsRoleARN
     , diirsResponseStatus
     ) where
 
@@ -53,10 +59,9 @@ import Network.AWS.Response
 -- | Placeholder documentation for DescribeInputRequest
 --
 -- /See:/ 'describeInput' smart constructor.
-newtype DescribeInput = DescribeInput'
-  { _dInputId :: Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeInput = DescribeInput'{_dInputId ::
+                                       Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeInput' with the minimum fields required to make a request.
 --
@@ -66,8 +71,8 @@ newtype DescribeInput = DescribeInput'
 describeInput
     :: Text -- ^ 'dInputId'
     -> DescribeInput
-describeInput pInputId_ = DescribeInput' {_dInputId = pInputId_}
-
+describeInput pInputId_
+  = DescribeInput'{_dInputId = pInputId_}
 
 -- | Unique ID of the input
 dInputId :: Lens' DescribeInput Text
@@ -83,12 +88,18 @@ instance AWSRequest DescribeInput where
                    (x .?> "state") <*>
                      (x .?> "securityGroups" .!@ mempty)
                      <*> (x .?> "arn")
+                     <*> (x .?> "inputDevices" .!@ mempty)
                      <*> (x .?> "sources" .!@ mempty)
                      <*> (x .?> "destinations" .!@ mempty)
                      <*> (x .?> "name")
                      <*> (x .?> "attachedChannels" .!@ mempty)
                      <*> (x .?> "id")
+                     <*> (x .?> "inputClass")
                      <*> (x .?> "type")
+                     <*> (x .?> "mediaConnectFlows" .!@ mempty)
+                     <*> (x .?> "inputSourceType")
+                     <*> (x .?> "tags" .!@ mempty)
+                     <*> (x .?> "roleArn")
                      <*> (pure (fromEnum s)))
 
 instance Hashable DescribeInput where
@@ -112,19 +123,38 @@ instance ToQuery DescribeInput where
 -- | Placeholder documentation for DescribeInputResponse
 --
 -- /See:/ 'describeInputResponse' smart constructor.
-data DescribeInputResponse = DescribeInputResponse'
-  { _diirsState            :: !(Maybe InputState)
-  , _diirsSecurityGroups   :: !(Maybe [Text])
-  , _diirsARN              :: !(Maybe Text)
-  , _diirsSources          :: !(Maybe [InputSource])
-  , _diirsDestinations     :: !(Maybe [InputDestination])
-  , _diirsName             :: !(Maybe Text)
-  , _diirsAttachedChannels :: !(Maybe [Text])
-  , _diirsId               :: !(Maybe Text)
-  , _diirsType             :: !(Maybe InputType)
-  , _diirsResponseStatus   :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeInputResponse = DescribeInputResponse'{_diirsState
+                                                    :: !(Maybe InputState),
+                                                    _diirsSecurityGroups ::
+                                                    !(Maybe [Text]),
+                                                    _diirsARN :: !(Maybe Text),
+                                                    _diirsInputDevices ::
+                                                    !(Maybe
+                                                        [InputDeviceSettings]),
+                                                    _diirsSources ::
+                                                    !(Maybe [InputSource]),
+                                                    _diirsDestinations ::
+                                                    !(Maybe [InputDestination]),
+                                                    _diirsName :: !(Maybe Text),
+                                                    _diirsAttachedChannels ::
+                                                    !(Maybe [Text]),
+                                                    _diirsId :: !(Maybe Text),
+                                                    _diirsInputClass ::
+                                                    !(Maybe InputClass),
+                                                    _diirsType ::
+                                                    !(Maybe InputType),
+                                                    _diirsMediaConnectFlows ::
+                                                    !(Maybe [MediaConnectFlow]),
+                                                    _diirsInputSourceType ::
+                                                    !(Maybe InputSourceType),
+                                                    _diirsTags ::
+                                                    !(Maybe (Map Text Text)),
+                                                    _diirsRoleARN ::
+                                                    !(Maybe Text),
+                                                    _diirsResponseStatus ::
+                                                    !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'DescribeInputResponse' with the minimum fields required to make a request.
 --
@@ -132,9 +162,11 @@ data DescribeInputResponse = DescribeInputResponse'
 --
 -- * 'diirsState' - Undocumented member.
 --
--- * 'diirsSecurityGroups' - A list of IDs for all the security groups attached to the input.
+-- * 'diirsSecurityGroups' - A list of IDs for all the Input Security Groups attached to the input.
 --
 -- * 'diirsARN' - The Unique ARN of the input (generated, immutable).
+--
+-- * 'diirsInputDevices' - Settings for the input devices.
 --
 -- * 'diirsSources' - A list of the sources of the input (PULL-type).
 --
@@ -146,38 +178,50 @@ data DescribeInputResponse = DescribeInputResponse'
 --
 -- * 'diirsId' - The generated ID of the input (unique for user account, immutable).
 --
+-- * 'diirsInputClass' - STANDARD - MediaLive expects two sources to be connected to this input. If the channel is also STANDARD, both sources will be ingested. If the channel is SINGLE_PIPELINE, only the first source will be ingested; the second source will always be ignored, even if the first source fails. SINGLE_PIPELINE - You can connect only one source to this input. If the ChannelClass is also  SINGLE_PIPELINE, this value is valid. If the ChannelClass is STANDARD, this value is not valid because the channel requires two sources in the input.
+--
 -- * 'diirsType' - Undocumented member.
+--
+-- * 'diirsMediaConnectFlows' - A list of MediaConnect Flows for this input.
+--
+-- * 'diirsInputSourceType' - Certain pull input sources can be dynamic, meaning that they can have their URL's dynamically changes during input switch actions. Presently, this functionality only works with MP4_FILE inputs.
+--
+-- * 'diirsTags' - A collection of key-value pairs.
+--
+-- * 'diirsRoleARN' - The Amazon Resource Name (ARN) of the role this input assumes during and after creation.
 --
 -- * 'diirsResponseStatus' - -- | The response status code.
 describeInputResponse
     :: Int -- ^ 'diirsResponseStatus'
     -> DescribeInputResponse
-describeInputResponse pResponseStatus_ =
-  DescribeInputResponse'
-    { _diirsState = Nothing
-    , _diirsSecurityGroups = Nothing
-    , _diirsARN = Nothing
-    , _diirsSources = Nothing
-    , _diirsDestinations = Nothing
-    , _diirsName = Nothing
-    , _diirsAttachedChannels = Nothing
-    , _diirsId = Nothing
-    , _diirsType = Nothing
-    , _diirsResponseStatus = pResponseStatus_
-    }
-
+describeInputResponse pResponseStatus_
+  = DescribeInputResponse'{_diirsState = Nothing,
+                           _diirsSecurityGroups = Nothing, _diirsARN = Nothing,
+                           _diirsInputDevices = Nothing,
+                           _diirsSources = Nothing,
+                           _diirsDestinations = Nothing, _diirsName = Nothing,
+                           _diirsAttachedChannels = Nothing, _diirsId = Nothing,
+                           _diirsInputClass = Nothing, _diirsType = Nothing,
+                           _diirsMediaConnectFlows = Nothing,
+                           _diirsInputSourceType = Nothing,
+                           _diirsTags = Nothing, _diirsRoleARN = Nothing,
+                           _diirsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 diirsState :: Lens' DescribeInputResponse (Maybe InputState)
 diirsState = lens _diirsState (\ s a -> s{_diirsState = a})
 
--- | A list of IDs for all the security groups attached to the input.
+-- | A list of IDs for all the Input Security Groups attached to the input.
 diirsSecurityGroups :: Lens' DescribeInputResponse [Text]
 diirsSecurityGroups = lens _diirsSecurityGroups (\ s a -> s{_diirsSecurityGroups = a}) . _Default . _Coerce
 
 -- | The Unique ARN of the input (generated, immutable).
 diirsARN :: Lens' DescribeInputResponse (Maybe Text)
 diirsARN = lens _diirsARN (\ s a -> s{_diirsARN = a})
+
+-- | Settings for the input devices.
+diirsInputDevices :: Lens' DescribeInputResponse [InputDeviceSettings]
+diirsInputDevices = lens _diirsInputDevices (\ s a -> s{_diirsInputDevices = a}) . _Default . _Coerce
 
 -- | A list of the sources of the input (PULL-type).
 diirsSources :: Lens' DescribeInputResponse [InputSource]
@@ -199,9 +243,29 @@ diirsAttachedChannels = lens _diirsAttachedChannels (\ s a -> s{_diirsAttachedCh
 diirsId :: Lens' DescribeInputResponse (Maybe Text)
 diirsId = lens _diirsId (\ s a -> s{_diirsId = a})
 
+-- | STANDARD - MediaLive expects two sources to be connected to this input. If the channel is also STANDARD, both sources will be ingested. If the channel is SINGLE_PIPELINE, only the first source will be ingested; the second source will always be ignored, even if the first source fails. SINGLE_PIPELINE - You can connect only one source to this input. If the ChannelClass is also  SINGLE_PIPELINE, this value is valid. If the ChannelClass is STANDARD, this value is not valid because the channel requires two sources in the input.
+diirsInputClass :: Lens' DescribeInputResponse (Maybe InputClass)
+diirsInputClass = lens _diirsInputClass (\ s a -> s{_diirsInputClass = a})
+
 -- | Undocumented member.
 diirsType :: Lens' DescribeInputResponse (Maybe InputType)
 diirsType = lens _diirsType (\ s a -> s{_diirsType = a})
+
+-- | A list of MediaConnect Flows for this input.
+diirsMediaConnectFlows :: Lens' DescribeInputResponse [MediaConnectFlow]
+diirsMediaConnectFlows = lens _diirsMediaConnectFlows (\ s a -> s{_diirsMediaConnectFlows = a}) . _Default . _Coerce
+
+-- | Certain pull input sources can be dynamic, meaning that they can have their URL's dynamically changes during input switch actions. Presently, this functionality only works with MP4_FILE inputs.
+diirsInputSourceType :: Lens' DescribeInputResponse (Maybe InputSourceType)
+diirsInputSourceType = lens _diirsInputSourceType (\ s a -> s{_diirsInputSourceType = a})
+
+-- | A collection of key-value pairs.
+diirsTags :: Lens' DescribeInputResponse (HashMap Text Text)
+diirsTags = lens _diirsTags (\ s a -> s{_diirsTags = a}) . _Default . _Map
+
+-- | The Amazon Resource Name (ARN) of the role this input assumes during and after creation.
+diirsRoleARN :: Lens' DescribeInputResponse (Maybe Text)
+diirsRoleARN = lens _diirsRoleARN (\ s a -> s{_diirsRoleARN = a})
 
 -- | -- | The response status code.
 diirsResponseStatus :: Lens' DescribeInputResponse Int

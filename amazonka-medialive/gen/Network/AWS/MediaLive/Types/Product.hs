@@ -21,21 +21,21 @@ import Network.AWS.Lens
 import Network.AWS.MediaLive.Types.Sum
 import Network.AWS.Prelude
 
--- | Placeholder documentation for AacSettings
+-- | Aac Settings
 --
 -- /See:/ 'aacSettings' smart constructor.
-data AacSettings = AacSettings'
-  { _aRawFormat       :: !(Maybe AacRawFormat)
-  , _aCodingMode      :: !(Maybe AacCodingMode)
-  , _aProfile         :: !(Maybe AacProfile)
-  , _aRateControlMode :: !(Maybe AacRateControlMode)
-  , _aSampleRate      :: !(Maybe Double)
-  , _aSpec            :: !(Maybe AacSpec)
-  , _aBitrate         :: !(Maybe Double)
-  , _aVbrQuality      :: !(Maybe AacVbrQuality)
-  , _aInputType       :: !(Maybe AacInputType)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AacSettings = AacSettings'{_aRawFormat ::
+                                !(Maybe AacRawFormat),
+                                _aCodingMode :: !(Maybe AacCodingMode),
+                                _aProfile :: !(Maybe AacProfile),
+                                _aRateControlMode ::
+                                !(Maybe AacRateControlMode),
+                                _aSampleRate :: !(Maybe Double),
+                                _aSpec :: !(Maybe AacSpec),
+                                _aBitrate :: !(Maybe Double),
+                                _aVbrQuality :: !(Maybe AacVbrQuality),
+                                _aInputType :: !(Maybe AacInputType)}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AacSettings' with the minimum fields required to make a request.
 --
@@ -60,19 +60,12 @@ data AacSettings = AacSettings'
 -- * 'aInputType' - Set to "broadcasterMixedAd" when input contains pre-mixed main audio + AD (narration) as a stereo pair.  The Audio Type field (audioType) will be set to 3, which signals to downstream systems that this stream contains "broadcaster mixed AD". Note that the input received by the encoder must contain pre-mixed audio; the encoder does not perform the mixing. The values in audioTypeControl and audioType (in AudioDescription) are ignored when set to broadcasterMixedAd. Leave set to "normal" when input does not contain pre-mixed audio + AD.
 aacSettings
     :: AacSettings
-aacSettings =
-  AacSettings'
-    { _aRawFormat = Nothing
-    , _aCodingMode = Nothing
-    , _aProfile = Nothing
-    , _aRateControlMode = Nothing
-    , _aSampleRate = Nothing
-    , _aSpec = Nothing
-    , _aBitrate = Nothing
-    , _aVbrQuality = Nothing
-    , _aInputType = Nothing
-    }
-
+aacSettings
+  = AacSettings'{_aRawFormat = Nothing,
+                 _aCodingMode = Nothing, _aProfile = Nothing,
+                 _aRateControlMode = Nothing, _aSampleRate = Nothing,
+                 _aSpec = Nothing, _aBitrate = Nothing,
+                 _aVbrQuality = Nothing, _aInputType = Nothing}
 
 -- | Sets LATM / LOAS AAC output for raw containers.
 aRawFormat :: Lens' AacSettings (Maybe AacRawFormat)
@@ -141,19 +134,19 @@ instance ToJSON AacSettings where
                   ("vbrQuality" .=) <$> _aVbrQuality,
                   ("inputType" .=) <$> _aInputType])
 
--- | Placeholder documentation for Ac3Settings
+-- | Ac3 Settings
 --
 -- /See:/ 'ac3Settings' smart constructor.
-data Ac3Settings = Ac3Settings'
-  { _asLfeFilter       :: !(Maybe Ac3LfeFilter)
-  , _asMetadataControl :: !(Maybe Ac3MetadataControl)
-  , _asBitstreamMode   :: !(Maybe Ac3BitstreamMode)
-  , _asCodingMode      :: !(Maybe Ac3CodingMode)
-  , _asBitrate         :: !(Maybe Double)
-  , _asDialnorm        :: !(Maybe Nat)
-  , _asDrcProfile      :: !(Maybe Ac3DrcProfile)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data Ac3Settings = Ac3Settings'{_asLfeFilter ::
+                                !(Maybe Ac3LfeFilter),
+                                _asMetadataControl ::
+                                !(Maybe Ac3MetadataControl),
+                                _asBitstreamMode :: !(Maybe Ac3BitstreamMode),
+                                _asCodingMode :: !(Maybe Ac3CodingMode),
+                                _asBitrate :: !(Maybe Double),
+                                _asDialnorm :: !(Maybe Nat),
+                                _asDrcProfile :: !(Maybe Ac3DrcProfile)}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'Ac3Settings' with the minimum fields required to make a request.
 --
@@ -174,17 +167,12 @@ data Ac3Settings = Ac3Settings'
 -- * 'asDrcProfile' - If set to filmStandard, adds dynamic range compression signaling to the output bitstream as defined in the Dolby Digital specification.
 ac3Settings
     :: Ac3Settings
-ac3Settings =
-  Ac3Settings'
-    { _asLfeFilter = Nothing
-    , _asMetadataControl = Nothing
-    , _asBitstreamMode = Nothing
-    , _asCodingMode = Nothing
-    , _asBitrate = Nothing
-    , _asDialnorm = Nothing
-    , _asDrcProfile = Nothing
-    }
-
+ac3Settings
+  = Ac3Settings'{_asLfeFilter = Nothing,
+                 _asMetadataControl = Nothing,
+                 _asBitstreamMode = Nothing, _asCodingMode = Nothing,
+                 _asBitrate = Nothing, _asDialnorm = Nothing,
+                 _asDrcProfile = Nothing}
 
 -- | When set to enabled, applies a 120Hz lowpass filter to the LFE channel prior to encoding. Only valid in codingMode32Lfe mode.
 asLfeFilter :: Lens' Ac3Settings (Maybe Ac3LfeFilter)
@@ -242,13 +230,14 @@ instance ToJSON Ac3Settings where
                   ("dialnorm" .=) <$> _asDialnorm,
                   ("drcProfile" .=) <$> _asDrcProfile])
 
--- | Placeholder documentation for ArchiveContainerSettings
+-- | Archive Container Settings
 --
 -- /See:/ 'archiveContainerSettings' smart constructor.
-newtype ArchiveContainerSettings = ArchiveContainerSettings'
-  { _acsM2tsSettings :: Maybe M2tsSettings
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype ArchiveContainerSettings = ArchiveContainerSettings'{_acsM2tsSettings
+                                                             ::
+                                                             Maybe M2tsSettings}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'ArchiveContainerSettings' with the minimum fields required to make a request.
 --
@@ -257,9 +246,9 @@ newtype ArchiveContainerSettings = ArchiveContainerSettings'
 -- * 'acsM2tsSettings' - Undocumented member.
 archiveContainerSettings
     :: ArchiveContainerSettings
-archiveContainerSettings =
-  ArchiveContainerSettings' {_acsM2tsSettings = Nothing}
-
+archiveContainerSettings
+  = ArchiveContainerSettings'{_acsM2tsSettings =
+                                Nothing}
 
 -- | Undocumented member.
 acsM2tsSettings :: Lens' ArchiveContainerSettings (Maybe M2tsSettings)
@@ -281,14 +270,14 @@ instance ToJSON ArchiveContainerSettings where
               (catMaybes
                  [("m2tsSettings" .=) <$> _acsM2tsSettings])
 
--- | Placeholder documentation for ArchiveGroupSettings
+-- | Archive Group Settings
 --
 -- /See:/ 'archiveGroupSettings' smart constructor.
-data ArchiveGroupSettings = ArchiveGroupSettings'
-  { _agsRolloverInterval :: !(Maybe Nat)
-  , _agsDestination      :: !OutputLocationRef
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ArchiveGroupSettings = ArchiveGroupSettings'{_agsRolloverInterval
+                                                  :: !(Maybe Nat),
+                                                  _agsDestination ::
+                                                  !OutputLocationRef}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ArchiveGroupSettings' with the minimum fields required to make a request.
 --
@@ -296,20 +285,20 @@ data ArchiveGroupSettings = ArchiveGroupSettings'
 --
 -- * 'agsRolloverInterval' - Number of seconds to write to archive file before closing and starting a new one.
 --
--- * 'agsDestination' - A directory and base filename where archive files should be written.  If the base filename portion of the URI is left blank, the base filename of the first input will be automatically inserted.
+-- * 'agsDestination' - A directory and base filename where archive files should be written.
 archiveGroupSettings
     :: OutputLocationRef -- ^ 'agsDestination'
     -> ArchiveGroupSettings
-archiveGroupSettings pDestination_ =
-  ArchiveGroupSettings'
-    {_agsRolloverInterval = Nothing, _agsDestination = pDestination_}
-
+archiveGroupSettings pDestination_
+  = ArchiveGroupSettings'{_agsRolloverInterval =
+                            Nothing,
+                          _agsDestination = pDestination_}
 
 -- | Number of seconds to write to archive file before closing and starting a new one.
 agsRolloverInterval :: Lens' ArchiveGroupSettings (Maybe Natural)
 agsRolloverInterval = lens _agsRolloverInterval (\ s a -> s{_agsRolloverInterval = a}) . mapping _Nat
 
--- | A directory and base filename where archive files should be written.  If the base filename portion of the URI is left blank, the base filename of the first input will be automatically inserted.
+-- | A directory and base filename where archive files should be written.
 agsDestination :: Lens' ArchiveGroupSettings OutputLocationRef
 agsDestination = lens _agsDestination (\ s a -> s{_agsDestination = a})
 
@@ -331,15 +320,17 @@ instance ToJSON ArchiveGroupSettings where
                  [("rolloverInterval" .=) <$> _agsRolloverInterval,
                   Just ("destination" .= _agsDestination)])
 
--- | Placeholder documentation for ArchiveOutputSettings
+-- | Archive Output Settings
 --
 -- /See:/ 'archiveOutputSettings' smart constructor.
-data ArchiveOutputSettings = ArchiveOutputSettings'
-  { _aosExtension         :: !(Maybe Text)
-  , _aosNameModifier      :: !(Maybe Text)
-  , _aosContainerSettings :: !ArchiveContainerSettings
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ArchiveOutputSettings = ArchiveOutputSettings'{_aosExtension
+                                                    :: !(Maybe Text),
+                                                    _aosNameModifier ::
+                                                    !(Maybe Text),
+                                                    _aosContainerSettings ::
+                                                    !ArchiveContainerSettings}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'ArchiveOutputSettings' with the minimum fields required to make a request.
 --
@@ -353,13 +344,10 @@ data ArchiveOutputSettings = ArchiveOutputSettings'
 archiveOutputSettings
     :: ArchiveContainerSettings -- ^ 'aosContainerSettings'
     -> ArchiveOutputSettings
-archiveOutputSettings pContainerSettings_ =
-  ArchiveOutputSettings'
-    { _aosExtension = Nothing
-    , _aosNameModifier = Nothing
-    , _aosContainerSettings = pContainerSettings_
-    }
-
+archiveOutputSettings pContainerSettings_
+  = ArchiveOutputSettings'{_aosExtension = Nothing,
+                           _aosNameModifier = Nothing,
+                           _aosContainerSettings = pContainerSettings_}
 
 -- | Output file extension. If excluded, this will be auto-selected from the container type.
 aosExtension :: Lens' ArchiveOutputSettings (Maybe Text)
@@ -393,20 +381,18 @@ instance ToJSON ArchiveOutputSettings where
                   ("nameModifier" .=) <$> _aosNameModifier,
                   Just ("containerSettings" .= _aosContainerSettings)])
 
--- | Placeholder documentation for AribDestinationSettings
+-- | Arib Destination Settings
 --
 -- /See:/ 'aribDestinationSettings' smart constructor.
-data AribDestinationSettings =
-  AribDestinationSettings'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AribDestinationSettings = AribDestinationSettings'
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'AribDestinationSettings' with the minimum fields required to make a request.
 --
 aribDestinationSettings
     :: AribDestinationSettings
 aribDestinationSettings = AribDestinationSettings'
-
 
 instance FromJSON AribDestinationSettings where
         parseJSON
@@ -420,20 +406,17 @@ instance NFData AribDestinationSettings where
 instance ToJSON AribDestinationSettings where
         toJSON = const (Object mempty)
 
--- | Placeholder documentation for AribSourceSettings
+-- | Arib Source Settings
 --
 -- /See:/ 'aribSourceSettings' smart constructor.
-data AribSourceSettings =
-  AribSourceSettings'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AribSourceSettings = AribSourceSettings'
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AribSourceSettings' with the minimum fields required to make a request.
 --
 aribSourceSettings
     :: AribSourceSettings
 aribSourceSettings = AribSourceSettings'
-
 
 instance FromJSON AribSourceSettings where
         parseJSON
@@ -447,14 +430,14 @@ instance NFData AribSourceSettings where
 instance ToJSON AribSourceSettings where
         toJSON = const (Object mempty)
 
--- | Placeholder documentation for AudioChannelMapping
+-- | Audio Channel Mapping
 --
 -- /See:/ 'audioChannelMapping' smart constructor.
-data AudioChannelMapping = AudioChannelMapping'
-  { _acmOutputChannel      :: !Nat
-  , _acmInputChannelLevels :: ![InputChannelLevel]
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AudioChannelMapping = AudioChannelMapping'{_acmOutputChannel
+                                                :: !Nat,
+                                                _acmInputChannelLevels ::
+                                                ![InputChannelLevel]}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AudioChannelMapping' with the minimum fields required to make a request.
 --
@@ -466,12 +449,10 @@ data AudioChannelMapping = AudioChannelMapping'
 audioChannelMapping
     :: Natural -- ^ 'acmOutputChannel'
     -> AudioChannelMapping
-audioChannelMapping pOutputChannel_ =
-  AudioChannelMapping'
-    { _acmOutputChannel = _Nat # pOutputChannel_
-    , _acmInputChannelLevels = mempty
-    }
-
+audioChannelMapping pOutputChannel_
+  = AudioChannelMapping'{_acmOutputChannel =
+                           _Nat # pOutputChannel_,
+                         _acmInputChannelLevels = mempty}
 
 -- | The index of the output channel being produced.
 acmOutputChannel :: Lens' AudioChannelMapping Natural
@@ -501,17 +482,20 @@ instance ToJSON AudioChannelMapping where
                   Just
                     ("inputChannelLevels" .= _acmInputChannelLevels)])
 
--- | Placeholder documentation for AudioCodecSettings
+-- | Audio Codec Settings
 --
 -- /See:/ 'audioCodecSettings' smart constructor.
-data AudioCodecSettings = AudioCodecSettings'
-  { _acsPassThroughSettings :: !(Maybe PassThroughSettings)
-  , _acsAc3Settings         :: !(Maybe Ac3Settings)
-  , _acsMp2Settings         :: !(Maybe Mp2Settings)
-  , _acsAacSettings         :: !(Maybe AacSettings)
-  , _acsEac3Settings        :: !(Maybe Eac3Settings)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AudioCodecSettings = AudioCodecSettings'{_acsPassThroughSettings
+                                              :: !(Maybe PassThroughSettings),
+                                              _acsAc3Settings ::
+                                              !(Maybe Ac3Settings),
+                                              _acsMp2Settings ::
+                                              !(Maybe Mp2Settings),
+                                              _acsAacSettings ::
+                                              !(Maybe AacSettings),
+                                              _acsEac3Settings ::
+                                              !(Maybe Eac3Settings)}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AudioCodecSettings' with the minimum fields required to make a request.
 --
@@ -528,15 +512,12 @@ data AudioCodecSettings = AudioCodecSettings'
 -- * 'acsEac3Settings' - Undocumented member.
 audioCodecSettings
     :: AudioCodecSettings
-audioCodecSettings =
-  AudioCodecSettings'
-    { _acsPassThroughSettings = Nothing
-    , _acsAc3Settings = Nothing
-    , _acsMp2Settings = Nothing
-    , _acsAacSettings = Nothing
-    , _acsEac3Settings = Nothing
-    }
-
+audioCodecSettings
+  = AudioCodecSettings'{_acsPassThroughSettings =
+                          Nothing,
+                        _acsAc3Settings = Nothing, _acsMp2Settings = Nothing,
+                        _acsAacSettings = Nothing,
+                        _acsEac3Settings = Nothing}
 
 -- | Undocumented member.
 acsPassThroughSettings :: Lens' AudioCodecSettings (Maybe PassThroughSettings)
@@ -584,22 +565,28 @@ instance ToJSON AudioCodecSettings where
                   ("aacSettings" .=) <$> _acsAacSettings,
                   ("eac3Settings" .=) <$> _acsEac3Settings])
 
--- | Placeholder documentation for AudioDescription
+-- | Audio Description
 --
 -- /See:/ 'audioDescription' smart constructor.
-data AudioDescription = AudioDescription'
-  { _adLanguageCode :: !(Maybe Text)
-  , _adAudioType :: !(Maybe AudioType)
-  , _adAudioNormalizationSettings :: !(Maybe AudioNormalizationSettings)
-  , _adLanguageCodeControl :: !(Maybe AudioDescriptionLanguageCodeControl)
-  , _adCodecSettings :: !(Maybe AudioCodecSettings)
-  , _adStreamName :: !(Maybe Text)
-  , _adRemixSettings :: !(Maybe RemixSettings)
-  , _adAudioTypeControl :: !(Maybe AudioDescriptionAudioTypeControl)
-  , _adAudioSelectorName :: !Text
-  , _adName :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AudioDescription = AudioDescription'{_adLanguageCode
+                                          :: !(Maybe Text),
+                                          _adAudioType :: !(Maybe AudioType),
+                                          _adAudioNormalizationSettings ::
+                                          !(Maybe AudioNormalizationSettings),
+                                          _adLanguageCodeControl ::
+                                          !(Maybe
+                                              AudioDescriptionLanguageCodeControl),
+                                          _adCodecSettings ::
+                                          !(Maybe AudioCodecSettings),
+                                          _adStreamName :: !(Maybe Text),
+                                          _adRemixSettings ::
+                                          !(Maybe RemixSettings),
+                                          _adAudioTypeControl ::
+                                          !(Maybe
+                                              AudioDescriptionAudioTypeControl),
+                                          _adAudioSelectorName :: !Text,
+                                          _adName :: !Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AudioDescription' with the minimum fields required to make a request.
 --
@@ -628,20 +615,16 @@ audioDescription
     :: Text -- ^ 'adAudioSelectorName'
     -> Text -- ^ 'adName'
     -> AudioDescription
-audioDescription pAudioSelectorName_ pName_ =
-  AudioDescription'
-    { _adLanguageCode = Nothing
-    , _adAudioType = Nothing
-    , _adAudioNormalizationSettings = Nothing
-    , _adLanguageCodeControl = Nothing
-    , _adCodecSettings = Nothing
-    , _adStreamName = Nothing
-    , _adRemixSettings = Nothing
-    , _adAudioTypeControl = Nothing
-    , _adAudioSelectorName = pAudioSelectorName_
-    , _adName = pName_
-    }
-
+audioDescription pAudioSelectorName_ pName_
+  = AudioDescription'{_adLanguageCode = Nothing,
+                      _adAudioType = Nothing,
+                      _adAudioNormalizationSettings = Nothing,
+                      _adLanguageCodeControl = Nothing,
+                      _adCodecSettings = Nothing, _adStreamName = Nothing,
+                      _adRemixSettings = Nothing,
+                      _adAudioTypeControl = Nothing,
+                      _adAudioSelectorName = pAudioSelectorName_,
+                      _adName = pName_}
 
 -- | Indicates the language of the audio output track. Only used if languageControlMode is useConfigured, or there is no ISO 639 language code specified in the input.
 adLanguageCode :: Lens' AudioDescription (Maybe Text)
@@ -719,14 +702,16 @@ instance ToJSON AudioDescription where
                   Just ("audioSelectorName" .= _adAudioSelectorName),
                   Just ("name" .= _adName)])
 
--- | Placeholder documentation for AudioLanguageSelection
+-- | Audio Language Selection
 --
 -- /See:/ 'audioLanguageSelection' smart constructor.
-data AudioLanguageSelection = AudioLanguageSelection'
-  { _alsLanguageSelectionPolicy :: !(Maybe AudioLanguageSelectionPolicy)
-  , _alsLanguageCode            :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AudioLanguageSelection = AudioLanguageSelection'{_alsLanguageSelectionPolicy
+                                                      ::
+                                                      !(Maybe
+                                                          AudioLanguageSelectionPolicy),
+                                                      _alsLanguageCode :: !Text}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'AudioLanguageSelection' with the minimum fields required to make a request.
 --
@@ -738,10 +723,10 @@ data AudioLanguageSelection = AudioLanguageSelection'
 audioLanguageSelection
     :: Text -- ^ 'alsLanguageCode'
     -> AudioLanguageSelection
-audioLanguageSelection pLanguageCode_ =
-  AudioLanguageSelection'
-    {_alsLanguageSelectionPolicy = Nothing, _alsLanguageCode = pLanguageCode_}
-
+audioLanguageSelection pLanguageCode_
+  = AudioLanguageSelection'{_alsLanguageSelectionPolicy
+                              = Nothing,
+                            _alsLanguageCode = pLanguageCode_}
 
 -- | When set to "strict", the transport stream demux strictly identifies audio streams by their language descriptor. If a PMT update occurs such that an audio stream matching the initially selected language is no longer present then mute will be encoded until the language returns. If "loose", then on a PMT update the demux will choose another audio stream in the program with the same stream type if it can't find one with the same language.
 alsLanguageSelectionPolicy :: Lens' AudioLanguageSelection (Maybe AudioLanguageSelectionPolicy)
@@ -771,15 +756,20 @@ instance ToJSON AudioLanguageSelection where
                     _alsLanguageSelectionPolicy,
                   Just ("languageCode" .= _alsLanguageCode)])
 
--- | Placeholder documentation for AudioNormalizationSettings
+-- | Audio Normalization Settings
 --
 -- /See:/ 'audioNormalizationSettings' smart constructor.
-data AudioNormalizationSettings = AudioNormalizationSettings'
-  { _ansAlgorithmControl :: !(Maybe AudioNormalizationAlgorithmControl)
-  , _ansTargetLkfs       :: !(Maybe Double)
-  , _ansAlgorithm        :: !(Maybe AudioNormalizationAlgorithm)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AudioNormalizationSettings = AudioNormalizationSettings'{_ansAlgorithmControl
+                                                              ::
+                                                              !(Maybe
+                                                                  AudioNormalizationAlgorithmControl),
+                                                              _ansTargetLkfs ::
+                                                              !(Maybe Double),
+                                                              _ansAlgorithm ::
+                                                              !(Maybe
+                                                                  AudioNormalizationAlgorithm)}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'AudioNormalizationSettings' with the minimum fields required to make a request.
 --
@@ -792,13 +782,11 @@ data AudioNormalizationSettings = AudioNormalizationSettings'
 -- * 'ansAlgorithm' - Audio normalization algorithm to use. itu17701 conforms to the CALM Act specification, itu17702 conforms to the EBU R-128 specification.
 audioNormalizationSettings
     :: AudioNormalizationSettings
-audioNormalizationSettings =
-  AudioNormalizationSettings'
-    { _ansAlgorithmControl = Nothing
-    , _ansTargetLkfs = Nothing
-    , _ansAlgorithm = Nothing
-    }
-
+audioNormalizationSettings
+  = AudioNormalizationSettings'{_ansAlgorithmControl =
+                                  Nothing,
+                                _ansTargetLkfs = Nothing,
+                                _ansAlgorithm = Nothing}
 
 -- | When set to correctAudio the output audio is corrected using the chosen algorithm. If set to measureOnly, the audio will be measured but not adjusted.
 ansAlgorithmControl :: Lens' AudioNormalizationSettings (Maybe AudioNormalizationAlgorithmControl)
@@ -832,38 +820,48 @@ instance ToJSON AudioNormalizationSettings where
                   ("targetLkfs" .=) <$> _ansTargetLkfs,
                   ("algorithm" .=) <$> _ansAlgorithm])
 
--- | Placeholder documentation for AudioOnlyHlsSettings
+-- | Audio Only Hls Settings
 --
 -- /See:/ 'audioOnlyHlsSettings' smart constructor.
-data AudioOnlyHlsSettings = AudioOnlyHlsSettings'
-  { _aohsAudioOnlyImage :: !(Maybe InputLocation)
-  , _aohsAudioGroupId   :: !(Maybe Text)
-  , _aohsAudioTrackType :: !(Maybe AudioOnlyHlsTrackType)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AudioOnlyHlsSettings = AudioOnlyHlsSettings'{_aohsAudioOnlyImage
+                                                  :: !(Maybe InputLocation),
+                                                  _aohsSegmentType ::
+                                                  !(Maybe
+                                                      AudioOnlyHlsSegmentType),
+                                                  _aohsAudioGroupId ::
+                                                  !(Maybe Text),
+                                                  _aohsAudioTrackType ::
+                                                  !(Maybe
+                                                      AudioOnlyHlsTrackType)}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AudioOnlyHlsSettings' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'aohsAudioOnlyImage' - For use with an audio only Stream. Must be a .jpg or .png file. If given, this image will be used as the cover-art for the audio only output. Ideally, it should be formatted for an iPhone screen for two reasons. The iPhone does not resize the image, it crops a centered image on the top/bottom and left/right. Additionally, this image file gets saved bit-for-bit into every 10-second segment file, so will increase bandwidth by {image file size} * {segment count} * {user count.}.
+-- * 'aohsAudioOnlyImage' - Optional. Specifies the .jpg or .png image to use as the cover art for an audio-only output. We recommend a low bit-size file because the image increases the output audio bandwidth. The image is attached to the audio as an ID3 tag, frame type APIC, picture type 0x10, as per the "ID3 tag version 2.4.0 - Native Frames" standard.
+--
+-- * 'aohsSegmentType' - Specifies the segment type.
 --
 -- * 'aohsAudioGroupId' - Specifies the group to which the audio Rendition belongs.
 --
 -- * 'aohsAudioTrackType' - Four types of audio-only tracks are supported: Audio-Only Variant Stream The client can play back this audio-only stream instead of video in low-bandwidth scenarios. Represented as an EXT-X-STREAM-INF in the HLS manifest. Alternate Audio, Auto Select, Default Alternate rendition that the client should try to play back by default. Represented as an EXT-X-MEDIA in the HLS manifest with DEFAULT=YES, AUTOSELECT=YES Alternate Audio, Auto Select, Not Default Alternate rendition that the client may try to play back by default. Represented as an EXT-X-MEDIA in the HLS manifest with DEFAULT=NO, AUTOSELECT=YES Alternate Audio, not Auto Select Alternate rendition that the client will not try to play back by default. Represented as an EXT-X-MEDIA in the HLS manifest with DEFAULT=NO, AUTOSELECT=NO
 audioOnlyHlsSettings
     :: AudioOnlyHlsSettings
-audioOnlyHlsSettings =
-  AudioOnlyHlsSettings'
-    { _aohsAudioOnlyImage = Nothing
-    , _aohsAudioGroupId = Nothing
-    , _aohsAudioTrackType = Nothing
-    }
+audioOnlyHlsSettings
+  = AudioOnlyHlsSettings'{_aohsAudioOnlyImage =
+                            Nothing,
+                          _aohsSegmentType = Nothing,
+                          _aohsAudioGroupId = Nothing,
+                          _aohsAudioTrackType = Nothing}
 
-
--- | For use with an audio only Stream. Must be a .jpg or .png file. If given, this image will be used as the cover-art for the audio only output. Ideally, it should be formatted for an iPhone screen for two reasons. The iPhone does not resize the image, it crops a centered image on the top/bottom and left/right. Additionally, this image file gets saved bit-for-bit into every 10-second segment file, so will increase bandwidth by {image file size} * {segment count} * {user count.}.
+-- | Optional. Specifies the .jpg or .png image to use as the cover art for an audio-only output. We recommend a low bit-size file because the image increases the output audio bandwidth. The image is attached to the audio as an ID3 tag, frame type APIC, picture type 0x10, as per the "ID3 tag version 2.4.0 - Native Frames" standard.
 aohsAudioOnlyImage :: Lens' AudioOnlyHlsSettings (Maybe InputLocation)
 aohsAudioOnlyImage = lens _aohsAudioOnlyImage (\ s a -> s{_aohsAudioOnlyImage = a})
+
+-- | Specifies the segment type.
+aohsSegmentType :: Lens' AudioOnlyHlsSettings (Maybe AudioOnlyHlsSegmentType)
+aohsSegmentType = lens _aohsSegmentType (\ s a -> s{_aohsSegmentType = a})
 
 -- | Specifies the group to which the audio Rendition belongs.
 aohsAudioGroupId :: Lens' AudioOnlyHlsSettings (Maybe Text)
@@ -878,7 +876,8 @@ instance FromJSON AudioOnlyHlsSettings where
           = withObject "AudioOnlyHlsSettings"
               (\ x ->
                  AudioOnlyHlsSettings' <$>
-                   (x .:? "audioOnlyImage") <*> (x .:? "audioGroupId")
+                   (x .:? "audioOnlyImage") <*> (x .:? "segmentType")
+                     <*> (x .:? "audioGroupId")
                      <*> (x .:? "audioTrackType"))
 
 instance Hashable AudioOnlyHlsSettings where
@@ -890,16 +889,16 @@ instance ToJSON AudioOnlyHlsSettings where
           = object
               (catMaybes
                  [("audioOnlyImage" .=) <$> _aohsAudioOnlyImage,
+                  ("segmentType" .=) <$> _aohsSegmentType,
                   ("audioGroupId" .=) <$> _aohsAudioGroupId,
                   ("audioTrackType" .=) <$> _aohsAudioTrackType])
 
--- | Placeholder documentation for AudioPidSelection
+-- | Audio Pid Selection
 --
 -- /See:/ 'audioPidSelection' smart constructor.
-newtype AudioPidSelection = AudioPidSelection'
-  { _apsPid :: Nat
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype AudioPidSelection = AudioPidSelection'{_apsPid
+                                               :: Nat}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AudioPidSelection' with the minimum fields required to make a request.
 --
@@ -909,8 +908,8 @@ newtype AudioPidSelection = AudioPidSelection'
 audioPidSelection
     :: Natural -- ^ 'apsPid'
     -> AudioPidSelection
-audioPidSelection pPid_ = AudioPidSelection' {_apsPid = _Nat # pPid_}
-
+audioPidSelection pPid_
+  = AudioPidSelection'{_apsPid = _Nat # pPid_}
 
 -- | Selects a specific PID from within a source.
 apsPid :: Lens' AudioPidSelection Natural
@@ -929,14 +928,13 @@ instance ToJSON AudioPidSelection where
         toJSON AudioPidSelection'{..}
           = object (catMaybes [Just ("pid" .= _apsPid)])
 
--- | Placeholder documentation for AudioSelector
+-- | Audio Selector
 --
 -- /See:/ 'audioSelector' smart constructor.
-data AudioSelector = AudioSelector'
-  { _asSelectorSettings :: !(Maybe AudioSelectorSettings)
-  , _asName             :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AudioSelector = AudioSelector'{_asSelectorSettings
+                                    :: !(Maybe AudioSelectorSettings),
+                                    _asName :: !Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AudioSelector' with the minimum fields required to make a request.
 --
@@ -948,9 +946,9 @@ data AudioSelector = AudioSelector'
 audioSelector
     :: Text -- ^ 'asName'
     -> AudioSelector
-audioSelector pName_ =
-  AudioSelector' {_asSelectorSettings = Nothing, _asName = pName_}
-
+audioSelector pName_
+  = AudioSelector'{_asSelectorSettings = Nothing,
+                   _asName = pName_}
 
 -- | The audio selector settings.
 asSelectorSettings :: Lens' AudioSelector (Maybe AudioSelectorSettings)
@@ -978,14 +976,20 @@ instance ToJSON AudioSelector where
                  [("selectorSettings" .=) <$> _asSelectorSettings,
                   Just ("name" .= _asName)])
 
--- | Placeholder documentation for AudioSelectorSettings
+-- | Audio Selector Settings
 --
 -- /See:/ 'audioSelectorSettings' smart constructor.
-data AudioSelectorSettings = AudioSelectorSettings'
-  { _assAudioLanguageSelection :: !(Maybe AudioLanguageSelection)
-  , _assAudioPidSelection      :: !(Maybe AudioPidSelection)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AudioSelectorSettings = AudioSelectorSettings'{_assAudioLanguageSelection
+                                                    ::
+                                                    !(Maybe
+                                                        AudioLanguageSelection),
+                                                    _assAudioTrackSelection ::
+                                                    !(Maybe
+                                                        AudioTrackSelection),
+                                                    _assAudioPidSelection ::
+                                                    !(Maybe AudioPidSelection)}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'AudioSelectorSettings' with the minimum fields required to make a request.
 --
@@ -993,17 +997,24 @@ data AudioSelectorSettings = AudioSelectorSettings'
 --
 -- * 'assAudioLanguageSelection' - Undocumented member.
 --
+-- * 'assAudioTrackSelection' - Undocumented member.
+--
 -- * 'assAudioPidSelection' - Undocumented member.
 audioSelectorSettings
     :: AudioSelectorSettings
-audioSelectorSettings =
-  AudioSelectorSettings'
-    {_assAudioLanguageSelection = Nothing, _assAudioPidSelection = Nothing}
-
+audioSelectorSettings
+  = AudioSelectorSettings'{_assAudioLanguageSelection =
+                             Nothing,
+                           _assAudioTrackSelection = Nothing,
+                           _assAudioPidSelection = Nothing}
 
 -- | Undocumented member.
 assAudioLanguageSelection :: Lens' AudioSelectorSettings (Maybe AudioLanguageSelection)
 assAudioLanguageSelection = lens _assAudioLanguageSelection (\ s a -> s{_assAudioLanguageSelection = a})
+
+-- | Undocumented member.
+assAudioTrackSelection :: Lens' AudioSelectorSettings (Maybe AudioTrackSelection)
+assAudioTrackSelection = lens _assAudioTrackSelection (\ s a -> s{_assAudioTrackSelection = a})
 
 -- | Undocumented member.
 assAudioPidSelection :: Lens' AudioSelectorSettings (Maybe AudioPidSelection)
@@ -1015,7 +1026,8 @@ instance FromJSON AudioSelectorSettings where
               (\ x ->
                  AudioSelectorSettings' <$>
                    (x .:? "audioLanguageSelection") <*>
-                     (x .:? "audioPidSelection"))
+                     (x .:? "audioTrackSelection")
+                     <*> (x .:? "audioPidSelection"))
 
 instance Hashable AudioSelectorSettings where
 
@@ -1027,16 +1039,144 @@ instance ToJSON AudioSelectorSettings where
               (catMaybes
                  [("audioLanguageSelection" .=) <$>
                     _assAudioLanguageSelection,
+                  ("audioTrackSelection" .=) <$>
+                    _assAudioTrackSelection,
                   ("audioPidSelection" .=) <$> _assAudioPidSelection])
 
--- | Placeholder documentation for AvailBlanking
+-- | Audio Track
+--
+-- /See:/ 'audioTrack' smart constructor.
+newtype AudioTrack = AudioTrack'{_atTrack :: Nat}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+-- | Creates a value of 'AudioTrack' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'atTrack' - 1-based integer value that maps to a specific audio track
+audioTrack
+    :: Natural -- ^ 'atTrack'
+    -> AudioTrack
+audioTrack pTrack_
+  = AudioTrack'{_atTrack = _Nat # pTrack_}
+
+-- | 1-based integer value that maps to a specific audio track
+atTrack :: Lens' AudioTrack Natural
+atTrack = lens _atTrack (\ s a -> s{_atTrack = a}) . _Nat
+
+instance FromJSON AudioTrack where
+        parseJSON
+          = withObject "AudioTrack"
+              (\ x -> AudioTrack' <$> (x .: "track"))
+
+instance Hashable AudioTrack where
+
+instance NFData AudioTrack where
+
+instance ToJSON AudioTrack where
+        toJSON AudioTrack'{..}
+          = object (catMaybes [Just ("track" .= _atTrack)])
+
+-- | Audio Track Selection
+--
+-- /See:/ 'audioTrackSelection' smart constructor.
+newtype AudioTrackSelection = AudioTrackSelection'{_atsTracks
+                                                   :: [AudioTrack]}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
+
+-- | Creates a value of 'AudioTrackSelection' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'atsTracks' - Selects one or more unique audio tracks from within an mp4 source.
+audioTrackSelection
+    :: AudioTrackSelection
+audioTrackSelection
+  = AudioTrackSelection'{_atsTracks = mempty}
+
+-- | Selects one or more unique audio tracks from within an mp4 source.
+atsTracks :: Lens' AudioTrackSelection [AudioTrack]
+atsTracks = lens _atsTracks (\ s a -> s{_atsTracks = a}) . _Coerce
+
+instance FromJSON AudioTrackSelection where
+        parseJSON
+          = withObject "AudioTrackSelection"
+              (\ x ->
+                 AudioTrackSelection' <$> (x .:? "tracks" .!= mempty))
+
+instance Hashable AudioTrackSelection where
+
+instance NFData AudioTrackSelection where
+
+instance ToJSON AudioTrackSelection where
+        toJSON AudioTrackSelection'{..}
+          = object (catMaybes [Just ("tracks" .= _atsTracks)])
+
+-- | The settings for Automatic Input Failover.
+--
+-- /See:/ 'automaticInputFailoverSettings' smart constructor.
+data AutomaticInputFailoverSettings = AutomaticInputFailoverSettings'{_aifsInputPreference
+                                                                      ::
+                                                                      !(Maybe
+                                                                          InputPreference),
+                                                                      _aifsSecondaryInputId
+                                                                      :: !Text}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
+
+-- | Creates a value of 'AutomaticInputFailoverSettings' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'aifsInputPreference' - Input preference when deciding which input to make active when a previously failed input has recovered.
+--
+-- * 'aifsSecondaryInputId' - The input ID of the secondary input in the automatic input failover pair.
+automaticInputFailoverSettings
+    :: Text -- ^ 'aifsSecondaryInputId'
+    -> AutomaticInputFailoverSettings
+automaticInputFailoverSettings pSecondaryInputId_
+  = AutomaticInputFailoverSettings'{_aifsInputPreference
+                                      = Nothing,
+                                    _aifsSecondaryInputId = pSecondaryInputId_}
+
+-- | Input preference when deciding which input to make active when a previously failed input has recovered.
+aifsInputPreference :: Lens' AutomaticInputFailoverSettings (Maybe InputPreference)
+aifsInputPreference = lens _aifsInputPreference (\ s a -> s{_aifsInputPreference = a})
+
+-- | The input ID of the secondary input in the automatic input failover pair.
+aifsSecondaryInputId :: Lens' AutomaticInputFailoverSettings Text
+aifsSecondaryInputId = lens _aifsSecondaryInputId (\ s a -> s{_aifsSecondaryInputId = a})
+
+instance FromJSON AutomaticInputFailoverSettings
+         where
+        parseJSON
+          = withObject "AutomaticInputFailoverSettings"
+              (\ x ->
+                 AutomaticInputFailoverSettings' <$>
+                   (x .:? "inputPreference") <*>
+                     (x .: "secondaryInputId"))
+
+instance Hashable AutomaticInputFailoverSettings
+         where
+
+instance NFData AutomaticInputFailoverSettings where
+
+instance ToJSON AutomaticInputFailoverSettings where
+        toJSON AutomaticInputFailoverSettings'{..}
+          = object
+              (catMaybes
+                 [("inputPreference" .=) <$> _aifsInputPreference,
+                  Just ("secondaryInputId" .= _aifsSecondaryInputId)])
+
+-- | Avail Blanking
 --
 -- /See:/ 'availBlanking' smart constructor.
-data AvailBlanking = AvailBlanking'
-  { _abState              :: !(Maybe AvailBlankingState)
-  , _abAvailBlankingImage :: !(Maybe InputLocation)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AvailBlanking = AvailBlanking'{_abState ::
+                                    !(Maybe AvailBlankingState),
+                                    _abAvailBlankingImage ::
+                                    !(Maybe InputLocation)}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AvailBlanking' with the minimum fields required to make a request.
 --
@@ -1047,9 +1187,9 @@ data AvailBlanking = AvailBlanking'
 -- * 'abAvailBlankingImage' - Blanking image to be used. Leave empty for solid black. Only bmp and png images are supported.
 availBlanking
     :: AvailBlanking
-availBlanking =
-  AvailBlanking' {_abState = Nothing, _abAvailBlankingImage = Nothing}
-
+availBlanking
+  = AvailBlanking'{_abState = Nothing,
+                   _abAvailBlankingImage = Nothing}
 
 -- | When set to enabled, causes video, audio and captions to be blanked when insertion metadata is added.
 abState :: Lens' AvailBlanking (Maybe AvailBlankingState)
@@ -1077,13 +1217,13 @@ instance ToJSON AvailBlanking where
                  [("state" .=) <$> _abState,
                   ("availBlankingImage" .=) <$> _abAvailBlankingImage])
 
--- | Placeholder documentation for AvailConfiguration
+-- | Avail Configuration
 --
 -- /See:/ 'availConfiguration' smart constructor.
-newtype AvailConfiguration = AvailConfiguration'
-  { _acAvailSettings :: Maybe AvailSettings
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype AvailConfiguration = AvailConfiguration'{_acAvailSettings
+                                                 :: Maybe AvailSettings}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'AvailConfiguration' with the minimum fields required to make a request.
 --
@@ -1092,8 +1232,8 @@ newtype AvailConfiguration = AvailConfiguration'
 -- * 'acAvailSettings' - Ad avail settings.
 availConfiguration
     :: AvailConfiguration
-availConfiguration = AvailConfiguration' {_acAvailSettings = Nothing}
-
+availConfiguration
+  = AvailConfiguration'{_acAvailSettings = Nothing}
 
 -- | Ad avail settings.
 acAvailSettings :: Lens' AvailConfiguration (Maybe AvailSettings)
@@ -1115,14 +1255,14 @@ instance ToJSON AvailConfiguration where
               (catMaybes
                  [("availSettings" .=) <$> _acAvailSettings])
 
--- | Placeholder documentation for AvailSettings
+-- | Avail Settings
 --
 -- /See:/ 'availSettings' smart constructor.
-data AvailSettings = AvailSettings'
-  { _asScte35SpliceInsert   :: !(Maybe Scte35SpliceInsert)
-  , _asScte35TimeSignalApos :: !(Maybe Scte35TimeSignalApos)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AvailSettings = AvailSettings'{_asScte35SpliceInsert
+                                    :: !(Maybe Scte35SpliceInsert),
+                                    _asScte35TimeSignalApos ::
+                                    !(Maybe Scte35TimeSignalApos)}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AvailSettings' with the minimum fields required to make a request.
 --
@@ -1133,10 +1273,9 @@ data AvailSettings = AvailSettings'
 -- * 'asScte35TimeSignalApos' - Undocumented member.
 availSettings
     :: AvailSettings
-availSettings =
-  AvailSettings'
-    {_asScte35SpliceInsert = Nothing, _asScte35TimeSignalApos = Nothing}
-
+availSettings
+  = AvailSettings'{_asScte35SpliceInsert = Nothing,
+                   _asScte35TimeSignalApos = Nothing}
 
 -- | Undocumented member.
 asScte35SpliceInsert :: Lens' AvailSettings (Maybe Scte35SpliceInsert)
@@ -1166,17 +1305,166 @@ instance ToJSON AvailSettings where
                   ("scte35TimeSignalApos" .=) <$>
                     _asScte35TimeSignalApos])
 
--- | Placeholder documentation for BlackoutSlate
+-- | A list of schedule actions to create (in a request) or that have been created (in a response).
+--
+-- /See:/ 'batchScheduleActionCreateRequest' smart constructor.
+newtype BatchScheduleActionCreateRequest = BatchScheduleActionCreateRequest'{_bsacrScheduleActions
+                                                                             ::
+                                                                             [ScheduleAction]}
+                                             deriving (Eq, Read, Show, Data,
+                                                       Typeable, Generic)
+
+-- | Creates a value of 'BatchScheduleActionCreateRequest' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'bsacrScheduleActions' - A list of schedule actions to create.
+batchScheduleActionCreateRequest
+    :: BatchScheduleActionCreateRequest
+batchScheduleActionCreateRequest
+  = BatchScheduleActionCreateRequest'{_bsacrScheduleActions
+                                        = mempty}
+
+-- | A list of schedule actions to create.
+bsacrScheduleActions :: Lens' BatchScheduleActionCreateRequest [ScheduleAction]
+bsacrScheduleActions = lens _bsacrScheduleActions (\ s a -> s{_bsacrScheduleActions = a}) . _Coerce
+
+instance Hashable BatchScheduleActionCreateRequest
+         where
+
+instance NFData BatchScheduleActionCreateRequest
+         where
+
+instance ToJSON BatchScheduleActionCreateRequest
+         where
+        toJSON BatchScheduleActionCreateRequest'{..}
+          = object
+              (catMaybes
+                 [Just ("scheduleActions" .= _bsacrScheduleActions)])
+
+-- | List of actions that have been created in the schedule.
+--
+-- /See:/ 'batchScheduleActionCreateResult' smart constructor.
+newtype BatchScheduleActionCreateResult = BatchScheduleActionCreateResult'{_bScheduleActions
+                                                                           ::
+                                                                           [ScheduleAction]}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
+
+-- | Creates a value of 'BatchScheduleActionCreateResult' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'bScheduleActions' - List of actions that have been created in the schedule.
+batchScheduleActionCreateResult
+    :: BatchScheduleActionCreateResult
+batchScheduleActionCreateResult
+  = BatchScheduleActionCreateResult'{_bScheduleActions
+                                       = mempty}
+
+-- | List of actions that have been created in the schedule.
+bScheduleActions :: Lens' BatchScheduleActionCreateResult [ScheduleAction]
+bScheduleActions = lens _bScheduleActions (\ s a -> s{_bScheduleActions = a}) . _Coerce
+
+instance FromJSON BatchScheduleActionCreateResult
+         where
+        parseJSON
+          = withObject "BatchScheduleActionCreateResult"
+              (\ x ->
+                 BatchScheduleActionCreateResult' <$>
+                   (x .:? "scheduleActions" .!= mempty))
+
+instance Hashable BatchScheduleActionCreateResult
+         where
+
+instance NFData BatchScheduleActionCreateResult where
+
+-- | A list of schedule actions to delete.
+--
+-- /See:/ 'batchScheduleActionDeleteRequest' smart constructor.
+newtype BatchScheduleActionDeleteRequest = BatchScheduleActionDeleteRequest'{_bsadrActionNames
+                                                                             ::
+                                                                             [Text]}
+                                             deriving (Eq, Read, Show, Data,
+                                                       Typeable, Generic)
+
+-- | Creates a value of 'BatchScheduleActionDeleteRequest' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'bsadrActionNames' - A list of schedule actions to delete.
+batchScheduleActionDeleteRequest
+    :: BatchScheduleActionDeleteRequest
+batchScheduleActionDeleteRequest
+  = BatchScheduleActionDeleteRequest'{_bsadrActionNames
+                                        = mempty}
+
+-- | A list of schedule actions to delete.
+bsadrActionNames :: Lens' BatchScheduleActionDeleteRequest [Text]
+bsadrActionNames = lens _bsadrActionNames (\ s a -> s{_bsadrActionNames = a}) . _Coerce
+
+instance Hashable BatchScheduleActionDeleteRequest
+         where
+
+instance NFData BatchScheduleActionDeleteRequest
+         where
+
+instance ToJSON BatchScheduleActionDeleteRequest
+         where
+        toJSON BatchScheduleActionDeleteRequest'{..}
+          = object
+              (catMaybes
+                 [Just ("actionNames" .= _bsadrActionNames)])
+
+-- | List of actions that have been deleted from the schedule.
+--
+-- /See:/ 'batchScheduleActionDeleteResult' smart constructor.
+newtype BatchScheduleActionDeleteResult = BatchScheduleActionDeleteResult'{_bsadrScheduleActions
+                                                                           ::
+                                                                           [ScheduleAction]}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
+
+-- | Creates a value of 'BatchScheduleActionDeleteResult' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'bsadrScheduleActions' - List of actions that have been deleted from the schedule.
+batchScheduleActionDeleteResult
+    :: BatchScheduleActionDeleteResult
+batchScheduleActionDeleteResult
+  = BatchScheduleActionDeleteResult'{_bsadrScheduleActions
+                                       = mempty}
+
+-- | List of actions that have been deleted from the schedule.
+bsadrScheduleActions :: Lens' BatchScheduleActionDeleteResult [ScheduleAction]
+bsadrScheduleActions = lens _bsadrScheduleActions (\ s a -> s{_bsadrScheduleActions = a}) . _Coerce
+
+instance FromJSON BatchScheduleActionDeleteResult
+         where
+        parseJSON
+          = withObject "BatchScheduleActionDeleteResult"
+              (\ x ->
+                 BatchScheduleActionDeleteResult' <$>
+                   (x .:? "scheduleActions" .!= mempty))
+
+instance Hashable BatchScheduleActionDeleteResult
+         where
+
+instance NFData BatchScheduleActionDeleteResult where
+
+-- | Blackout Slate
 --
 -- /See:/ 'blackoutSlate' smart constructor.
-data BlackoutSlate = BlackoutSlate'
-  { _bsNetworkEndBlackoutImage :: !(Maybe InputLocation)
-  , _bsState                   :: !(Maybe BlackoutSlateState)
-  , _bsNetworkEndBlackout      :: !(Maybe BlackoutSlateNetworkEndBlackout)
-  , _bsNetworkId               :: !(Maybe Text)
-  , _bsBlackoutSlateImage      :: !(Maybe InputLocation)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data BlackoutSlate = BlackoutSlate'{_bsNetworkEndBlackoutImage
+                                    :: !(Maybe InputLocation),
+                                    _bsState :: !(Maybe BlackoutSlateState),
+                                    _bsNetworkEndBlackout ::
+                                    !(Maybe BlackoutSlateNetworkEndBlackout),
+                                    _bsNetworkId :: !(Maybe Text),
+                                    _bsBlackoutSlateImage ::
+                                    !(Maybe InputLocation)}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'BlackoutSlate' with the minimum fields required to make a request.
 --
@@ -1193,15 +1481,12 @@ data BlackoutSlate = BlackoutSlate'
 -- * 'bsBlackoutSlateImage' - Blackout slate image to be used. Leave empty for solid black. Only bmp and png images are supported.
 blackoutSlate
     :: BlackoutSlate
-blackoutSlate =
-  BlackoutSlate'
-    { _bsNetworkEndBlackoutImage = Nothing
-    , _bsState = Nothing
-    , _bsNetworkEndBlackout = Nothing
-    , _bsNetworkId = Nothing
-    , _bsBlackoutSlateImage = Nothing
-    }
-
+blackoutSlate
+  = BlackoutSlate'{_bsNetworkEndBlackoutImage =
+                     Nothing,
+                   _bsState = Nothing, _bsNetworkEndBlackout = Nothing,
+                   _bsNetworkId = Nothing,
+                   _bsBlackoutSlateImage = Nothing}
 
 -- | Path to local file to use as Network End Blackout image. Image will be scaled to fill the entire output raster.
 bsNetworkEndBlackoutImage :: Lens' BlackoutSlate (Maybe InputLocation)
@@ -1248,29 +1533,54 @@ instance ToJSON BlackoutSlate where
                   ("networkId" .=) <$> _bsNetworkId,
                   ("blackoutSlateImage" .=) <$> _bsBlackoutSlateImage])
 
--- | Placeholder documentation for BurnInDestinationSettings
+-- | Burn In Destination Settings
 --
 -- /See:/ 'burnInDestinationSettings' smart constructor.
-data BurnInDestinationSettings = BurnInDestinationSettings'
-  { _bidsBackgroundOpacity   :: !(Maybe Nat)
-  , _bidsFontOpacity         :: !(Maybe Nat)
-  , _bidsShadowYOffset       :: !(Maybe Int)
-  , _bidsFontResolution      :: !(Maybe Nat)
-  , _bidsYPosition           :: !(Maybe Nat)
-  , _bidsBackgroundColor     :: !(Maybe BurnInBackgroundColor)
-  , _bidsShadowXOffset       :: !(Maybe Int)
-  , _bidsFontSize            :: !(Maybe Text)
-  , _bidsXPosition           :: !(Maybe Nat)
-  , _bidsAlignment           :: !(Maybe BurnInAlignment)
-  , _bidsShadowOpacity       :: !(Maybe Nat)
-  , _bidsTeletextGridControl :: !(Maybe BurnInTeletextGridControl)
-  , _bidsOutlineColor        :: !(Maybe BurnInOutlineColor)
-  , _bidsOutlineSize         :: !(Maybe Nat)
-  , _bidsFont                :: !(Maybe InputLocation)
-  , _bidsShadowColor         :: !(Maybe BurnInShadowColor)
-  , _bidsFontColor           :: !(Maybe BurnInFontColor)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data BurnInDestinationSettings = BurnInDestinationSettings'{_bidsBackgroundOpacity
+                                                            :: !(Maybe Nat),
+                                                            _bidsFontOpacity ::
+                                                            !(Maybe Nat),
+                                                            _bidsShadowYOffset
+                                                            :: !(Maybe Int),
+                                                            _bidsFontResolution
+                                                            :: !(Maybe Nat),
+                                                            _bidsYPosition ::
+                                                            !(Maybe Nat),
+                                                            _bidsBackgroundColor
+                                                            ::
+                                                            !(Maybe
+                                                                BurnInBackgroundColor),
+                                                            _bidsShadowXOffset
+                                                            :: !(Maybe Int),
+                                                            _bidsFontSize ::
+                                                            !(Maybe Text),
+                                                            _bidsXPosition ::
+                                                            !(Maybe Nat),
+                                                            _bidsAlignment ::
+                                                            !(Maybe
+                                                                BurnInAlignment),
+                                                            _bidsShadowOpacity
+                                                            :: !(Maybe Nat),
+                                                            _bidsTeletextGridControl
+                                                            ::
+                                                            !(Maybe
+                                                                BurnInTeletextGridControl),
+                                                            _bidsOutlineColor ::
+                                                            !(Maybe
+                                                                BurnInOutlineColor),
+                                                            _bidsOutlineSize ::
+                                                            !(Maybe Nat),
+                                                            _bidsFont ::
+                                                            !(Maybe
+                                                                InputLocation),
+                                                            _bidsShadowColor ::
+                                                            !(Maybe
+                                                                BurnInShadowColor),
+                                                            _bidsFontColor ::
+                                                            !(Maybe
+                                                                BurnInFontColor)}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'BurnInDestinationSettings' with the minimum fields required to make a request.
 --
@@ -1311,27 +1621,24 @@ data BurnInDestinationSettings = BurnInDestinationSettings'
 -- * 'bidsFontColor' - Specifies the color of the burned-in captions.  This option is not valid for source captions that are STL, 608/embedded or teletext.  These source settings are already pre-defined by the caption stream.  All burn-in and DVB-Sub font settings must match.
 burnInDestinationSettings
     :: BurnInDestinationSettings
-burnInDestinationSettings =
-  BurnInDestinationSettings'
-    { _bidsBackgroundOpacity = Nothing
-    , _bidsFontOpacity = Nothing
-    , _bidsShadowYOffset = Nothing
-    , _bidsFontResolution = Nothing
-    , _bidsYPosition = Nothing
-    , _bidsBackgroundColor = Nothing
-    , _bidsShadowXOffset = Nothing
-    , _bidsFontSize = Nothing
-    , _bidsXPosition = Nothing
-    , _bidsAlignment = Nothing
-    , _bidsShadowOpacity = Nothing
-    , _bidsTeletextGridControl = Nothing
-    , _bidsOutlineColor = Nothing
-    , _bidsOutlineSize = Nothing
-    , _bidsFont = Nothing
-    , _bidsShadowColor = Nothing
-    , _bidsFontColor = Nothing
-    }
-
+burnInDestinationSettings
+  = BurnInDestinationSettings'{_bidsBackgroundOpacity =
+                                 Nothing,
+                               _bidsFontOpacity = Nothing,
+                               _bidsShadowYOffset = Nothing,
+                               _bidsFontResolution = Nothing,
+                               _bidsYPosition = Nothing,
+                               _bidsBackgroundColor = Nothing,
+                               _bidsShadowXOffset = Nothing,
+                               _bidsFontSize = Nothing,
+                               _bidsXPosition = Nothing,
+                               _bidsAlignment = Nothing,
+                               _bidsShadowOpacity = Nothing,
+                               _bidsTeletextGridControl = Nothing,
+                               _bidsOutlineColor = Nothing,
+                               _bidsOutlineSize = Nothing, _bidsFont = Nothing,
+                               _bidsShadowColor = Nothing,
+                               _bidsFontColor = Nothing}
 
 -- | Specifies the opacity of the background rectangle. 255 is opaque; 0 is transparent. Leaving this parameter out is equivalent to setting it to 0 (transparent).  All burn-in and DVB-Sub font settings must match.
 bidsBackgroundOpacity :: Lens' BurnInDestinationSettings (Maybe Natural)
@@ -1450,17 +1757,19 @@ instance ToJSON BurnInDestinationSettings where
                   ("shadowColor" .=) <$> _bidsShadowColor,
                   ("fontColor" .=) <$> _bidsFontColor])
 
--- | Output groups for this Live Event. Output groups contain information about where streams should be distributed.
+-- | Caption Description
 --
 -- /See:/ 'captionDescription' smart constructor.
-data CaptionDescription = CaptionDescription'
-  { _cdLanguageCode        :: !(Maybe Text)
-  , _cdDestinationSettings :: !(Maybe CaptionDestinationSettings)
-  , _cdLanguageDescription :: !(Maybe Text)
-  , _cdCaptionSelectorName :: !Text
-  , _cdName                :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CaptionDescription = CaptionDescription'{_cdLanguageCode
+                                              :: !(Maybe Text),
+                                              _cdDestinationSettings ::
+                                              !(Maybe
+                                                  CaptionDestinationSettings),
+                                              _cdLanguageDescription ::
+                                              !(Maybe Text),
+                                              _cdCaptionSelectorName :: !Text,
+                                              _cdName :: !Text}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CaptionDescription' with the minimum fields required to make a request.
 --
@@ -1479,15 +1788,12 @@ captionDescription
     :: Text -- ^ 'cdCaptionSelectorName'
     -> Text -- ^ 'cdName'
     -> CaptionDescription
-captionDescription pCaptionSelectorName_ pName_ =
-  CaptionDescription'
-    { _cdLanguageCode = Nothing
-    , _cdDestinationSettings = Nothing
-    , _cdLanguageDescription = Nothing
-    , _cdCaptionSelectorName = pCaptionSelectorName_
-    , _cdName = pName_
-    }
-
+captionDescription pCaptionSelectorName_ pName_
+  = CaptionDescription'{_cdLanguageCode = Nothing,
+                        _cdDestinationSettings = Nothing,
+                        _cdLanguageDescription = Nothing,
+                        _cdCaptionSelectorName = pCaptionSelectorName_,
+                        _cdName = pName_}
 
 -- | ISO 639-2 three-digit code: http://www.loc.gov/standards/iso639-2/
 cdLanguageCode :: Lens' CaptionDescription (Maybe Text)
@@ -1537,24 +1843,59 @@ instance ToJSON CaptionDescription where
                     ("captionSelectorName" .= _cdCaptionSelectorName),
                   Just ("name" .= _cdName)])
 
--- | Placeholder documentation for CaptionDestinationSettings
+-- | Caption Destination Settings
 --
 -- /See:/ 'captionDestinationSettings' smart constructor.
-data CaptionDestinationSettings = CaptionDestinationSettings'
-  { _cdsTeletextDestinationSettings :: !(Maybe TeletextDestinationSettings)
-  , _cdsRtmpCaptionInfoDestinationSettings :: !(Maybe RtmpCaptionInfoDestinationSettings)
-  , _cdsDvbSubDestinationSettings :: !(Maybe DvbSubDestinationSettings)
-  , _cdsScte27DestinationSettings :: !(Maybe Scte27DestinationSettings)
-  , _cdsTtmlDestinationSettings :: !(Maybe TtmlDestinationSettings)
-  , _cdsScte20PlusEmbeddedDestinationSettings :: !(Maybe Scte20PlusEmbeddedDestinationSettings)
-  , _cdsEmbeddedPlusScte20DestinationSettings :: !(Maybe EmbeddedPlusScte20DestinationSettings)
-  , _cdsSmpteTtDestinationSettings :: !(Maybe SmpteTtDestinationSettings)
-  , _cdsWebvttDestinationSettings :: !(Maybe WebvttDestinationSettings)
-  , _cdsEmbeddedDestinationSettings :: !(Maybe EmbeddedDestinationSettings)
-  , _cdsBurnInDestinationSettings :: !(Maybe BurnInDestinationSettings)
-  , _cdsAribDestinationSettings :: !(Maybe AribDestinationSettings)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CaptionDestinationSettings = CaptionDestinationSettings'{_cdsTeletextDestinationSettings
+                                                              ::
+                                                              !(Maybe
+                                                                  TeletextDestinationSettings),
+                                                              _cdsRtmpCaptionInfoDestinationSettings
+                                                              ::
+                                                              !(Maybe
+                                                                  RtmpCaptionInfoDestinationSettings),
+                                                              _cdsDvbSubDestinationSettings
+                                                              ::
+                                                              !(Maybe
+                                                                  DvbSubDestinationSettings),
+                                                              _cdsScte27DestinationSettings
+                                                              ::
+                                                              !(Maybe
+                                                                  Scte27DestinationSettings),
+                                                              _cdsTtmlDestinationSettings
+                                                              ::
+                                                              !(Maybe
+                                                                  TtmlDestinationSettings),
+                                                              _cdsScte20PlusEmbeddedDestinationSettings
+                                                              ::
+                                                              !(Maybe
+                                                                  Scte20PlusEmbeddedDestinationSettings),
+                                                              _cdsEmbeddedPlusScte20DestinationSettings
+                                                              ::
+                                                              !(Maybe
+                                                                  EmbeddedPlusScte20DestinationSettings),
+                                                              _cdsSmpteTtDestinationSettings
+                                                              ::
+                                                              !(Maybe
+                                                                  SmpteTtDestinationSettings),
+                                                              _cdsWebvttDestinationSettings
+                                                              ::
+                                                              !(Maybe
+                                                                  WebvttDestinationSettings),
+                                                              _cdsEmbeddedDestinationSettings
+                                                              ::
+                                                              !(Maybe
+                                                                  EmbeddedDestinationSettings),
+                                                              _cdsBurnInDestinationSettings
+                                                              ::
+                                                              !(Maybe
+                                                                  BurnInDestinationSettings),
+                                                              _cdsAribDestinationSettings
+                                                              ::
+                                                              !(Maybe
+                                                                  AribDestinationSettings)}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'CaptionDestinationSettings' with the minimum fields required to make a request.
 --
@@ -1585,22 +1926,23 @@ data CaptionDestinationSettings = CaptionDestinationSettings'
 -- * 'cdsAribDestinationSettings' - Undocumented member.
 captionDestinationSettings
     :: CaptionDestinationSettings
-captionDestinationSettings =
-  CaptionDestinationSettings'
-    { _cdsTeletextDestinationSettings = Nothing
-    , _cdsRtmpCaptionInfoDestinationSettings = Nothing
-    , _cdsDvbSubDestinationSettings = Nothing
-    , _cdsScte27DestinationSettings = Nothing
-    , _cdsTtmlDestinationSettings = Nothing
-    , _cdsScte20PlusEmbeddedDestinationSettings = Nothing
-    , _cdsEmbeddedPlusScte20DestinationSettings = Nothing
-    , _cdsSmpteTtDestinationSettings = Nothing
-    , _cdsWebvttDestinationSettings = Nothing
-    , _cdsEmbeddedDestinationSettings = Nothing
-    , _cdsBurnInDestinationSettings = Nothing
-    , _cdsAribDestinationSettings = Nothing
-    }
-
+captionDestinationSettings
+  = CaptionDestinationSettings'{_cdsTeletextDestinationSettings
+                                  = Nothing,
+                                _cdsRtmpCaptionInfoDestinationSettings =
+                                  Nothing,
+                                _cdsDvbSubDestinationSettings = Nothing,
+                                _cdsScte27DestinationSettings = Nothing,
+                                _cdsTtmlDestinationSettings = Nothing,
+                                _cdsScte20PlusEmbeddedDestinationSettings =
+                                  Nothing,
+                                _cdsEmbeddedPlusScte20DestinationSettings =
+                                  Nothing,
+                                _cdsSmpteTtDestinationSettings = Nothing,
+                                _cdsWebvttDestinationSettings = Nothing,
+                                _cdsEmbeddedDestinationSettings = Nothing,
+                                _cdsBurnInDestinationSettings = Nothing,
+                                _cdsAribDestinationSettings = Nothing}
 
 -- | Undocumented member.
 cdsTeletextDestinationSettings :: Lens' CaptionDestinationSettings (Maybe TeletextDestinationSettings)
@@ -1704,12 +2046,14 @@ instance ToJSON CaptionDestinationSettings where
 -- | Maps a caption channel to an ISO 693-2 language code (http://www.loc.gov/standards/iso639-2), with an optional description.
 --
 -- /See:/ 'captionLanguageMapping' smart constructor.
-data CaptionLanguageMapping = CaptionLanguageMapping'
-  { _clmLanguageCode        :: !Text
-  , _clmLanguageDescription :: !Text
-  , _clmCaptionChannel      :: !Nat
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CaptionLanguageMapping = CaptionLanguageMapping'{_clmLanguageCode
+                                                      :: !Text,
+                                                      _clmLanguageDescription ::
+                                                      !Text,
+                                                      _clmCaptionChannel ::
+                                                      !Nat}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'CaptionLanguageMapping' with the minimum fields required to make a request.
 --
@@ -1725,13 +2069,12 @@ captionLanguageMapping
     -> Text -- ^ 'clmLanguageDescription'
     -> Natural -- ^ 'clmCaptionChannel'
     -> CaptionLanguageMapping
-captionLanguageMapping pLanguageCode_ pLanguageDescription_ pCaptionChannel_ =
-  CaptionLanguageMapping'
-    { _clmLanguageCode = pLanguageCode_
-    , _clmLanguageDescription = pLanguageDescription_
-    , _clmCaptionChannel = _Nat # pCaptionChannel_
-    }
-
+captionLanguageMapping pLanguageCode_
+  pLanguageDescription_ pCaptionChannel_
+  = CaptionLanguageMapping'{_clmLanguageCode =
+                              pLanguageCode_,
+                            _clmLanguageDescription = pLanguageDescription_,
+                            _clmCaptionChannel = _Nat # pCaptionChannel_}
 
 -- | Three character ISO 639-2 language code (see http://www.loc.gov/standards/iso639-2)
 clmLanguageCode :: Lens' CaptionLanguageMapping Text
@@ -1770,41 +2113,40 @@ instance ToJSON CaptionLanguageMapping where
 -- | Output groups for this Live Event. Output groups contain information about where streams should be distributed.
 --
 -- /See:/ 'captionSelector' smart constructor.
-data CaptionSelector = CaptionSelector'
-  { _csLanguageCode     :: !(Maybe Text)
-  , _csSelectorSettings :: !(Maybe CaptionSelectorSettings)
-  , _csName             :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CaptionSelector = CaptionSelector'{_cLanguageCode
+                                        :: !(Maybe Text),
+                                        _cSelectorSettings ::
+                                        !(Maybe CaptionSelectorSettings),
+                                        _cName :: !Text}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CaptionSelector' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'csLanguageCode' - When specified this field indicates the three letter language code of the caption track to extract from the source.
+-- * 'cLanguageCode' - When specified this field indicates the three letter language code of the caption track to extract from the source.
 --
--- * 'csSelectorSettings' - Caption selector settings.
+-- * 'cSelectorSettings' - Caption selector settings.
 --
--- * 'csName' - Name identifier for a caption selector.  This name is used to associate this caption selector with one or more caption descriptions.  Names must be unique within an event.
+-- * 'cName' - Name identifier for a caption selector.  This name is used to associate this caption selector with one or more caption descriptions.  Names must be unique within an event.
 captionSelector
-    :: Text -- ^ 'csName'
+    :: Text -- ^ 'cName'
     -> CaptionSelector
-captionSelector pName_ =
-  CaptionSelector'
-    {_csLanguageCode = Nothing, _csSelectorSettings = Nothing, _csName = pName_}
-
+captionSelector pName_
+  = CaptionSelector'{_cLanguageCode = Nothing,
+                     _cSelectorSettings = Nothing, _cName = pName_}
 
 -- | When specified this field indicates the three letter language code of the caption track to extract from the source.
-csLanguageCode :: Lens' CaptionSelector (Maybe Text)
-csLanguageCode = lens _csLanguageCode (\ s a -> s{_csLanguageCode = a})
+cLanguageCode :: Lens' CaptionSelector (Maybe Text)
+cLanguageCode = lens _cLanguageCode (\ s a -> s{_cLanguageCode = a})
 
 -- | Caption selector settings.
-csSelectorSettings :: Lens' CaptionSelector (Maybe CaptionSelectorSettings)
-csSelectorSettings = lens _csSelectorSettings (\ s a -> s{_csSelectorSettings = a})
+cSelectorSettings :: Lens' CaptionSelector (Maybe CaptionSelectorSettings)
+cSelectorSettings = lens _cSelectorSettings (\ s a -> s{_cSelectorSettings = a})
 
 -- | Name identifier for a caption selector.  This name is used to associate this caption selector with one or more caption descriptions.  Names must be unique within an event.
-csName :: Lens' CaptionSelector Text
-csName = lens _csName (\ s a -> s{_csName = a})
+cName :: Lens' CaptionSelector Text
+cName = lens _cName (\ s a -> s{_cName = a})
 
 instance FromJSON CaptionSelector where
         parseJSON
@@ -1822,22 +2164,39 @@ instance ToJSON CaptionSelector where
         toJSON CaptionSelector'{..}
           = object
               (catMaybes
-                 [("languageCode" .=) <$> _csLanguageCode,
-                  ("selectorSettings" .=) <$> _csSelectorSettings,
-                  Just ("name" .= _csName)])
+                 [("languageCode" .=) <$> _cLanguageCode,
+                  ("selectorSettings" .=) <$> _cSelectorSettings,
+                  Just ("name" .= _cName)])
 
--- | Placeholder documentation for CaptionSelectorSettings
+-- | Caption Selector Settings
 --
 -- /See:/ 'captionSelectorSettings' smart constructor.
-data CaptionSelectorSettings = CaptionSelectorSettings'
-  { _cssTeletextSourceSettings :: !(Maybe TeletextSourceSettings)
-  , _cssAribSourceSettings     :: !(Maybe AribSourceSettings)
-  , _cssScte27SourceSettings   :: !(Maybe Scte27SourceSettings)
-  , _cssDvbSubSourceSettings   :: !(Maybe DvbSubSourceSettings)
-  , _cssScte20SourceSettings   :: !(Maybe Scte20SourceSettings)
-  , _cssEmbeddedSourceSettings :: !(Maybe EmbeddedSourceSettings)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CaptionSelectorSettings = CaptionSelectorSettings'{_cssTeletextSourceSettings
+                                                        ::
+                                                        !(Maybe
+                                                            TeletextSourceSettings),
+                                                        _cssAribSourceSettings
+                                                        ::
+                                                        !(Maybe
+                                                            AribSourceSettings),
+                                                        _cssScte27SourceSettings
+                                                        ::
+                                                        !(Maybe
+                                                            Scte27SourceSettings),
+                                                        _cssDvbSubSourceSettings
+                                                        ::
+                                                        !(Maybe
+                                                            DvbSubSourceSettings),
+                                                        _cssScte20SourceSettings
+                                                        ::
+                                                        !(Maybe
+                                                            Scte20SourceSettings),
+                                                        _cssEmbeddedSourceSettings
+                                                        ::
+                                                        !(Maybe
+                                                            EmbeddedSourceSettings)}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'CaptionSelectorSettings' with the minimum fields required to make a request.
 --
@@ -1856,16 +2215,14 @@ data CaptionSelectorSettings = CaptionSelectorSettings'
 -- * 'cssEmbeddedSourceSettings' - Undocumented member.
 captionSelectorSettings
     :: CaptionSelectorSettings
-captionSelectorSettings =
-  CaptionSelectorSettings'
-    { _cssTeletextSourceSettings = Nothing
-    , _cssAribSourceSettings = Nothing
-    , _cssScte27SourceSettings = Nothing
-    , _cssDvbSubSourceSettings = Nothing
-    , _cssScte20SourceSettings = Nothing
-    , _cssEmbeddedSourceSettings = Nothing
-    }
-
+captionSelectorSettings
+  = CaptionSelectorSettings'{_cssTeletextSourceSettings
+                               = Nothing,
+                             _cssAribSourceSettings = Nothing,
+                             _cssScte27SourceSettings = Nothing,
+                             _cssDvbSubSourceSettings = Nothing,
+                             _cssScte20SourceSettings = Nothing,
+                             _cssEmbeddedSourceSettings = Nothing}
 
 -- | Undocumented member.
 cssTeletextSourceSettings :: Lens' CaptionSelectorSettings (Maybe TeletextSourceSettings)
@@ -1926,121 +2283,149 @@ instance ToJSON CaptionSelectorSettings where
 -- | Placeholder documentation for Channel
 --
 -- /See:/ 'channel' smart constructor.
-data Channel = Channel'
-  { _cState                 :: !(Maybe ChannelState)
-  , _cARN                   :: !(Maybe Text)
-  , _cPipelinesRunningCount :: !(Maybe Int)
-  , _cInputSpecification    :: !(Maybe InputSpecification)
-  , _cInputAttachments      :: !(Maybe [InputAttachment])
-  , _cDestinations          :: !(Maybe [OutputDestination])
-  , _cName                  :: !(Maybe Text)
-  , _cId                    :: !(Maybe Text)
-  , _cEgressEndpoints       :: !(Maybe [ChannelEgressEndpoint])
-  , _cEncoderSettings       :: !(Maybe EncoderSettings)
-  , _cRoleARN               :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data Channel = Channel'{_chaState ::
+                        !(Maybe ChannelState),
+                        _chaLogLevel :: !(Maybe LogLevel),
+                        _chaARN :: !(Maybe Text),
+                        _chaPipelinesRunningCount :: !(Maybe Int),
+                        _chaPipelineDetails :: !(Maybe [PipelineDetail]),
+                        _chaInputSpecification ::
+                        !(Maybe InputSpecification),
+                        _chaInputAttachments :: !(Maybe [InputAttachment]),
+                        _chaDestinations :: !(Maybe [OutputDestination]),
+                        _chaName :: !(Maybe Text), _chaId :: !(Maybe Text),
+                        _chaChannelClass :: !(Maybe ChannelClass),
+                        _chaEgressEndpoints ::
+                        !(Maybe [ChannelEgressEndpoint]),
+                        _chaTags :: !(Maybe (Map Text Text)),
+                        _chaEncoderSettings :: !(Maybe EncoderSettings),
+                        _chaRoleARN :: !(Maybe Text)}
+                 deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'Channel' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'cState' - Undocumented member.
+-- * 'chaState' - Undocumented member.
 --
--- * 'cARN' - The unique arn of the channel.
+-- * 'chaLogLevel' - The log level being written to CloudWatch Logs.
 --
--- * 'cPipelinesRunningCount' - The number of currently healthy pipelines.
+-- * 'chaARN' - The unique arn of the channel.
 --
--- * 'cInputSpecification' - Undocumented member.
+-- * 'chaPipelinesRunningCount' - The number of currently healthy pipelines.
 --
--- * 'cInputAttachments' - List of input attachments for channel.
+-- * 'chaPipelineDetails' - Runtime details for the pipelines of a running channel.
 --
--- * 'cDestinations' - A list of destinations of the channel. For UDP outputs, there is one destination per output. For other types (HLS, for example), there is one destination per packager.
+-- * 'chaInputSpecification' - Undocumented member.
 --
--- * 'cName' - The name of the channel. (user-mutable)
+-- * 'chaInputAttachments' - List of input attachments for channel.
 --
--- * 'cId' - The unique id of the channel.
+-- * 'chaDestinations' - A list of destinations of the channel. For UDP outputs, there is one destination per output. For other types (HLS, for example), there is one destination per packager.
 --
--- * 'cEgressEndpoints' - The endpoints where outgoing connections initiate from
+-- * 'chaName' - The name of the channel. (user-mutable)
 --
--- * 'cEncoderSettings' - Undocumented member.
+-- * 'chaId' - The unique id of the channel.
 --
--- * 'cRoleARN' - The Amazon Resource Name (ARN) of the role assumed when running the Channel.
+-- * 'chaChannelClass' - The class for this channel. STANDARD for a channel with two pipelines or SINGLE_PIPELINE for a channel with one pipeline.
+--
+-- * 'chaEgressEndpoints' - The endpoints where outgoing connections initiate from
+--
+-- * 'chaTags' - A collection of key-value pairs.
+--
+-- * 'chaEncoderSettings' - Undocumented member.
+--
+-- * 'chaRoleARN' - The Amazon Resource Name (ARN) of the role assumed when running the Channel.
 channel
     :: Channel
-channel =
-  Channel'
-    { _cState = Nothing
-    , _cARN = Nothing
-    , _cPipelinesRunningCount = Nothing
-    , _cInputSpecification = Nothing
-    , _cInputAttachments = Nothing
-    , _cDestinations = Nothing
-    , _cName = Nothing
-    , _cId = Nothing
-    , _cEgressEndpoints = Nothing
-    , _cEncoderSettings = Nothing
-    , _cRoleARN = Nothing
-    }
-
+channel
+  = Channel'{_chaState = Nothing,
+             _chaLogLevel = Nothing, _chaARN = Nothing,
+             _chaPipelinesRunningCount = Nothing,
+             _chaPipelineDetails = Nothing,
+             _chaInputSpecification = Nothing,
+             _chaInputAttachments = Nothing,
+             _chaDestinations = Nothing, _chaName = Nothing,
+             _chaId = Nothing, _chaChannelClass = Nothing,
+             _chaEgressEndpoints = Nothing, _chaTags = Nothing,
+             _chaEncoderSettings = Nothing, _chaRoleARN = Nothing}
 
 -- | Undocumented member.
-cState :: Lens' Channel (Maybe ChannelState)
-cState = lens _cState (\ s a -> s{_cState = a})
+chaState :: Lens' Channel (Maybe ChannelState)
+chaState = lens _chaState (\ s a -> s{_chaState = a})
+
+-- | The log level being written to CloudWatch Logs.
+chaLogLevel :: Lens' Channel (Maybe LogLevel)
+chaLogLevel = lens _chaLogLevel (\ s a -> s{_chaLogLevel = a})
 
 -- | The unique arn of the channel.
-cARN :: Lens' Channel (Maybe Text)
-cARN = lens _cARN (\ s a -> s{_cARN = a})
+chaARN :: Lens' Channel (Maybe Text)
+chaARN = lens _chaARN (\ s a -> s{_chaARN = a})
 
 -- | The number of currently healthy pipelines.
-cPipelinesRunningCount :: Lens' Channel (Maybe Int)
-cPipelinesRunningCount = lens _cPipelinesRunningCount (\ s a -> s{_cPipelinesRunningCount = a})
+chaPipelinesRunningCount :: Lens' Channel (Maybe Int)
+chaPipelinesRunningCount = lens _chaPipelinesRunningCount (\ s a -> s{_chaPipelinesRunningCount = a})
+
+-- | Runtime details for the pipelines of a running channel.
+chaPipelineDetails :: Lens' Channel [PipelineDetail]
+chaPipelineDetails = lens _chaPipelineDetails (\ s a -> s{_chaPipelineDetails = a}) . _Default . _Coerce
 
 -- | Undocumented member.
-cInputSpecification :: Lens' Channel (Maybe InputSpecification)
-cInputSpecification = lens _cInputSpecification (\ s a -> s{_cInputSpecification = a})
+chaInputSpecification :: Lens' Channel (Maybe InputSpecification)
+chaInputSpecification = lens _chaInputSpecification (\ s a -> s{_chaInputSpecification = a})
 
 -- | List of input attachments for channel.
-cInputAttachments :: Lens' Channel [InputAttachment]
-cInputAttachments = lens _cInputAttachments (\ s a -> s{_cInputAttachments = a}) . _Default . _Coerce
+chaInputAttachments :: Lens' Channel [InputAttachment]
+chaInputAttachments = lens _chaInputAttachments (\ s a -> s{_chaInputAttachments = a}) . _Default . _Coerce
 
 -- | A list of destinations of the channel. For UDP outputs, there is one destination per output. For other types (HLS, for example), there is one destination per packager.
-cDestinations :: Lens' Channel [OutputDestination]
-cDestinations = lens _cDestinations (\ s a -> s{_cDestinations = a}) . _Default . _Coerce
+chaDestinations :: Lens' Channel [OutputDestination]
+chaDestinations = lens _chaDestinations (\ s a -> s{_chaDestinations = a}) . _Default . _Coerce
 
 -- | The name of the channel. (user-mutable)
-cName :: Lens' Channel (Maybe Text)
-cName = lens _cName (\ s a -> s{_cName = a})
+chaName :: Lens' Channel (Maybe Text)
+chaName = lens _chaName (\ s a -> s{_chaName = a})
 
 -- | The unique id of the channel.
-cId :: Lens' Channel (Maybe Text)
-cId = lens _cId (\ s a -> s{_cId = a})
+chaId :: Lens' Channel (Maybe Text)
+chaId = lens _chaId (\ s a -> s{_chaId = a})
+
+-- | The class for this channel. STANDARD for a channel with two pipelines or SINGLE_PIPELINE for a channel with one pipeline.
+chaChannelClass :: Lens' Channel (Maybe ChannelClass)
+chaChannelClass = lens _chaChannelClass (\ s a -> s{_chaChannelClass = a})
 
 -- | The endpoints where outgoing connections initiate from
-cEgressEndpoints :: Lens' Channel [ChannelEgressEndpoint]
-cEgressEndpoints = lens _cEgressEndpoints (\ s a -> s{_cEgressEndpoints = a}) . _Default . _Coerce
+chaEgressEndpoints :: Lens' Channel [ChannelEgressEndpoint]
+chaEgressEndpoints = lens _chaEgressEndpoints (\ s a -> s{_chaEgressEndpoints = a}) . _Default . _Coerce
+
+-- | A collection of key-value pairs.
+chaTags :: Lens' Channel (HashMap Text Text)
+chaTags = lens _chaTags (\ s a -> s{_chaTags = a}) . _Default . _Map
 
 -- | Undocumented member.
-cEncoderSettings :: Lens' Channel (Maybe EncoderSettings)
-cEncoderSettings = lens _cEncoderSettings (\ s a -> s{_cEncoderSettings = a})
+chaEncoderSettings :: Lens' Channel (Maybe EncoderSettings)
+chaEncoderSettings = lens _chaEncoderSettings (\ s a -> s{_chaEncoderSettings = a})
 
 -- | The Amazon Resource Name (ARN) of the role assumed when running the Channel.
-cRoleARN :: Lens' Channel (Maybe Text)
-cRoleARN = lens _cRoleARN (\ s a -> s{_cRoleARN = a})
+chaRoleARN :: Lens' Channel (Maybe Text)
+chaRoleARN = lens _chaRoleARN (\ s a -> s{_chaRoleARN = a})
 
 instance FromJSON Channel where
         parseJSON
           = withObject "Channel"
               (\ x ->
                  Channel' <$>
-                   (x .:? "state") <*> (x .:? "arn") <*>
-                     (x .:? "pipelinesRunningCount")
+                   (x .:? "state") <*> (x .:? "logLevel") <*>
+                     (x .:? "arn")
+                     <*> (x .:? "pipelinesRunningCount")
+                     <*> (x .:? "pipelineDetails" .!= mempty)
                      <*> (x .:? "inputSpecification")
                      <*> (x .:? "inputAttachments" .!= mempty)
                      <*> (x .:? "destinations" .!= mempty)
                      <*> (x .:? "name")
                      <*> (x .:? "id")
+                     <*> (x .:? "channelClass")
                      <*> (x .:? "egressEndpoints" .!= mempty)
+                     <*> (x .:? "tags" .!= mempty)
                      <*> (x .:? "encoderSettings")
                      <*> (x .:? "roleArn"))
 
@@ -2051,10 +2436,10 @@ instance NFData Channel where
 -- | Placeholder documentation for ChannelEgressEndpoint
 --
 -- /See:/ 'channelEgressEndpoint' smart constructor.
-newtype ChannelEgressEndpoint = ChannelEgressEndpoint'
-  { _ceeSourceIP :: Maybe Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype ChannelEgressEndpoint = ChannelEgressEndpoint'{_ceeSourceIP
+                                                       :: Maybe Text}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'ChannelEgressEndpoint' with the minimum fields required to make a request.
 --
@@ -2063,8 +2448,8 @@ newtype ChannelEgressEndpoint = ChannelEgressEndpoint'
 -- * 'ceeSourceIP' - Public IP of where a channel's output comes from
 channelEgressEndpoint
     :: ChannelEgressEndpoint
-channelEgressEndpoint = ChannelEgressEndpoint' {_ceeSourceIP = Nothing}
-
+channelEgressEndpoint
+  = ChannelEgressEndpoint'{_ceeSourceIP = Nothing}
 
 -- | Public IP of where a channel's output comes from
 ceeSourceIP :: Lens' ChannelEgressEndpoint (Maybe Text)
@@ -2083,128 +2468,176 @@ instance NFData ChannelEgressEndpoint where
 -- | Placeholder documentation for ChannelSummary
 --
 -- /See:/ 'channelSummary' smart constructor.
-data ChannelSummary = ChannelSummary'
-  { _chaState                 :: !(Maybe ChannelState)
-  , _chaARN                   :: !(Maybe Text)
-  , _chaPipelinesRunningCount :: !(Maybe Int)
-  , _chaInputSpecification    :: !(Maybe InputSpecification)
-  , _chaInputAttachments      :: !(Maybe [InputAttachment])
-  , _chaDestinations          :: !(Maybe [OutputDestination])
-  , _chaName                  :: !(Maybe Text)
-  , _chaId                    :: !(Maybe Text)
-  , _chaEgressEndpoints       :: !(Maybe [ChannelEgressEndpoint])
-  , _chaRoleARN               :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ChannelSummary = ChannelSummary'{_csState ::
+                                      !(Maybe ChannelState),
+                                      _csLogLevel :: !(Maybe LogLevel),
+                                      _csARN :: !(Maybe Text),
+                                      _csPipelinesRunningCount :: !(Maybe Int),
+                                      _csInputSpecification ::
+                                      !(Maybe InputSpecification),
+                                      _csInputAttachments ::
+                                      !(Maybe [InputAttachment]),
+                                      _csDestinations ::
+                                      !(Maybe [OutputDestination]),
+                                      _csName :: !(Maybe Text),
+                                      _csId :: !(Maybe Text),
+                                      _csChannelClass :: !(Maybe ChannelClass),
+                                      _csEgressEndpoints ::
+                                      !(Maybe [ChannelEgressEndpoint]),
+                                      _csTags :: !(Maybe (Map Text Text)),
+                                      _csRoleARN :: !(Maybe Text)}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ChannelSummary' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'chaState' - Undocumented member.
+-- * 'csState' - Undocumented member.
 --
--- * 'chaARN' - The unique arn of the channel.
+-- * 'csLogLevel' - The log level being written to CloudWatch Logs.
 --
--- * 'chaPipelinesRunningCount' - The number of currently healthy pipelines.
+-- * 'csARN' - The unique arn of the channel.
 --
--- * 'chaInputSpecification' - Undocumented member.
+-- * 'csPipelinesRunningCount' - The number of currently healthy pipelines.
 --
--- * 'chaInputAttachments' - List of input attachments for channel.
+-- * 'csInputSpecification' - Undocumented member.
 --
--- * 'chaDestinations' - A list of destinations of the channel. For UDP outputs, there is one destination per output. For other types (HLS, for example), there is one destination per packager.
+-- * 'csInputAttachments' - List of input attachments for channel.
 --
--- * 'chaName' - The name of the channel. (user-mutable)
+-- * 'csDestinations' - A list of destinations of the channel. For UDP outputs, there is one destination per output. For other types (HLS, for example), there is one destination per packager.
 --
--- * 'chaId' - The unique id of the channel.
+-- * 'csName' - The name of the channel. (user-mutable)
 --
--- * 'chaEgressEndpoints' - The endpoints where outgoing connections initiate from
+-- * 'csId' - The unique id of the channel.
 --
--- * 'chaRoleARN' - The Amazon Resource Name (ARN) of the role assumed when running the Channel.
+-- * 'csChannelClass' - The class for this channel. STANDARD for a channel with two pipelines or SINGLE_PIPELINE for a channel with one pipeline.
+--
+-- * 'csEgressEndpoints' - The endpoints where outgoing connections initiate from
+--
+-- * 'csTags' - A collection of key-value pairs.
+--
+-- * 'csRoleARN' - The Amazon Resource Name (ARN) of the role assumed when running the Channel.
 channelSummary
     :: ChannelSummary
-channelSummary =
-  ChannelSummary'
-    { _chaState = Nothing
-    , _chaARN = Nothing
-    , _chaPipelinesRunningCount = Nothing
-    , _chaInputSpecification = Nothing
-    , _chaInputAttachments = Nothing
-    , _chaDestinations = Nothing
-    , _chaName = Nothing
-    , _chaId = Nothing
-    , _chaEgressEndpoints = Nothing
-    , _chaRoleARN = Nothing
-    }
-
+channelSummary
+  = ChannelSummary'{_csState = Nothing,
+                    _csLogLevel = Nothing, _csARN = Nothing,
+                    _csPipelinesRunningCount = Nothing,
+                    _csInputSpecification = Nothing,
+                    _csInputAttachments = Nothing,
+                    _csDestinations = Nothing, _csName = Nothing,
+                    _csId = Nothing, _csChannelClass = Nothing,
+                    _csEgressEndpoints = Nothing, _csTags = Nothing,
+                    _csRoleARN = Nothing}
 
 -- | Undocumented member.
-chaState :: Lens' ChannelSummary (Maybe ChannelState)
-chaState = lens _chaState (\ s a -> s{_chaState = a})
+csState :: Lens' ChannelSummary (Maybe ChannelState)
+csState = lens _csState (\ s a -> s{_csState = a})
+
+-- | The log level being written to CloudWatch Logs.
+csLogLevel :: Lens' ChannelSummary (Maybe LogLevel)
+csLogLevel = lens _csLogLevel (\ s a -> s{_csLogLevel = a})
 
 -- | The unique arn of the channel.
-chaARN :: Lens' ChannelSummary (Maybe Text)
-chaARN = lens _chaARN (\ s a -> s{_chaARN = a})
+csARN :: Lens' ChannelSummary (Maybe Text)
+csARN = lens _csARN (\ s a -> s{_csARN = a})
 
 -- | The number of currently healthy pipelines.
-chaPipelinesRunningCount :: Lens' ChannelSummary (Maybe Int)
-chaPipelinesRunningCount = lens _chaPipelinesRunningCount (\ s a -> s{_chaPipelinesRunningCount = a})
+csPipelinesRunningCount :: Lens' ChannelSummary (Maybe Int)
+csPipelinesRunningCount = lens _csPipelinesRunningCount (\ s a -> s{_csPipelinesRunningCount = a})
 
 -- | Undocumented member.
-chaInputSpecification :: Lens' ChannelSummary (Maybe InputSpecification)
-chaInputSpecification = lens _chaInputSpecification (\ s a -> s{_chaInputSpecification = a})
+csInputSpecification :: Lens' ChannelSummary (Maybe InputSpecification)
+csInputSpecification = lens _csInputSpecification (\ s a -> s{_csInputSpecification = a})
 
 -- | List of input attachments for channel.
-chaInputAttachments :: Lens' ChannelSummary [InputAttachment]
-chaInputAttachments = lens _chaInputAttachments (\ s a -> s{_chaInputAttachments = a}) . _Default . _Coerce
+csInputAttachments :: Lens' ChannelSummary [InputAttachment]
+csInputAttachments = lens _csInputAttachments (\ s a -> s{_csInputAttachments = a}) . _Default . _Coerce
 
 -- | A list of destinations of the channel. For UDP outputs, there is one destination per output. For other types (HLS, for example), there is one destination per packager.
-chaDestinations :: Lens' ChannelSummary [OutputDestination]
-chaDestinations = lens _chaDestinations (\ s a -> s{_chaDestinations = a}) . _Default . _Coerce
+csDestinations :: Lens' ChannelSummary [OutputDestination]
+csDestinations = lens _csDestinations (\ s a -> s{_csDestinations = a}) . _Default . _Coerce
 
 -- | The name of the channel. (user-mutable)
-chaName :: Lens' ChannelSummary (Maybe Text)
-chaName = lens _chaName (\ s a -> s{_chaName = a})
+csName :: Lens' ChannelSummary (Maybe Text)
+csName = lens _csName (\ s a -> s{_csName = a})
 
 -- | The unique id of the channel.
-chaId :: Lens' ChannelSummary (Maybe Text)
-chaId = lens _chaId (\ s a -> s{_chaId = a})
+csId :: Lens' ChannelSummary (Maybe Text)
+csId = lens _csId (\ s a -> s{_csId = a})
+
+-- | The class for this channel. STANDARD for a channel with two pipelines or SINGLE_PIPELINE for a channel with one pipeline.
+csChannelClass :: Lens' ChannelSummary (Maybe ChannelClass)
+csChannelClass = lens _csChannelClass (\ s a -> s{_csChannelClass = a})
 
 -- | The endpoints where outgoing connections initiate from
-chaEgressEndpoints :: Lens' ChannelSummary [ChannelEgressEndpoint]
-chaEgressEndpoints = lens _chaEgressEndpoints (\ s a -> s{_chaEgressEndpoints = a}) . _Default . _Coerce
+csEgressEndpoints :: Lens' ChannelSummary [ChannelEgressEndpoint]
+csEgressEndpoints = lens _csEgressEndpoints (\ s a -> s{_csEgressEndpoints = a}) . _Default . _Coerce
+
+-- | A collection of key-value pairs.
+csTags :: Lens' ChannelSummary (HashMap Text Text)
+csTags = lens _csTags (\ s a -> s{_csTags = a}) . _Default . _Map
 
 -- | The Amazon Resource Name (ARN) of the role assumed when running the Channel.
-chaRoleARN :: Lens' ChannelSummary (Maybe Text)
-chaRoleARN = lens _chaRoleARN (\ s a -> s{_chaRoleARN = a})
+csRoleARN :: Lens' ChannelSummary (Maybe Text)
+csRoleARN = lens _csRoleARN (\ s a -> s{_csRoleARN = a})
 
 instance FromJSON ChannelSummary where
         parseJSON
           = withObject "ChannelSummary"
               (\ x ->
                  ChannelSummary' <$>
-                   (x .:? "state") <*> (x .:? "arn") <*>
-                     (x .:? "pipelinesRunningCount")
+                   (x .:? "state") <*> (x .:? "logLevel") <*>
+                     (x .:? "arn")
+                     <*> (x .:? "pipelinesRunningCount")
                      <*> (x .:? "inputSpecification")
                      <*> (x .:? "inputAttachments" .!= mempty)
                      <*> (x .:? "destinations" .!= mempty)
                      <*> (x .:? "name")
                      <*> (x .:? "id")
+                     <*> (x .:? "channelClass")
                      <*> (x .:? "egressEndpoints" .!= mempty)
+                     <*> (x .:? "tags" .!= mempty)
                      <*> (x .:? "roleArn"))
 
 instance Hashable ChannelSummary where
 
 instance NFData ChannelSummary where
 
+-- | Passthrough applies no color space conversion to the output
+--
+-- /See:/ 'colorSpacePassthroughSettings' smart constructor.
+data ColorSpacePassthroughSettings = ColorSpacePassthroughSettings'
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
+
+-- | Creates a value of 'ColorSpacePassthroughSettings' with the minimum fields required to make a request.
+--
+colorSpacePassthroughSettings
+    :: ColorSpacePassthroughSettings
+colorSpacePassthroughSettings
+  = ColorSpacePassthroughSettings'
+
+instance FromJSON ColorSpacePassthroughSettings where
+        parseJSON
+          = withObject "ColorSpacePassthroughSettings"
+              (\ x -> pure ColorSpacePassthroughSettings')
+
+instance Hashable ColorSpacePassthroughSettings where
+
+instance NFData ColorSpacePassthroughSettings where
+
+instance ToJSON ColorSpacePassthroughSettings where
+        toJSON = const (Object mempty)
+
 -- | DVB Network Information Table (NIT)
 --
 -- /See:/ 'dvbNitSettings' smart constructor.
-data DvbNitSettings = DvbNitSettings'
-  { _dnsRepInterval :: !(Maybe Nat)
-  , _dnsNetworkName :: !Text
-  , _dnsNetworkId   :: !Nat
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DvbNitSettings = DvbNitSettings'{_dnsRepInterval
+                                      :: !(Maybe Nat),
+                                      _dnsNetworkName :: !Text,
+                                      _dnsNetworkId :: !Nat}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DvbNitSettings' with the minimum fields required to make a request.
 --
@@ -2219,13 +2652,10 @@ dvbNitSettings
     :: Text -- ^ 'dnsNetworkName'
     -> Natural -- ^ 'dnsNetworkId'
     -> DvbNitSettings
-dvbNitSettings pNetworkName_ pNetworkId_ =
-  DvbNitSettings'
-    { _dnsRepInterval = Nothing
-    , _dnsNetworkName = pNetworkName_
-    , _dnsNetworkId = _Nat # pNetworkId_
-    }
-
+dvbNitSettings pNetworkName_ pNetworkId_
+  = DvbNitSettings'{_dnsRepInterval = Nothing,
+                    _dnsNetworkName = pNetworkName_,
+                    _dnsNetworkId = _Nat # pNetworkId_}
 
 -- | The number of milliseconds between instances of this table in the output transport stream.
 dnsRepInterval :: Lens' DvbNitSettings (Maybe Natural)
@@ -2262,13 +2692,12 @@ instance ToJSON DvbNitSettings where
 -- | DVB Service Description Table (SDT)
 --
 -- /See:/ 'dvbSdtSettings' smart constructor.
-data DvbSdtSettings = DvbSdtSettings'
-  { _dssRepInterval         :: !(Maybe Nat)
-  , _dssServiceProviderName :: !(Maybe Text)
-  , _dssOutputSdt           :: !(Maybe DvbSdtOutputSdt)
-  , _dssServiceName         :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DvbSdtSettings = DvbSdtSettings'{_dssRepInterval
+                                      :: !(Maybe Nat),
+                                      _dssServiceProviderName :: !(Maybe Text),
+                                      _dssOutputSdt :: !(Maybe DvbSdtOutputSdt),
+                                      _dssServiceName :: !(Maybe Text)}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DvbSdtSettings' with the minimum fields required to make a request.
 --
@@ -2283,14 +2712,10 @@ data DvbSdtSettings = DvbSdtSettings'
 -- * 'dssServiceName' - The service name placed in the serviceDescriptor in the Service Description Table. Maximum length is 256 characters.
 dvbSdtSettings
     :: DvbSdtSettings
-dvbSdtSettings =
-  DvbSdtSettings'
-    { _dssRepInterval = Nothing
-    , _dssServiceProviderName = Nothing
-    , _dssOutputSdt = Nothing
-    , _dssServiceName = Nothing
-    }
-
+dvbSdtSettings
+  = DvbSdtSettings'{_dssRepInterval = Nothing,
+                    _dssServiceProviderName = Nothing,
+                    _dssOutputSdt = Nothing, _dssServiceName = Nothing}
 
 -- | The number of milliseconds between instances of this table in the output transport stream.
 dssRepInterval :: Lens' DvbSdtSettings (Maybe Natural)
@@ -2332,29 +2757,54 @@ instance ToJSON DvbSdtSettings where
                   ("outputSdt" .=) <$> _dssOutputSdt,
                   ("serviceName" .=) <$> _dssServiceName])
 
--- | Placeholder documentation for DvbSubDestinationSettings
+-- | Dvb Sub Destination Settings
 --
 -- /See:/ 'dvbSubDestinationSettings' smart constructor.
-data DvbSubDestinationSettings = DvbSubDestinationSettings'
-  { _dsdsBackgroundOpacity   :: !(Maybe Nat)
-  , _dsdsFontOpacity         :: !(Maybe Nat)
-  , _dsdsShadowYOffset       :: !(Maybe Int)
-  , _dsdsFontResolution      :: !(Maybe Nat)
-  , _dsdsYPosition           :: !(Maybe Nat)
-  , _dsdsBackgroundColor     :: !(Maybe DvbSubDestinationBackgroundColor)
-  , _dsdsShadowXOffset       :: !(Maybe Int)
-  , _dsdsFontSize            :: !(Maybe Text)
-  , _dsdsXPosition           :: !(Maybe Nat)
-  , _dsdsAlignment           :: !(Maybe DvbSubDestinationAlignment)
-  , _dsdsShadowOpacity       :: !(Maybe Nat)
-  , _dsdsTeletextGridControl :: !(Maybe DvbSubDestinationTeletextGridControl)
-  , _dsdsOutlineColor        :: !(Maybe DvbSubDestinationOutlineColor)
-  , _dsdsOutlineSize         :: !(Maybe Nat)
-  , _dsdsFont                :: !(Maybe InputLocation)
-  , _dsdsShadowColor         :: !(Maybe DvbSubDestinationShadowColor)
-  , _dsdsFontColor           :: !(Maybe DvbSubDestinationFontColor)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DvbSubDestinationSettings = DvbSubDestinationSettings'{_dsdsBackgroundOpacity
+                                                            :: !(Maybe Nat),
+                                                            _dsdsFontOpacity ::
+                                                            !(Maybe Nat),
+                                                            _dsdsShadowYOffset
+                                                            :: !(Maybe Int),
+                                                            _dsdsFontResolution
+                                                            :: !(Maybe Nat),
+                                                            _dsdsYPosition ::
+                                                            !(Maybe Nat),
+                                                            _dsdsBackgroundColor
+                                                            ::
+                                                            !(Maybe
+                                                                DvbSubDestinationBackgroundColor),
+                                                            _dsdsShadowXOffset
+                                                            :: !(Maybe Int),
+                                                            _dsdsFontSize ::
+                                                            !(Maybe Text),
+                                                            _dsdsXPosition ::
+                                                            !(Maybe Nat),
+                                                            _dsdsAlignment ::
+                                                            !(Maybe
+                                                                DvbSubDestinationAlignment),
+                                                            _dsdsShadowOpacity
+                                                            :: !(Maybe Nat),
+                                                            _dsdsTeletextGridControl
+                                                            ::
+                                                            !(Maybe
+                                                                DvbSubDestinationTeletextGridControl),
+                                                            _dsdsOutlineColor ::
+                                                            !(Maybe
+                                                                DvbSubDestinationOutlineColor),
+                                                            _dsdsOutlineSize ::
+                                                            !(Maybe Nat),
+                                                            _dsdsFont ::
+                                                            !(Maybe
+                                                                InputLocation),
+                                                            _dsdsShadowColor ::
+                                                            !(Maybe
+                                                                DvbSubDestinationShadowColor),
+                                                            _dsdsFontColor ::
+                                                            !(Maybe
+                                                                DvbSubDestinationFontColor)}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'DvbSubDestinationSettings' with the minimum fields required to make a request.
 --
@@ -2395,27 +2845,24 @@ data DvbSubDestinationSettings = DvbSubDestinationSettings'
 -- * 'dsdsFontColor' - Specifies the color of the burned-in captions.  This option is not valid for source captions that are STL, 608/embedded or teletext.  These source settings are already pre-defined by the caption stream.  All burn-in and DVB-Sub font settings must match.
 dvbSubDestinationSettings
     :: DvbSubDestinationSettings
-dvbSubDestinationSettings =
-  DvbSubDestinationSettings'
-    { _dsdsBackgroundOpacity = Nothing
-    , _dsdsFontOpacity = Nothing
-    , _dsdsShadowYOffset = Nothing
-    , _dsdsFontResolution = Nothing
-    , _dsdsYPosition = Nothing
-    , _dsdsBackgroundColor = Nothing
-    , _dsdsShadowXOffset = Nothing
-    , _dsdsFontSize = Nothing
-    , _dsdsXPosition = Nothing
-    , _dsdsAlignment = Nothing
-    , _dsdsShadowOpacity = Nothing
-    , _dsdsTeletextGridControl = Nothing
-    , _dsdsOutlineColor = Nothing
-    , _dsdsOutlineSize = Nothing
-    , _dsdsFont = Nothing
-    , _dsdsShadowColor = Nothing
-    , _dsdsFontColor = Nothing
-    }
-
+dvbSubDestinationSettings
+  = DvbSubDestinationSettings'{_dsdsBackgroundOpacity =
+                                 Nothing,
+                               _dsdsFontOpacity = Nothing,
+                               _dsdsShadowYOffset = Nothing,
+                               _dsdsFontResolution = Nothing,
+                               _dsdsYPosition = Nothing,
+                               _dsdsBackgroundColor = Nothing,
+                               _dsdsShadowXOffset = Nothing,
+                               _dsdsFontSize = Nothing,
+                               _dsdsXPosition = Nothing,
+                               _dsdsAlignment = Nothing,
+                               _dsdsShadowOpacity = Nothing,
+                               _dsdsTeletextGridControl = Nothing,
+                               _dsdsOutlineColor = Nothing,
+                               _dsdsOutlineSize = Nothing, _dsdsFont = Nothing,
+                               _dsdsShadowColor = Nothing,
+                               _dsdsFontColor = Nothing}
 
 -- | Specifies the opacity of the background rectangle. 255 is opaque; 0 is transparent. Leaving this parameter blank is equivalent to setting it to 0 (transparent).  All burn-in and DVB-Sub font settings must match.
 dsdsBackgroundOpacity :: Lens' DvbSubDestinationSettings (Maybe Natural)
@@ -2534,13 +2981,13 @@ instance ToJSON DvbSubDestinationSettings where
                   ("shadowColor" .=) <$> _dsdsShadowColor,
                   ("fontColor" .=) <$> _dsdsFontColor])
 
--- | Placeholder documentation for DvbSubSourceSettings
+-- | Dvb Sub Source Settings
 --
 -- /See:/ 'dvbSubSourceSettings' smart constructor.
-newtype DvbSubSourceSettings = DvbSubSourceSettings'
-  { _dsssPid :: Maybe Nat
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DvbSubSourceSettings = DvbSubSourceSettings'{_dsssPid
+                                                     :: Maybe Nat}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'DvbSubSourceSettings' with the minimum fields required to make a request.
 --
@@ -2549,8 +2996,8 @@ newtype DvbSubSourceSettings = DvbSubSourceSettings'
 -- * 'dsssPid' - When using DVB-Sub with Burn-In or SMPTE-TT, use this PID for the source content. Unused for DVB-Sub passthrough. All DVB-Sub content is passed through, regardless of selectors.
 dvbSubSourceSettings
     :: DvbSubSourceSettings
-dvbSubSourceSettings = DvbSubSourceSettings' {_dsssPid = Nothing}
-
+dvbSubSourceSettings
+  = DvbSubSourceSettings'{_dsssPid = Nothing}
 
 -- | When using DVB-Sub with Burn-In or SMPTE-TT, use this PID for the source content. Unused for DVB-Sub passthrough. All DVB-Sub content is passed through, regardless of selectors.
 dsssPid :: Lens' DvbSubSourceSettings (Maybe Natural)
@@ -2572,10 +3019,9 @@ instance ToJSON DvbSubSourceSettings where
 -- | DVB Time and Date Table (SDT)
 --
 -- /See:/ 'dvbTdtSettings' smart constructor.
-newtype DvbTdtSettings = DvbTdtSettings'
-  { _dtsRepInterval :: Maybe Nat
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DvbTdtSettings = DvbTdtSettings'{_dtsRepInterval
+                                         :: Maybe Nat}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DvbTdtSettings' with the minimum fields required to make a request.
 --
@@ -2584,8 +3030,8 @@ newtype DvbTdtSettings = DvbTdtSettings'
 -- * 'dtsRepInterval' - The number of milliseconds between instances of this table in the output transport stream.
 dvbTdtSettings
     :: DvbTdtSettings
-dvbTdtSettings = DvbTdtSettings' {_dtsRepInterval = Nothing}
-
+dvbTdtSettings
+  = DvbTdtSettings'{_dtsRepInterval = Nothing}
 
 -- | The number of milliseconds between instances of this table in the output transport stream.
 dtsRepInterval :: Lens' DvbTdtSettings (Maybe Natural)
@@ -2605,32 +3051,36 @@ instance ToJSON DvbTdtSettings where
           = object
               (catMaybes [("repInterval" .=) <$> _dtsRepInterval])
 
--- | Placeholder documentation for Eac3Settings
+-- | Eac3 Settings
 --
 -- /See:/ 'eac3Settings' smart constructor.
-data Eac3Settings = Eac3Settings'
-  { _esStereoDownmix        :: !(Maybe Eac3StereoDownmix)
-  , _esLoRoCenterMixLevel   :: !(Maybe Double)
-  , _esLtRtCenterMixLevel   :: !(Maybe Double)
-  , _esLfeFilter            :: !(Maybe Eac3LfeFilter)
-  , _esLtRtSurroundMixLevel :: !(Maybe Double)
-  , _esMetadataControl      :: !(Maybe Eac3MetadataControl)
-  , _esLoRoSurroundMixLevel :: !(Maybe Double)
-  , _esSurroundMode         :: !(Maybe Eac3SurroundMode)
-  , _esAttenuationControl   :: !(Maybe Eac3AttenuationControl)
-  , _esPassthroughControl   :: !(Maybe Eac3PassthroughControl)
-  , _esBitstreamMode        :: !(Maybe Eac3BitstreamMode)
-  , _esLfeControl           :: !(Maybe Eac3LfeControl)
-  , _esCodingMode           :: !(Maybe Eac3CodingMode)
-  , _esDrcLine              :: !(Maybe Eac3DrcLine)
-  , _esDrcRf                :: !(Maybe Eac3DrcRf)
-  , _esDcFilter             :: !(Maybe Eac3DcFilter)
-  , _esBitrate              :: !(Maybe Double)
-  , _esPhaseControl         :: !(Maybe Eac3PhaseControl)
-  , _esSurroundExMode       :: !(Maybe Eac3SurroundExMode)
-  , _esDialnorm             :: !(Maybe Nat)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data Eac3Settings = Eac3Settings'{_esStereoDownmix ::
+                                  !(Maybe Eac3StereoDownmix),
+                                  _esLoRoCenterMixLevel :: !(Maybe Double),
+                                  _esLtRtCenterMixLevel :: !(Maybe Double),
+                                  _esLfeFilter :: !(Maybe Eac3LfeFilter),
+                                  _esLtRtSurroundMixLevel :: !(Maybe Double),
+                                  _esMetadataControl ::
+                                  !(Maybe Eac3MetadataControl),
+                                  _esLoRoSurroundMixLevel :: !(Maybe Double),
+                                  _esSurroundMode :: !(Maybe Eac3SurroundMode),
+                                  _esAttenuationControl ::
+                                  !(Maybe Eac3AttenuationControl),
+                                  _esPassthroughControl ::
+                                  !(Maybe Eac3PassthroughControl),
+                                  _esBitstreamMode ::
+                                  !(Maybe Eac3BitstreamMode),
+                                  _esLfeControl :: !(Maybe Eac3LfeControl),
+                                  _esCodingMode :: !(Maybe Eac3CodingMode),
+                                  _esDrcLine :: !(Maybe Eac3DrcLine),
+                                  _esDrcRf :: !(Maybe Eac3DrcRf),
+                                  _esDcFilter :: !(Maybe Eac3DcFilter),
+                                  _esBitrate :: !(Maybe Double),
+                                  _esPhaseControl :: !(Maybe Eac3PhaseControl),
+                                  _esSurroundExMode ::
+                                  !(Maybe Eac3SurroundExMode),
+                                  _esDialnorm :: !(Maybe Nat)}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'Eac3Settings' with the minimum fields required to make a request.
 --
@@ -2677,30 +3127,22 @@ data Eac3Settings = Eac3Settings'
 -- * 'esDialnorm' - Sets the dialnorm for the output. If blank and input audio is Dolby Digital Plus, dialnorm will be passed through.
 eac3Settings
     :: Eac3Settings
-eac3Settings =
-  Eac3Settings'
-    { _esStereoDownmix = Nothing
-    , _esLoRoCenterMixLevel = Nothing
-    , _esLtRtCenterMixLevel = Nothing
-    , _esLfeFilter = Nothing
-    , _esLtRtSurroundMixLevel = Nothing
-    , _esMetadataControl = Nothing
-    , _esLoRoSurroundMixLevel = Nothing
-    , _esSurroundMode = Nothing
-    , _esAttenuationControl = Nothing
-    , _esPassthroughControl = Nothing
-    , _esBitstreamMode = Nothing
-    , _esLfeControl = Nothing
-    , _esCodingMode = Nothing
-    , _esDrcLine = Nothing
-    , _esDrcRf = Nothing
-    , _esDcFilter = Nothing
-    , _esBitrate = Nothing
-    , _esPhaseControl = Nothing
-    , _esSurroundExMode = Nothing
-    , _esDialnorm = Nothing
-    }
-
+eac3Settings
+  = Eac3Settings'{_esStereoDownmix = Nothing,
+                  _esLoRoCenterMixLevel = Nothing,
+                  _esLtRtCenterMixLevel = Nothing,
+                  _esLfeFilter = Nothing,
+                  _esLtRtSurroundMixLevel = Nothing,
+                  _esMetadataControl = Nothing,
+                  _esLoRoSurroundMixLevel = Nothing,
+                  _esSurroundMode = Nothing,
+                  _esAttenuationControl = Nothing,
+                  _esPassthroughControl = Nothing,
+                  _esBitstreamMode = Nothing, _esLfeControl = Nothing,
+                  _esCodingMode = Nothing, _esDrcLine = Nothing,
+                  _esDrcRf = Nothing, _esDcFilter = Nothing,
+                  _esBitrate = Nothing, _esPhaseControl = Nothing,
+                  _esSurroundExMode = Nothing, _esDialnorm = Nothing}
 
 -- | Stereo downmix preference. Only used for 3/2 coding mode.
 esStereoDownmix :: Lens' Eac3Settings (Maybe Eac3StereoDownmix)
@@ -2839,20 +3281,19 @@ instance ToJSON Eac3Settings where
                   ("surroundExMode" .=) <$> _esSurroundExMode,
                   ("dialnorm" .=) <$> _esDialnorm])
 
--- | Placeholder documentation for EmbeddedDestinationSettings
+-- | Embedded Destination Settings
 --
 -- /See:/ 'embeddedDestinationSettings' smart constructor.
-data EmbeddedDestinationSettings =
-  EmbeddedDestinationSettings'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data EmbeddedDestinationSettings = EmbeddedDestinationSettings'
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'EmbeddedDestinationSettings' with the minimum fields required to make a request.
 --
 embeddedDestinationSettings
     :: EmbeddedDestinationSettings
-embeddedDestinationSettings = EmbeddedDestinationSettings'
-
+embeddedDestinationSettings
+  = EmbeddedDestinationSettings'
 
 instance FromJSON EmbeddedDestinationSettings where
         parseJSON
@@ -2866,20 +3307,19 @@ instance NFData EmbeddedDestinationSettings where
 instance ToJSON EmbeddedDestinationSettings where
         toJSON = const (Object mempty)
 
--- | Placeholder documentation for EmbeddedPlusScte20DestinationSettings
+-- | Embedded Plus Scte20 Destination Settings
 --
 -- /See:/ 'embeddedPlusScte20DestinationSettings' smart constructor.
-data EmbeddedPlusScte20DestinationSettings =
-  EmbeddedPlusScte20DestinationSettings'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data EmbeddedPlusScte20DestinationSettings = EmbeddedPlusScte20DestinationSettings'
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'EmbeddedPlusScte20DestinationSettings' with the minimum fields required to make a request.
 --
 embeddedPlusScte20DestinationSettings
     :: EmbeddedPlusScte20DestinationSettings
-embeddedPlusScte20DestinationSettings = EmbeddedPlusScte20DestinationSettings'
-
+embeddedPlusScte20DestinationSettings
+  = EmbeddedPlusScte20DestinationSettings'
 
 instance FromJSON
            EmbeddedPlusScte20DestinationSettings
@@ -2899,16 +3339,22 @@ instance ToJSON EmbeddedPlusScte20DestinationSettings
          where
         toJSON = const (Object mempty)
 
--- | Placeholder documentation for EmbeddedSourceSettings
+-- | Embedded Source Settings
 --
 -- /See:/ 'embeddedSourceSettings' smart constructor.
-data EmbeddedSourceSettings = EmbeddedSourceSettings'
-  { _essConvert608To708        :: !(Maybe EmbeddedConvert608To708)
-  , _essScte20Detection        :: !(Maybe EmbeddedScte20Detection)
-  , _essSource608TrackNumber   :: !(Maybe Nat)
-  , _essSource608ChannelNumber :: !(Maybe Nat)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data EmbeddedSourceSettings = EmbeddedSourceSettings'{_essConvert608To708
+                                                      ::
+                                                      !(Maybe
+                                                          EmbeddedConvert608To708),
+                                                      _essScte20Detection ::
+                                                      !(Maybe
+                                                          EmbeddedScte20Detection),
+                                                      _essSource608TrackNumber
+                                                      :: !(Maybe Nat),
+                                                      _essSource608ChannelNumber
+                                                      :: !(Maybe Nat)}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'EmbeddedSourceSettings' with the minimum fields required to make a request.
 --
@@ -2923,14 +3369,12 @@ data EmbeddedSourceSettings = EmbeddedSourceSettings'
 -- * 'essSource608ChannelNumber' - Specifies the 608/708 channel number within the video track from which to extract captions. Unused for passthrough.
 embeddedSourceSettings
     :: EmbeddedSourceSettings
-embeddedSourceSettings =
-  EmbeddedSourceSettings'
-    { _essConvert608To708 = Nothing
-    , _essScte20Detection = Nothing
-    , _essSource608TrackNumber = Nothing
-    , _essSource608ChannelNumber = Nothing
-    }
-
+embeddedSourceSettings
+  = EmbeddedSourceSettings'{_essConvert608To708 =
+                              Nothing,
+                            _essScte20Detection = Nothing,
+                            _essSource608TrackNumber = Nothing,
+                            _essSource608ChannelNumber = Nothing}
 
 -- | If upconvert, 608 data is both passed through via the "608 compatibility bytes" fields of the 708 wrapper as well as translated into 708. 708 data present in the source content will be discarded.
 essConvert608To708 :: Lens' EmbeddedSourceSettings (Maybe EmbeddedConvert608To708)
@@ -2973,21 +3417,30 @@ instance ToJSON EmbeddedSourceSettings where
                   ("source608ChannelNumber" .=) <$>
                     _essSource608ChannelNumber])
 
--- | Placeholder documentation for EncoderSettings
+-- | Encoder Settings
 --
 -- /See:/ 'encoderSettings' smart constructor.
-data EncoderSettings = EncoderSettings'
-  { _esCaptionDescriptions :: !(Maybe [CaptionDescription])
-  , _esAvailConfiguration  :: !(Maybe AvailConfiguration)
-  , _esAvailBlanking       :: !(Maybe AvailBlanking)
-  , _esGlobalConfiguration :: !(Maybe GlobalConfiguration)
-  , _esBlackoutSlate       :: !(Maybe BlackoutSlate)
-  , _esVideoDescriptions   :: ![VideoDescription]
-  , _esAudioDescriptions   :: ![AudioDescription]
-  , _esOutputGroups        :: ![OutputGroup]
-  , _esTimecodeConfig      :: !TimecodeConfig
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data EncoderSettings = EncoderSettings'{_esCaptionDescriptions
+                                        :: !(Maybe [CaptionDescription]),
+                                        _esAvailConfiguration ::
+                                        !(Maybe AvailConfiguration),
+                                        _esFeatureActivations ::
+                                        !(Maybe FeatureActivations),
+                                        _esNielsenConfiguration ::
+                                        !(Maybe NielsenConfiguration),
+                                        _esAvailBlanking ::
+                                        !(Maybe AvailBlanking),
+                                        _esGlobalConfiguration ::
+                                        !(Maybe GlobalConfiguration),
+                                        _esBlackoutSlate ::
+                                        !(Maybe BlackoutSlate),
+                                        _esVideoDescriptions ::
+                                        ![VideoDescription],
+                                        _esAudioDescriptions ::
+                                        ![AudioDescription],
+                                        _esOutputGroups :: ![OutputGroup],
+                                        _esTimecodeConfig :: !TimecodeConfig}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'EncoderSettings' with the minimum fields required to make a request.
 --
@@ -2996,6 +3449,10 @@ data EncoderSettings = EncoderSettings'
 -- * 'esCaptionDescriptions' - Settings for caption decriptions
 --
 -- * 'esAvailConfiguration' - Event-wide configuration settings for ad avail insertion.
+--
+-- * 'esFeatureActivations' - Feature Activations
+--
+-- * 'esNielsenConfiguration' - Nielsen configuration settings.
 --
 -- * 'esAvailBlanking' - Settings for ad avail blanking.
 --
@@ -3013,19 +3470,18 @@ data EncoderSettings = EncoderSettings'
 encoderSettings
     :: TimecodeConfig -- ^ 'esTimecodeConfig'
     -> EncoderSettings
-encoderSettings pTimecodeConfig_ =
-  EncoderSettings'
-    { _esCaptionDescriptions = Nothing
-    , _esAvailConfiguration = Nothing
-    , _esAvailBlanking = Nothing
-    , _esGlobalConfiguration = Nothing
-    , _esBlackoutSlate = Nothing
-    , _esVideoDescriptions = mempty
-    , _esAudioDescriptions = mempty
-    , _esOutputGroups = mempty
-    , _esTimecodeConfig = pTimecodeConfig_
-    }
-
+encoderSettings pTimecodeConfig_
+  = EncoderSettings'{_esCaptionDescriptions = Nothing,
+                     _esAvailConfiguration = Nothing,
+                     _esFeatureActivations = Nothing,
+                     _esNielsenConfiguration = Nothing,
+                     _esAvailBlanking = Nothing,
+                     _esGlobalConfiguration = Nothing,
+                     _esBlackoutSlate = Nothing,
+                     _esVideoDescriptions = mempty,
+                     _esAudioDescriptions = mempty,
+                     _esOutputGroups = mempty,
+                     _esTimecodeConfig = pTimecodeConfig_}
 
 -- | Settings for caption decriptions
 esCaptionDescriptions :: Lens' EncoderSettings [CaptionDescription]
@@ -3034,6 +3490,14 @@ esCaptionDescriptions = lens _esCaptionDescriptions (\ s a -> s{_esCaptionDescri
 -- | Event-wide configuration settings for ad avail insertion.
 esAvailConfiguration :: Lens' EncoderSettings (Maybe AvailConfiguration)
 esAvailConfiguration = lens _esAvailConfiguration (\ s a -> s{_esAvailConfiguration = a})
+
+-- | Feature Activations
+esFeatureActivations :: Lens' EncoderSettings (Maybe FeatureActivations)
+esFeatureActivations = lens _esFeatureActivations (\ s a -> s{_esFeatureActivations = a})
+
+-- | Nielsen configuration settings.
+esNielsenConfiguration :: Lens' EncoderSettings (Maybe NielsenConfiguration)
+esNielsenConfiguration = lens _esNielsenConfiguration (\ s a -> s{_esNielsenConfiguration = a})
 
 -- | Settings for ad avail blanking.
 esAvailBlanking :: Lens' EncoderSettings (Maybe AvailBlanking)
@@ -3070,6 +3534,8 @@ instance FromJSON EncoderSettings where
                  EncoderSettings' <$>
                    (x .:? "captionDescriptions" .!= mempty) <*>
                      (x .:? "availConfiguration")
+                     <*> (x .:? "featureActivations")
+                     <*> (x .:? "nielsenConfiguration")
                      <*> (x .:? "availBlanking")
                      <*> (x .:? "globalConfiguration")
                      <*> (x .:? "blackoutSlate")
@@ -3089,6 +3555,9 @@ instance ToJSON EncoderSettings where
                  [("captionDescriptions" .=) <$>
                     _esCaptionDescriptions,
                   ("availConfiguration" .=) <$> _esAvailConfiguration,
+                  ("featureActivations" .=) <$> _esFeatureActivations,
+                  ("nielsenConfiguration" .=) <$>
+                    _esNielsenConfiguration,
                   ("availBlanking" .=) <$> _esAvailBlanking,
                   ("globalConfiguration" .=) <$>
                     _esGlobalConfiguration,
@@ -3098,15 +3567,58 @@ instance ToJSON EncoderSettings where
                   Just ("outputGroups" .= _esOutputGroups),
                   Just ("timecodeConfig" .= _esTimecodeConfig)])
 
--- | Placeholder documentation for FecOutputSettings
+-- | Feature Activations
+--
+-- /See:/ 'featureActivations' smart constructor.
+newtype FeatureActivations = FeatureActivations'{_faInputPrepareScheduleActions
+                                                 ::
+                                                 Maybe
+                                                   FeatureActivationsInputPrepareScheduleActions}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
+
+-- | Creates a value of 'FeatureActivations' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'faInputPrepareScheduleActions' - Enables the Input Prepare feature. You can create Input Prepare actions in the schedule only if this feature is enabled. If you disable the feature on an existing schedule, make sure that you first delete all input prepare actions from the schedule.
+featureActivations
+    :: FeatureActivations
+featureActivations
+  = FeatureActivations'{_faInputPrepareScheduleActions
+                          = Nothing}
+
+-- | Enables the Input Prepare feature. You can create Input Prepare actions in the schedule only if this feature is enabled. If you disable the feature on an existing schedule, make sure that you first delete all input prepare actions from the schedule.
+faInputPrepareScheduleActions :: Lens' FeatureActivations (Maybe FeatureActivationsInputPrepareScheduleActions)
+faInputPrepareScheduleActions = lens _faInputPrepareScheduleActions (\ s a -> s{_faInputPrepareScheduleActions = a})
+
+instance FromJSON FeatureActivations where
+        parseJSON
+          = withObject "FeatureActivations"
+              (\ x ->
+                 FeatureActivations' <$>
+                   (x .:? "inputPrepareScheduleActions"))
+
+instance Hashable FeatureActivations where
+
+instance NFData FeatureActivations where
+
+instance ToJSON FeatureActivations where
+        toJSON FeatureActivations'{..}
+          = object
+              (catMaybes
+                 [("inputPrepareScheduleActions" .=) <$>
+                    _faInputPrepareScheduleActions])
+
+-- | Fec Output Settings
 --
 -- /See:/ 'fecOutputSettings' smart constructor.
-data FecOutputSettings = FecOutputSettings'
-  { _fosRowLength   :: !(Maybe Nat)
-  , _fosIncludeFec  :: !(Maybe FecOutputIncludeFec)
-  , _fosColumnDepth :: !(Maybe Nat)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data FecOutputSettings = FecOutputSettings'{_fosRowLength
+                                            :: !(Maybe Nat),
+                                            _fosIncludeFec ::
+                                            !(Maybe FecOutputIncludeFec),
+                                            _fosColumnDepth :: !(Maybe Nat)}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'FecOutputSettings' with the minimum fields required to make a request.
 --
@@ -3119,13 +3631,9 @@ data FecOutputSettings = FecOutputSettings'
 -- * 'fosColumnDepth' - Parameter D from SMPTE 2022-1. The height of the FEC protection matrix.  The number of transport stream packets per column error correction packet. Must be between 4 and 20, inclusive.
 fecOutputSettings
     :: FecOutputSettings
-fecOutputSettings =
-  FecOutputSettings'
-    { _fosRowLength = Nothing
-    , _fosIncludeFec = Nothing
-    , _fosColumnDepth = Nothing
-    }
-
+fecOutputSettings
+  = FecOutputSettings'{_fosRowLength = Nothing,
+                       _fosIncludeFec = Nothing, _fosColumnDepth = Nothing}
 
 -- | Parameter L from SMPTE 2022-1. The width of the FEC protection matrix.  Must be between 1 and 20, inclusive. If only Column FEC is used, then larger values increase robustness.  If Row FEC is used, then this is the number of transport stream packets per row error correction packet, and the value must be between 4 and 20, inclusive, if includeFec is columnAndRow. If includeFec is column, this value must be 1 to 20, inclusive.
 fosRowLength :: Lens' FecOutputSettings (Maybe Natural)
@@ -3159,21 +3667,338 @@ instance ToJSON FecOutputSettings where
                   ("includeFec" .=) <$> _fosIncludeFec,
                   ("columnDepth" .=) <$> _fosColumnDepth])
 
--- | Placeholder documentation for GlobalConfiguration
+-- | Start time for the action.
+--
+-- /See:/ 'fixedModeScheduleActionStartSettings' smart constructor.
+newtype FixedModeScheduleActionStartSettings = FixedModeScheduleActionStartSettings'{_fmsassTime
+                                                                                     ::
+                                                                                     Text}
+                                                 deriving (Eq, Read, Show, Data,
+                                                           Typeable, Generic)
+
+-- | Creates a value of 'FixedModeScheduleActionStartSettings' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'fmsassTime' - Start time for the action to start in the channel. (Not the time for the action to be added to the schedule: actions are always added to the schedule immediately.) UTC format: yyyy-mm-ddThh:mm:ss.nnnZ. All the letters are digits (for example, mm might be 01) except for the two constants "T" for time and "Z" for "UTC format".
+fixedModeScheduleActionStartSettings
+    :: Text -- ^ 'fmsassTime'
+    -> FixedModeScheduleActionStartSettings
+fixedModeScheduleActionStartSettings pTime_
+  = FixedModeScheduleActionStartSettings'{_fmsassTime =
+                                            pTime_}
+
+-- | Start time for the action to start in the channel. (Not the time for the action to be added to the schedule: actions are always added to the schedule immediately.) UTC format: yyyy-mm-ddThh:mm:ss.nnnZ. All the letters are digits (for example, mm might be 01) except for the two constants "T" for time and "Z" for "UTC format".
+fmsassTime :: Lens' FixedModeScheduleActionStartSettings Text
+fmsassTime = lens _fmsassTime (\ s a -> s{_fmsassTime = a})
+
+instance FromJSON
+           FixedModeScheduleActionStartSettings
+         where
+        parseJSON
+          = withObject "FixedModeScheduleActionStartSettings"
+              (\ x ->
+                 FixedModeScheduleActionStartSettings' <$>
+                   (x .: "time"))
+
+instance Hashable
+           FixedModeScheduleActionStartSettings
+         where
+
+instance NFData FixedModeScheduleActionStartSettings
+         where
+
+instance ToJSON FixedModeScheduleActionStartSettings
+         where
+        toJSON FixedModeScheduleActionStartSettings'{..}
+          = object (catMaybes [Just ("time" .= _fmsassTime)])
+
+-- | Fmp4 Hls Settings
+--
+-- /See:/ 'fmp4HlsSettings' smart constructor.
+data Fmp4HlsSettings = Fmp4HlsSettings'{_fhsNielsenId3Behavior
+                                        :: !(Maybe Fmp4NielsenId3Behavior),
+                                        _fhsAudioRenditionSets :: !(Maybe Text),
+                                        _fhsTimedMetadataBehavior ::
+                                        !(Maybe Fmp4TimedMetadataBehavior)}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+-- | Creates a value of 'Fmp4HlsSettings' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'fhsNielsenId3Behavior' - If set to passthrough, Nielsen inaudible tones for media tracking will be detected in the input audio and an equivalent ID3 tag will be inserted in the output.
+--
+-- * 'fhsAudioRenditionSets' - List all the audio groups that are used with the video output stream. Input all the audio GROUP-IDs that are associated to the video, separate by ','.
+--
+-- * 'fhsTimedMetadataBehavior' - When set to passthrough, timed metadata is passed through from input to output.
+fmp4HlsSettings
+    :: Fmp4HlsSettings
+fmp4HlsSettings
+  = Fmp4HlsSettings'{_fhsNielsenId3Behavior = Nothing,
+                     _fhsAudioRenditionSets = Nothing,
+                     _fhsTimedMetadataBehavior = Nothing}
+
+-- | If set to passthrough, Nielsen inaudible tones for media tracking will be detected in the input audio and an equivalent ID3 tag will be inserted in the output.
+fhsNielsenId3Behavior :: Lens' Fmp4HlsSettings (Maybe Fmp4NielsenId3Behavior)
+fhsNielsenId3Behavior = lens _fhsNielsenId3Behavior (\ s a -> s{_fhsNielsenId3Behavior = a})
+
+-- | List all the audio groups that are used with the video output stream. Input all the audio GROUP-IDs that are associated to the video, separate by ','.
+fhsAudioRenditionSets :: Lens' Fmp4HlsSettings (Maybe Text)
+fhsAudioRenditionSets = lens _fhsAudioRenditionSets (\ s a -> s{_fhsAudioRenditionSets = a})
+
+-- | When set to passthrough, timed metadata is passed through from input to output.
+fhsTimedMetadataBehavior :: Lens' Fmp4HlsSettings (Maybe Fmp4TimedMetadataBehavior)
+fhsTimedMetadataBehavior = lens _fhsTimedMetadataBehavior (\ s a -> s{_fhsTimedMetadataBehavior = a})
+
+instance FromJSON Fmp4HlsSettings where
+        parseJSON
+          = withObject "Fmp4HlsSettings"
+              (\ x ->
+                 Fmp4HlsSettings' <$>
+                   (x .:? "nielsenId3Behavior") <*>
+                     (x .:? "audioRenditionSets")
+                     <*> (x .:? "timedMetadataBehavior"))
+
+instance Hashable Fmp4HlsSettings where
+
+instance NFData Fmp4HlsSettings where
+
+instance ToJSON Fmp4HlsSettings where
+        toJSON Fmp4HlsSettings'{..}
+          = object
+              (catMaybes
+                 [("nielsenId3Behavior" .=) <$>
+                    _fhsNielsenId3Behavior,
+                  ("audioRenditionSets" .=) <$> _fhsAudioRenditionSets,
+                  ("timedMetadataBehavior" .=) <$>
+                    _fhsTimedMetadataBehavior])
+
+-- | Settings to specify if an action follows another.
+--
+-- /See:/ 'followModeScheduleActionStartSettings' smart constructor.
+data FollowModeScheduleActionStartSettings = FollowModeScheduleActionStartSettings'{_fmsassReferenceActionName
+                                                                                    ::
+                                                                                    !Text,
+                                                                                    _fmsassFollowPoint
+                                                                                    ::
+                                                                                    !FollowPoint}
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
+
+-- | Creates a value of 'FollowModeScheduleActionStartSettings' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'fmsassReferenceActionName' - The action name of another action that this one refers to.
+--
+-- * 'fmsassFollowPoint' - Identifies whether this action starts relative to the start or relative to the end of the reference action.
+followModeScheduleActionStartSettings
+    :: Text -- ^ 'fmsassReferenceActionName'
+    -> FollowPoint -- ^ 'fmsassFollowPoint'
+    -> FollowModeScheduleActionStartSettings
+followModeScheduleActionStartSettings
+  pReferenceActionName_ pFollowPoint_
+  = FollowModeScheduleActionStartSettings'{_fmsassReferenceActionName
+                                             = pReferenceActionName_,
+                                           _fmsassFollowPoint = pFollowPoint_}
+
+-- | The action name of another action that this one refers to.
+fmsassReferenceActionName :: Lens' FollowModeScheduleActionStartSettings Text
+fmsassReferenceActionName = lens _fmsassReferenceActionName (\ s a -> s{_fmsassReferenceActionName = a})
+
+-- | Identifies whether this action starts relative to the start or relative to the end of the reference action.
+fmsassFollowPoint :: Lens' FollowModeScheduleActionStartSettings FollowPoint
+fmsassFollowPoint = lens _fmsassFollowPoint (\ s a -> s{_fmsassFollowPoint = a})
+
+instance FromJSON
+           FollowModeScheduleActionStartSettings
+         where
+        parseJSON
+          = withObject "FollowModeScheduleActionStartSettings"
+              (\ x ->
+                 FollowModeScheduleActionStartSettings' <$>
+                   (x .: "referenceActionName") <*>
+                     (x .: "followPoint"))
+
+instance Hashable
+           FollowModeScheduleActionStartSettings
+         where
+
+instance NFData FollowModeScheduleActionStartSettings
+         where
+
+instance ToJSON FollowModeScheduleActionStartSettings
+         where
+        toJSON FollowModeScheduleActionStartSettings'{..}
+          = object
+              (catMaybes
+                 [Just
+                    ("referenceActionName" .=
+                       _fmsassReferenceActionName),
+                  Just ("followPoint" .= _fmsassFollowPoint)])
+
+-- | Frame Capture Group Settings
+--
+-- /See:/ 'frameCaptureGroupSettings' smart constructor.
+newtype FrameCaptureGroupSettings = FrameCaptureGroupSettings'{_fcgsDestination
+                                                               ::
+                                                               OutputLocationRef}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
+
+-- | Creates a value of 'FrameCaptureGroupSettings' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'fcgsDestination' - The destination for the frame capture files. Either the URI for an Amazon S3 bucket and object, plus a file name prefix (for example, s3ssl://sportsDelivery/highlights/20180820/curling_) or the URI for a MediaStore container, plus a file name prefix (for example, mediastoressl://sportsDelivery/20180820/curling_). The final file names consist of the prefix from the destination field (for example, "curling_") + name modifier + the counter (5 digits, starting from 00001) + extension (which is always .jpg).  For example, curlingLow.00001.jpg
+frameCaptureGroupSettings
+    :: OutputLocationRef -- ^ 'fcgsDestination'
+    -> FrameCaptureGroupSettings
+frameCaptureGroupSettings pDestination_
+  = FrameCaptureGroupSettings'{_fcgsDestination =
+                                 pDestination_}
+
+-- | The destination for the frame capture files. Either the URI for an Amazon S3 bucket and object, plus a file name prefix (for example, s3ssl://sportsDelivery/highlights/20180820/curling_) or the URI for a MediaStore container, plus a file name prefix (for example, mediastoressl://sportsDelivery/20180820/curling_). The final file names consist of the prefix from the destination field (for example, "curling_") + name modifier + the counter (5 digits, starting from 00001) + extension (which is always .jpg).  For example, curlingLow.00001.jpg
+fcgsDestination :: Lens' FrameCaptureGroupSettings OutputLocationRef
+fcgsDestination = lens _fcgsDestination (\ s a -> s{_fcgsDestination = a})
+
+instance FromJSON FrameCaptureGroupSettings where
+        parseJSON
+          = withObject "FrameCaptureGroupSettings"
+              (\ x ->
+                 FrameCaptureGroupSettings' <$> (x .: "destination"))
+
+instance Hashable FrameCaptureGroupSettings where
+
+instance NFData FrameCaptureGroupSettings where
+
+instance ToJSON FrameCaptureGroupSettings where
+        toJSON FrameCaptureGroupSettings'{..}
+          = object
+              (catMaybes
+                 [Just ("destination" .= _fcgsDestination)])
+
+-- | Frame Capture Output Settings
+--
+-- /See:/ 'frameCaptureOutputSettings' smart constructor.
+newtype FrameCaptureOutputSettings = FrameCaptureOutputSettings'{_fcosNameModifier
+                                                                 :: Maybe Text}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
+
+-- | Creates a value of 'FrameCaptureOutputSettings' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'fcosNameModifier' - Required if the output group contains more than one output. This modifier forms part of the output file name.
+frameCaptureOutputSettings
+    :: FrameCaptureOutputSettings
+frameCaptureOutputSettings
+  = FrameCaptureOutputSettings'{_fcosNameModifier =
+                                  Nothing}
+
+-- | Required if the output group contains more than one output. This modifier forms part of the output file name.
+fcosNameModifier :: Lens' FrameCaptureOutputSettings (Maybe Text)
+fcosNameModifier = lens _fcosNameModifier (\ s a -> s{_fcosNameModifier = a})
+
+instance FromJSON FrameCaptureOutputSettings where
+        parseJSON
+          = withObject "FrameCaptureOutputSettings"
+              (\ x ->
+                 FrameCaptureOutputSettings' <$>
+                   (x .:? "nameModifier"))
+
+instance Hashable FrameCaptureOutputSettings where
+
+instance NFData FrameCaptureOutputSettings where
+
+instance ToJSON FrameCaptureOutputSettings where
+        toJSON FrameCaptureOutputSettings'{..}
+          = object
+              (catMaybes
+                 [("nameModifier" .=) <$> _fcosNameModifier])
+
+-- | Frame Capture Settings
+--
+-- /See:/ 'frameCaptureSettings' smart constructor.
+data FrameCaptureSettings = FrameCaptureSettings'{_fcsCaptureIntervalUnits
+                                                  ::
+                                                  !(Maybe
+                                                      FrameCaptureIntervalUnit),
+                                                  _fcsCaptureInterval :: !Nat}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+-- | Creates a value of 'FrameCaptureSettings' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'fcsCaptureIntervalUnits' - Unit for the frame capture interval.
+--
+-- * 'fcsCaptureInterval' - The frequency at which to capture frames for inclusion in the output. May be specified in either seconds or milliseconds, as specified by captureIntervalUnits.
+frameCaptureSettings
+    :: Natural -- ^ 'fcsCaptureInterval'
+    -> FrameCaptureSettings
+frameCaptureSettings pCaptureInterval_
+  = FrameCaptureSettings'{_fcsCaptureIntervalUnits =
+                            Nothing,
+                          _fcsCaptureInterval = _Nat # pCaptureInterval_}
+
+-- | Unit for the frame capture interval.
+fcsCaptureIntervalUnits :: Lens' FrameCaptureSettings (Maybe FrameCaptureIntervalUnit)
+fcsCaptureIntervalUnits = lens _fcsCaptureIntervalUnits (\ s a -> s{_fcsCaptureIntervalUnits = a})
+
+-- | The frequency at which to capture frames for inclusion in the output. May be specified in either seconds or milliseconds, as specified by captureIntervalUnits.
+fcsCaptureInterval :: Lens' FrameCaptureSettings Natural
+fcsCaptureInterval = lens _fcsCaptureInterval (\ s a -> s{_fcsCaptureInterval = a}) . _Nat
+
+instance FromJSON FrameCaptureSettings where
+        parseJSON
+          = withObject "FrameCaptureSettings"
+              (\ x ->
+                 FrameCaptureSettings' <$>
+                   (x .:? "captureIntervalUnits") <*>
+                     (x .: "captureInterval"))
+
+instance Hashable FrameCaptureSettings where
+
+instance NFData FrameCaptureSettings where
+
+instance ToJSON FrameCaptureSettings where
+        toJSON FrameCaptureSettings'{..}
+          = object
+              (catMaybes
+                 [("captureIntervalUnits" .=) <$>
+                    _fcsCaptureIntervalUnits,
+                  Just ("captureInterval" .= _fcsCaptureInterval)])
+
+-- | Global Configuration
 --
 -- /See:/ 'globalConfiguration' smart constructor.
-data GlobalConfiguration = GlobalConfiguration'
-  { _gcInputLossBehavior :: !(Maybe InputLossBehavior)
-  , _gcInitialAudioGain :: !(Maybe Int)
-  , _gcSupportLowFramerateInputs :: !(Maybe GlobalConfigurationLowFramerateInputs)
-  , _gcInputEndAction :: !(Maybe GlobalConfigurationInputEndAction)
-  , _gcOutputTimingSource :: !(Maybe GlobalConfigurationOutputTimingSource)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GlobalConfiguration = GlobalConfiguration'{_gcOutputLockingMode
+                                                ::
+                                                !(Maybe
+                                                    GlobalConfigurationOutputLockingMode),
+                                                _gcInputLossBehavior ::
+                                                !(Maybe InputLossBehavior),
+                                                _gcInitialAudioGain ::
+                                                !(Maybe Int),
+                                                _gcSupportLowFramerateInputs ::
+                                                !(Maybe
+                                                    GlobalConfigurationLowFramerateInputs),
+                                                _gcInputEndAction ::
+                                                !(Maybe
+                                                    GlobalConfigurationInputEndAction),
+                                                _gcOutputTimingSource ::
+                                                !(Maybe
+                                                    GlobalConfigurationOutputTimingSource)}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GlobalConfiguration' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'gcOutputLockingMode' - Indicates how MediaLive pipelines are synchronized. PIPELINE_LOCKING - MediaLive will attempt to synchronize the output of each pipeline to the other. EPOCH_LOCKING - MediaLive will attempt to synchronize the output of each pipeline to the Unix epoch.
 --
 -- * 'gcInputLossBehavior' - Settings for system actions when input is lost.
 --
@@ -3181,20 +4006,23 @@ data GlobalConfiguration = GlobalConfiguration'
 --
 -- * 'gcSupportLowFramerateInputs' - Adjusts video input buffer for streams with very low video framerates. This is commonly set to enabled for music channels with less than one video frame per second.
 --
--- * 'gcInputEndAction' - Indicates the action to take when an input completes (e.g. end-of-file.) Options include immediately switching to the next sequential input (via "switchInput"), switching to the next input and looping back to the first input when last input ends (via "switchAndLoopInputs") or not switching inputs and instead transcoding black / color / slate images per the "Input Loss Behavior" configuration until an activateInput REST command is received (via "none").
+-- * 'gcInputEndAction' - Indicates the action to take when the current input completes (e.g. end-of-file). When switchAndLoopInputs is configured the encoder will restart at the beginning of the first input.  When "none" is configured the encoder will transcode either black, a solid color, or a user specified slate images per the "Input Loss Behavior" configuration until the next input switch occurs (which is controlled through the Channel Schedule API).
 --
 -- * 'gcOutputTimingSource' - Indicates whether the rate of frames emitted by the Live encoder should be paced by its system clock (which optionally may be locked to another source via NTP) or should be locked to the clock of the source that is providing the input stream.
 globalConfiguration
     :: GlobalConfiguration
-globalConfiguration =
-  GlobalConfiguration'
-    { _gcInputLossBehavior = Nothing
-    , _gcInitialAudioGain = Nothing
-    , _gcSupportLowFramerateInputs = Nothing
-    , _gcInputEndAction = Nothing
-    , _gcOutputTimingSource = Nothing
-    }
+globalConfiguration
+  = GlobalConfiguration'{_gcOutputLockingMode =
+                           Nothing,
+                         _gcInputLossBehavior = Nothing,
+                         _gcInitialAudioGain = Nothing,
+                         _gcSupportLowFramerateInputs = Nothing,
+                         _gcInputEndAction = Nothing,
+                         _gcOutputTimingSource = Nothing}
 
+-- | Indicates how MediaLive pipelines are synchronized. PIPELINE_LOCKING - MediaLive will attempt to synchronize the output of each pipeline to the other. EPOCH_LOCKING - MediaLive will attempt to synchronize the output of each pipeline to the Unix epoch.
+gcOutputLockingMode :: Lens' GlobalConfiguration (Maybe GlobalConfigurationOutputLockingMode)
+gcOutputLockingMode = lens _gcOutputLockingMode (\ s a -> s{_gcOutputLockingMode = a})
 
 -- | Settings for system actions when input is lost.
 gcInputLossBehavior :: Lens' GlobalConfiguration (Maybe InputLossBehavior)
@@ -3208,7 +4036,7 @@ gcInitialAudioGain = lens _gcInitialAudioGain (\ s a -> s{_gcInitialAudioGain = 
 gcSupportLowFramerateInputs :: Lens' GlobalConfiguration (Maybe GlobalConfigurationLowFramerateInputs)
 gcSupportLowFramerateInputs = lens _gcSupportLowFramerateInputs (\ s a -> s{_gcSupportLowFramerateInputs = a})
 
--- | Indicates the action to take when an input completes (e.g. end-of-file.) Options include immediately switching to the next sequential input (via "switchInput"), switching to the next input and looping back to the first input when last input ends (via "switchAndLoopInputs") or not switching inputs and instead transcoding black / color / slate images per the "Input Loss Behavior" configuration until an activateInput REST command is received (via "none").
+-- | Indicates the action to take when the current input completes (e.g. end-of-file). When switchAndLoopInputs is configured the encoder will restart at the beginning of the first input.  When "none" is configured the encoder will transcode either black, a solid color, or a user specified slate images per the "Input Loss Behavior" configuration until the next input switch occurs (which is controlled through the Channel Schedule API).
 gcInputEndAction :: Lens' GlobalConfiguration (Maybe GlobalConfigurationInputEndAction)
 gcInputEndAction = lens _gcInputEndAction (\ s a -> s{_gcInputEndAction = a})
 
@@ -3221,8 +4049,9 @@ instance FromJSON GlobalConfiguration where
           = withObject "GlobalConfiguration"
               (\ x ->
                  GlobalConfiguration' <$>
-                   (x .:? "inputLossBehavior") <*>
-                     (x .:? "initialAudioGain")
+                   (x .:? "outputLockingMode") <*>
+                     (x .:? "inputLossBehavior")
+                     <*> (x .:? "initialAudioGain")
                      <*> (x .:? "supportLowFramerateInputs")
                      <*> (x .:? "inputEndAction")
                      <*> (x .:? "outputTimingSource"))
@@ -3235,309 +4064,463 @@ instance ToJSON GlobalConfiguration where
         toJSON GlobalConfiguration'{..}
           = object
               (catMaybes
-                 [("inputLossBehavior" .=) <$> _gcInputLossBehavior,
+                 [("outputLockingMode" .=) <$> _gcOutputLockingMode,
+                  ("inputLossBehavior" .=) <$> _gcInputLossBehavior,
                   ("initialAudioGain" .=) <$> _gcInitialAudioGain,
                   ("supportLowFramerateInputs" .=) <$>
                     _gcSupportLowFramerateInputs,
                   ("inputEndAction" .=) <$> _gcInputEndAction,
                   ("outputTimingSource" .=) <$> _gcOutputTimingSource])
 
--- | Placeholder documentation for H264Settings
+-- | H264 Color Space Settings
+--
+-- /See:/ 'h264ColorSpaceSettings' smart constructor.
+data H264ColorSpaceSettings = H264ColorSpaceSettings'{_hRec709Settings
+                                                      ::
+                                                      !(Maybe Rec709Settings),
+                                                      _hRec601Settings ::
+                                                      !(Maybe Rec601Settings),
+                                                      _hColorSpacePassthroughSettings
+                                                      ::
+                                                      !(Maybe
+                                                          ColorSpacePassthroughSettings)}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
+
+-- | Creates a value of 'H264ColorSpaceSettings' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'hRec709Settings' - Undocumented member.
+--
+-- * 'hRec601Settings' - Undocumented member.
+--
+-- * 'hColorSpacePassthroughSettings' - Undocumented member.
+h264ColorSpaceSettings
+    :: H264ColorSpaceSettings
+h264ColorSpaceSettings
+  = H264ColorSpaceSettings'{_hRec709Settings = Nothing,
+                            _hRec601Settings = Nothing,
+                            _hColorSpacePassthroughSettings = Nothing}
+
+-- | Undocumented member.
+hRec709Settings :: Lens' H264ColorSpaceSettings (Maybe Rec709Settings)
+hRec709Settings = lens _hRec709Settings (\ s a -> s{_hRec709Settings = a})
+
+-- | Undocumented member.
+hRec601Settings :: Lens' H264ColorSpaceSettings (Maybe Rec601Settings)
+hRec601Settings = lens _hRec601Settings (\ s a -> s{_hRec601Settings = a})
+
+-- | Undocumented member.
+hColorSpacePassthroughSettings :: Lens' H264ColorSpaceSettings (Maybe ColorSpacePassthroughSettings)
+hColorSpacePassthroughSettings = lens _hColorSpacePassthroughSettings (\ s a -> s{_hColorSpacePassthroughSettings = a})
+
+instance FromJSON H264ColorSpaceSettings where
+        parseJSON
+          = withObject "H264ColorSpaceSettings"
+              (\ x ->
+                 H264ColorSpaceSettings' <$>
+                   (x .:? "rec709Settings") <*> (x .:? "rec601Settings")
+                     <*> (x .:? "colorSpacePassthroughSettings"))
+
+instance Hashable H264ColorSpaceSettings where
+
+instance NFData H264ColorSpaceSettings where
+
+instance ToJSON H264ColorSpaceSettings where
+        toJSON H264ColorSpaceSettings'{..}
+          = object
+              (catMaybes
+                 [("rec709Settings" .=) <$> _hRec709Settings,
+                  ("rec601Settings" .=) <$> _hRec601Settings,
+                  ("colorSpacePassthroughSettings" .=) <$>
+                    _hColorSpacePassthroughSettings])
+
+-- | H264 Filter Settings
+--
+-- /See:/ 'h264FilterSettings' smart constructor.
+newtype H264FilterSettings = H264FilterSettings'{_hfsTemporalFilterSettings
+                                                 ::
+                                                 Maybe TemporalFilterSettings}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
+
+-- | Creates a value of 'H264FilterSettings' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'hfsTemporalFilterSettings' - Undocumented member.
+h264FilterSettings
+    :: H264FilterSettings
+h264FilterSettings
+  = H264FilterSettings'{_hfsTemporalFilterSettings =
+                          Nothing}
+
+-- | Undocumented member.
+hfsTemporalFilterSettings :: Lens' H264FilterSettings (Maybe TemporalFilterSettings)
+hfsTemporalFilterSettings = lens _hfsTemporalFilterSettings (\ s a -> s{_hfsTemporalFilterSettings = a})
+
+instance FromJSON H264FilterSettings where
+        parseJSON
+          = withObject "H264FilterSettings"
+              (\ x ->
+                 H264FilterSettings' <$>
+                   (x .:? "temporalFilterSettings"))
+
+instance Hashable H264FilterSettings where
+
+instance NFData H264FilterSettings where
+
+instance ToJSON H264FilterSettings where
+        toJSON H264FilterSettings'{..}
+          = object
+              (catMaybes
+                 [("temporalFilterSettings" .=) <$>
+                    _hfsTemporalFilterSettings])
+
+-- | H264 Settings
 --
 -- /See:/ 'h264Settings' smart constructor.
-data H264Settings = H264Settings'
-  { _hsTemporalAq           :: !(Maybe H264TemporalAq)
-  , _hsSceneChangeDetect    :: !(Maybe H264SceneChangeDetect)
-  , _hsScanType             :: !(Maybe H264ScanType)
-  , _hsTimecodeInsertion    :: !(Maybe H264TimecodeInsertionBehavior)
-  , _hsParNumerator         :: !(Maybe Int)
-  , _hsAfdSignaling         :: !(Maybe AfdSignaling)
-  , _hsGopSize              :: !(Maybe Double)
-  , _hsGopSizeUnits         :: !(Maybe H264GopSizeUnits)
-  , _hsSlices               :: !(Maybe Nat)
-  , _hsProfile              :: !(Maybe H264Profile)
-  , _hsRateControlMode      :: !(Maybe H264RateControlMode)
-  , _hsMinIInterval         :: !(Maybe Nat)
-  , _hsParControl           :: !(Maybe H264ParControl)
-  , _hsFlickerAq            :: !(Maybe H264FlickerAq)
-  , _hsBufSize              :: !(Maybe Nat)
-  , _hsSpatialAq            :: !(Maybe H264SpatialAq)
-  , _hsGopNumBFrames        :: !(Maybe Nat)
-  , _hsFixedAfd             :: !(Maybe FixedAfd)
-  , _hsSoftness             :: !(Maybe Nat)
-  , _hsBitrate              :: !(Maybe Nat)
-  , _hsFramerateDenominator :: !(Maybe Int)
-  , _hsEntropyEncoding      :: !(Maybe H264EntropyEncoding)
-  , _hsFramerateControl     :: !(Maybe H264FramerateControl)
-  , _hsColorMetadata        :: !(Maybe H264ColorMetadata)
-  , _hsLookAheadRateControl :: !(Maybe H264LookAheadRateControl)
-  , _hsAdaptiveQuantization :: !(Maybe H264AdaptiveQuantization)
-  , _hsFramerateNumerator   :: !(Maybe Int)
-  , _hsLevel                :: !(Maybe H264Level)
-  , _hsGopBReference        :: !(Maybe H264GopBReference)
-  , _hsMaxBitrate           :: !(Maybe Nat)
-  , _hsSyntax               :: !(Maybe H264Syntax)
-  , _hsBufFillPct           :: !(Maybe Nat)
-  , _hsGopClosedCadence     :: !(Maybe Nat)
-  , _hsNumRefFrames         :: !(Maybe Nat)
-  , _hsParDenominator       :: !(Maybe Nat)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data H264Settings = H264Settings'{_hssTemporalAq ::
+                                  !(Maybe H264TemporalAq),
+                                  _hssSceneChangeDetect ::
+                                  !(Maybe H264SceneChangeDetect),
+                                  _hssScanType :: !(Maybe H264ScanType),
+                                  _hssTimecodeInsertion ::
+                                  !(Maybe H264TimecodeInsertionBehavior),
+                                  _hssParNumerator :: !(Maybe Int),
+                                  _hssAfdSignaling :: !(Maybe AfdSignaling),
+                                  _hssGopSize :: !(Maybe Double),
+                                  _hssGopSizeUnits :: !(Maybe H264GopSizeUnits),
+                                  _hssSubgopLength :: !(Maybe H264SubGopLength),
+                                  _hssQualityLevel :: !(Maybe H264QualityLevel),
+                                  _hssSlices :: !(Maybe Nat),
+                                  _hssProfile :: !(Maybe H264Profile),
+                                  _hssRateControlMode ::
+                                  !(Maybe H264RateControlMode),
+                                  _hssMinIInterval :: !(Maybe Nat),
+                                  _hssQvbrQualityLevel :: !(Maybe Nat),
+                                  _hssColorSpaceSettings ::
+                                  !(Maybe H264ColorSpaceSettings),
+                                  _hssParControl :: !(Maybe H264ParControl),
+                                  _hssFlickerAq :: !(Maybe H264FlickerAq),
+                                  _hssBufSize :: !(Maybe Nat),
+                                  _hssSpatialAq :: !(Maybe H264SpatialAq),
+                                  _hssGopNumBFrames :: !(Maybe Nat),
+                                  _hssFixedAfd :: !(Maybe FixedAfd),
+                                  _hssSoftness :: !(Maybe Nat),
+                                  _hssFilterSettings ::
+                                  !(Maybe H264FilterSettings),
+                                  _hssBitrate :: !(Maybe Nat),
+                                  _hssFramerateDenominator :: !(Maybe Nat),
+                                  _hssForceFieldPictures ::
+                                  !(Maybe H264ForceFieldPictures),
+                                  _hssEntropyEncoding ::
+                                  !(Maybe H264EntropyEncoding),
+                                  _hssFramerateControl ::
+                                  !(Maybe H264FramerateControl),
+                                  _hssColorMetadata ::
+                                  !(Maybe H264ColorMetadata),
+                                  _hssLookAheadRateControl ::
+                                  !(Maybe H264LookAheadRateControl),
+                                  _hssAdaptiveQuantization ::
+                                  !(Maybe H264AdaptiveQuantization),
+                                  _hssFramerateNumerator :: !(Maybe Nat),
+                                  _hssLevel :: !(Maybe H264Level),
+                                  _hssGopBReference ::
+                                  !(Maybe H264GopBReference),
+                                  _hssMaxBitrate :: !(Maybe Nat),
+                                  _hssSyntax :: !(Maybe H264Syntax),
+                                  _hssBufFillPct :: !(Maybe Nat),
+                                  _hssGopClosedCadence :: !(Maybe Nat),
+                                  _hssNumRefFrames :: !(Maybe Nat),
+                                  _hssParDenominator :: !(Maybe Nat)}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'H264Settings' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'hsTemporalAq' - If set to enabled, adjust quantization within each frame based on temporal variation of content complexity.
+-- * 'hssTemporalAq' - If set to enabled, adjust quantization within each frame based on temporal variation of content complexity.
 --
--- * 'hsSceneChangeDetect' - Scene change detection.  Inserts I-frames on scene changes when enabled.
+-- * 'hssSceneChangeDetect' - Scene change detection. - On: inserts I-frames when scene change is detected. - Off: does not force an I-frame when scene change is detected.
 --
--- * 'hsScanType' - Sets the scan type of the output to progressive or top-field-first interlaced.
+-- * 'hssScanType' - Sets the scan type of the output to progressive or top-field-first interlaced.
 --
--- * 'hsTimecodeInsertion' - Determines how timecodes should be inserted into the video elementary stream. - 'disabled': Do not include timecodes - 'picTimingSei': Pass through picture timing SEI messages from the source specified in Timecode Config
+-- * 'hssTimecodeInsertion' - Determines how timecodes should be inserted into the video elementary stream. - 'disabled': Do not include timecodes - 'picTimingSei': Pass through picture timing SEI messages from the source specified in Timecode Config
 --
--- * 'hsParNumerator' - Pixel Aspect Ratio numerator.
+-- * 'hssParNumerator' - Pixel Aspect Ratio numerator.
 --
--- * 'hsAfdSignaling' - Indicates that AFD values will be written into the output stream.  If afdSignaling is "auto", the system will try to preserve the input AFD value (in cases where multiple AFD values are valid). If set to "fixed", the AFD value will be the value configured in the fixedAfd parameter.
+-- * 'hssAfdSignaling' - Indicates that AFD values will be written into the output stream.  If afdSignaling is "auto", the system will try to preserve the input AFD value (in cases where multiple AFD values are valid). If set to "fixed", the AFD value will be the value configured in the fixedAfd parameter.
 --
--- * 'hsGopSize' - GOP size (keyframe interval) in units of either frames or seconds per gopSizeUnits. Must be greater than zero.
+-- * 'hssGopSize' - GOP size (keyframe interval) in units of either frames or seconds per gopSizeUnits. If gopSizeUnits is frames, gopSize must be an integer and must be greater than or equal to 1. If gopSizeUnits is seconds, gopSize must be greater than 0, but need not be an integer.
 --
--- * 'hsGopSizeUnits' - Indicates if the gopSize is specified in frames or seconds. If seconds the system will convert the gopSize into a frame count at run time.
+-- * 'hssGopSizeUnits' - Indicates if the gopSize is specified in frames or seconds. If seconds the system will convert the gopSize into a frame count at run time.
 --
--- * 'hsSlices' - Number of slices per picture. Must be less than or equal to the number of macroblock rows for progressive pictures, and less than or equal to half the number of macroblock rows for interlaced pictures. This field is optional; when no value is specified the encoder will choose the number of slices based on encode resolution.
+-- * 'hssSubgopLength' - If set to fixed, use gopNumBFrames B-frames per sub-GOP. If set to dynamic, optimize the number of B-frames used for each sub-GOP to improve visual quality.
 --
--- * 'hsProfile' - H.264 Profile.
+-- * 'hssQualityLevel' - Leave as STANDARD_QUALITY or choose a different value (which might result in additional costs to run the channel). - ENHANCED_QUALITY: Produces a slightly better video quality without an increase in the bitrate. Has an effect only when the Rate control mode is QVBR or CBR. If this channel is in a MediaLive multiplex, the value must be ENHANCED_QUALITY. - STANDARD_QUALITY: Valid for any Rate control mode.
 --
--- * 'hsRateControlMode' - Rate control mode.
+-- * 'hssSlices' - Number of slices per picture. Must be less than or equal to the number of macroblock rows for progressive pictures, and less than or equal to half the number of macroblock rows for interlaced pictures. This field is optional; when no value is specified the encoder will choose the number of slices based on encode resolution.
 --
--- * 'hsMinIInterval' - Only meaningful if sceneChangeDetect is set to enabled.  Enforces separation between repeated (cadence) I-frames and I-frames inserted by Scene Change Detection. If a scene change I-frame is within I-interval frames of a cadence I-frame, the GOP is shrunk and/or stretched to the scene change I-frame. GOP stretch requires enabling lookahead as well as setting I-interval. The normal cadence resumes for the next GOP. Note: Maximum GOP stretch = GOP size + Min-I-interval - 1
+-- * 'hssProfile' - H.264 Profile.
 --
--- * 'hsParControl' - This field indicates how the output pixel aspect ratio is specified.  If "specified" is selected then the output video pixel aspect ratio is determined by parNumerator and parDenominator, else if "initializeFromSource" is selected then the output pixsel aspect ratio will be set equal to the input video pixel aspect ratio of the first input.
+-- * 'hssRateControlMode' - Rate control mode. QVBR: Quality will match the specified quality level except when it is constrained by the maximum bitrate.  Recommended if you or your viewers pay for bandwidth. VBR: Quality and bitrate vary, depending on the video complexity. Recommended instead of QVBR if you want to maintain a specific average bitrate over the duration of the channel. CBR: Quality varies, depending on the video complexity. Recommended only if you distribute your assets to devices that cannot handle variable bitrates. Multiplex: This rate control mode is only supported (and is required) when the video is being delivered to a MediaLive Multiplex in which case the rate control configuration is controlled by the properties within the Multiplex Program.
 --
--- * 'hsFlickerAq' - If set to enabled, adjust quantization within each frame to reduce flicker or 'pop' on I-frames.
+-- * 'hssMinIInterval' - Only meaningful if sceneChangeDetect is set to enabled.  Defaults to 5 if multiplex rate control is used.  Enforces separation between repeated (cadence) I-frames and I-frames inserted by Scene Change Detection. If a scene change I-frame is within I-interval frames of a cadence I-frame, the GOP is shrunk and/or stretched to the scene change I-frame. GOP stretch requires enabling lookahead as well as setting I-interval. The normal cadence resumes for the next GOP. Note: Maximum GOP stretch = GOP size + Min-I-interval - 1
 --
--- * 'hsBufSize' - Size of buffer (HRD buffer model) in bits/second.
+-- * 'hssQvbrQualityLevel' - Controls the target quality for the video encode. Applies only when the rate control mode is QVBR. Set values for the QVBR quality level field and Max bitrate field that suit your most important viewing devices. Recommended values are: - Primary screen: Quality level: 8 to 10. Max bitrate: 4M - PC or tablet: Quality level: 7. Max bitrate: 1.5M to 3M - Smartphone: Quality level: 6. Max bitrate: 1M to 1.5M
 --
--- * 'hsSpatialAq' - If set to enabled, adjust quantization within each frame based on spatial variation of content complexity.
+-- * 'hssColorSpaceSettings' - Color Space settings
 --
--- * 'hsGopNumBFrames' - Number of B-frames between reference frames.
+-- * 'hssParControl' - This field indicates how the output pixel aspect ratio is specified.  If "specified" is selected then the output video pixel aspect ratio is determined by parNumerator and parDenominator, else if "initializeFromSource" is selected then the output pixsel aspect ratio will be set equal to the input video pixel aspect ratio of the first input.
 --
--- * 'hsFixedAfd' - Four bit AFD value to write on all frames of video in the output stream. Only valid when afdSignaling is set to 'Fixed'.
+-- * 'hssFlickerAq' - If set to enabled, adjust quantization within each frame to reduce flicker or 'pop' on I-frames.
 --
--- * 'hsSoftness' - Softness. Selects quantizer matrix, larger values reduce high-frequency content in the encoded image.
+-- * 'hssBufSize' - Size of buffer (HRD buffer model) in bits.
 --
--- * 'hsBitrate' - Average bitrate in bits/second. Required for VBR, CBR, and ABR. For MS Smooth outputs, bitrates must be unique when rounded down to the nearest multiple of 1000.
+-- * 'hssSpatialAq' - If set to enabled, adjust quantization within each frame based on spatial variation of content complexity.
 --
--- * 'hsFramerateDenominator' - Framerate denominator.
+-- * 'hssGopNumBFrames' - Number of B-frames between reference frames.
 --
--- * 'hsEntropyEncoding' - Entropy encoding mode.  Use cabac (must be in Main or High profile) or cavlc.
+-- * 'hssFixedAfd' - Four bit AFD value to write on all frames of video in the output stream. Only valid when afdSignaling is set to 'Fixed'.
 --
--- * 'hsFramerateControl' - This field indicates how the output video frame rate is specified.  If "specified" is selected then the output video frame rate is determined by framerateNumerator and framerateDenominator, else if "initializeFromSource" is selected then the output video frame rate will be set equal to the input video frame rate of the first input.
+-- * 'hssSoftness' - Softness. Selects quantizer matrix, larger values reduce high-frequency content in the encoded image.
 --
--- * 'hsColorMetadata' - Includes colorspace metadata in the output.
+-- * 'hssFilterSettings' - Optional filters that you can apply to an encode.
 --
--- * 'hsLookAheadRateControl' - Amount of lookahead. A value of low can decrease latency and memory usage, while high can produce better quality for certain content.
+-- * 'hssBitrate' - Average bitrate in bits/second. Required when the rate control mode is VBR or CBR. Not used for QVBR. In an MS Smooth output group, each output must have a unique value when its bitrate is rounded down to the nearest multiple of 1000.
 --
--- * 'hsAdaptiveQuantization' - Adaptive quantization. Allows intra-frame quantizers to vary to improve visual quality.
+-- * 'hssFramerateDenominator' - Framerate denominator.
 --
--- * 'hsFramerateNumerator' - Framerate numerator - framerate is a fraction, e.g. 24000 / 1001 = 23.976 fps.
+-- * 'hssForceFieldPictures' - This setting applies only when scan type is "interlaced." It controls whether coding is performed on a field basis or on a frame basis. (When the video is progressive, the coding is always performed on a frame basis.) enabled: Force MediaLive to code on a field basis, so that odd and even sets of fields are coded separately. disabled: Code the two sets of fields separately (on a field basis) or together (on a frame basis using PAFF), depending on what is most appropriate for the content.
 --
--- * 'hsLevel' - H.264 Level.
+-- * 'hssEntropyEncoding' - Entropy encoding mode.  Use cabac (must be in Main or High profile) or cavlc.
 --
--- * 'hsGopBReference' - Documentation update needed
+-- * 'hssFramerateControl' - This field indicates how the output video frame rate is specified.  If "specified" is selected then the output video frame rate is determined by framerateNumerator and framerateDenominator, else if "initializeFromSource" is selected then the output video frame rate will be set equal to the input video frame rate of the first input.
 --
--- * 'hsMaxBitrate' - Maximum bitrate in bits/second (for VBR mode only).
+-- * 'hssColorMetadata' - Includes colorspace metadata in the output.
 --
--- * 'hsSyntax' - Produces a bitstream compliant with SMPTE RP-2027.
+-- * 'hssLookAheadRateControl' - Amount of lookahead. A value of low can decrease latency and memory usage, while high can produce better quality for certain content.
 --
--- * 'hsBufFillPct' - Percentage of the buffer that should initially be filled (HRD buffer model).
+-- * 'hssAdaptiveQuantization' - Adaptive quantization. Allows intra-frame quantizers to vary to improve visual quality.
 --
--- * 'hsGopClosedCadence' - Frequency of closed GOPs. In streaming applications, it is recommended that this be set to 1 so a decoder joining mid-stream will receive an IDR frame as quickly as possible. Setting this value to 0 will break output segmenting.
+-- * 'hssFramerateNumerator' - Framerate numerator - framerate is a fraction, e.g. 24000 / 1001 = 23.976 fps.
 --
--- * 'hsNumRefFrames' - Number of reference frames to use. The encoder may use more than requested if using B-frames and/or interlaced encoding.
+-- * 'hssLevel' - H.264 Level.
 --
--- * 'hsParDenominator' - Pixel Aspect Ratio denominator.
+-- * 'hssGopBReference' - Documentation update needed
+--
+-- * 'hssMaxBitrate' - For QVBR: See the tooltip for Quality level For VBR: Set the maximum bitrate in order to accommodate expected spikes in the complexity of the video.
+--
+-- * 'hssSyntax' - Produces a bitstream compliant with SMPTE RP-2027.
+--
+-- * 'hssBufFillPct' - Percentage of the buffer that should initially be filled (HRD buffer model).
+--
+-- * 'hssGopClosedCadence' - Frequency of closed GOPs. In streaming applications, it is recommended that this be set to 1 so a decoder joining mid-stream will receive an IDR frame as quickly as possible. Setting this value to 0 will break output segmenting.
+--
+-- * 'hssNumRefFrames' - Number of reference frames to use. The encoder may use more than requested if using B-frames and/or interlaced encoding.
+--
+-- * 'hssParDenominator' - Pixel Aspect Ratio denominator.
 h264Settings
     :: H264Settings
-h264Settings =
-  H264Settings'
-    { _hsTemporalAq = Nothing
-    , _hsSceneChangeDetect = Nothing
-    , _hsScanType = Nothing
-    , _hsTimecodeInsertion = Nothing
-    , _hsParNumerator = Nothing
-    , _hsAfdSignaling = Nothing
-    , _hsGopSize = Nothing
-    , _hsGopSizeUnits = Nothing
-    , _hsSlices = Nothing
-    , _hsProfile = Nothing
-    , _hsRateControlMode = Nothing
-    , _hsMinIInterval = Nothing
-    , _hsParControl = Nothing
-    , _hsFlickerAq = Nothing
-    , _hsBufSize = Nothing
-    , _hsSpatialAq = Nothing
-    , _hsGopNumBFrames = Nothing
-    , _hsFixedAfd = Nothing
-    , _hsSoftness = Nothing
-    , _hsBitrate = Nothing
-    , _hsFramerateDenominator = Nothing
-    , _hsEntropyEncoding = Nothing
-    , _hsFramerateControl = Nothing
-    , _hsColorMetadata = Nothing
-    , _hsLookAheadRateControl = Nothing
-    , _hsAdaptiveQuantization = Nothing
-    , _hsFramerateNumerator = Nothing
-    , _hsLevel = Nothing
-    , _hsGopBReference = Nothing
-    , _hsMaxBitrate = Nothing
-    , _hsSyntax = Nothing
-    , _hsBufFillPct = Nothing
-    , _hsGopClosedCadence = Nothing
-    , _hsNumRefFrames = Nothing
-    , _hsParDenominator = Nothing
-    }
-
+h264Settings
+  = H264Settings'{_hssTemporalAq = Nothing,
+                  _hssSceneChangeDetect = Nothing,
+                  _hssScanType = Nothing,
+                  _hssTimecodeInsertion = Nothing,
+                  _hssParNumerator = Nothing,
+                  _hssAfdSignaling = Nothing, _hssGopSize = Nothing,
+                  _hssGopSizeUnits = Nothing,
+                  _hssSubgopLength = Nothing,
+                  _hssQualityLevel = Nothing, _hssSlices = Nothing,
+                  _hssProfile = Nothing, _hssRateControlMode = Nothing,
+                  _hssMinIInterval = Nothing,
+                  _hssQvbrQualityLevel = Nothing,
+                  _hssColorSpaceSettings = Nothing,
+                  _hssParControl = Nothing, _hssFlickerAq = Nothing,
+                  _hssBufSize = Nothing, _hssSpatialAq = Nothing,
+                  _hssGopNumBFrames = Nothing, _hssFixedAfd = Nothing,
+                  _hssSoftness = Nothing, _hssFilterSettings = Nothing,
+                  _hssBitrate = Nothing,
+                  _hssFramerateDenominator = Nothing,
+                  _hssForceFieldPictures = Nothing,
+                  _hssEntropyEncoding = Nothing,
+                  _hssFramerateControl = Nothing,
+                  _hssColorMetadata = Nothing,
+                  _hssLookAheadRateControl = Nothing,
+                  _hssAdaptiveQuantization = Nothing,
+                  _hssFramerateNumerator = Nothing,
+                  _hssLevel = Nothing, _hssGopBReference = Nothing,
+                  _hssMaxBitrate = Nothing, _hssSyntax = Nothing,
+                  _hssBufFillPct = Nothing,
+                  _hssGopClosedCadence = Nothing,
+                  _hssNumRefFrames = Nothing,
+                  _hssParDenominator = Nothing}
 
 -- | If set to enabled, adjust quantization within each frame based on temporal variation of content complexity.
-hsTemporalAq :: Lens' H264Settings (Maybe H264TemporalAq)
-hsTemporalAq = lens _hsTemporalAq (\ s a -> s{_hsTemporalAq = a})
+hssTemporalAq :: Lens' H264Settings (Maybe H264TemporalAq)
+hssTemporalAq = lens _hssTemporalAq (\ s a -> s{_hssTemporalAq = a})
 
--- | Scene change detection.  Inserts I-frames on scene changes when enabled.
-hsSceneChangeDetect :: Lens' H264Settings (Maybe H264SceneChangeDetect)
-hsSceneChangeDetect = lens _hsSceneChangeDetect (\ s a -> s{_hsSceneChangeDetect = a})
+-- | Scene change detection. - On: inserts I-frames when scene change is detected. - Off: does not force an I-frame when scene change is detected.
+hssSceneChangeDetect :: Lens' H264Settings (Maybe H264SceneChangeDetect)
+hssSceneChangeDetect = lens _hssSceneChangeDetect (\ s a -> s{_hssSceneChangeDetect = a})
 
 -- | Sets the scan type of the output to progressive or top-field-first interlaced.
-hsScanType :: Lens' H264Settings (Maybe H264ScanType)
-hsScanType = lens _hsScanType (\ s a -> s{_hsScanType = a})
+hssScanType :: Lens' H264Settings (Maybe H264ScanType)
+hssScanType = lens _hssScanType (\ s a -> s{_hssScanType = a})
 
 -- | Determines how timecodes should be inserted into the video elementary stream. - 'disabled': Do not include timecodes - 'picTimingSei': Pass through picture timing SEI messages from the source specified in Timecode Config
-hsTimecodeInsertion :: Lens' H264Settings (Maybe H264TimecodeInsertionBehavior)
-hsTimecodeInsertion = lens _hsTimecodeInsertion (\ s a -> s{_hsTimecodeInsertion = a})
+hssTimecodeInsertion :: Lens' H264Settings (Maybe H264TimecodeInsertionBehavior)
+hssTimecodeInsertion = lens _hssTimecodeInsertion (\ s a -> s{_hssTimecodeInsertion = a})
 
 -- | Pixel Aspect Ratio numerator.
-hsParNumerator :: Lens' H264Settings (Maybe Int)
-hsParNumerator = lens _hsParNumerator (\ s a -> s{_hsParNumerator = a})
+hssParNumerator :: Lens' H264Settings (Maybe Int)
+hssParNumerator = lens _hssParNumerator (\ s a -> s{_hssParNumerator = a})
 
 -- | Indicates that AFD values will be written into the output stream.  If afdSignaling is "auto", the system will try to preserve the input AFD value (in cases where multiple AFD values are valid). If set to "fixed", the AFD value will be the value configured in the fixedAfd parameter.
-hsAfdSignaling :: Lens' H264Settings (Maybe AfdSignaling)
-hsAfdSignaling = lens _hsAfdSignaling (\ s a -> s{_hsAfdSignaling = a})
+hssAfdSignaling :: Lens' H264Settings (Maybe AfdSignaling)
+hssAfdSignaling = lens _hssAfdSignaling (\ s a -> s{_hssAfdSignaling = a})
 
--- | GOP size (keyframe interval) in units of either frames or seconds per gopSizeUnits. Must be greater than zero.
-hsGopSize :: Lens' H264Settings (Maybe Double)
-hsGopSize = lens _hsGopSize (\ s a -> s{_hsGopSize = a})
+-- | GOP size (keyframe interval) in units of either frames or seconds per gopSizeUnits. If gopSizeUnits is frames, gopSize must be an integer and must be greater than or equal to 1. If gopSizeUnits is seconds, gopSize must be greater than 0, but need not be an integer.
+hssGopSize :: Lens' H264Settings (Maybe Double)
+hssGopSize = lens _hssGopSize (\ s a -> s{_hssGopSize = a})
 
 -- | Indicates if the gopSize is specified in frames or seconds. If seconds the system will convert the gopSize into a frame count at run time.
-hsGopSizeUnits :: Lens' H264Settings (Maybe H264GopSizeUnits)
-hsGopSizeUnits = lens _hsGopSizeUnits (\ s a -> s{_hsGopSizeUnits = a})
+hssGopSizeUnits :: Lens' H264Settings (Maybe H264GopSizeUnits)
+hssGopSizeUnits = lens _hssGopSizeUnits (\ s a -> s{_hssGopSizeUnits = a})
+
+-- | If set to fixed, use gopNumBFrames B-frames per sub-GOP. If set to dynamic, optimize the number of B-frames used for each sub-GOP to improve visual quality.
+hssSubgopLength :: Lens' H264Settings (Maybe H264SubGopLength)
+hssSubgopLength = lens _hssSubgopLength (\ s a -> s{_hssSubgopLength = a})
+
+-- | Leave as STANDARD_QUALITY or choose a different value (which might result in additional costs to run the channel). - ENHANCED_QUALITY: Produces a slightly better video quality without an increase in the bitrate. Has an effect only when the Rate control mode is QVBR or CBR. If this channel is in a MediaLive multiplex, the value must be ENHANCED_QUALITY. - STANDARD_QUALITY: Valid for any Rate control mode.
+hssQualityLevel :: Lens' H264Settings (Maybe H264QualityLevel)
+hssQualityLevel = lens _hssQualityLevel (\ s a -> s{_hssQualityLevel = a})
 
 -- | Number of slices per picture. Must be less than or equal to the number of macroblock rows for progressive pictures, and less than or equal to half the number of macroblock rows for interlaced pictures. This field is optional; when no value is specified the encoder will choose the number of slices based on encode resolution.
-hsSlices :: Lens' H264Settings (Maybe Natural)
-hsSlices = lens _hsSlices (\ s a -> s{_hsSlices = a}) . mapping _Nat
+hssSlices :: Lens' H264Settings (Maybe Natural)
+hssSlices = lens _hssSlices (\ s a -> s{_hssSlices = a}) . mapping _Nat
 
 -- | H.264 Profile.
-hsProfile :: Lens' H264Settings (Maybe H264Profile)
-hsProfile = lens _hsProfile (\ s a -> s{_hsProfile = a})
+hssProfile :: Lens' H264Settings (Maybe H264Profile)
+hssProfile = lens _hssProfile (\ s a -> s{_hssProfile = a})
 
--- | Rate control mode.
-hsRateControlMode :: Lens' H264Settings (Maybe H264RateControlMode)
-hsRateControlMode = lens _hsRateControlMode (\ s a -> s{_hsRateControlMode = a})
+-- | Rate control mode. QVBR: Quality will match the specified quality level except when it is constrained by the maximum bitrate.  Recommended if you or your viewers pay for bandwidth. VBR: Quality and bitrate vary, depending on the video complexity. Recommended instead of QVBR if you want to maintain a specific average bitrate over the duration of the channel. CBR: Quality varies, depending on the video complexity. Recommended only if you distribute your assets to devices that cannot handle variable bitrates. Multiplex: This rate control mode is only supported (and is required) when the video is being delivered to a MediaLive Multiplex in which case the rate control configuration is controlled by the properties within the Multiplex Program.
+hssRateControlMode :: Lens' H264Settings (Maybe H264RateControlMode)
+hssRateControlMode = lens _hssRateControlMode (\ s a -> s{_hssRateControlMode = a})
 
--- | Only meaningful if sceneChangeDetect is set to enabled.  Enforces separation between repeated (cadence) I-frames and I-frames inserted by Scene Change Detection. If a scene change I-frame is within I-interval frames of a cadence I-frame, the GOP is shrunk and/or stretched to the scene change I-frame. GOP stretch requires enabling lookahead as well as setting I-interval. The normal cadence resumes for the next GOP. Note: Maximum GOP stretch = GOP size + Min-I-interval - 1
-hsMinIInterval :: Lens' H264Settings (Maybe Natural)
-hsMinIInterval = lens _hsMinIInterval (\ s a -> s{_hsMinIInterval = a}) . mapping _Nat
+-- | Only meaningful if sceneChangeDetect is set to enabled.  Defaults to 5 if multiplex rate control is used.  Enforces separation between repeated (cadence) I-frames and I-frames inserted by Scene Change Detection. If a scene change I-frame is within I-interval frames of a cadence I-frame, the GOP is shrunk and/or stretched to the scene change I-frame. GOP stretch requires enabling lookahead as well as setting I-interval. The normal cadence resumes for the next GOP. Note: Maximum GOP stretch = GOP size + Min-I-interval - 1
+hssMinIInterval :: Lens' H264Settings (Maybe Natural)
+hssMinIInterval = lens _hssMinIInterval (\ s a -> s{_hssMinIInterval = a}) . mapping _Nat
+
+-- | Controls the target quality for the video encode. Applies only when the rate control mode is QVBR. Set values for the QVBR quality level field and Max bitrate field that suit your most important viewing devices. Recommended values are: - Primary screen: Quality level: 8 to 10. Max bitrate: 4M - PC or tablet: Quality level: 7. Max bitrate: 1.5M to 3M - Smartphone: Quality level: 6. Max bitrate: 1M to 1.5M
+hssQvbrQualityLevel :: Lens' H264Settings (Maybe Natural)
+hssQvbrQualityLevel = lens _hssQvbrQualityLevel (\ s a -> s{_hssQvbrQualityLevel = a}) . mapping _Nat
+
+-- | Color Space settings
+hssColorSpaceSettings :: Lens' H264Settings (Maybe H264ColorSpaceSettings)
+hssColorSpaceSettings = lens _hssColorSpaceSettings (\ s a -> s{_hssColorSpaceSettings = a})
 
 -- | This field indicates how the output pixel aspect ratio is specified.  If "specified" is selected then the output video pixel aspect ratio is determined by parNumerator and parDenominator, else if "initializeFromSource" is selected then the output pixsel aspect ratio will be set equal to the input video pixel aspect ratio of the first input.
-hsParControl :: Lens' H264Settings (Maybe H264ParControl)
-hsParControl = lens _hsParControl (\ s a -> s{_hsParControl = a})
+hssParControl :: Lens' H264Settings (Maybe H264ParControl)
+hssParControl = lens _hssParControl (\ s a -> s{_hssParControl = a})
 
 -- | If set to enabled, adjust quantization within each frame to reduce flicker or 'pop' on I-frames.
-hsFlickerAq :: Lens' H264Settings (Maybe H264FlickerAq)
-hsFlickerAq = lens _hsFlickerAq (\ s a -> s{_hsFlickerAq = a})
+hssFlickerAq :: Lens' H264Settings (Maybe H264FlickerAq)
+hssFlickerAq = lens _hssFlickerAq (\ s a -> s{_hssFlickerAq = a})
 
--- | Size of buffer (HRD buffer model) in bits/second.
-hsBufSize :: Lens' H264Settings (Maybe Natural)
-hsBufSize = lens _hsBufSize (\ s a -> s{_hsBufSize = a}) . mapping _Nat
+-- | Size of buffer (HRD buffer model) in bits.
+hssBufSize :: Lens' H264Settings (Maybe Natural)
+hssBufSize = lens _hssBufSize (\ s a -> s{_hssBufSize = a}) . mapping _Nat
 
 -- | If set to enabled, adjust quantization within each frame based on spatial variation of content complexity.
-hsSpatialAq :: Lens' H264Settings (Maybe H264SpatialAq)
-hsSpatialAq = lens _hsSpatialAq (\ s a -> s{_hsSpatialAq = a})
+hssSpatialAq :: Lens' H264Settings (Maybe H264SpatialAq)
+hssSpatialAq = lens _hssSpatialAq (\ s a -> s{_hssSpatialAq = a})
 
 -- | Number of B-frames between reference frames.
-hsGopNumBFrames :: Lens' H264Settings (Maybe Natural)
-hsGopNumBFrames = lens _hsGopNumBFrames (\ s a -> s{_hsGopNumBFrames = a}) . mapping _Nat
+hssGopNumBFrames :: Lens' H264Settings (Maybe Natural)
+hssGopNumBFrames = lens _hssGopNumBFrames (\ s a -> s{_hssGopNumBFrames = a}) . mapping _Nat
 
 -- | Four bit AFD value to write on all frames of video in the output stream. Only valid when afdSignaling is set to 'Fixed'.
-hsFixedAfd :: Lens' H264Settings (Maybe FixedAfd)
-hsFixedAfd = lens _hsFixedAfd (\ s a -> s{_hsFixedAfd = a})
+hssFixedAfd :: Lens' H264Settings (Maybe FixedAfd)
+hssFixedAfd = lens _hssFixedAfd (\ s a -> s{_hssFixedAfd = a})
 
 -- | Softness. Selects quantizer matrix, larger values reduce high-frequency content in the encoded image.
-hsSoftness :: Lens' H264Settings (Maybe Natural)
-hsSoftness = lens _hsSoftness (\ s a -> s{_hsSoftness = a}) . mapping _Nat
+hssSoftness :: Lens' H264Settings (Maybe Natural)
+hssSoftness = lens _hssSoftness (\ s a -> s{_hssSoftness = a}) . mapping _Nat
 
--- | Average bitrate in bits/second. Required for VBR, CBR, and ABR. For MS Smooth outputs, bitrates must be unique when rounded down to the nearest multiple of 1000.
-hsBitrate :: Lens' H264Settings (Maybe Natural)
-hsBitrate = lens _hsBitrate (\ s a -> s{_hsBitrate = a}) . mapping _Nat
+-- | Optional filters that you can apply to an encode.
+hssFilterSettings :: Lens' H264Settings (Maybe H264FilterSettings)
+hssFilterSettings = lens _hssFilterSettings (\ s a -> s{_hssFilterSettings = a})
+
+-- | Average bitrate in bits/second. Required when the rate control mode is VBR or CBR. Not used for QVBR. In an MS Smooth output group, each output must have a unique value when its bitrate is rounded down to the nearest multiple of 1000.
+hssBitrate :: Lens' H264Settings (Maybe Natural)
+hssBitrate = lens _hssBitrate (\ s a -> s{_hssBitrate = a}) . mapping _Nat
 
 -- | Framerate denominator.
-hsFramerateDenominator :: Lens' H264Settings (Maybe Int)
-hsFramerateDenominator = lens _hsFramerateDenominator (\ s a -> s{_hsFramerateDenominator = a})
+hssFramerateDenominator :: Lens' H264Settings (Maybe Natural)
+hssFramerateDenominator = lens _hssFramerateDenominator (\ s a -> s{_hssFramerateDenominator = a}) . mapping _Nat
+
+-- | This setting applies only when scan type is "interlaced." It controls whether coding is performed on a field basis or on a frame basis. (When the video is progressive, the coding is always performed on a frame basis.) enabled: Force MediaLive to code on a field basis, so that odd and even sets of fields are coded separately. disabled: Code the two sets of fields separately (on a field basis) or together (on a frame basis using PAFF), depending on what is most appropriate for the content.
+hssForceFieldPictures :: Lens' H264Settings (Maybe H264ForceFieldPictures)
+hssForceFieldPictures = lens _hssForceFieldPictures (\ s a -> s{_hssForceFieldPictures = a})
 
 -- | Entropy encoding mode.  Use cabac (must be in Main or High profile) or cavlc.
-hsEntropyEncoding :: Lens' H264Settings (Maybe H264EntropyEncoding)
-hsEntropyEncoding = lens _hsEntropyEncoding (\ s a -> s{_hsEntropyEncoding = a})
+hssEntropyEncoding :: Lens' H264Settings (Maybe H264EntropyEncoding)
+hssEntropyEncoding = lens _hssEntropyEncoding (\ s a -> s{_hssEntropyEncoding = a})
 
 -- | This field indicates how the output video frame rate is specified.  If "specified" is selected then the output video frame rate is determined by framerateNumerator and framerateDenominator, else if "initializeFromSource" is selected then the output video frame rate will be set equal to the input video frame rate of the first input.
-hsFramerateControl :: Lens' H264Settings (Maybe H264FramerateControl)
-hsFramerateControl = lens _hsFramerateControl (\ s a -> s{_hsFramerateControl = a})
+hssFramerateControl :: Lens' H264Settings (Maybe H264FramerateControl)
+hssFramerateControl = lens _hssFramerateControl (\ s a -> s{_hssFramerateControl = a})
 
 -- | Includes colorspace metadata in the output.
-hsColorMetadata :: Lens' H264Settings (Maybe H264ColorMetadata)
-hsColorMetadata = lens _hsColorMetadata (\ s a -> s{_hsColorMetadata = a})
+hssColorMetadata :: Lens' H264Settings (Maybe H264ColorMetadata)
+hssColorMetadata = lens _hssColorMetadata (\ s a -> s{_hssColorMetadata = a})
 
 -- | Amount of lookahead. A value of low can decrease latency and memory usage, while high can produce better quality for certain content.
-hsLookAheadRateControl :: Lens' H264Settings (Maybe H264LookAheadRateControl)
-hsLookAheadRateControl = lens _hsLookAheadRateControl (\ s a -> s{_hsLookAheadRateControl = a})
+hssLookAheadRateControl :: Lens' H264Settings (Maybe H264LookAheadRateControl)
+hssLookAheadRateControl = lens _hssLookAheadRateControl (\ s a -> s{_hssLookAheadRateControl = a})
 
 -- | Adaptive quantization. Allows intra-frame quantizers to vary to improve visual quality.
-hsAdaptiveQuantization :: Lens' H264Settings (Maybe H264AdaptiveQuantization)
-hsAdaptiveQuantization = lens _hsAdaptiveQuantization (\ s a -> s{_hsAdaptiveQuantization = a})
+hssAdaptiveQuantization :: Lens' H264Settings (Maybe H264AdaptiveQuantization)
+hssAdaptiveQuantization = lens _hssAdaptiveQuantization (\ s a -> s{_hssAdaptiveQuantization = a})
 
 -- | Framerate numerator - framerate is a fraction, e.g. 24000 / 1001 = 23.976 fps.
-hsFramerateNumerator :: Lens' H264Settings (Maybe Int)
-hsFramerateNumerator = lens _hsFramerateNumerator (\ s a -> s{_hsFramerateNumerator = a})
+hssFramerateNumerator :: Lens' H264Settings (Maybe Natural)
+hssFramerateNumerator = lens _hssFramerateNumerator (\ s a -> s{_hssFramerateNumerator = a}) . mapping _Nat
 
 -- | H.264 Level.
-hsLevel :: Lens' H264Settings (Maybe H264Level)
-hsLevel = lens _hsLevel (\ s a -> s{_hsLevel = a})
+hssLevel :: Lens' H264Settings (Maybe H264Level)
+hssLevel = lens _hssLevel (\ s a -> s{_hssLevel = a})
 
 -- | Documentation update needed
-hsGopBReference :: Lens' H264Settings (Maybe H264GopBReference)
-hsGopBReference = lens _hsGopBReference (\ s a -> s{_hsGopBReference = a})
+hssGopBReference :: Lens' H264Settings (Maybe H264GopBReference)
+hssGopBReference = lens _hssGopBReference (\ s a -> s{_hssGopBReference = a})
 
--- | Maximum bitrate in bits/second (for VBR mode only).
-hsMaxBitrate :: Lens' H264Settings (Maybe Natural)
-hsMaxBitrate = lens _hsMaxBitrate (\ s a -> s{_hsMaxBitrate = a}) . mapping _Nat
+-- | For QVBR: See the tooltip for Quality level For VBR: Set the maximum bitrate in order to accommodate expected spikes in the complexity of the video.
+hssMaxBitrate :: Lens' H264Settings (Maybe Natural)
+hssMaxBitrate = lens _hssMaxBitrate (\ s a -> s{_hssMaxBitrate = a}) . mapping _Nat
 
 -- | Produces a bitstream compliant with SMPTE RP-2027.
-hsSyntax :: Lens' H264Settings (Maybe H264Syntax)
-hsSyntax = lens _hsSyntax (\ s a -> s{_hsSyntax = a})
+hssSyntax :: Lens' H264Settings (Maybe H264Syntax)
+hssSyntax = lens _hssSyntax (\ s a -> s{_hssSyntax = a})
 
 -- | Percentage of the buffer that should initially be filled (HRD buffer model).
-hsBufFillPct :: Lens' H264Settings (Maybe Natural)
-hsBufFillPct = lens _hsBufFillPct (\ s a -> s{_hsBufFillPct = a}) . mapping _Nat
+hssBufFillPct :: Lens' H264Settings (Maybe Natural)
+hssBufFillPct = lens _hssBufFillPct (\ s a -> s{_hssBufFillPct = a}) . mapping _Nat
 
 -- | Frequency of closed GOPs. In streaming applications, it is recommended that this be set to 1 so a decoder joining mid-stream will receive an IDR frame as quickly as possible. Setting this value to 0 will break output segmenting.
-hsGopClosedCadence :: Lens' H264Settings (Maybe Natural)
-hsGopClosedCadence = lens _hsGopClosedCadence (\ s a -> s{_hsGopClosedCadence = a}) . mapping _Nat
+hssGopClosedCadence :: Lens' H264Settings (Maybe Natural)
+hssGopClosedCadence = lens _hssGopClosedCadence (\ s a -> s{_hssGopClosedCadence = a}) . mapping _Nat
 
 -- | Number of reference frames to use. The encoder may use more than requested if using B-frames and/or interlaced encoding.
-hsNumRefFrames :: Lens' H264Settings (Maybe Natural)
-hsNumRefFrames = lens _hsNumRefFrames (\ s a -> s{_hsNumRefFrames = a}) . mapping _Nat
+hssNumRefFrames :: Lens' H264Settings (Maybe Natural)
+hssNumRefFrames = lens _hssNumRefFrames (\ s a -> s{_hssNumRefFrames = a}) . mapping _Nat
 
 -- | Pixel Aspect Ratio denominator.
-hsParDenominator :: Lens' H264Settings (Maybe Natural)
-hsParDenominator = lens _hsParDenominator (\ s a -> s{_hsParDenominator = a}) . mapping _Nat
+hssParDenominator :: Lens' H264Settings (Maybe Natural)
+hssParDenominator = lens _hssParDenominator (\ s a -> s{_hssParDenominator = a}) . mapping _Nat
 
 instance FromJSON H264Settings where
         parseJSON
@@ -3551,10 +4534,14 @@ instance FromJSON H264Settings where
                      <*> (x .:? "afdSignaling")
                      <*> (x .:? "gopSize")
                      <*> (x .:? "gopSizeUnits")
+                     <*> (x .:? "subgopLength")
+                     <*> (x .:? "qualityLevel")
                      <*> (x .:? "slices")
                      <*> (x .:? "profile")
                      <*> (x .:? "rateControlMode")
                      <*> (x .:? "minIInterval")
+                     <*> (x .:? "qvbrQualityLevel")
+                     <*> (x .:? "colorSpaceSettings")
                      <*> (x .:? "parControl")
                      <*> (x .:? "flickerAq")
                      <*> (x .:? "bufSize")
@@ -3562,8 +4549,10 @@ instance FromJSON H264Settings where
                      <*> (x .:? "gopNumBFrames")
                      <*> (x .:? "fixedAfd")
                      <*> (x .:? "softness")
+                     <*> (x .:? "filterSettings")
                      <*> (x .:? "bitrate")
                      <*> (x .:? "framerateDenominator")
+                     <*> (x .:? "forceFieldPictures")
                      <*> (x .:? "entropyEncoding")
                      <*> (x .:? "framerateControl")
                      <*> (x .:? "colorMetadata")
@@ -3587,8 +4576,409 @@ instance ToJSON H264Settings where
         toJSON H264Settings'{..}
           = object
               (catMaybes
-                 [("temporalAq" .=) <$> _hsTemporalAq,
-                  ("sceneChangeDetect" .=) <$> _hsSceneChangeDetect,
+                 [("temporalAq" .=) <$> _hssTemporalAq,
+                  ("sceneChangeDetect" .=) <$> _hssSceneChangeDetect,
+                  ("scanType" .=) <$> _hssScanType,
+                  ("timecodeInsertion" .=) <$> _hssTimecodeInsertion,
+                  ("parNumerator" .=) <$> _hssParNumerator,
+                  ("afdSignaling" .=) <$> _hssAfdSignaling,
+                  ("gopSize" .=) <$> _hssGopSize,
+                  ("gopSizeUnits" .=) <$> _hssGopSizeUnits,
+                  ("subgopLength" .=) <$> _hssSubgopLength,
+                  ("qualityLevel" .=) <$> _hssQualityLevel,
+                  ("slices" .=) <$> _hssSlices,
+                  ("profile" .=) <$> _hssProfile,
+                  ("rateControlMode" .=) <$> _hssRateControlMode,
+                  ("minIInterval" .=) <$> _hssMinIInterval,
+                  ("qvbrQualityLevel" .=) <$> _hssQvbrQualityLevel,
+                  ("colorSpaceSettings" .=) <$> _hssColorSpaceSettings,
+                  ("parControl" .=) <$> _hssParControl,
+                  ("flickerAq" .=) <$> _hssFlickerAq,
+                  ("bufSize" .=) <$> _hssBufSize,
+                  ("spatialAq" .=) <$> _hssSpatialAq,
+                  ("gopNumBFrames" .=) <$> _hssGopNumBFrames,
+                  ("fixedAfd" .=) <$> _hssFixedAfd,
+                  ("softness" .=) <$> _hssSoftness,
+                  ("filterSettings" .=) <$> _hssFilterSettings,
+                  ("bitrate" .=) <$> _hssBitrate,
+                  ("framerateDenominator" .=) <$>
+                    _hssFramerateDenominator,
+                  ("forceFieldPictures" .=) <$> _hssForceFieldPictures,
+                  ("entropyEncoding" .=) <$> _hssEntropyEncoding,
+                  ("framerateControl" .=) <$> _hssFramerateControl,
+                  ("colorMetadata" .=) <$> _hssColorMetadata,
+                  ("lookAheadRateControl" .=) <$>
+                    _hssLookAheadRateControl,
+                  ("adaptiveQuantization" .=) <$>
+                    _hssAdaptiveQuantization,
+                  ("framerateNumerator" .=) <$> _hssFramerateNumerator,
+                  ("level" .=) <$> _hssLevel,
+                  ("gopBReference" .=) <$> _hssGopBReference,
+                  ("maxBitrate" .=) <$> _hssMaxBitrate,
+                  ("syntax" .=) <$> _hssSyntax,
+                  ("bufFillPct" .=) <$> _hssBufFillPct,
+                  ("gopClosedCadence" .=) <$> _hssGopClosedCadence,
+                  ("numRefFrames" .=) <$> _hssNumRefFrames,
+                  ("parDenominator" .=) <$> _hssParDenominator])
+
+-- | H265 Color Space Settings
+--
+-- /See:/ 'h265ColorSpaceSettings' smart constructor.
+data H265ColorSpaceSettings = H265ColorSpaceSettings'{_hcssHdr10Settings
+                                                      :: !(Maybe Hdr10Settings),
+                                                      _hcssRec709Settings ::
+                                                      !(Maybe Rec709Settings),
+                                                      _hcssRec601Settings ::
+                                                      !(Maybe Rec601Settings),
+                                                      _hcssColorSpacePassthroughSettings
+                                                      ::
+                                                      !(Maybe
+                                                          ColorSpacePassthroughSettings)}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
+
+-- | Creates a value of 'H265ColorSpaceSettings' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'hcssHdr10Settings' - Undocumented member.
+--
+-- * 'hcssRec709Settings' - Undocumented member.
+--
+-- * 'hcssRec601Settings' - Undocumented member.
+--
+-- * 'hcssColorSpacePassthroughSettings' - Undocumented member.
+h265ColorSpaceSettings
+    :: H265ColorSpaceSettings
+h265ColorSpaceSettings
+  = H265ColorSpaceSettings'{_hcssHdr10Settings =
+                              Nothing,
+                            _hcssRec709Settings = Nothing,
+                            _hcssRec601Settings = Nothing,
+                            _hcssColorSpacePassthroughSettings = Nothing}
+
+-- | Undocumented member.
+hcssHdr10Settings :: Lens' H265ColorSpaceSettings (Maybe Hdr10Settings)
+hcssHdr10Settings = lens _hcssHdr10Settings (\ s a -> s{_hcssHdr10Settings = a})
+
+-- | Undocumented member.
+hcssRec709Settings :: Lens' H265ColorSpaceSettings (Maybe Rec709Settings)
+hcssRec709Settings = lens _hcssRec709Settings (\ s a -> s{_hcssRec709Settings = a})
+
+-- | Undocumented member.
+hcssRec601Settings :: Lens' H265ColorSpaceSettings (Maybe Rec601Settings)
+hcssRec601Settings = lens _hcssRec601Settings (\ s a -> s{_hcssRec601Settings = a})
+
+-- | Undocumented member.
+hcssColorSpacePassthroughSettings :: Lens' H265ColorSpaceSettings (Maybe ColorSpacePassthroughSettings)
+hcssColorSpacePassthroughSettings = lens _hcssColorSpacePassthroughSettings (\ s a -> s{_hcssColorSpacePassthroughSettings = a})
+
+instance FromJSON H265ColorSpaceSettings where
+        parseJSON
+          = withObject "H265ColorSpaceSettings"
+              (\ x ->
+                 H265ColorSpaceSettings' <$>
+                   (x .:? "hdr10Settings") <*> (x .:? "rec709Settings")
+                     <*> (x .:? "rec601Settings")
+                     <*> (x .:? "colorSpacePassthroughSettings"))
+
+instance Hashable H265ColorSpaceSettings where
+
+instance NFData H265ColorSpaceSettings where
+
+instance ToJSON H265ColorSpaceSettings where
+        toJSON H265ColorSpaceSettings'{..}
+          = object
+              (catMaybes
+                 [("hdr10Settings" .=) <$> _hcssHdr10Settings,
+                  ("rec709Settings" .=) <$> _hcssRec709Settings,
+                  ("rec601Settings" .=) <$> _hcssRec601Settings,
+                  ("colorSpacePassthroughSettings" .=) <$>
+                    _hcssColorSpacePassthroughSettings])
+
+-- | H265 Settings
+--
+-- /See:/ 'h265Settings' smart constructor.
+data H265Settings = H265Settings'{_hsSceneChangeDetect
+                                  :: !(Maybe H265SceneChangeDetect),
+                                  _hsScanType :: !(Maybe H265ScanType),
+                                  _hsTimecodeInsertion ::
+                                  !(Maybe H265TimecodeInsertionBehavior),
+                                  _hsParNumerator :: !(Maybe Nat),
+                                  _hsAfdSignaling :: !(Maybe AfdSignaling),
+                                  _hsGopSize :: !(Maybe Double),
+                                  _hsGopSizeUnits :: !(Maybe H265GopSizeUnits),
+                                  _hsSlices :: !(Maybe Nat),
+                                  _hsProfile :: !(Maybe H265Profile),
+                                  _hsAlternativeTransferFunction ::
+                                  !(Maybe H265AlternativeTransferFunction),
+                                  _hsRateControlMode ::
+                                  !(Maybe H265RateControlMode),
+                                  _hsMinIInterval :: !(Maybe Nat),
+                                  _hsQvbrQualityLevel :: !(Maybe Nat),
+                                  _hsColorSpaceSettings ::
+                                  !(Maybe H265ColorSpaceSettings),
+                                  _hsFlickerAq :: !(Maybe H265FlickerAq),
+                                  _hsBufSize :: !(Maybe Nat),
+                                  _hsTier :: !(Maybe H265Tier),
+                                  _hsFixedAfd :: !(Maybe FixedAfd),
+                                  _hsBitrate :: !(Maybe Nat),
+                                  _hsColorMetadata ::
+                                  !(Maybe H265ColorMetadata),
+                                  _hsLookAheadRateControl ::
+                                  !(Maybe H265LookAheadRateControl),
+                                  _hsAdaptiveQuantization ::
+                                  !(Maybe H265AdaptiveQuantization),
+                                  _hsLevel :: !(Maybe H265Level),
+                                  _hsMaxBitrate :: !(Maybe Nat),
+                                  _hsGopClosedCadence :: !(Maybe Nat),
+                                  _hsParDenominator :: !(Maybe Nat),
+                                  _hsFramerateNumerator :: !Nat,
+                                  _hsFramerateDenominator :: !Nat}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+-- | Creates a value of 'H265Settings' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'hsSceneChangeDetect' - Scene change detection.
+--
+-- * 'hsScanType' - Sets the scan type of the output to progressive or top-field-first interlaced.
+--
+-- * 'hsTimecodeInsertion' - Determines how timecodes should be inserted into the video elementary stream. - 'disabled': Do not include timecodes - 'picTimingSei': Pass through picture timing SEI messages from the source specified in Timecode Config
+--
+-- * 'hsParNumerator' - Pixel Aspect Ratio numerator.
+--
+-- * 'hsAfdSignaling' - Indicates that AFD values will be written into the output stream.  If afdSignaling is "auto", the system will try to preserve the input AFD value (in cases where multiple AFD values are valid). If set to "fixed", the AFD value will be the value configured in the fixedAfd parameter.
+--
+-- * 'hsGopSize' - GOP size (keyframe interval) in units of either frames or seconds per gopSizeUnits. If gopSizeUnits is frames, gopSize must be an integer and must be greater than or equal to 1. If gopSizeUnits is seconds, gopSize must be greater than 0, but need not be an integer.
+--
+-- * 'hsGopSizeUnits' - Indicates if the gopSize is specified in frames or seconds. If seconds the system will convert the gopSize into a frame count at run time.
+--
+-- * 'hsSlices' - Number of slices per picture. Must be less than or equal to the number of macroblock rows for progressive pictures, and less than or equal to half the number of macroblock rows for interlaced pictures. This field is optional; when no value is specified the encoder will choose the number of slices based on encode resolution.
+--
+-- * 'hsProfile' - H.265 Profile.
+--
+-- * 'hsAlternativeTransferFunction' - Whether or not EML should insert an Alternative Transfer Function SEI message to support backwards compatibility with non-HDR decoders and displays.
+--
+-- * 'hsRateControlMode' - Rate control mode. QVBR: Quality will match the specified quality level except when it is constrained by the maximum bitrate.  Recommended if you or your viewers pay for bandwidth. CBR: Quality varies, depending on the video complexity. Recommended only if you distribute your assets to devices that cannot handle variable bitrates.
+--
+-- * 'hsMinIInterval' - Only meaningful if sceneChangeDetect is set to enabled.  Defaults to 5 if multiplex rate control is used.  Enforces separation between repeated (cadence) I-frames and I-frames inserted by Scene Change Detection. If a scene change I-frame is within I-interval frames of a cadence I-frame, the GOP is shrunk and/or stretched to the scene change I-frame. GOP stretch requires enabling lookahead as well as setting I-interval. The normal cadence resumes for the next GOP. Note: Maximum GOP stretch = GOP size + Min-I-interval - 1
+--
+-- * 'hsQvbrQualityLevel' - Controls the target quality for the video encode. Applies only when the rate control mode is QVBR. Set values for the QVBR quality level field and Max bitrate field that suit your most important viewing devices. Recommended values are: - Primary screen: Quality level: 8 to 10. Max bitrate: 4M - PC or tablet: Quality level: 7. Max bitrate: 1.5M to 3M - Smartphone: Quality level: 6. Max bitrate: 1M to 1.5M
+--
+-- * 'hsColorSpaceSettings' - Color Space settings
+--
+-- * 'hsFlickerAq' - If set to enabled, adjust quantization within each frame to reduce flicker or 'pop' on I-frames.
+--
+-- * 'hsBufSize' - Size of buffer (HRD buffer model) in bits.
+--
+-- * 'hsTier' - H.265 Tier.
+--
+-- * 'hsFixedAfd' - Four bit AFD value to write on all frames of video in the output stream. Only valid when afdSignaling is set to 'Fixed'.
+--
+-- * 'hsBitrate' - Average bitrate in bits/second. Required when the rate control mode is VBR or CBR. Not used for QVBR. In an MS Smooth output group, each output must have a unique value when its bitrate is rounded down to the nearest multiple of 1000.
+--
+-- * 'hsColorMetadata' - Includes colorspace metadata in the output.
+--
+-- * 'hsLookAheadRateControl' - Amount of lookahead. A value of low can decrease latency and memory usage, while high can produce better quality for certain content.
+--
+-- * 'hsAdaptiveQuantization' - Adaptive quantization. Allows intra-frame quantizers to vary to improve visual quality.
+--
+-- * 'hsLevel' - H.265 Level.
+--
+-- * 'hsMaxBitrate' - For QVBR: See the tooltip for Quality level
+--
+-- * 'hsGopClosedCadence' - Frequency of closed GOPs. In streaming applications, it is recommended that this be set to 1 so a decoder joining mid-stream will receive an IDR frame as quickly as possible. Setting this value to 0 will break output segmenting.
+--
+-- * 'hsParDenominator' - Pixel Aspect Ratio denominator.
+--
+-- * 'hsFramerateNumerator' - Framerate numerator - framerate is a fraction, e.g. 24000 / 1001 = 23.976 fps.
+--
+-- * 'hsFramerateDenominator' - Framerate denominator.
+h265Settings
+    :: Natural -- ^ 'hsFramerateNumerator'
+    -> Natural -- ^ 'hsFramerateDenominator'
+    -> H265Settings
+h265Settings pFramerateNumerator_
+  pFramerateDenominator_
+  = H265Settings'{_hsSceneChangeDetect = Nothing,
+                  _hsScanType = Nothing,
+                  _hsTimecodeInsertion = Nothing,
+                  _hsParNumerator = Nothing, _hsAfdSignaling = Nothing,
+                  _hsGopSize = Nothing, _hsGopSizeUnits = Nothing,
+                  _hsSlices = Nothing, _hsProfile = Nothing,
+                  _hsAlternativeTransferFunction = Nothing,
+                  _hsRateControlMode = Nothing,
+                  _hsMinIInterval = Nothing,
+                  _hsQvbrQualityLevel = Nothing,
+                  _hsColorSpaceSettings = Nothing,
+                  _hsFlickerAq = Nothing, _hsBufSize = Nothing,
+                  _hsTier = Nothing, _hsFixedAfd = Nothing,
+                  _hsBitrate = Nothing, _hsColorMetadata = Nothing,
+                  _hsLookAheadRateControl = Nothing,
+                  _hsAdaptiveQuantization = Nothing,
+                  _hsLevel = Nothing, _hsMaxBitrate = Nothing,
+                  _hsGopClosedCadence = Nothing,
+                  _hsParDenominator = Nothing,
+                  _hsFramerateNumerator = _Nat # pFramerateNumerator_,
+                  _hsFramerateDenominator =
+                    _Nat # pFramerateDenominator_}
+
+-- | Scene change detection.
+hsSceneChangeDetect :: Lens' H265Settings (Maybe H265SceneChangeDetect)
+hsSceneChangeDetect = lens _hsSceneChangeDetect (\ s a -> s{_hsSceneChangeDetect = a})
+
+-- | Sets the scan type of the output to progressive or top-field-first interlaced.
+hsScanType :: Lens' H265Settings (Maybe H265ScanType)
+hsScanType = lens _hsScanType (\ s a -> s{_hsScanType = a})
+
+-- | Determines how timecodes should be inserted into the video elementary stream. - 'disabled': Do not include timecodes - 'picTimingSei': Pass through picture timing SEI messages from the source specified in Timecode Config
+hsTimecodeInsertion :: Lens' H265Settings (Maybe H265TimecodeInsertionBehavior)
+hsTimecodeInsertion = lens _hsTimecodeInsertion (\ s a -> s{_hsTimecodeInsertion = a})
+
+-- | Pixel Aspect Ratio numerator.
+hsParNumerator :: Lens' H265Settings (Maybe Natural)
+hsParNumerator = lens _hsParNumerator (\ s a -> s{_hsParNumerator = a}) . mapping _Nat
+
+-- | Indicates that AFD values will be written into the output stream.  If afdSignaling is "auto", the system will try to preserve the input AFD value (in cases where multiple AFD values are valid). If set to "fixed", the AFD value will be the value configured in the fixedAfd parameter.
+hsAfdSignaling :: Lens' H265Settings (Maybe AfdSignaling)
+hsAfdSignaling = lens _hsAfdSignaling (\ s a -> s{_hsAfdSignaling = a})
+
+-- | GOP size (keyframe interval) in units of either frames or seconds per gopSizeUnits. If gopSizeUnits is frames, gopSize must be an integer and must be greater than or equal to 1. If gopSizeUnits is seconds, gopSize must be greater than 0, but need not be an integer.
+hsGopSize :: Lens' H265Settings (Maybe Double)
+hsGopSize = lens _hsGopSize (\ s a -> s{_hsGopSize = a})
+
+-- | Indicates if the gopSize is specified in frames or seconds. If seconds the system will convert the gopSize into a frame count at run time.
+hsGopSizeUnits :: Lens' H265Settings (Maybe H265GopSizeUnits)
+hsGopSizeUnits = lens _hsGopSizeUnits (\ s a -> s{_hsGopSizeUnits = a})
+
+-- | Number of slices per picture. Must be less than or equal to the number of macroblock rows for progressive pictures, and less than or equal to half the number of macroblock rows for interlaced pictures. This field is optional; when no value is specified the encoder will choose the number of slices based on encode resolution.
+hsSlices :: Lens' H265Settings (Maybe Natural)
+hsSlices = lens _hsSlices (\ s a -> s{_hsSlices = a}) . mapping _Nat
+
+-- | H.265 Profile.
+hsProfile :: Lens' H265Settings (Maybe H265Profile)
+hsProfile = lens _hsProfile (\ s a -> s{_hsProfile = a})
+
+-- | Whether or not EML should insert an Alternative Transfer Function SEI message to support backwards compatibility with non-HDR decoders and displays.
+hsAlternativeTransferFunction :: Lens' H265Settings (Maybe H265AlternativeTransferFunction)
+hsAlternativeTransferFunction = lens _hsAlternativeTransferFunction (\ s a -> s{_hsAlternativeTransferFunction = a})
+
+-- | Rate control mode. QVBR: Quality will match the specified quality level except when it is constrained by the maximum bitrate.  Recommended if you or your viewers pay for bandwidth. CBR: Quality varies, depending on the video complexity. Recommended only if you distribute your assets to devices that cannot handle variable bitrates.
+hsRateControlMode :: Lens' H265Settings (Maybe H265RateControlMode)
+hsRateControlMode = lens _hsRateControlMode (\ s a -> s{_hsRateControlMode = a})
+
+-- | Only meaningful if sceneChangeDetect is set to enabled.  Defaults to 5 if multiplex rate control is used.  Enforces separation between repeated (cadence) I-frames and I-frames inserted by Scene Change Detection. If a scene change I-frame is within I-interval frames of a cadence I-frame, the GOP is shrunk and/or stretched to the scene change I-frame. GOP stretch requires enabling lookahead as well as setting I-interval. The normal cadence resumes for the next GOP. Note: Maximum GOP stretch = GOP size + Min-I-interval - 1
+hsMinIInterval :: Lens' H265Settings (Maybe Natural)
+hsMinIInterval = lens _hsMinIInterval (\ s a -> s{_hsMinIInterval = a}) . mapping _Nat
+
+-- | Controls the target quality for the video encode. Applies only when the rate control mode is QVBR. Set values for the QVBR quality level field and Max bitrate field that suit your most important viewing devices. Recommended values are: - Primary screen: Quality level: 8 to 10. Max bitrate: 4M - PC or tablet: Quality level: 7. Max bitrate: 1.5M to 3M - Smartphone: Quality level: 6. Max bitrate: 1M to 1.5M
+hsQvbrQualityLevel :: Lens' H265Settings (Maybe Natural)
+hsQvbrQualityLevel = lens _hsQvbrQualityLevel (\ s a -> s{_hsQvbrQualityLevel = a}) . mapping _Nat
+
+-- | Color Space settings
+hsColorSpaceSettings :: Lens' H265Settings (Maybe H265ColorSpaceSettings)
+hsColorSpaceSettings = lens _hsColorSpaceSettings (\ s a -> s{_hsColorSpaceSettings = a})
+
+-- | If set to enabled, adjust quantization within each frame to reduce flicker or 'pop' on I-frames.
+hsFlickerAq :: Lens' H265Settings (Maybe H265FlickerAq)
+hsFlickerAq = lens _hsFlickerAq (\ s a -> s{_hsFlickerAq = a})
+
+-- | Size of buffer (HRD buffer model) in bits.
+hsBufSize :: Lens' H265Settings (Maybe Natural)
+hsBufSize = lens _hsBufSize (\ s a -> s{_hsBufSize = a}) . mapping _Nat
+
+-- | H.265 Tier.
+hsTier :: Lens' H265Settings (Maybe H265Tier)
+hsTier = lens _hsTier (\ s a -> s{_hsTier = a})
+
+-- | Four bit AFD value to write on all frames of video in the output stream. Only valid when afdSignaling is set to 'Fixed'.
+hsFixedAfd :: Lens' H265Settings (Maybe FixedAfd)
+hsFixedAfd = lens _hsFixedAfd (\ s a -> s{_hsFixedAfd = a})
+
+-- | Average bitrate in bits/second. Required when the rate control mode is VBR or CBR. Not used for QVBR. In an MS Smooth output group, each output must have a unique value when its bitrate is rounded down to the nearest multiple of 1000.
+hsBitrate :: Lens' H265Settings (Maybe Natural)
+hsBitrate = lens _hsBitrate (\ s a -> s{_hsBitrate = a}) . mapping _Nat
+
+-- | Includes colorspace metadata in the output.
+hsColorMetadata :: Lens' H265Settings (Maybe H265ColorMetadata)
+hsColorMetadata = lens _hsColorMetadata (\ s a -> s{_hsColorMetadata = a})
+
+-- | Amount of lookahead. A value of low can decrease latency and memory usage, while high can produce better quality for certain content.
+hsLookAheadRateControl :: Lens' H265Settings (Maybe H265LookAheadRateControl)
+hsLookAheadRateControl = lens _hsLookAheadRateControl (\ s a -> s{_hsLookAheadRateControl = a})
+
+-- | Adaptive quantization. Allows intra-frame quantizers to vary to improve visual quality.
+hsAdaptiveQuantization :: Lens' H265Settings (Maybe H265AdaptiveQuantization)
+hsAdaptiveQuantization = lens _hsAdaptiveQuantization (\ s a -> s{_hsAdaptiveQuantization = a})
+
+-- | H.265 Level.
+hsLevel :: Lens' H265Settings (Maybe H265Level)
+hsLevel = lens _hsLevel (\ s a -> s{_hsLevel = a})
+
+-- | For QVBR: See the tooltip for Quality level
+hsMaxBitrate :: Lens' H265Settings (Maybe Natural)
+hsMaxBitrate = lens _hsMaxBitrate (\ s a -> s{_hsMaxBitrate = a}) . mapping _Nat
+
+-- | Frequency of closed GOPs. In streaming applications, it is recommended that this be set to 1 so a decoder joining mid-stream will receive an IDR frame as quickly as possible. Setting this value to 0 will break output segmenting.
+hsGopClosedCadence :: Lens' H265Settings (Maybe Natural)
+hsGopClosedCadence = lens _hsGopClosedCadence (\ s a -> s{_hsGopClosedCadence = a}) . mapping _Nat
+
+-- | Pixel Aspect Ratio denominator.
+hsParDenominator :: Lens' H265Settings (Maybe Natural)
+hsParDenominator = lens _hsParDenominator (\ s a -> s{_hsParDenominator = a}) . mapping _Nat
+
+-- | Framerate numerator - framerate is a fraction, e.g. 24000 / 1001 = 23.976 fps.
+hsFramerateNumerator :: Lens' H265Settings Natural
+hsFramerateNumerator = lens _hsFramerateNumerator (\ s a -> s{_hsFramerateNumerator = a}) . _Nat
+
+-- | Framerate denominator.
+hsFramerateDenominator :: Lens' H265Settings Natural
+hsFramerateDenominator = lens _hsFramerateDenominator (\ s a -> s{_hsFramerateDenominator = a}) . _Nat
+
+instance FromJSON H265Settings where
+        parseJSON
+          = withObject "H265Settings"
+              (\ x ->
+                 H265Settings' <$>
+                   (x .:? "sceneChangeDetect") <*> (x .:? "scanType")
+                     <*> (x .:? "timecodeInsertion")
+                     <*> (x .:? "parNumerator")
+                     <*> (x .:? "afdSignaling")
+                     <*> (x .:? "gopSize")
+                     <*> (x .:? "gopSizeUnits")
+                     <*> (x .:? "slices")
+                     <*> (x .:? "profile")
+                     <*> (x .:? "alternativeTransferFunction")
+                     <*> (x .:? "rateControlMode")
+                     <*> (x .:? "minIInterval")
+                     <*> (x .:? "qvbrQualityLevel")
+                     <*> (x .:? "colorSpaceSettings")
+                     <*> (x .:? "flickerAq")
+                     <*> (x .:? "bufSize")
+                     <*> (x .:? "tier")
+                     <*> (x .:? "fixedAfd")
+                     <*> (x .:? "bitrate")
+                     <*> (x .:? "colorMetadata")
+                     <*> (x .:? "lookAheadRateControl")
+                     <*> (x .:? "adaptiveQuantization")
+                     <*> (x .:? "level")
+                     <*> (x .:? "maxBitrate")
+                     <*> (x .:? "gopClosedCadence")
+                     <*> (x .:? "parDenominator")
+                     <*> (x .: "framerateNumerator")
+                     <*> (x .: "framerateDenominator"))
+
+instance Hashable H265Settings where
+
+instance NFData H265Settings where
+
+instance ToJSON H265Settings where
+        toJSON H265Settings'{..}
+          = object
+              (catMaybes
+                 [("sceneChangeDetect" .=) <$> _hsSceneChangeDetect,
                   ("scanType" .=) <$> _hsScanType,
                   ("timecodeInsertion" .=) <$> _hsTimecodeInsertion,
                   ("parNumerator" .=) <$> _hsParNumerator,
@@ -3597,48 +4987,92 @@ instance ToJSON H264Settings where
                   ("gopSizeUnits" .=) <$> _hsGopSizeUnits,
                   ("slices" .=) <$> _hsSlices,
                   ("profile" .=) <$> _hsProfile,
+                  ("alternativeTransferFunction" .=) <$>
+                    _hsAlternativeTransferFunction,
                   ("rateControlMode" .=) <$> _hsRateControlMode,
                   ("minIInterval" .=) <$> _hsMinIInterval,
-                  ("parControl" .=) <$> _hsParControl,
+                  ("qvbrQualityLevel" .=) <$> _hsQvbrQualityLevel,
+                  ("colorSpaceSettings" .=) <$> _hsColorSpaceSettings,
                   ("flickerAq" .=) <$> _hsFlickerAq,
                   ("bufSize" .=) <$> _hsBufSize,
-                  ("spatialAq" .=) <$> _hsSpatialAq,
-                  ("gopNumBFrames" .=) <$> _hsGopNumBFrames,
+                  ("tier" .=) <$> _hsTier,
                   ("fixedAfd" .=) <$> _hsFixedAfd,
-                  ("softness" .=) <$> _hsSoftness,
                   ("bitrate" .=) <$> _hsBitrate,
-                  ("framerateDenominator" .=) <$>
-                    _hsFramerateDenominator,
-                  ("entropyEncoding" .=) <$> _hsEntropyEncoding,
-                  ("framerateControl" .=) <$> _hsFramerateControl,
                   ("colorMetadata" .=) <$> _hsColorMetadata,
                   ("lookAheadRateControl" .=) <$>
                     _hsLookAheadRateControl,
                   ("adaptiveQuantization" .=) <$>
                     _hsAdaptiveQuantization,
-                  ("framerateNumerator" .=) <$> _hsFramerateNumerator,
                   ("level" .=) <$> _hsLevel,
-                  ("gopBReference" .=) <$> _hsGopBReference,
                   ("maxBitrate" .=) <$> _hsMaxBitrate,
-                  ("syntax" .=) <$> _hsSyntax,
-                  ("bufFillPct" .=) <$> _hsBufFillPct,
                   ("gopClosedCadence" .=) <$> _hsGopClosedCadence,
-                  ("numRefFrames" .=) <$> _hsNumRefFrames,
-                  ("parDenominator" .=) <$> _hsParDenominator])
+                  ("parDenominator" .=) <$> _hsParDenominator,
+                  Just ("framerateNumerator" .= _hsFramerateNumerator),
+                  Just
+                    ("framerateDenominator" .= _hsFramerateDenominator)])
 
--- | Placeholder documentation for HlsAkamaiSettings
+-- | Hdr10 Settings
+--
+-- /See:/ 'hdr10Settings' smart constructor.
+data Hdr10Settings = Hdr10Settings'{_hsMaxFall ::
+                                    !(Maybe Nat),
+                                    _hsMaxCll :: !(Maybe Nat)}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+-- | Creates a value of 'Hdr10Settings' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'hsMaxFall' - Maximum Frame Average Light Level An integer metadata value defining the maximum average light level, in nits, for any single frame within an encoded HDR video stream or file.
+--
+-- * 'hsMaxCll' - Maximum Content Light Level An integer metadata value defining the maximum light level, in nits, of any single pixel within an encoded HDR video stream or file.
+hdr10Settings
+    :: Hdr10Settings
+hdr10Settings
+  = Hdr10Settings'{_hsMaxFall = Nothing,
+                   _hsMaxCll = Nothing}
+
+-- | Maximum Frame Average Light Level An integer metadata value defining the maximum average light level, in nits, for any single frame within an encoded HDR video stream or file.
+hsMaxFall :: Lens' Hdr10Settings (Maybe Natural)
+hsMaxFall = lens _hsMaxFall (\ s a -> s{_hsMaxFall = a}) . mapping _Nat
+
+-- | Maximum Content Light Level An integer metadata value defining the maximum light level, in nits, of any single pixel within an encoded HDR video stream or file.
+hsMaxCll :: Lens' Hdr10Settings (Maybe Natural)
+hsMaxCll = lens _hsMaxCll (\ s a -> s{_hsMaxCll = a}) . mapping _Nat
+
+instance FromJSON Hdr10Settings where
+        parseJSON
+          = withObject "Hdr10Settings"
+              (\ x ->
+                 Hdr10Settings' <$>
+                   (x .:? "maxFall") <*> (x .:? "maxCll"))
+
+instance Hashable Hdr10Settings where
+
+instance NFData Hdr10Settings where
+
+instance ToJSON Hdr10Settings where
+        toJSON Hdr10Settings'{..}
+          = object
+              (catMaybes
+                 [("maxFall" .=) <$> _hsMaxFall,
+                  ("maxCll" .=) <$> _hsMaxCll])
+
+-- | Hls Akamai Settings
 --
 -- /See:/ 'hlsAkamaiSettings' smart constructor.
-data HlsAkamaiSettings = HlsAkamaiSettings'
-  { _hasHTTPTransferMode        :: !(Maybe HlsAkamaiHTTPTransferMode)
-  , _hasNumRetries              :: !(Maybe Nat)
-  , _hasToken                   :: !(Maybe Text)
-  , _hasConnectionRetryInterval :: !(Maybe Nat)
-  , _hasFilecacheDuration       :: !(Maybe Nat)
-  , _hasRestartDelay            :: !(Maybe Nat)
-  , _hasSalt                    :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data HlsAkamaiSettings = HlsAkamaiSettings'{_hasHTTPTransferMode
+                                            ::
+                                            !(Maybe HlsAkamaiHTTPTransferMode),
+                                            _hasNumRetries :: !(Maybe Nat),
+                                            _hasToken :: !(Maybe Text),
+                                            _hasConnectionRetryInterval ::
+                                            !(Maybe Nat),
+                                            _hasFilecacheDuration ::
+                                            !(Maybe Nat),
+                                            _hasRestartDelay :: !(Maybe Nat),
+                                            _hasSalt :: !(Maybe Text)}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'HlsAkamaiSettings' with the minimum fields required to make a request.
 --
@@ -3659,17 +5093,12 @@ data HlsAkamaiSettings = HlsAkamaiSettings'
 -- * 'hasSalt' - Salt for authenticated Akamai.
 hlsAkamaiSettings
     :: HlsAkamaiSettings
-hlsAkamaiSettings =
-  HlsAkamaiSettings'
-    { _hasHTTPTransferMode = Nothing
-    , _hasNumRetries = Nothing
-    , _hasToken = Nothing
-    , _hasConnectionRetryInterval = Nothing
-    , _hasFilecacheDuration = Nothing
-    , _hasRestartDelay = Nothing
-    , _hasSalt = Nothing
-    }
-
+hlsAkamaiSettings
+  = HlsAkamaiSettings'{_hasHTTPTransferMode = Nothing,
+                       _hasNumRetries = Nothing, _hasToken = Nothing,
+                       _hasConnectionRetryInterval = Nothing,
+                       _hasFilecacheDuration = Nothing,
+                       _hasRestartDelay = Nothing, _hasSalt = Nothing}
 
 -- | Specify whether or not to use chunked transfer encoding to Akamai. User should contact Akamai to enable this feature.
 hasHTTPTransferMode :: Lens' HlsAkamaiSettings (Maybe HlsAkamaiHTTPTransferMode)
@@ -3728,16 +5157,18 @@ instance ToJSON HlsAkamaiSettings where
                   ("restartDelay" .=) <$> _hasRestartDelay,
                   ("salt" .=) <$> _hasSalt])
 
--- | Placeholder documentation for HlsBasicPutSettings
+-- | Hls Basic Put Settings
 --
 -- /See:/ 'hlsBasicPutSettings' smart constructor.
-data HlsBasicPutSettings = HlsBasicPutSettings'
-  { _hbpsNumRetries              :: !(Maybe Nat)
-  , _hbpsConnectionRetryInterval :: !(Maybe Nat)
-  , _hbpsFilecacheDuration       :: !(Maybe Nat)
-  , _hbpsRestartDelay            :: !(Maybe Nat)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data HlsBasicPutSettings = HlsBasicPutSettings'{_hbpsNumRetries
+                                                :: !(Maybe Nat),
+                                                _hbpsConnectionRetryInterval ::
+                                                !(Maybe Nat),
+                                                _hbpsFilecacheDuration ::
+                                                !(Maybe Nat),
+                                                _hbpsRestartDelay ::
+                                                !(Maybe Nat)}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'HlsBasicPutSettings' with the minimum fields required to make a request.
 --
@@ -3752,14 +5183,11 @@ data HlsBasicPutSettings = HlsBasicPutSettings'
 -- * 'hbpsRestartDelay' - If a streaming output fails, number of seconds to wait until a restart is initiated. A value of 0 means never restart.
 hlsBasicPutSettings
     :: HlsBasicPutSettings
-hlsBasicPutSettings =
-  HlsBasicPutSettings'
-    { _hbpsNumRetries = Nothing
-    , _hbpsConnectionRetryInterval = Nothing
-    , _hbpsFilecacheDuration = Nothing
-    , _hbpsRestartDelay = Nothing
-    }
-
+hlsBasicPutSettings
+  = HlsBasicPutSettings'{_hbpsNumRetries = Nothing,
+                         _hbpsConnectionRetryInterval = Nothing,
+                         _hbpsFilecacheDuration = Nothing,
+                         _hbpsRestartDelay = Nothing}
 
 -- | Number of retry attempts that will be made before the Live Event is put into an error state.
 hbpsNumRetries :: Lens' HlsBasicPutSettings (Maybe Natural)
@@ -3801,16 +5229,18 @@ instance ToJSON HlsBasicPutSettings where
                   ("filecacheDuration" .=) <$> _hbpsFilecacheDuration,
                   ("restartDelay" .=) <$> _hbpsRestartDelay])
 
--- | Placeholder documentation for HlsCdnSettings
+-- | Hls Cdn Settings
 --
 -- /See:/ 'hlsCdnSettings' smart constructor.
-data HlsCdnSettings = HlsCdnSettings'
-  { _hcsHlsAkamaiSettings     :: !(Maybe HlsAkamaiSettings)
-  , _hcsHlsMediaStoreSettings :: !(Maybe HlsMediaStoreSettings)
-  , _hcsHlsBasicPutSettings   :: !(Maybe HlsBasicPutSettings)
-  , _hcsHlsWebdavSettings     :: !(Maybe HlsWebdavSettings)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data HlsCdnSettings = HlsCdnSettings'{_hcsHlsAkamaiSettings
+                                      :: !(Maybe HlsAkamaiSettings),
+                                      _hcsHlsMediaStoreSettings ::
+                                      !(Maybe HlsMediaStoreSettings),
+                                      _hcsHlsBasicPutSettings ::
+                                      !(Maybe HlsBasicPutSettings),
+                                      _hcsHlsWebdavSettings ::
+                                      !(Maybe HlsWebdavSettings)}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'HlsCdnSettings' with the minimum fields required to make a request.
 --
@@ -3825,14 +5255,11 @@ data HlsCdnSettings = HlsCdnSettings'
 -- * 'hcsHlsWebdavSettings' - Undocumented member.
 hlsCdnSettings
     :: HlsCdnSettings
-hlsCdnSettings =
-  HlsCdnSettings'
-    { _hcsHlsAkamaiSettings = Nothing
-    , _hcsHlsMediaStoreSettings = Nothing
-    , _hcsHlsBasicPutSettings = Nothing
-    , _hcsHlsWebdavSettings = Nothing
-    }
-
+hlsCdnSettings
+  = HlsCdnSettings'{_hcsHlsAkamaiSettings = Nothing,
+                    _hcsHlsMediaStoreSettings = Nothing,
+                    _hcsHlsBasicPutSettings = Nothing,
+                    _hcsHlsWebdavSettings = Nothing}
 
 -- | Undocumented member.
 hcsHlsAkamaiSettings :: Lens' HlsCdnSettings (Maybe HlsAkamaiSettings)
@@ -3875,47 +5302,77 @@ instance ToJSON HlsCdnSettings where
                     _hcsHlsBasicPutSettings,
                   ("hlsWebdavSettings" .=) <$> _hcsHlsWebdavSettings])
 
--- | Placeholder documentation for HlsGroupSettings
+-- | Hls Group Settings
 --
 -- /See:/ 'hlsGroupSettings' smart constructor.
-data HlsGroupSettings = HlsGroupSettings'
-  { _hgsDirectoryStructure         :: !(Maybe HlsDirectoryStructure)
-  , _hgsEncryptionType             :: !(Maybe HlsEncryptionType)
-  , _hgsTimedMetadataId3Period     :: !(Maybe Nat)
-  , _hgsIvInManifest               :: !(Maybe HlsIvInManifest)
-  , _hgsTsFileMode                 :: !(Maybe HlsTsFileMode)
-  , _hgsMinSegmentLength           :: !(Maybe Nat)
-  , _hgsProgramDateTime            :: !(Maybe HlsProgramDateTime)
-  , _hgsIndexNSegments             :: !(Maybe Nat)
-  , _hgsProgramDateTimePeriod      :: !(Maybe Nat)
-  , _hgsCodecSpecification         :: !(Maybe HlsCodecSpecification)
-  , _hgsHlsCdnSettings             :: !(Maybe HlsCdnSettings)
-  , _hgsCaptionLanguageMappings    :: !(Maybe [CaptionLanguageMapping])
-  , _hgsInputLossAction            :: !(Maybe InputLossActionForHlsOut)
-  , _hgsMode                       :: !(Maybe HlsMode)
-  , _hgsKeyProviderSettings        :: !(Maybe KeyProviderSettings)
-  , _hgsConstantIv                 :: !(Maybe Text)
-  , _hgsBaseURLManifest            :: !(Maybe Text)
-  , _hgsAdMarkers                  :: !(Maybe [HlsAdMarkers])
-  , _hgsKeyFormat                  :: !(Maybe Text)
-  , _hgsSegmentLength              :: !(Maybe Nat)
-  , _hgsTimedMetadataId3Frame      :: !(Maybe HlsTimedMetadataId3Frame)
-  , _hgsBaseURLContent             :: !(Maybe Text)
-  , _hgsOutputSelection            :: !(Maybe HlsOutputSelection)
-  , _hgsCaptionLanguageSetting     :: !(Maybe HlsCaptionLanguageSetting)
-  , _hgsSegmentsPerSubdirectory    :: !(Maybe Nat)
-  , _hgsManifestDurationFormat     :: !(Maybe HlsManifestDurationFormat)
-  , _hgsIvSource                   :: !(Maybe HlsIvSource)
-  , _hgsSegmentationMode           :: !(Maybe HlsSegmentationMode)
-  , _hgsKeyFormatVersions          :: !(Maybe Text)
-  , _hgsClientCache                :: !(Maybe HlsClientCache)
-  , _hgsTimestampDeltaMilliseconds :: !(Maybe Nat)
-  , _hgsStreamInfResolution        :: !(Maybe HlsStreamInfResolution)
-  , _hgsKeepSegments               :: !(Maybe Nat)
-  , _hgsManifestCompression        :: !(Maybe HlsManifestCompression)
-  , _hgsDestination                :: !OutputLocationRef
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data HlsGroupSettings = HlsGroupSettings'{_hgsDirectoryStructure
+                                          :: !(Maybe HlsDirectoryStructure),
+                                          _hgsEncryptionType ::
+                                          !(Maybe HlsEncryptionType),
+                                          _hgsTimedMetadataId3Period ::
+                                          !(Maybe Nat),
+                                          _hgsIvInManifest ::
+                                          !(Maybe HlsIvInManifest),
+                                          _hgsTsFileMode ::
+                                          !(Maybe HlsTsFileMode),
+                                          _hgsMinSegmentLength :: !(Maybe Nat),
+                                          _hgsIFrameOnlyPlaylists ::
+                                          !(Maybe IFrameOnlyPlaylistType),
+                                          _hgsProgramDateTime ::
+                                          !(Maybe HlsProgramDateTime),
+                                          _hgsIndexNSegments :: !(Maybe Nat),
+                                          _hgsProgramDateTimePeriod ::
+                                          !(Maybe Nat),
+                                          _hgsCodecSpecification ::
+                                          !(Maybe HlsCodecSpecification),
+                                          _hgsHlsCdnSettings ::
+                                          !(Maybe HlsCdnSettings),
+                                          _hgsCaptionLanguageMappings ::
+                                          !(Maybe [CaptionLanguageMapping]),
+                                          _hgsInputLossAction ::
+                                          !(Maybe InputLossActionForHlsOut),
+                                          _hgsMode :: !(Maybe HlsMode),
+                                          _hgsKeyProviderSettings ::
+                                          !(Maybe KeyProviderSettings),
+                                          _hgsConstantIv :: !(Maybe Text),
+                                          _hgsBaseURLManifest :: !(Maybe Text),
+                                          _hgsAdMarkers ::
+                                          !(Maybe [HlsAdMarkers]),
+                                          _hgsKeyFormat :: !(Maybe Text),
+                                          _hgsSegmentLength :: !(Maybe Nat),
+                                          _hgsHlsId3SegmentTagging ::
+                                          !(Maybe HlsId3SegmentTaggingState),
+                                          _hgsTimedMetadataId3Frame ::
+                                          !(Maybe HlsTimedMetadataId3Frame),
+                                          _hgsBaseURLContent :: !(Maybe Text),
+                                          _hgsOutputSelection ::
+                                          !(Maybe HlsOutputSelection),
+                                          _hgsCaptionLanguageSetting ::
+                                          !(Maybe HlsCaptionLanguageSetting),
+                                          _hgsSegmentsPerSubdirectory ::
+                                          !(Maybe Nat),
+                                          _hgsManifestDurationFormat ::
+                                          !(Maybe HlsManifestDurationFormat),
+                                          _hgsIvSource :: !(Maybe HlsIvSource),
+                                          _hgsSegmentationMode ::
+                                          !(Maybe HlsSegmentationMode),
+                                          _hgsKeyFormatVersions ::
+                                          !(Maybe Text),
+                                          _hgsClientCache ::
+                                          !(Maybe HlsClientCache),
+                                          _hgsTimestampDeltaMilliseconds ::
+                                          !(Maybe Nat),
+                                          _hgsBaseURLManifest1 :: !(Maybe Text),
+                                          _hgsRedundantManifest ::
+                                          !(Maybe HlsRedundantManifest),
+                                          _hgsStreamInfResolution ::
+                                          !(Maybe HlsStreamInfResolution),
+                                          _hgsKeepSegments :: !(Maybe Nat),
+                                          _hgsBaseURLContent1 :: !(Maybe Text),
+                                          _hgsManifestCompression ::
+                                          !(Maybe HlsManifestCompression),
+                                          _hgsDestination :: !OutputLocationRef}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'HlsGroupSettings' with the minimum fields required to make a request.
 --
@@ -3929,13 +5386,15 @@ data HlsGroupSettings = HlsGroupSettings'
 --
 -- * 'hgsIvInManifest' - For use with encryptionType. The IV (Initialization Vector) is a 128-bit number used in conjunction with the key for encrypting blocks. If set to "include", IV is listed in the manifest, otherwise the IV is not in the manifest.
 --
--- * 'hgsTsFileMode' - When set to "singleFile", emits the program as a single media resource (.ts) file, and uses #EXT-X-BYTERANGE tags to index segment for playback. Playback of VOD mode content during event is not guaranteed due to HTTP server caching.
+-- * 'hgsTsFileMode' - SEGMENTED_FILES: Emit the program as segments - multiple .ts media files. SINGLE_FILE: Applies only if Mode field is VOD. Emit the program as a single .ts media file. The media manifest includes #EXT-X-BYTERANGE tags to index segments for playback. A typical use for this value is when sending the output to AWS Elemental MediaConvert, which can accept only a single media file. Playback while the channel is running is not guaranteed due to HTTP server caching.
 --
 -- * 'hgsMinSegmentLength' - When set, minimumSegmentLength is enforced by looking ahead and back within the specified range for a nearby avail and extending the segment size if needed.
 --
+-- * 'hgsIFrameOnlyPlaylists' - DISABLED: Do not create an I-frame-only manifest, but do create the master and media manifests (according to the Output Selection field). STANDARD: Create an I-frame-only manifest for each output that contains video, as well as the other manifests (according to the Output Selection field). The I-frame manifest contains a #EXT-X-I-FRAMES-ONLY tag to indicate it is I-frame only, and one or more #EXT-X-BYTERANGE entries identifying the I-frame position. For example, #EXT-X-BYTERANGE:160364@1461888"
+--
 -- * 'hgsProgramDateTime' - Includes or excludes EXT-X-PROGRAM-DATE-TIME tag in .m3u8 manifest files. The value is calculated as follows: either the program date and time are initialized using the input timecode source, or the time is initialized using the input timecode source and the date is initialized using the timestampOffset.
 --
--- * 'hgsIndexNSegments' - If mode is "live", the number of segments to retain in the manifest (.m3u8) file. This number must be less than or equal to keepSegments. If mode is "vod", this parameter has no effect.
+-- * 'hgsIndexNSegments' - Applies only if Mode field is LIVE. Specifies the maximum number of segments in the media manifest file. After this maximum, older segments are removed from the media manifest. This number must be less than or equal to the Keep Segments field.
 --
 -- * 'hgsProgramDateTimePeriod' - Period of insertion of EXT-X-PROGRAM-DATE-TIME entry, in seconds.
 --
@@ -3961,11 +5420,13 @@ data HlsGroupSettings = HlsGroupSettings'
 --
 -- * 'hgsSegmentLength' - Length of MPEG-2 Transport Stream segments to create (in seconds). Note that segments will end on the next keyframe after this number of seconds, so actual segment length may be longer.
 --
+-- * 'hgsHlsId3SegmentTagging' - State of HLS ID3 Segment Tagging
+--
 -- * 'hgsTimedMetadataId3Frame' - Indicates ID3 frame that has the timecode.
 --
 -- * 'hgsBaseURLContent' - A partial URI prefix that will be prepended to each output in the media .m3u8 file. Can be used if base manifest is delivered from a different URL than the main .m3u8 file.
 --
--- * 'hgsOutputSelection' - Generates the .m3u8 playlist file for this HLS output group. The segmentsOnly option will output segments without the .m3u8 file.
+-- * 'hgsOutputSelection' - MANIFESTS_AND_SEGMENTS: Generates manifests (master manifest, if applicable, and media manifests) for this output group. VARIANT_MANIFESTS_AND_SEGMENTS: Generates media manifests for this output group, but not a master manifest. SEGMENTS_ONLY: Does not generate any manifests for this output group.
 --
 -- * 'hgsCaptionLanguageSetting' - Applies only to 608 Embedded output captions. insert: Include CLOSED-CAPTIONS lines in the manifest. Specify at least one language in the CC1 Language Code field. One CLOSED-CAPTION line is added for each Language Code you specify. Make sure to specify the languages in the order in which they appear in the original source (if the source is embedded format) or the order of the caption selectors (if the source is other than embedded). Otherwise, languages in the manifest will not match up properly with the output captions. none: Include CLOSED-CAPTIONS=NONE line in the manifest. omit: Omit any CLOSED-CAPTIONS line from the manifest.
 --
@@ -3975,7 +5436,7 @@ data HlsGroupSettings = HlsGroupSettings'
 --
 -- * 'hgsIvSource' - For use with encryptionType. The IV (Initialization Vector) is a 128-bit number used in conjunction with the key for encrypting blocks. If this setting is "followsSegmentNumber", it will cause the IV to change every segment (to match the segment number). If this is set to "explicit", you must enter a constantIv value.
 --
--- * 'hgsSegmentationMode' - When set to useInputSegmentation, the output segment or fragment points are set by the RAI markers from the input streams.
+-- * 'hgsSegmentationMode' - useInputSegmentation has been deprecated. The configured segment size is always used.
 --
 -- * 'hgsKeyFormatVersions' - Either a single positive integer version value or a slash delimited list of version values (1/2/3).
 --
@@ -3983,9 +5444,15 @@ data HlsGroupSettings = HlsGroupSettings'
 --
 -- * 'hgsTimestampDeltaMilliseconds' - Provides an extra millisecond delta offset to fine tune the timestamps.
 --
+-- * 'hgsBaseURLManifest1' - Optional. One value per output group. Complete this field only if you are completing Base URL manifest A, and the downstream system has notified you that the child manifest files for pipeline 1 of all outputs are in a location different from the child manifest files for pipeline 0.
+--
+-- * 'hgsRedundantManifest' - ENABLED: The master manifest (.m3u8 file) for each pipeline includes information about both pipelines: first its own media files, then the media files of the other pipeline. This feature allows playout device that support stale manifest detection to switch from one manifest to the other, when the current manifest seems to be stale. There are still two destinations and two master manifests, but both master manifests reference the media files from both pipelines. DISABLED: The master manifest (.m3u8 file) for each pipeline includes information about its own pipeline only. For an HLS output group with MediaPackage as the destination, the DISABLED behavior is always followed. MediaPackage regenerates the manifests it serves to players so a redundant manifest from MediaLive is irrelevant.
+--
 -- * 'hgsStreamInfResolution' - Include or exclude RESOLUTION attribute for video in EXT-X-STREAM-INF tag of variant manifest.
 --
--- * 'hgsKeepSegments' - If mode is "live", the number of TS segments to retain in the destination directory. If mode is "vod", this parameter has no effect.
+-- * 'hgsKeepSegments' - Applies only if Mode field is LIVE. Specifies the number of media segments (.ts files) to retain in the destination directory.
+--
+-- * 'hgsBaseURLContent1' - Optional. One value per output group. This field is required only if you are completing Base URL content A, and the downstream system has notified you that the media files for pipeline 1 of all outputs are in a location different from the media files for pipeline 0.
 --
 -- * 'hgsManifestCompression' - When set to gzip, compresses HLS playlist.
 --
@@ -3993,45 +5460,44 @@ data HlsGroupSettings = HlsGroupSettings'
 hlsGroupSettings
     :: OutputLocationRef -- ^ 'hgsDestination'
     -> HlsGroupSettings
-hlsGroupSettings pDestination_ =
-  HlsGroupSettings'
-    { _hgsDirectoryStructure = Nothing
-    , _hgsEncryptionType = Nothing
-    , _hgsTimedMetadataId3Period = Nothing
-    , _hgsIvInManifest = Nothing
-    , _hgsTsFileMode = Nothing
-    , _hgsMinSegmentLength = Nothing
-    , _hgsProgramDateTime = Nothing
-    , _hgsIndexNSegments = Nothing
-    , _hgsProgramDateTimePeriod = Nothing
-    , _hgsCodecSpecification = Nothing
-    , _hgsHlsCdnSettings = Nothing
-    , _hgsCaptionLanguageMappings = Nothing
-    , _hgsInputLossAction = Nothing
-    , _hgsMode = Nothing
-    , _hgsKeyProviderSettings = Nothing
-    , _hgsConstantIv = Nothing
-    , _hgsBaseURLManifest = Nothing
-    , _hgsAdMarkers = Nothing
-    , _hgsKeyFormat = Nothing
-    , _hgsSegmentLength = Nothing
-    , _hgsTimedMetadataId3Frame = Nothing
-    , _hgsBaseURLContent = Nothing
-    , _hgsOutputSelection = Nothing
-    , _hgsCaptionLanguageSetting = Nothing
-    , _hgsSegmentsPerSubdirectory = Nothing
-    , _hgsManifestDurationFormat = Nothing
-    , _hgsIvSource = Nothing
-    , _hgsSegmentationMode = Nothing
-    , _hgsKeyFormatVersions = Nothing
-    , _hgsClientCache = Nothing
-    , _hgsTimestampDeltaMilliseconds = Nothing
-    , _hgsStreamInfResolution = Nothing
-    , _hgsKeepSegments = Nothing
-    , _hgsManifestCompression = Nothing
-    , _hgsDestination = pDestination_
-    }
-
+hlsGroupSettings pDestination_
+  = HlsGroupSettings'{_hgsDirectoryStructure = Nothing,
+                      _hgsEncryptionType = Nothing,
+                      _hgsTimedMetadataId3Period = Nothing,
+                      _hgsIvInManifest = Nothing, _hgsTsFileMode = Nothing,
+                      _hgsMinSegmentLength = Nothing,
+                      _hgsIFrameOnlyPlaylists = Nothing,
+                      _hgsProgramDateTime = Nothing,
+                      _hgsIndexNSegments = Nothing,
+                      _hgsProgramDateTimePeriod = Nothing,
+                      _hgsCodecSpecification = Nothing,
+                      _hgsHlsCdnSettings = Nothing,
+                      _hgsCaptionLanguageMappings = Nothing,
+                      _hgsInputLossAction = Nothing, _hgsMode = Nothing,
+                      _hgsKeyProviderSettings = Nothing,
+                      _hgsConstantIv = Nothing,
+                      _hgsBaseURLManifest = Nothing,
+                      _hgsAdMarkers = Nothing, _hgsKeyFormat = Nothing,
+                      _hgsSegmentLength = Nothing,
+                      _hgsHlsId3SegmentTagging = Nothing,
+                      _hgsTimedMetadataId3Frame = Nothing,
+                      _hgsBaseURLContent = Nothing,
+                      _hgsOutputSelection = Nothing,
+                      _hgsCaptionLanguageSetting = Nothing,
+                      _hgsSegmentsPerSubdirectory = Nothing,
+                      _hgsManifestDurationFormat = Nothing,
+                      _hgsIvSource = Nothing,
+                      _hgsSegmentationMode = Nothing,
+                      _hgsKeyFormatVersions = Nothing,
+                      _hgsClientCache = Nothing,
+                      _hgsTimestampDeltaMilliseconds = Nothing,
+                      _hgsBaseURLManifest1 = Nothing,
+                      _hgsRedundantManifest = Nothing,
+                      _hgsStreamInfResolution = Nothing,
+                      _hgsKeepSegments = Nothing,
+                      _hgsBaseURLContent1 = Nothing,
+                      _hgsManifestCompression = Nothing,
+                      _hgsDestination = pDestination_}
 
 -- | Place segments in subdirectories.
 hgsDirectoryStructure :: Lens' HlsGroupSettings (Maybe HlsDirectoryStructure)
@@ -4049,7 +5515,7 @@ hgsTimedMetadataId3Period = lens _hgsTimedMetadataId3Period (\ s a -> s{_hgsTime
 hgsIvInManifest :: Lens' HlsGroupSettings (Maybe HlsIvInManifest)
 hgsIvInManifest = lens _hgsIvInManifest (\ s a -> s{_hgsIvInManifest = a})
 
--- | When set to "singleFile", emits the program as a single media resource (.ts) file, and uses #EXT-X-BYTERANGE tags to index segment for playback. Playback of VOD mode content during event is not guaranteed due to HTTP server caching.
+-- | SEGMENTED_FILES: Emit the program as segments - multiple .ts media files. SINGLE_FILE: Applies only if Mode field is VOD. Emit the program as a single .ts media file. The media manifest includes #EXT-X-BYTERANGE tags to index segments for playback. A typical use for this value is when sending the output to AWS Elemental MediaConvert, which can accept only a single media file. Playback while the channel is running is not guaranteed due to HTTP server caching.
 hgsTsFileMode :: Lens' HlsGroupSettings (Maybe HlsTsFileMode)
 hgsTsFileMode = lens _hgsTsFileMode (\ s a -> s{_hgsTsFileMode = a})
 
@@ -4057,11 +5523,15 @@ hgsTsFileMode = lens _hgsTsFileMode (\ s a -> s{_hgsTsFileMode = a})
 hgsMinSegmentLength :: Lens' HlsGroupSettings (Maybe Natural)
 hgsMinSegmentLength = lens _hgsMinSegmentLength (\ s a -> s{_hgsMinSegmentLength = a}) . mapping _Nat
 
+-- | DISABLED: Do not create an I-frame-only manifest, but do create the master and media manifests (according to the Output Selection field). STANDARD: Create an I-frame-only manifest for each output that contains video, as well as the other manifests (according to the Output Selection field). The I-frame manifest contains a #EXT-X-I-FRAMES-ONLY tag to indicate it is I-frame only, and one or more #EXT-X-BYTERANGE entries identifying the I-frame position. For example, #EXT-X-BYTERANGE:160364@1461888"
+hgsIFrameOnlyPlaylists :: Lens' HlsGroupSettings (Maybe IFrameOnlyPlaylistType)
+hgsIFrameOnlyPlaylists = lens _hgsIFrameOnlyPlaylists (\ s a -> s{_hgsIFrameOnlyPlaylists = a})
+
 -- | Includes or excludes EXT-X-PROGRAM-DATE-TIME tag in .m3u8 manifest files. The value is calculated as follows: either the program date and time are initialized using the input timecode source, or the time is initialized using the input timecode source and the date is initialized using the timestampOffset.
 hgsProgramDateTime :: Lens' HlsGroupSettings (Maybe HlsProgramDateTime)
 hgsProgramDateTime = lens _hgsProgramDateTime (\ s a -> s{_hgsProgramDateTime = a})
 
--- | If mode is "live", the number of segments to retain in the manifest (.m3u8) file. This number must be less than or equal to keepSegments. If mode is "vod", this parameter has no effect.
+-- | Applies only if Mode field is LIVE. Specifies the maximum number of segments in the media manifest file. After this maximum, older segments are removed from the media manifest. This number must be less than or equal to the Keep Segments field.
 hgsIndexNSegments :: Lens' HlsGroupSettings (Maybe Natural)
 hgsIndexNSegments = lens _hgsIndexNSegments (\ s a -> s{_hgsIndexNSegments = a}) . mapping _Nat
 
@@ -4113,6 +5583,10 @@ hgsKeyFormat = lens _hgsKeyFormat (\ s a -> s{_hgsKeyFormat = a})
 hgsSegmentLength :: Lens' HlsGroupSettings (Maybe Natural)
 hgsSegmentLength = lens _hgsSegmentLength (\ s a -> s{_hgsSegmentLength = a}) . mapping _Nat
 
+-- | State of HLS ID3 Segment Tagging
+hgsHlsId3SegmentTagging :: Lens' HlsGroupSettings (Maybe HlsId3SegmentTaggingState)
+hgsHlsId3SegmentTagging = lens _hgsHlsId3SegmentTagging (\ s a -> s{_hgsHlsId3SegmentTagging = a})
+
 -- | Indicates ID3 frame that has the timecode.
 hgsTimedMetadataId3Frame :: Lens' HlsGroupSettings (Maybe HlsTimedMetadataId3Frame)
 hgsTimedMetadataId3Frame = lens _hgsTimedMetadataId3Frame (\ s a -> s{_hgsTimedMetadataId3Frame = a})
@@ -4121,7 +5595,7 @@ hgsTimedMetadataId3Frame = lens _hgsTimedMetadataId3Frame (\ s a -> s{_hgsTimedM
 hgsBaseURLContent :: Lens' HlsGroupSettings (Maybe Text)
 hgsBaseURLContent = lens _hgsBaseURLContent (\ s a -> s{_hgsBaseURLContent = a})
 
--- | Generates the .m3u8 playlist file for this HLS output group. The segmentsOnly option will output segments without the .m3u8 file.
+-- | MANIFESTS_AND_SEGMENTS: Generates manifests (master manifest, if applicable, and media manifests) for this output group. VARIANT_MANIFESTS_AND_SEGMENTS: Generates media manifests for this output group, but not a master manifest. SEGMENTS_ONLY: Does not generate any manifests for this output group.
 hgsOutputSelection :: Lens' HlsGroupSettings (Maybe HlsOutputSelection)
 hgsOutputSelection = lens _hgsOutputSelection (\ s a -> s{_hgsOutputSelection = a})
 
@@ -4141,7 +5615,7 @@ hgsManifestDurationFormat = lens _hgsManifestDurationFormat (\ s a -> s{_hgsMani
 hgsIvSource :: Lens' HlsGroupSettings (Maybe HlsIvSource)
 hgsIvSource = lens _hgsIvSource (\ s a -> s{_hgsIvSource = a})
 
--- | When set to useInputSegmentation, the output segment or fragment points are set by the RAI markers from the input streams.
+-- | useInputSegmentation has been deprecated. The configured segment size is always used.
 hgsSegmentationMode :: Lens' HlsGroupSettings (Maybe HlsSegmentationMode)
 hgsSegmentationMode = lens _hgsSegmentationMode (\ s a -> s{_hgsSegmentationMode = a})
 
@@ -4157,13 +5631,25 @@ hgsClientCache = lens _hgsClientCache (\ s a -> s{_hgsClientCache = a})
 hgsTimestampDeltaMilliseconds :: Lens' HlsGroupSettings (Maybe Natural)
 hgsTimestampDeltaMilliseconds = lens _hgsTimestampDeltaMilliseconds (\ s a -> s{_hgsTimestampDeltaMilliseconds = a}) . mapping _Nat
 
+-- | Optional. One value per output group. Complete this field only if you are completing Base URL manifest A, and the downstream system has notified you that the child manifest files for pipeline 1 of all outputs are in a location different from the child manifest files for pipeline 0.
+hgsBaseURLManifest1 :: Lens' HlsGroupSettings (Maybe Text)
+hgsBaseURLManifest1 = lens _hgsBaseURLManifest1 (\ s a -> s{_hgsBaseURLManifest1 = a})
+
+-- | ENABLED: The master manifest (.m3u8 file) for each pipeline includes information about both pipelines: first its own media files, then the media files of the other pipeline. This feature allows playout device that support stale manifest detection to switch from one manifest to the other, when the current manifest seems to be stale. There are still two destinations and two master manifests, but both master manifests reference the media files from both pipelines. DISABLED: The master manifest (.m3u8 file) for each pipeline includes information about its own pipeline only. For an HLS output group with MediaPackage as the destination, the DISABLED behavior is always followed. MediaPackage regenerates the manifests it serves to players so a redundant manifest from MediaLive is irrelevant.
+hgsRedundantManifest :: Lens' HlsGroupSettings (Maybe HlsRedundantManifest)
+hgsRedundantManifest = lens _hgsRedundantManifest (\ s a -> s{_hgsRedundantManifest = a})
+
 -- | Include or exclude RESOLUTION attribute for video in EXT-X-STREAM-INF tag of variant manifest.
 hgsStreamInfResolution :: Lens' HlsGroupSettings (Maybe HlsStreamInfResolution)
 hgsStreamInfResolution = lens _hgsStreamInfResolution (\ s a -> s{_hgsStreamInfResolution = a})
 
--- | If mode is "live", the number of TS segments to retain in the destination directory. If mode is "vod", this parameter has no effect.
+-- | Applies only if Mode field is LIVE. Specifies the number of media segments (.ts files) to retain in the destination directory.
 hgsKeepSegments :: Lens' HlsGroupSettings (Maybe Natural)
 hgsKeepSegments = lens _hgsKeepSegments (\ s a -> s{_hgsKeepSegments = a}) . mapping _Nat
+
+-- | Optional. One value per output group. This field is required only if you are completing Base URL content A, and the downstream system has notified you that the media files for pipeline 1 of all outputs are in a location different from the media files for pipeline 0.
+hgsBaseURLContent1 :: Lens' HlsGroupSettings (Maybe Text)
+hgsBaseURLContent1 = lens _hgsBaseURLContent1 (\ s a -> s{_hgsBaseURLContent1 = a})
 
 -- | When set to gzip, compresses HLS playlist.
 hgsManifestCompression :: Lens' HlsGroupSettings (Maybe HlsManifestCompression)
@@ -4184,6 +5670,7 @@ instance FromJSON HlsGroupSettings where
                      <*> (x .:? "ivInManifest")
                      <*> (x .:? "tsFileMode")
                      <*> (x .:? "minSegmentLength")
+                     <*> (x .:? "iFrameOnlyPlaylists")
                      <*> (x .:? "programDateTime")
                      <*> (x .:? "indexNSegments")
                      <*> (x .:? "programDateTimePeriod")
@@ -4198,6 +5685,7 @@ instance FromJSON HlsGroupSettings where
                      <*> (x .:? "adMarkers" .!= mempty)
                      <*> (x .:? "keyFormat")
                      <*> (x .:? "segmentLength")
+                     <*> (x .:? "hlsId3SegmentTagging")
                      <*> (x .:? "timedMetadataId3Frame")
                      <*> (x .:? "baseUrlContent")
                      <*> (x .:? "outputSelection")
@@ -4209,8 +5697,11 @@ instance FromJSON HlsGroupSettings where
                      <*> (x .:? "keyFormatVersions")
                      <*> (x .:? "clientCache")
                      <*> (x .:? "timestampDeltaMilliseconds")
+                     <*> (x .:? "baseUrlManifest1")
+                     <*> (x .:? "redundantManifest")
                      <*> (x .:? "streamInfResolution")
                      <*> (x .:? "keepSegments")
+                     <*> (x .:? "baseUrlContent1")
                      <*> (x .:? "manifestCompression")
                      <*> (x .: "destination"))
 
@@ -4230,6 +5721,8 @@ instance ToJSON HlsGroupSettings where
                   ("ivInManifest" .=) <$> _hgsIvInManifest,
                   ("tsFileMode" .=) <$> _hgsTsFileMode,
                   ("minSegmentLength" .=) <$> _hgsMinSegmentLength,
+                  ("iFrameOnlyPlaylists" .=) <$>
+                    _hgsIFrameOnlyPlaylists,
                   ("programDateTime" .=) <$> _hgsProgramDateTime,
                   ("indexNSegments" .=) <$> _hgsIndexNSegments,
                   ("programDateTimePeriod" .=) <$>
@@ -4247,6 +5740,8 @@ instance ToJSON HlsGroupSettings where
                   ("adMarkers" .=) <$> _hgsAdMarkers,
                   ("keyFormat" .=) <$> _hgsKeyFormat,
                   ("segmentLength" .=) <$> _hgsSegmentLength,
+                  ("hlsId3SegmentTagging" .=) <$>
+                    _hgsHlsId3SegmentTagging,
                   ("timedMetadataId3Frame" .=) <$>
                     _hgsTimedMetadataId3Frame,
                   ("baseUrlContent" .=) <$> _hgsBaseURLContent,
@@ -4263,23 +5758,76 @@ instance ToJSON HlsGroupSettings where
                   ("clientCache" .=) <$> _hgsClientCache,
                   ("timestampDeltaMilliseconds" .=) <$>
                     _hgsTimestampDeltaMilliseconds,
+                  ("baseUrlManifest1" .=) <$> _hgsBaseURLManifest1,
+                  ("redundantManifest" .=) <$> _hgsRedundantManifest,
                   ("streamInfResolution" .=) <$>
                     _hgsStreamInfResolution,
                   ("keepSegments" .=) <$> _hgsKeepSegments,
+                  ("baseUrlContent1" .=) <$> _hgsBaseURLContent1,
                   ("manifestCompression" .=) <$>
                     _hgsManifestCompression,
                   Just ("destination" .= _hgsDestination)])
 
--- | Placeholder documentation for HlsInputSettings
+-- | Settings for the action to insert a user-defined ID3 tag in each HLS segment
+--
+-- /See:/ 'hlsId3SegmentTaggingScheduleActionSettings' smart constructor.
+newtype HlsId3SegmentTaggingScheduleActionSettings = HlsId3SegmentTaggingScheduleActionSettings'{_histsasTag
+                                                                                                 ::
+                                                                                                 Text}
+                                                       deriving (Eq, Read, Show,
+                                                                 Data, Typeable,
+                                                                 Generic)
+
+-- | Creates a value of 'HlsId3SegmentTaggingScheduleActionSettings' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'histsasTag' - ID3 tag to insert into each segment. Supports special keyword identifiers to substitute in segment-related values.\nSupported keyword identifiers: https://docs.aws.amazon.com/medialive/latest/ug/variable-data-identifiers.html
+hlsId3SegmentTaggingScheduleActionSettings
+    :: Text -- ^ 'histsasTag'
+    -> HlsId3SegmentTaggingScheduleActionSettings
+hlsId3SegmentTaggingScheduleActionSettings pTag_
+  = HlsId3SegmentTaggingScheduleActionSettings'{_histsasTag
+                                                  = pTag_}
+
+-- | ID3 tag to insert into each segment. Supports special keyword identifiers to substitute in segment-related values.\nSupported keyword identifiers: https://docs.aws.amazon.com/medialive/latest/ug/variable-data-identifiers.html
+histsasTag :: Lens' HlsId3SegmentTaggingScheduleActionSettings Text
+histsasTag = lens _histsasTag (\ s a -> s{_histsasTag = a})
+
+instance FromJSON
+           HlsId3SegmentTaggingScheduleActionSettings
+         where
+        parseJSON
+          = withObject
+              "HlsId3SegmentTaggingScheduleActionSettings"
+              (\ x ->
+                 HlsId3SegmentTaggingScheduleActionSettings' <$>
+                   (x .: "tag"))
+
+instance Hashable
+           HlsId3SegmentTaggingScheduleActionSettings
+         where
+
+instance NFData
+           HlsId3SegmentTaggingScheduleActionSettings
+         where
+
+instance ToJSON
+           HlsId3SegmentTaggingScheduleActionSettings
+         where
+        toJSON
+          HlsId3SegmentTaggingScheduleActionSettings'{..}
+          = object (catMaybes [Just ("tag" .= _histsasTag)])
+
+-- | Hls Input Settings
 --
 -- /See:/ 'hlsInputSettings' smart constructor.
-data HlsInputSettings = HlsInputSettings'
-  { _hisBufferSegments :: !(Maybe Nat)
-  , _hisRetries        :: !(Maybe Nat)
-  , _hisRetryInterval  :: !(Maybe Nat)
-  , _hisBandwidth      :: !(Maybe Nat)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data HlsInputSettings = HlsInputSettings'{_hisBufferSegments
+                                          :: !(Maybe Nat),
+                                          _hisRetries :: !(Maybe Nat),
+                                          _hisRetryInterval :: !(Maybe Nat),
+                                          _hisBandwidth :: !(Maybe Nat)}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'HlsInputSettings' with the minimum fields required to make a request.
 --
@@ -4294,14 +5842,10 @@ data HlsInputSettings = HlsInputSettings'
 -- * 'hisBandwidth' - When specified the HLS stream with the m3u8 BANDWIDTH that most closely matches this value will be chosen, otherwise the highest bandwidth stream in the m3u8 will be chosen.  The bitrate is specified in bits per second, as in an HLS manifest.
 hlsInputSettings
     :: HlsInputSettings
-hlsInputSettings =
-  HlsInputSettings'
-    { _hisBufferSegments = Nothing
-    , _hisRetries = Nothing
-    , _hisRetryInterval = Nothing
-    , _hisBandwidth = Nothing
-    }
-
+hlsInputSettings
+  = HlsInputSettings'{_hisBufferSegments = Nothing,
+                      _hisRetries = Nothing, _hisRetryInterval = Nothing,
+                      _hisBandwidth = Nothing}
 
 -- | When specified, reading of the HLS input will begin this many buffer segments from the end (most recently written segment).  When not specified, the HLS input will begin with the first segment specified in the m3u8.
 hisBufferSegments :: Lens' HlsInputSettings (Maybe Natural)
@@ -4341,17 +5885,23 @@ instance ToJSON HlsInputSettings where
                   ("retryInterval" .=) <$> _hisRetryInterval,
                   ("bandwidth" .=) <$> _hisBandwidth])
 
--- | Placeholder documentation for HlsMediaStoreSettings
+-- | Hls Media Store Settings
 --
 -- /See:/ 'hlsMediaStoreSettings' smart constructor.
-data HlsMediaStoreSettings = HlsMediaStoreSettings'
-  { _hmssNumRetries              :: !(Maybe Nat)
-  , _hmssConnectionRetryInterval :: !(Maybe Nat)
-  , _hmssFilecacheDuration       :: !(Maybe Nat)
-  , _hmssMediaStoreStorageClass  :: !(Maybe HlsMediaStoreStorageClass)
-  , _hmssRestartDelay            :: !(Maybe Nat)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data HlsMediaStoreSettings = HlsMediaStoreSettings'{_hmssNumRetries
+                                                    :: !(Maybe Nat),
+                                                    _hmssConnectionRetryInterval
+                                                    :: !(Maybe Nat),
+                                                    _hmssFilecacheDuration ::
+                                                    !(Maybe Nat),
+                                                    _hmssMediaStoreStorageClass
+                                                    ::
+                                                    !(Maybe
+                                                        HlsMediaStoreStorageClass),
+                                                    _hmssRestartDelay ::
+                                                    !(Maybe Nat)}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'HlsMediaStoreSettings' with the minimum fields required to make a request.
 --
@@ -4368,15 +5918,12 @@ data HlsMediaStoreSettings = HlsMediaStoreSettings'
 -- * 'hmssRestartDelay' - If a streaming output fails, number of seconds to wait until a restart is initiated. A value of 0 means never restart.
 hlsMediaStoreSettings
     :: HlsMediaStoreSettings
-hlsMediaStoreSettings =
-  HlsMediaStoreSettings'
-    { _hmssNumRetries = Nothing
-    , _hmssConnectionRetryInterval = Nothing
-    , _hmssFilecacheDuration = Nothing
-    , _hmssMediaStoreStorageClass = Nothing
-    , _hmssRestartDelay = Nothing
-    }
-
+hlsMediaStoreSettings
+  = HlsMediaStoreSettings'{_hmssNumRetries = Nothing,
+                           _hmssConnectionRetryInterval = Nothing,
+                           _hmssFilecacheDuration = Nothing,
+                           _hmssMediaStoreStorageClass = Nothing,
+                           _hmssRestartDelay = Nothing}
 
 -- | Number of retry attempts that will be made before the Live Event is put into an error state.
 hmssNumRetries :: Lens' HlsMediaStoreSettings (Maybe Natural)
@@ -4425,19 +5972,22 @@ instance ToJSON HlsMediaStoreSettings where
                     _hmssMediaStoreStorageClass,
                   ("restartDelay" .=) <$> _hmssRestartDelay])
 
--- | Placeholder documentation for HlsOutputSettings
+-- | Hls Output Settings
 --
 -- /See:/ 'hlsOutputSettings' smart constructor.
-data HlsOutputSettings = HlsOutputSettings'
-  { _hosSegmentModifier :: !(Maybe Text)
-  , _hosNameModifier    :: !(Maybe Text)
-  , _hosHlsSettings     :: !HlsSettings
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data HlsOutputSettings = HlsOutputSettings'{_hosH265PackagingType
+                                            :: !(Maybe HlsH265PackagingType),
+                                            _hosSegmentModifier ::
+                                            !(Maybe Text),
+                                            _hosNameModifier :: !(Maybe Text),
+                                            _hosHlsSettings :: !HlsSettings}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'HlsOutputSettings' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'hosH265PackagingType' - Only applicable when this output is referencing an H.265 video description. Specifies whether MP4 segments should be packaged as HEV1 or HVC1.
 --
 -- * 'hosSegmentModifier' - String concatenated to end of segment filenames.
 --
@@ -4447,13 +5997,15 @@ data HlsOutputSettings = HlsOutputSettings'
 hlsOutputSettings
     :: HlsSettings -- ^ 'hosHlsSettings'
     -> HlsOutputSettings
-hlsOutputSettings pHlsSettings_ =
-  HlsOutputSettings'
-    { _hosSegmentModifier = Nothing
-    , _hosNameModifier = Nothing
-    , _hosHlsSettings = pHlsSettings_
-    }
+hlsOutputSettings pHlsSettings_
+  = HlsOutputSettings'{_hosH265PackagingType = Nothing,
+                       _hosSegmentModifier = Nothing,
+                       _hosNameModifier = Nothing,
+                       _hosHlsSettings = pHlsSettings_}
 
+-- | Only applicable when this output is referencing an H.265 video description. Specifies whether MP4 segments should be packaged as HEV1 or HVC1.
+hosH265PackagingType :: Lens' HlsOutputSettings (Maybe HlsH265PackagingType)
+hosH265PackagingType = lens _hosH265PackagingType (\ s a -> s{_hosH265PackagingType = a})
 
 -- | String concatenated to end of segment filenames.
 hosSegmentModifier :: Lens' HlsOutputSettings (Maybe Text)
@@ -4472,7 +6024,9 @@ instance FromJSON HlsOutputSettings where
           = withObject "HlsOutputSettings"
               (\ x ->
                  HlsOutputSettings' <$>
-                   (x .:? "segmentModifier") <*> (x .:? "nameModifier")
+                   (x .:? "h265PackagingType") <*>
+                     (x .:? "segmentModifier")
+                     <*> (x .:? "nameModifier")
                      <*> (x .: "hlsSettings"))
 
 instance Hashable HlsOutputSettings where
@@ -4483,32 +6037,41 @@ instance ToJSON HlsOutputSettings where
         toJSON HlsOutputSettings'{..}
           = object
               (catMaybes
-                 [("segmentModifier" .=) <$> _hosSegmentModifier,
+                 [("h265PackagingType" .=) <$> _hosH265PackagingType,
+                  ("segmentModifier" .=) <$> _hosSegmentModifier,
                   ("nameModifier" .=) <$> _hosNameModifier,
                   Just ("hlsSettings" .= _hosHlsSettings)])
 
--- | Placeholder documentation for HlsSettings
+-- | Hls Settings
 --
 -- /See:/ 'hlsSettings' smart constructor.
-data HlsSettings = HlsSettings'
-  { _hsAudioOnlyHlsSettings :: !(Maybe AudioOnlyHlsSettings)
-  , _hsStandardHlsSettings  :: !(Maybe StandardHlsSettings)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data HlsSettings = HlsSettings'{_hsFmp4HlsSettings ::
+                                !(Maybe Fmp4HlsSettings),
+                                _hsAudioOnlyHlsSettings ::
+                                !(Maybe AudioOnlyHlsSettings),
+                                _hsStandardHlsSettings ::
+                                !(Maybe StandardHlsSettings)}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'HlsSettings' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'hsFmp4HlsSettings' - Undocumented member.
 --
 -- * 'hsAudioOnlyHlsSettings' - Undocumented member.
 --
 -- * 'hsStandardHlsSettings' - Undocumented member.
 hlsSettings
     :: HlsSettings
-hlsSettings =
-  HlsSettings'
-    {_hsAudioOnlyHlsSettings = Nothing, _hsStandardHlsSettings = Nothing}
+hlsSettings
+  = HlsSettings'{_hsFmp4HlsSettings = Nothing,
+                 _hsAudioOnlyHlsSettings = Nothing,
+                 _hsStandardHlsSettings = Nothing}
 
+-- | Undocumented member.
+hsFmp4HlsSettings :: Lens' HlsSettings (Maybe Fmp4HlsSettings)
+hsFmp4HlsSettings = lens _hsFmp4HlsSettings (\ s a -> s{_hsFmp4HlsSettings = a})
 
 -- | Undocumented member.
 hsAudioOnlyHlsSettings :: Lens' HlsSettings (Maybe AudioOnlyHlsSettings)
@@ -4523,8 +6086,9 @@ instance FromJSON HlsSettings where
           = withObject "HlsSettings"
               (\ x ->
                  HlsSettings' <$>
-                   (x .:? "audioOnlyHlsSettings") <*>
-                     (x .:? "standardHlsSettings"))
+                   (x .:? "fmp4HlsSettings") <*>
+                     (x .:? "audioOnlyHlsSettings")
+                     <*> (x .:? "standardHlsSettings"))
 
 instance Hashable HlsSettings where
 
@@ -4534,22 +6098,74 @@ instance ToJSON HlsSettings where
         toJSON HlsSettings'{..}
           = object
               (catMaybes
-                 [("audioOnlyHlsSettings" .=) <$>
+                 [("fmp4HlsSettings" .=) <$> _hsFmp4HlsSettings,
+                  ("audioOnlyHlsSettings" .=) <$>
                     _hsAudioOnlyHlsSettings,
                   ("standardHlsSettings" .=) <$>
                     _hsStandardHlsSettings])
 
--- | Placeholder documentation for HlsWebdavSettings
+-- | Settings for the action to emit HLS metadata
+--
+-- /See:/ 'hlsTimedMetadataScheduleActionSettings' smart constructor.
+newtype HlsTimedMetadataScheduleActionSettings = HlsTimedMetadataScheduleActionSettings'{_htmsasId3
+                                                                                         ::
+                                                                                         Text}
+                                                   deriving (Eq, Read, Show,
+                                                             Data, Typeable,
+                                                             Generic)
+
+-- | Creates a value of 'HlsTimedMetadataScheduleActionSettings' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'htmsasId3' - Base64 string formatted according to the ID3 specification: http://id3.org/id3v2.4.0-structure
+hlsTimedMetadataScheduleActionSettings
+    :: Text -- ^ 'htmsasId3'
+    -> HlsTimedMetadataScheduleActionSettings
+hlsTimedMetadataScheduleActionSettings pId3_
+  = HlsTimedMetadataScheduleActionSettings'{_htmsasId3
+                                              = pId3_}
+
+-- | Base64 string formatted according to the ID3 specification: http://id3.org/id3v2.4.0-structure
+htmsasId3 :: Lens' HlsTimedMetadataScheduleActionSettings Text
+htmsasId3 = lens _htmsasId3 (\ s a -> s{_htmsasId3 = a})
+
+instance FromJSON
+           HlsTimedMetadataScheduleActionSettings
+         where
+        parseJSON
+          = withObject "HlsTimedMetadataScheduleActionSettings"
+              (\ x ->
+                 HlsTimedMetadataScheduleActionSettings' <$>
+                   (x .: "id3"))
+
+instance Hashable
+           HlsTimedMetadataScheduleActionSettings
+         where
+
+instance NFData
+           HlsTimedMetadataScheduleActionSettings
+         where
+
+instance ToJSON
+           HlsTimedMetadataScheduleActionSettings
+         where
+        toJSON HlsTimedMetadataScheduleActionSettings'{..}
+          = object (catMaybes [Just ("id3" .= _htmsasId3)])
+
+-- | Hls Webdav Settings
 --
 -- /See:/ 'hlsWebdavSettings' smart constructor.
-data HlsWebdavSettings = HlsWebdavSettings'
-  { _hwsHTTPTransferMode        :: !(Maybe HlsWebdavHTTPTransferMode)
-  , _hwsNumRetries              :: !(Maybe Nat)
-  , _hwsConnectionRetryInterval :: !(Maybe Nat)
-  , _hwsFilecacheDuration       :: !(Maybe Nat)
-  , _hwsRestartDelay            :: !(Maybe Nat)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data HlsWebdavSettings = HlsWebdavSettings'{_hwsHTTPTransferMode
+                                            ::
+                                            !(Maybe HlsWebdavHTTPTransferMode),
+                                            _hwsNumRetries :: !(Maybe Nat),
+                                            _hwsConnectionRetryInterval ::
+                                            !(Maybe Nat),
+                                            _hwsFilecacheDuration ::
+                                            !(Maybe Nat),
+                                            _hwsRestartDelay :: !(Maybe Nat)}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'HlsWebdavSettings' with the minimum fields required to make a request.
 --
@@ -4566,15 +6182,12 @@ data HlsWebdavSettings = HlsWebdavSettings'
 -- * 'hwsRestartDelay' - If a streaming output fails, number of seconds to wait until a restart is initiated. A value of 0 means never restart.
 hlsWebdavSettings
     :: HlsWebdavSettings
-hlsWebdavSettings =
-  HlsWebdavSettings'
-    { _hwsHTTPTransferMode = Nothing
-    , _hwsNumRetries = Nothing
-    , _hwsConnectionRetryInterval = Nothing
-    , _hwsFilecacheDuration = Nothing
-    , _hwsRestartDelay = Nothing
-    }
-
+hlsWebdavSettings
+  = HlsWebdavSettings'{_hwsHTTPTransferMode = Nothing,
+                       _hwsNumRetries = Nothing,
+                       _hwsConnectionRetryInterval = Nothing,
+                       _hwsFilecacheDuration = Nothing,
+                       _hwsRestartDelay = Nothing}
 
 -- | Specify whether or not to use chunked transfer encoding to WebDAV.
 hwsHTTPTransferMode :: Lens' HlsWebdavSettings (Maybe HlsWebdavHTTPTransferMode)
@@ -4621,21 +6234,62 @@ instance ToJSON HlsWebdavSettings where
                   ("filecacheDuration" .=) <$> _hwsFilecacheDuration,
                   ("restartDelay" .=) <$> _hwsRestartDelay])
 
+-- | Settings to configure an action so that it occurs as soon as possible.
+--
+-- /See:/ 'immediateModeScheduleActionStartSettings' smart constructor.
+data ImmediateModeScheduleActionStartSettings = ImmediateModeScheduleActionStartSettings'
+                                                  deriving (Eq, Read, Show,
+                                                            Data, Typeable,
+                                                            Generic)
+
+-- | Creates a value of 'ImmediateModeScheduleActionStartSettings' with the minimum fields required to make a request.
+--
+immediateModeScheduleActionStartSettings
+    :: ImmediateModeScheduleActionStartSettings
+immediateModeScheduleActionStartSettings
+  = ImmediateModeScheduleActionStartSettings'
+
+instance FromJSON
+           ImmediateModeScheduleActionStartSettings
+         where
+        parseJSON
+          = withObject
+              "ImmediateModeScheduleActionStartSettings"
+              (\ x ->
+                 pure ImmediateModeScheduleActionStartSettings')
+
+instance Hashable
+           ImmediateModeScheduleActionStartSettings
+         where
+
+instance NFData
+           ImmediateModeScheduleActionStartSettings
+         where
+
+instance ToJSON
+           ImmediateModeScheduleActionStartSettings
+         where
+        toJSON = const (Object mempty)
+
 -- | Placeholder documentation for Input
 --
 -- /See:/ 'input' smart constructor.
-data Input = Input'
-  { _iState            :: !(Maybe InputState)
-  , _iSecurityGroups   :: !(Maybe [Text])
-  , _iARN              :: !(Maybe Text)
-  , _iSources          :: !(Maybe [InputSource])
-  , _iDestinations     :: !(Maybe [InputDestination])
-  , _iName             :: !(Maybe Text)
-  , _iAttachedChannels :: !(Maybe [Text])
-  , _iId               :: !(Maybe Text)
-  , _iType             :: !(Maybe InputType)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data Input = Input'{_iState :: !(Maybe InputState),
+                    _iSecurityGroups :: !(Maybe [Text]),
+                    _iARN :: !(Maybe Text),
+                    _iInputDevices :: !(Maybe [InputDeviceSettings]),
+                    _iSources :: !(Maybe [InputSource]),
+                    _iDestinations :: !(Maybe [InputDestination]),
+                    _iName :: !(Maybe Text),
+                    _iAttachedChannels :: !(Maybe [Text]),
+                    _iId :: !(Maybe Text),
+                    _iInputClass :: !(Maybe InputClass),
+                    _iType :: !(Maybe InputType),
+                    _iMediaConnectFlows :: !(Maybe [MediaConnectFlow]),
+                    _iInputSourceType :: !(Maybe InputSourceType),
+                    _iTags :: !(Maybe (Map Text Text)),
+                    _iRoleARN :: !(Maybe Text)}
+               deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'Input' with the minimum fields required to make a request.
 --
@@ -4643,9 +6297,11 @@ data Input = Input'
 --
 -- * 'iState' - Undocumented member.
 --
--- * 'iSecurityGroups' - A list of IDs for all the security groups attached to the input.
+-- * 'iSecurityGroups' - A list of IDs for all the Input Security Groups attached to the input.
 --
 -- * 'iARN' - The Unique ARN of the input (generated, immutable).
+--
+-- * 'iInputDevices' - Settings for the input devices.
 --
 -- * 'iSources' - A list of the sources of the input (PULL-type).
 --
@@ -4657,34 +6313,45 @@ data Input = Input'
 --
 -- * 'iId' - The generated ID of the input (unique for user account, immutable).
 --
+-- * 'iInputClass' - STANDARD - MediaLive expects two sources to be connected to this input. If the channel is also STANDARD, both sources will be ingested. If the channel is SINGLE_PIPELINE, only the first source will be ingested; the second source will always be ignored, even if the first source fails. SINGLE_PIPELINE - You can connect only one source to this input. If the ChannelClass is also  SINGLE_PIPELINE, this value is valid. If the ChannelClass is STANDARD, this value is not valid because the channel requires two sources in the input.
+--
 -- * 'iType' - Undocumented member.
+--
+-- * 'iMediaConnectFlows' - A list of MediaConnect Flows for this input.
+--
+-- * 'iInputSourceType' - Certain pull input sources can be dynamic, meaning that they can have their URL's dynamically changes during input switch actions. Presently, this functionality only works with MP4_FILE inputs.
+--
+-- * 'iTags' - A collection of key-value pairs.
+--
+-- * 'iRoleARN' - The Amazon Resource Name (ARN) of the role this input assumes during and after creation.
 input
     :: Input
-input =
-  Input'
-    { _iState = Nothing
-    , _iSecurityGroups = Nothing
-    , _iARN = Nothing
-    , _iSources = Nothing
-    , _iDestinations = Nothing
-    , _iName = Nothing
-    , _iAttachedChannels = Nothing
-    , _iId = Nothing
-    , _iType = Nothing
-    }
-
+input
+  = Input'{_iState = Nothing,
+           _iSecurityGroups = Nothing, _iARN = Nothing,
+           _iInputDevices = Nothing, _iSources = Nothing,
+           _iDestinations = Nothing, _iName = Nothing,
+           _iAttachedChannels = Nothing, _iId = Nothing,
+           _iInputClass = Nothing, _iType = Nothing,
+           _iMediaConnectFlows = Nothing,
+           _iInputSourceType = Nothing, _iTags = Nothing,
+           _iRoleARN = Nothing}
 
 -- | Undocumented member.
 iState :: Lens' Input (Maybe InputState)
 iState = lens _iState (\ s a -> s{_iState = a})
 
--- | A list of IDs for all the security groups attached to the input.
+-- | A list of IDs for all the Input Security Groups attached to the input.
 iSecurityGroups :: Lens' Input [Text]
 iSecurityGroups = lens _iSecurityGroups (\ s a -> s{_iSecurityGroups = a}) . _Default . _Coerce
 
 -- | The Unique ARN of the input (generated, immutable).
 iARN :: Lens' Input (Maybe Text)
 iARN = lens _iARN (\ s a -> s{_iARN = a})
+
+-- | Settings for the input devices.
+iInputDevices :: Lens' Input [InputDeviceSettings]
+iInputDevices = lens _iInputDevices (\ s a -> s{_iInputDevices = a}) . _Default . _Coerce
 
 -- | A list of the sources of the input (PULL-type).
 iSources :: Lens' Input [InputSource]
@@ -4706,9 +6373,29 @@ iAttachedChannels = lens _iAttachedChannels (\ s a -> s{_iAttachedChannels = a})
 iId :: Lens' Input (Maybe Text)
 iId = lens _iId (\ s a -> s{_iId = a})
 
+-- | STANDARD - MediaLive expects two sources to be connected to this input. If the channel is also STANDARD, both sources will be ingested. If the channel is SINGLE_PIPELINE, only the first source will be ingested; the second source will always be ignored, even if the first source fails. SINGLE_PIPELINE - You can connect only one source to this input. If the ChannelClass is also  SINGLE_PIPELINE, this value is valid. If the ChannelClass is STANDARD, this value is not valid because the channel requires two sources in the input.
+iInputClass :: Lens' Input (Maybe InputClass)
+iInputClass = lens _iInputClass (\ s a -> s{_iInputClass = a})
+
 -- | Undocumented member.
 iType :: Lens' Input (Maybe InputType)
 iType = lens _iType (\ s a -> s{_iType = a})
+
+-- | A list of MediaConnect Flows for this input.
+iMediaConnectFlows :: Lens' Input [MediaConnectFlow]
+iMediaConnectFlows = lens _iMediaConnectFlows (\ s a -> s{_iMediaConnectFlows = a}) . _Default . _Coerce
+
+-- | Certain pull input sources can be dynamic, meaning that they can have their URL's dynamically changes during input switch actions. Presently, this functionality only works with MP4_FILE inputs.
+iInputSourceType :: Lens' Input (Maybe InputSourceType)
+iInputSourceType = lens _iInputSourceType (\ s a -> s{_iInputSourceType = a})
+
+-- | A collection of key-value pairs.
+iTags :: Lens' Input (HashMap Text Text)
+iTags = lens _iTags (\ s a -> s{_iTags = a}) . _Default . _Map
+
+-- | The Amazon Resource Name (ARN) of the role this input assumes during and after creation.
+iRoleARN :: Lens' Input (Maybe Text)
+iRoleARN = lens _iRoleARN (\ s a -> s{_iRoleARN = a})
 
 instance FromJSON Input where
         parseJSON
@@ -4718,12 +6405,18 @@ instance FromJSON Input where
                    (x .:? "state") <*>
                      (x .:? "securityGroups" .!= mempty)
                      <*> (x .:? "arn")
+                     <*> (x .:? "inputDevices" .!= mempty)
                      <*> (x .:? "sources" .!= mempty)
                      <*> (x .:? "destinations" .!= mempty)
                      <*> (x .:? "name")
                      <*> (x .:? "attachedChannels" .!= mempty)
                      <*> (x .:? "id")
-                     <*> (x .:? "type"))
+                     <*> (x .:? "inputClass")
+                     <*> (x .:? "type")
+                     <*> (x .:? "mediaConnectFlows" .!= mempty)
+                     <*> (x .:? "inputSourceType")
+                     <*> (x .:? "tags" .!= mempty)
+                     <*> (x .:? "roleArn"))
 
 instance Hashable Input where
 
@@ -4732,28 +6425,45 @@ instance NFData Input where
 -- | Placeholder documentation for InputAttachment
 --
 -- /See:/ 'inputAttachment' smart constructor.
-data InputAttachment = InputAttachment'
-  { _iaInputId       :: !(Maybe Text)
-  , _iaInputSettings :: !(Maybe InputSettings)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data InputAttachment = InputAttachment'{_iaInputAttachmentName
+                                        :: !(Maybe Text),
+                                        _iaInputId :: !(Maybe Text),
+                                        _iaAutomaticInputFailoverSettings ::
+                                        !(Maybe AutomaticInputFailoverSettings),
+                                        _iaInputSettings ::
+                                        !(Maybe InputSettings)}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'InputAttachment' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
+-- * 'iaInputAttachmentName' - User-specified name for the attachment. This is required if the user wants to use this input in an input switch action.
+--
 -- * 'iaInputId' - The ID of the input
+--
+-- * 'iaAutomaticInputFailoverSettings' - User-specified settings for defining what the conditions are for declaring the input unhealthy and failing over to a different input.
 --
 -- * 'iaInputSettings' - Settings of an input (caption selector, etc.)
 inputAttachment
     :: InputAttachment
-inputAttachment =
-  InputAttachment' {_iaInputId = Nothing, _iaInputSettings = Nothing}
+inputAttachment
+  = InputAttachment'{_iaInputAttachmentName = Nothing,
+                     _iaInputId = Nothing,
+                     _iaAutomaticInputFailoverSettings = Nothing,
+                     _iaInputSettings = Nothing}
 
+-- | User-specified name for the attachment. This is required if the user wants to use this input in an input switch action.
+iaInputAttachmentName :: Lens' InputAttachment (Maybe Text)
+iaInputAttachmentName = lens _iaInputAttachmentName (\ s a -> s{_iaInputAttachmentName = a})
 
 -- | The ID of the input
 iaInputId :: Lens' InputAttachment (Maybe Text)
 iaInputId = lens _iaInputId (\ s a -> s{_iaInputId = a})
+
+-- | User-specified settings for defining what the conditions are for declaring the input unhealthy and failing over to a different input.
+iaAutomaticInputFailoverSettings :: Lens' InputAttachment (Maybe AutomaticInputFailoverSettings)
+iaAutomaticInputFailoverSettings = lens _iaAutomaticInputFailoverSettings (\ s a -> s{_iaAutomaticInputFailoverSettings = a})
 
 -- | Settings of an input (caption selector, etc.)
 iaInputSettings :: Lens' InputAttachment (Maybe InputSettings)
@@ -4764,7 +6474,9 @@ instance FromJSON InputAttachment where
           = withObject "InputAttachment"
               (\ x ->
                  InputAttachment' <$>
-                   (x .:? "inputId") <*> (x .:? "inputSettings"))
+                   (x .:? "inputAttachmentName") <*> (x .:? "inputId")
+                     <*> (x .:? "automaticInputFailoverSettings")
+                     <*> (x .:? "inputSettings"))
 
 instance Hashable InputAttachment where
 
@@ -4774,17 +6486,20 @@ instance ToJSON InputAttachment where
         toJSON InputAttachment'{..}
           = object
               (catMaybes
-                 [("inputId" .=) <$> _iaInputId,
+                 [("inputAttachmentName" .=) <$>
+                    _iaInputAttachmentName,
+                  ("inputId" .=) <$> _iaInputId,
+                  ("automaticInputFailoverSettings" .=) <$>
+                    _iaAutomaticInputFailoverSettings,
                   ("inputSettings" .=) <$> _iaInputSettings])
 
--- | Placeholder documentation for InputChannelLevel
+-- | Input Channel Level
 --
 -- /See:/ 'inputChannelLevel' smart constructor.
-data InputChannelLevel = InputChannelLevel'
-  { _iclInputChannel :: !Nat
-  , _iclGain         :: !Int
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data InputChannelLevel = InputChannelLevel'{_iclInputChannel
+                                            :: !Nat,
+                                            _iclGain :: !Int}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'InputChannelLevel' with the minimum fields required to make a request.
 --
@@ -4797,10 +6512,10 @@ inputChannelLevel
     :: Natural -- ^ 'iclInputChannel'
     -> Int -- ^ 'iclGain'
     -> InputChannelLevel
-inputChannelLevel pInputChannel_ pGain_ =
-  InputChannelLevel'
-    {_iclInputChannel = _Nat # pInputChannel_, _iclGain = pGain_}
-
+inputChannelLevel pInputChannel_ pGain_
+  = InputChannelLevel'{_iclInputChannel =
+                         _Nat # pInputChannel_,
+                       _iclGain = pGain_}
 
 -- | The index of the input channel used as a source.
 iclInputChannel :: Lens' InputChannelLevel Natural
@@ -4828,15 +6543,78 @@ instance ToJSON InputChannelLevel where
                  [Just ("inputChannel" .= _iclInputChannel),
                   Just ("gain" .= _iclGain)])
 
+-- | Settings to let you create a clip of the file input, in order to set up the input to ingest only a portion of the file.
+--
+-- /See:/ 'inputClippingSettings' smart constructor.
+data InputClippingSettings = InputClippingSettings'{_icsStopTimecode
+                                                    :: !(Maybe StopTimecode),
+                                                    _icsStartTimecode ::
+                                                    !(Maybe StartTimecode),
+                                                    _icsInputTimecodeSource ::
+                                                    !InputTimecodeSource}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
+
+-- | Creates a value of 'InputClippingSettings' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'icsStopTimecode' - Settings to identify the end of the clip.
+--
+-- * 'icsStartTimecode' - Settings to identify the start of the clip.
+--
+-- * 'icsInputTimecodeSource' - The source of the timecodes in the source being clipped.
+inputClippingSettings
+    :: InputTimecodeSource -- ^ 'icsInputTimecodeSource'
+    -> InputClippingSettings
+inputClippingSettings pInputTimecodeSource_
+  = InputClippingSettings'{_icsStopTimecode = Nothing,
+                           _icsStartTimecode = Nothing,
+                           _icsInputTimecodeSource = pInputTimecodeSource_}
+
+-- | Settings to identify the end of the clip.
+icsStopTimecode :: Lens' InputClippingSettings (Maybe StopTimecode)
+icsStopTimecode = lens _icsStopTimecode (\ s a -> s{_icsStopTimecode = a})
+
+-- | Settings to identify the start of the clip.
+icsStartTimecode :: Lens' InputClippingSettings (Maybe StartTimecode)
+icsStartTimecode = lens _icsStartTimecode (\ s a -> s{_icsStartTimecode = a})
+
+-- | The source of the timecodes in the source being clipped.
+icsInputTimecodeSource :: Lens' InputClippingSettings InputTimecodeSource
+icsInputTimecodeSource = lens _icsInputTimecodeSource (\ s a -> s{_icsInputTimecodeSource = a})
+
+instance FromJSON InputClippingSettings where
+        parseJSON
+          = withObject "InputClippingSettings"
+              (\ x ->
+                 InputClippingSettings' <$>
+                   (x .:? "stopTimecode") <*> (x .:? "startTimecode")
+                     <*> (x .: "inputTimecodeSource"))
+
+instance Hashable InputClippingSettings where
+
+instance NFData InputClippingSettings where
+
+instance ToJSON InputClippingSettings where
+        toJSON InputClippingSettings'{..}
+          = object
+              (catMaybes
+                 [("stopTimecode" .=) <$> _icsStopTimecode,
+                  ("startTimecode" .=) <$> _icsStartTimecode,
+                  Just
+                    ("inputTimecodeSource" .= _icsInputTimecodeSource)])
+
 -- | The settings for a PUSH type input.
 --
 -- /See:/ 'inputDestination' smart constructor.
-data InputDestination = InputDestination'
-  { _idURL  :: !(Maybe Text)
-  , _idIP   :: !(Maybe Text)
-  , _idPort :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data InputDestination = InputDestination'{_idURL ::
+                                          !(Maybe Text),
+                                          _idIP :: !(Maybe Text),
+                                          _idVPC ::
+                                          !(Maybe InputDestinationVPC),
+                                          _idPort :: !(Maybe Text)}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'InputDestination' with the minimum fields required to make a request.
 --
@@ -4846,12 +6624,14 @@ data InputDestination = InputDestination'
 --
 -- * 'idIP' - The system-generated static IP address of endpoint. It remains fixed for the lifetime of the input.
 --
+-- * 'idVPC' - Undocumented member.
+--
 -- * 'idPort' - The port number for the input.
 inputDestination
     :: InputDestination
-inputDestination =
-  InputDestination' {_idURL = Nothing, _idIP = Nothing, _idPort = Nothing}
-
+inputDestination
+  = InputDestination'{_idURL = Nothing,
+                      _idIP = Nothing, _idVPC = Nothing, _idPort = Nothing}
 
 -- | This represents the endpoint that the customer stream will be pushed to.
 idURL :: Lens' InputDestination (Maybe Text)
@@ -4860,6 +6640,10 @@ idURL = lens _idURL (\ s a -> s{_idURL = a})
 -- | The system-generated static IP address of endpoint. It remains fixed for the lifetime of the input.
 idIP :: Lens' InputDestination (Maybe Text)
 idIP = lens _idIP (\ s a -> s{_idIP = a})
+
+-- | Undocumented member.
+idVPC :: Lens' InputDestination (Maybe InputDestinationVPC)
+idVPC = lens _idVPC (\ s a -> s{_idVPC = a})
 
 -- | The port number for the input.
 idPort :: Lens' InputDestination (Maybe Text)
@@ -4870,7 +6654,8 @@ instance FromJSON InputDestination where
           = withObject "InputDestination"
               (\ x ->
                  InputDestination' <$>
-                   (x .:? "url") <*> (x .:? "ip") <*> (x .:? "port"))
+                   (x .:? "url") <*> (x .:? "ip") <*> (x .:? "vpc") <*>
+                     (x .:? "port"))
 
 instance Hashable InputDestination where
 
@@ -4879,10 +6664,10 @@ instance NFData InputDestination where
 -- | Endpoint settings for a PUSH type input.
 --
 -- /See:/ 'inputDestinationRequest' smart constructor.
-newtype InputDestinationRequest = InputDestinationRequest'
-  { _idrStreamName :: Maybe Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype InputDestinationRequest = InputDestinationRequest'{_idrStreamName
+                                                           :: Maybe Text}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'InputDestinationRequest' with the minimum fields required to make a request.
 --
@@ -4891,8 +6676,8 @@ newtype InputDestinationRequest = InputDestinationRequest'
 -- * 'idrStreamName' - A unique name for the location the RTMP stream is being pushed to.
 inputDestinationRequest
     :: InputDestinationRequest
-inputDestinationRequest = InputDestinationRequest' {_idrStreamName = Nothing}
-
+inputDestinationRequest
+  = InputDestinationRequest'{_idrStreamName = Nothing}
 
 -- | A unique name for the location the RTMP stream is being pushed to.
 idrStreamName :: Lens' InputDestinationRequest (Maybe Text)
@@ -4907,15 +6692,462 @@ instance ToJSON InputDestinationRequest where
           = object
               (catMaybes [("streamName" .=) <$> _idrStreamName])
 
--- | Placeholder documentation for InputLocation
+-- | The properties for a VPC type input destination.
+--
+-- /See:/ 'inputDestinationVPC' smart constructor.
+data InputDestinationVPC = InputDestinationVPC'{_idvNetworkInterfaceId
+                                                :: !(Maybe Text),
+                                                _idvAvailabilityZone ::
+                                                !(Maybe Text)}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+-- | Creates a value of 'InputDestinationVPC' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'idvNetworkInterfaceId' - The network interface ID of the Input destination in the VPC.
+--
+-- * 'idvAvailabilityZone' - The availability zone of the Input destination.
+inputDestinationVPC
+    :: InputDestinationVPC
+inputDestinationVPC
+  = InputDestinationVPC'{_idvNetworkInterfaceId =
+                           Nothing,
+                         _idvAvailabilityZone = Nothing}
+
+-- | The network interface ID of the Input destination in the VPC.
+idvNetworkInterfaceId :: Lens' InputDestinationVPC (Maybe Text)
+idvNetworkInterfaceId = lens _idvNetworkInterfaceId (\ s a -> s{_idvNetworkInterfaceId = a})
+
+-- | The availability zone of the Input destination.
+idvAvailabilityZone :: Lens' InputDestinationVPC (Maybe Text)
+idvAvailabilityZone = lens _idvAvailabilityZone (\ s a -> s{_idvAvailabilityZone = a})
+
+instance FromJSON InputDestinationVPC where
+        parseJSON
+          = withObject "InputDestinationVPC"
+              (\ x ->
+                 InputDestinationVPC' <$>
+                   (x .:? "networkInterfaceId") <*>
+                     (x .:? "availabilityZone"))
+
+instance Hashable InputDestinationVPC where
+
+instance NFData InputDestinationVPC where
+
+-- | Configurable settings for the input device.
+--
+-- /See:/ 'inputDeviceConfigurableSettings' smart constructor.
+data InputDeviceConfigurableSettings = InputDeviceConfigurableSettings'{_idcsConfiguredInput
+                                                                        ::
+                                                                        !(Maybe
+                                                                            InputDeviceConfiguredInput),
+                                                                        _idcsMaxBitrate
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Int)}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
+
+-- | Creates a value of 'InputDeviceConfigurableSettings' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'idcsConfiguredInput' - The input source that you want to use. If the device has a source connected to only one of its input ports, or if you don't care which source the device sends, specify Auto. If the device has sources connected to both its input ports, and you want to use a specific source, specify the source.
+--
+-- * 'idcsMaxBitrate' - The maximum bitrate in bits per second. Set a value here to throttle the bitrate of the source video.
+inputDeviceConfigurableSettings
+    :: InputDeviceConfigurableSettings
+inputDeviceConfigurableSettings
+  = InputDeviceConfigurableSettings'{_idcsConfiguredInput
+                                       = Nothing,
+                                     _idcsMaxBitrate = Nothing}
+
+-- | The input source that you want to use. If the device has a source connected to only one of its input ports, or if you don't care which source the device sends, specify Auto. If the device has sources connected to both its input ports, and you want to use a specific source, specify the source.
+idcsConfiguredInput :: Lens' InputDeviceConfigurableSettings (Maybe InputDeviceConfiguredInput)
+idcsConfiguredInput = lens _idcsConfiguredInput (\ s a -> s{_idcsConfiguredInput = a})
+
+-- | The maximum bitrate in bits per second. Set a value here to throttle the bitrate of the source video.
+idcsMaxBitrate :: Lens' InputDeviceConfigurableSettings (Maybe Int)
+idcsMaxBitrate = lens _idcsMaxBitrate (\ s a -> s{_idcsMaxBitrate = a})
+
+instance Hashable InputDeviceConfigurableSettings
+         where
+
+instance NFData InputDeviceConfigurableSettings where
+
+instance ToJSON InputDeviceConfigurableSettings where
+        toJSON InputDeviceConfigurableSettings'{..}
+          = object
+              (catMaybes
+                 [("configuredInput" .=) <$> _idcsConfiguredInput,
+                  ("maxBitrate" .=) <$> _idcsMaxBitrate])
+
+-- | Settings that describe the active source from the input device, and the video characteristics of that source.
+--
+-- /See:/ 'inputDeviceHdSettings' smart constructor.
+data InputDeviceHdSettings = InputDeviceHdSettings'{_idhsFramerate
+                                                    :: !(Maybe Double),
+                                                    _idhsScanType ::
+                                                    !(Maybe
+                                                        InputDeviceScanType),
+                                                    _idhsDeviceState ::
+                                                    !(Maybe InputDeviceState),
+                                                    _idhsHeight :: !(Maybe Int),
+                                                    _idhsActiveInput ::
+                                                    !(Maybe
+                                                        InputDeviceActiveInput),
+                                                    _idhsWidth :: !(Maybe Int),
+                                                    _idhsConfiguredInput ::
+                                                    !(Maybe
+                                                        InputDeviceConfiguredInput),
+                                                    _idhsMaxBitrate ::
+                                                    !(Maybe Int)}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
+
+-- | Creates a value of 'InputDeviceHdSettings' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'idhsFramerate' - The frame rate of the video source.
+--
+-- * 'idhsScanType' - The scan type of the video source.
+--
+-- * 'idhsDeviceState' - The state of the input device.
+--
+-- * 'idhsHeight' - The height of the video source, in pixels.
+--
+-- * 'idhsActiveInput' - If you specified Auto as the configured input, specifies which of the sources is currently active (SDI or HDMI).
+--
+-- * 'idhsWidth' - The width of the video source, in pixels.
+--
+-- * 'idhsConfiguredInput' - The source at the input device that is currently active. You can specify this source.
+--
+-- * 'idhsMaxBitrate' - The current maximum bitrate for ingesting this source, in bits per second. You can specify this maximum.
+inputDeviceHdSettings
+    :: InputDeviceHdSettings
+inputDeviceHdSettings
+  = InputDeviceHdSettings'{_idhsFramerate = Nothing,
+                           _idhsScanType = Nothing, _idhsDeviceState = Nothing,
+                           _idhsHeight = Nothing, _idhsActiveInput = Nothing,
+                           _idhsWidth = Nothing, _idhsConfiguredInput = Nothing,
+                           _idhsMaxBitrate = Nothing}
+
+-- | The frame rate of the video source.
+idhsFramerate :: Lens' InputDeviceHdSettings (Maybe Double)
+idhsFramerate = lens _idhsFramerate (\ s a -> s{_idhsFramerate = a})
+
+-- | The scan type of the video source.
+idhsScanType :: Lens' InputDeviceHdSettings (Maybe InputDeviceScanType)
+idhsScanType = lens _idhsScanType (\ s a -> s{_idhsScanType = a})
+
+-- | The state of the input device.
+idhsDeviceState :: Lens' InputDeviceHdSettings (Maybe InputDeviceState)
+idhsDeviceState = lens _idhsDeviceState (\ s a -> s{_idhsDeviceState = a})
+
+-- | The height of the video source, in pixels.
+idhsHeight :: Lens' InputDeviceHdSettings (Maybe Int)
+idhsHeight = lens _idhsHeight (\ s a -> s{_idhsHeight = a})
+
+-- | If you specified Auto as the configured input, specifies which of the sources is currently active (SDI or HDMI).
+idhsActiveInput :: Lens' InputDeviceHdSettings (Maybe InputDeviceActiveInput)
+idhsActiveInput = lens _idhsActiveInput (\ s a -> s{_idhsActiveInput = a})
+
+-- | The width of the video source, in pixels.
+idhsWidth :: Lens' InputDeviceHdSettings (Maybe Int)
+idhsWidth = lens _idhsWidth (\ s a -> s{_idhsWidth = a})
+
+-- | The source at the input device that is currently active. You can specify this source.
+idhsConfiguredInput :: Lens' InputDeviceHdSettings (Maybe InputDeviceConfiguredInput)
+idhsConfiguredInput = lens _idhsConfiguredInput (\ s a -> s{_idhsConfiguredInput = a})
+
+-- | The current maximum bitrate for ingesting this source, in bits per second. You can specify this maximum.
+idhsMaxBitrate :: Lens' InputDeviceHdSettings (Maybe Int)
+idhsMaxBitrate = lens _idhsMaxBitrate (\ s a -> s{_idhsMaxBitrate = a})
+
+instance FromJSON InputDeviceHdSettings where
+        parseJSON
+          = withObject "InputDeviceHdSettings"
+              (\ x ->
+                 InputDeviceHdSettings' <$>
+                   (x .:? "framerate") <*> (x .:? "scanType") <*>
+                     (x .:? "deviceState")
+                     <*> (x .:? "height")
+                     <*> (x .:? "activeInput")
+                     <*> (x .:? "width")
+                     <*> (x .:? "configuredInput")
+                     <*> (x .:? "maxBitrate"))
+
+instance Hashable InputDeviceHdSettings where
+
+instance NFData InputDeviceHdSettings where
+
+-- | The network settings for the input device.
+--
+-- /See:/ 'inputDeviceNetworkSettings' smart constructor.
+data InputDeviceNetworkSettings = InputDeviceNetworkSettings'{_idnsIPAddress
+                                                              :: !(Maybe Text),
+                                                              _idnsGateway ::
+                                                              !(Maybe Text),
+                                                              _idnsDNSAddresses
+                                                              ::
+                                                              !(Maybe [Text]),
+                                                              _idnsIPScheme ::
+                                                              !(Maybe
+                                                                  InputDeviceIPScheme),
+                                                              _idnsSubnetMask ::
+                                                              !(Maybe Text)}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
+
+-- | Creates a value of 'InputDeviceNetworkSettings' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'idnsIPAddress' - The IP address of the input device.
+--
+-- * 'idnsGateway' - The network gateway IP address.
+--
+-- * 'idnsDNSAddresses' - The DNS addresses of the input device.
+--
+-- * 'idnsIPScheme' - Specifies whether the input device has been configured (outside of MediaLive) to use a dynamic IP address assignment (DHCP) or a static IP address.
+--
+-- * 'idnsSubnetMask' - The subnet mask of the input device.
+inputDeviceNetworkSettings
+    :: InputDeviceNetworkSettings
+inputDeviceNetworkSettings
+  = InputDeviceNetworkSettings'{_idnsIPAddress =
+                                  Nothing,
+                                _idnsGateway = Nothing,
+                                _idnsDNSAddresses = Nothing,
+                                _idnsIPScheme = Nothing,
+                                _idnsSubnetMask = Nothing}
+
+-- | The IP address of the input device.
+idnsIPAddress :: Lens' InputDeviceNetworkSettings (Maybe Text)
+idnsIPAddress = lens _idnsIPAddress (\ s a -> s{_idnsIPAddress = a})
+
+-- | The network gateway IP address.
+idnsGateway :: Lens' InputDeviceNetworkSettings (Maybe Text)
+idnsGateway = lens _idnsGateway (\ s a -> s{_idnsGateway = a})
+
+-- | The DNS addresses of the input device.
+idnsDNSAddresses :: Lens' InputDeviceNetworkSettings [Text]
+idnsDNSAddresses = lens _idnsDNSAddresses (\ s a -> s{_idnsDNSAddresses = a}) . _Default . _Coerce
+
+-- | Specifies whether the input device has been configured (outside of MediaLive) to use a dynamic IP address assignment (DHCP) or a static IP address.
+idnsIPScheme :: Lens' InputDeviceNetworkSettings (Maybe InputDeviceIPScheme)
+idnsIPScheme = lens _idnsIPScheme (\ s a -> s{_idnsIPScheme = a})
+
+-- | The subnet mask of the input device.
+idnsSubnetMask :: Lens' InputDeviceNetworkSettings (Maybe Text)
+idnsSubnetMask = lens _idnsSubnetMask (\ s a -> s{_idnsSubnetMask = a})
+
+instance FromJSON InputDeviceNetworkSettings where
+        parseJSON
+          = withObject "InputDeviceNetworkSettings"
+              (\ x ->
+                 InputDeviceNetworkSettings' <$>
+                   (x .:? "ipAddress") <*> (x .:? "gateway") <*>
+                     (x .:? "dnsAddresses" .!= mempty)
+                     <*> (x .:? "ipScheme")
+                     <*> (x .:? "subnetMask"))
+
+instance Hashable InputDeviceNetworkSettings where
+
+instance NFData InputDeviceNetworkSettings where
+
+-- | Settings for an input device.
+--
+-- /See:/ 'inputDeviceRequest' smart constructor.
+newtype InputDeviceRequest = InputDeviceRequest'{_idrId
+                                                 :: Maybe Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
+
+-- | Creates a value of 'InputDeviceRequest' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'idrId' - The unique ID for the device.
+inputDeviceRequest
+    :: InputDeviceRequest
+inputDeviceRequest
+  = InputDeviceRequest'{_idrId = Nothing}
+
+-- | The unique ID for the device.
+idrId :: Lens' InputDeviceRequest (Maybe Text)
+idrId = lens _idrId (\ s a -> s{_idrId = a})
+
+instance Hashable InputDeviceRequest where
+
+instance NFData InputDeviceRequest where
+
+instance ToJSON InputDeviceRequest where
+        toJSON InputDeviceRequest'{..}
+          = object (catMaybes [("id" .=) <$> _idrId])
+
+-- | Settings for an input device.
+--
+-- /See:/ 'inputDeviceSettings' smart constructor.
+newtype InputDeviceSettings = InputDeviceSettings'{_idssId
+                                                   :: Maybe Text}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
+
+-- | Creates a value of 'InputDeviceSettings' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'idssId' - The unique ID for the device.
+inputDeviceSettings
+    :: InputDeviceSettings
+inputDeviceSettings
+  = InputDeviceSettings'{_idssId = Nothing}
+
+-- | The unique ID for the device.
+idssId :: Lens' InputDeviceSettings (Maybe Text)
+idssId = lens _idssId (\ s a -> s{_idssId = a})
+
+instance FromJSON InputDeviceSettings where
+        parseJSON
+          = withObject "InputDeviceSettings"
+              (\ x -> InputDeviceSettings' <$> (x .:? "id"))
+
+instance Hashable InputDeviceSettings where
+
+instance NFData InputDeviceSettings where
+
+instance ToJSON InputDeviceSettings where
+        toJSON InputDeviceSettings'{..}
+          = object (catMaybes [("id" .=) <$> _idssId])
+
+-- | Details of the input device.
+--
+-- /See:/ 'inputDeviceSummary' smart constructor.
+data InputDeviceSummary = InputDeviceSummary'{_idsARN
+                                              :: !(Maybe Text),
+                                              _idsMACAddress :: !(Maybe Text),
+                                              _idsHdDeviceSettings ::
+                                              !(Maybe InputDeviceHdSettings),
+                                              _idsName :: !(Maybe Text),
+                                              _idsId :: !(Maybe Text),
+                                              _idsDeviceSettingsSyncState ::
+                                              !(Maybe DeviceSettingsSyncState),
+                                              _idsType ::
+                                              !(Maybe InputDeviceType),
+                                              _idsSerialNumber :: !(Maybe Text),
+                                              _idsNetworkSettings ::
+                                              !(Maybe
+                                                  InputDeviceNetworkSettings),
+                                              _idsConnectionState ::
+                                              !(Maybe
+                                                  InputDeviceConnectionState)}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+-- | Creates a value of 'InputDeviceSummary' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'idsARN' - The unique ARN of the input device.
+--
+-- * 'idsMACAddress' - The network MAC address of the input device.
+--
+-- * 'idsHdDeviceSettings' - Settings that describe an input device that is type HD.
+--
+-- * 'idsName' - A name that you specify for the input device.
+--
+-- * 'idsId' - The unique ID of the input device.
+--
+-- * 'idsDeviceSettingsSyncState' - The status of the action to synchronize the device configuration. If you change the configuration of the input device (for example, the maximum bitrate), MediaLive sends the new data to the device. The device might not update itself immediately. SYNCED means the device has updated its configuration. SYNCING means that it has not updated its configuration.
+--
+-- * 'idsType' - The type of the input device.
+--
+-- * 'idsSerialNumber' - The unique serial number of the input device.
+--
+-- * 'idsNetworkSettings' - Network settings for the input device.
+--
+-- * 'idsConnectionState' - The state of the connection between the input device and AWS.
+inputDeviceSummary
+    :: InputDeviceSummary
+inputDeviceSummary
+  = InputDeviceSummary'{_idsARN = Nothing,
+                        _idsMACAddress = Nothing,
+                        _idsHdDeviceSettings = Nothing, _idsName = Nothing,
+                        _idsId = Nothing,
+                        _idsDeviceSettingsSyncState = Nothing,
+                        _idsType = Nothing, _idsSerialNumber = Nothing,
+                        _idsNetworkSettings = Nothing,
+                        _idsConnectionState = Nothing}
+
+-- | The unique ARN of the input device.
+idsARN :: Lens' InputDeviceSummary (Maybe Text)
+idsARN = lens _idsARN (\ s a -> s{_idsARN = a})
+
+-- | The network MAC address of the input device.
+idsMACAddress :: Lens' InputDeviceSummary (Maybe Text)
+idsMACAddress = lens _idsMACAddress (\ s a -> s{_idsMACAddress = a})
+
+-- | Settings that describe an input device that is type HD.
+idsHdDeviceSettings :: Lens' InputDeviceSummary (Maybe InputDeviceHdSettings)
+idsHdDeviceSettings = lens _idsHdDeviceSettings (\ s a -> s{_idsHdDeviceSettings = a})
+
+-- | A name that you specify for the input device.
+idsName :: Lens' InputDeviceSummary (Maybe Text)
+idsName = lens _idsName (\ s a -> s{_idsName = a})
+
+-- | The unique ID of the input device.
+idsId :: Lens' InputDeviceSummary (Maybe Text)
+idsId = lens _idsId (\ s a -> s{_idsId = a})
+
+-- | The status of the action to synchronize the device configuration. If you change the configuration of the input device (for example, the maximum bitrate), MediaLive sends the new data to the device. The device might not update itself immediately. SYNCED means the device has updated its configuration. SYNCING means that it has not updated its configuration.
+idsDeviceSettingsSyncState :: Lens' InputDeviceSummary (Maybe DeviceSettingsSyncState)
+idsDeviceSettingsSyncState = lens _idsDeviceSettingsSyncState (\ s a -> s{_idsDeviceSettingsSyncState = a})
+
+-- | The type of the input device.
+idsType :: Lens' InputDeviceSummary (Maybe InputDeviceType)
+idsType = lens _idsType (\ s a -> s{_idsType = a})
+
+-- | The unique serial number of the input device.
+idsSerialNumber :: Lens' InputDeviceSummary (Maybe Text)
+idsSerialNumber = lens _idsSerialNumber (\ s a -> s{_idsSerialNumber = a})
+
+-- | Network settings for the input device.
+idsNetworkSettings :: Lens' InputDeviceSummary (Maybe InputDeviceNetworkSettings)
+idsNetworkSettings = lens _idsNetworkSettings (\ s a -> s{_idsNetworkSettings = a})
+
+-- | The state of the connection between the input device and AWS.
+idsConnectionState :: Lens' InputDeviceSummary (Maybe InputDeviceConnectionState)
+idsConnectionState = lens _idsConnectionState (\ s a -> s{_idsConnectionState = a})
+
+instance FromJSON InputDeviceSummary where
+        parseJSON
+          = withObject "InputDeviceSummary"
+              (\ x ->
+                 InputDeviceSummary' <$>
+                   (x .:? "arn") <*> (x .:? "macAddress") <*>
+                     (x .:? "hdDeviceSettings")
+                     <*> (x .:? "name")
+                     <*> (x .:? "id")
+                     <*> (x .:? "deviceSettingsSyncState")
+                     <*> (x .:? "type")
+                     <*> (x .:? "serialNumber")
+                     <*> (x .:? "networkSettings")
+                     <*> (x .:? "connectionState"))
+
+instance Hashable InputDeviceSummary where
+
+instance NFData InputDeviceSummary where
+
+-- | Input Location
 --
 -- /See:/ 'inputLocation' smart constructor.
-data InputLocation = InputLocation'
-  { _ilUsername      :: !(Maybe Text)
-  , _ilPasswordParam :: !(Maybe Text)
-  , _ilURI           :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data InputLocation = InputLocation'{_ilUsername ::
+                                    !(Maybe Text),
+                                    _ilPasswordParam :: !(Maybe Text),
+                                    _ilURI :: !Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'InputLocation' with the minimum fields required to make a request.
 --
@@ -4929,10 +7161,9 @@ data InputLocation = InputLocation'
 inputLocation
     :: Text -- ^ 'ilURI'
     -> InputLocation
-inputLocation pURI_ =
-  InputLocation'
-    {_ilUsername = Nothing, _ilPasswordParam = Nothing, _ilURI = pURI_}
-
+inputLocation pURI_
+  = InputLocation'{_ilUsername = Nothing,
+                   _ilPasswordParam = Nothing, _ilURI = pURI_}
 
 -- | Documentation update needed
 ilUsername :: Lens' InputLocation (Maybe Text)
@@ -4966,17 +7197,18 @@ instance ToJSON InputLocation where
                   ("passwordParam" .=) <$> _ilPasswordParam,
                   Just ("uri" .= _ilURI)])
 
--- | Placeholder documentation for InputLossBehavior
+-- | Input Loss Behavior
 --
 -- /See:/ 'inputLossBehavior' smart constructor.
-data InputLossBehavior = InputLossBehavior'
-  { _ilbInputLossImageColor :: !(Maybe Text)
-  , _ilbBlackFrameMsec      :: !(Maybe Nat)
-  , _ilbRepeatFrameMsec     :: !(Maybe Nat)
-  , _ilbInputLossImageType  :: !(Maybe InputLossImageType)
-  , _ilbInputLossImageSlate :: !(Maybe InputLocation)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data InputLossBehavior = InputLossBehavior'{_ilbInputLossImageColor
+                                            :: !(Maybe Text),
+                                            _ilbBlackFrameMsec :: !(Maybe Nat),
+                                            _ilbRepeatFrameMsec :: !(Maybe Nat),
+                                            _ilbInputLossImageType ::
+                                            !(Maybe InputLossImageType),
+                                            _ilbInputLossImageSlate ::
+                                            !(Maybe InputLocation)}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'InputLossBehavior' with the minimum fields required to make a request.
 --
@@ -4993,15 +7225,13 @@ data InputLossBehavior = InputLossBehavior'
 -- * 'ilbInputLossImageSlate' - When input loss image type is "slate" these fields specify the parameters for accessing the slate.
 inputLossBehavior
     :: InputLossBehavior
-inputLossBehavior =
-  InputLossBehavior'
-    { _ilbInputLossImageColor = Nothing
-    , _ilbBlackFrameMsec = Nothing
-    , _ilbRepeatFrameMsec = Nothing
-    , _ilbInputLossImageType = Nothing
-    , _ilbInputLossImageSlate = Nothing
-    }
-
+inputLossBehavior
+  = InputLossBehavior'{_ilbInputLossImageColor =
+                         Nothing,
+                       _ilbBlackFrameMsec = Nothing,
+                       _ilbRepeatFrameMsec = Nothing,
+                       _ilbInputLossImageType = Nothing,
+                       _ilbInputLossImageSlate = Nothing}
 
 -- | When input loss image type is "color" this field specifies the color to use. Value: 6 hex characters representing the values of RGB.
 ilbInputLossImageColor :: Lens' InputLossBehavior (Maybe Text)
@@ -5050,17 +7280,97 @@ instance ToJSON InputLossBehavior where
                   ("inputLossImageSlate" .=) <$>
                     _ilbInputLossImageSlate])
 
+-- | Action to prepare an input for a future immediate input switch.
+--
+-- /See:/ 'inputPrepareScheduleActionSettings' smart constructor.
+data InputPrepareScheduleActionSettings = InputPrepareScheduleActionSettings'{_ipsasInputClippingSettings
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  InputClippingSettings),
+                                                                              _ipsasURLPath
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  [Text]),
+                                                                              _ipsasInputAttachmentNameReference
+                                                                              ::
+                                                                              !Text}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
+
+-- | Creates a value of 'InputPrepareScheduleActionSettings' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'ipsasInputClippingSettings' - Settings to let you create a clip of the file input, in order to set up the input to ingest only a portion of the file.
+--
+-- * 'ipsasURLPath' - The value for the variable portion of the URL for the dynamic input, for this instance of the input. Each time you use the same dynamic input in an input switch action, you can provide a different value, in order to connect the input to a different content source.
+--
+-- * 'ipsasInputAttachmentNameReference' - The name of the input attachment that should be prepared by this action. If no name is provided, the action will stop the most recent prepare (if any) when activated.
+inputPrepareScheduleActionSettings
+    :: Text -- ^ 'ipsasInputAttachmentNameReference'
+    -> InputPrepareScheduleActionSettings
+inputPrepareScheduleActionSettings
+  pInputAttachmentNameReference_
+  = InputPrepareScheduleActionSettings'{_ipsasInputClippingSettings
+                                          = Nothing,
+                                        _ipsasURLPath = Nothing,
+                                        _ipsasInputAttachmentNameReference =
+                                          pInputAttachmentNameReference_}
+
+-- | Settings to let you create a clip of the file input, in order to set up the input to ingest only a portion of the file.
+ipsasInputClippingSettings :: Lens' InputPrepareScheduleActionSettings (Maybe InputClippingSettings)
+ipsasInputClippingSettings = lens _ipsasInputClippingSettings (\ s a -> s{_ipsasInputClippingSettings = a})
+
+-- | The value for the variable portion of the URL for the dynamic input, for this instance of the input. Each time you use the same dynamic input in an input switch action, you can provide a different value, in order to connect the input to a different content source.
+ipsasURLPath :: Lens' InputPrepareScheduleActionSettings [Text]
+ipsasURLPath = lens _ipsasURLPath (\ s a -> s{_ipsasURLPath = a}) . _Default . _Coerce
+
+-- | The name of the input attachment that should be prepared by this action. If no name is provided, the action will stop the most recent prepare (if any) when activated.
+ipsasInputAttachmentNameReference :: Lens' InputPrepareScheduleActionSettings Text
+ipsasInputAttachmentNameReference = lens _ipsasInputAttachmentNameReference (\ s a -> s{_ipsasInputAttachmentNameReference = a})
+
+instance FromJSON InputPrepareScheduleActionSettings
+         where
+        parseJSON
+          = withObject "InputPrepareScheduleActionSettings"
+              (\ x ->
+                 InputPrepareScheduleActionSettings' <$>
+                   (x .:? "inputClippingSettings") <*>
+                     (x .:? "urlPath" .!= mempty)
+                     <*> (x .: "inputAttachmentNameReference"))
+
+instance Hashable InputPrepareScheduleActionSettings
+         where
+
+instance NFData InputPrepareScheduleActionSettings
+         where
+
+instance ToJSON InputPrepareScheduleActionSettings
+         where
+        toJSON InputPrepareScheduleActionSettings'{..}
+          = object
+              (catMaybes
+                 [("inputClippingSettings" .=) <$>
+                    _ipsasInputClippingSettings,
+                  ("urlPath" .=) <$> _ipsasURLPath,
+                  Just
+                    ("inputAttachmentNameReference" .=
+                       _ipsasInputAttachmentNameReference)])
+
 -- | An Input Security Group
 --
 -- /See:/ 'inputSecurityGroup' smart constructor.
-data InputSecurityGroup = InputSecurityGroup'
-  { _isgState          :: !(Maybe InputSecurityGroupState)
-  , _isgARN            :: !(Maybe Text)
-  , _isgInputs         :: !(Maybe [Text])
-  , _isgId             :: !(Maybe Text)
-  , _isgWhitelistRules :: !(Maybe [InputWhitelistRule])
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data InputSecurityGroup = InputSecurityGroup'{_isgState
+                                              ::
+                                              !(Maybe InputSecurityGroupState),
+                                              _isgARN :: !(Maybe Text),
+                                              _isgInputs :: !(Maybe [Text]),
+                                              _isgId :: !(Maybe Text),
+                                              _isgWhitelistRules ::
+                                              !(Maybe [InputWhitelistRule]),
+                                              _isgTags ::
+                                              !(Maybe (Map Text Text))}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'InputSecurityGroup' with the minimum fields required to make a request.
 --
@@ -5075,17 +7385,15 @@ data InputSecurityGroup = InputSecurityGroup'
 -- * 'isgId' - The Id of the Input Security Group
 --
 -- * 'isgWhitelistRules' - Whitelist rules and their sync status
+--
+-- * 'isgTags' - A collection of key-value pairs.
 inputSecurityGroup
     :: InputSecurityGroup
-inputSecurityGroup =
-  InputSecurityGroup'
-    { _isgState = Nothing
-    , _isgARN = Nothing
-    , _isgInputs = Nothing
-    , _isgId = Nothing
-    , _isgWhitelistRules = Nothing
-    }
-
+inputSecurityGroup
+  = InputSecurityGroup'{_isgState = Nothing,
+                        _isgARN = Nothing, _isgInputs = Nothing,
+                        _isgId = Nothing, _isgWhitelistRules = Nothing,
+                        _isgTags = Nothing}
 
 -- | The current state of the Input Security Group.
 isgState :: Lens' InputSecurityGroup (Maybe InputSecurityGroupState)
@@ -5107,6 +7415,10 @@ isgId = lens _isgId (\ s a -> s{_isgId = a})
 isgWhitelistRules :: Lens' InputSecurityGroup [InputWhitelistRule]
 isgWhitelistRules = lens _isgWhitelistRules (\ s a -> s{_isgWhitelistRules = a}) . _Default . _Coerce
 
+-- | A collection of key-value pairs.
+isgTags :: Lens' InputSecurityGroup (HashMap Text Text)
+isgTags = lens _isgTags (\ s a -> s{_isgTags = a}) . _Default . _Map
+
 instance FromJSON InputSecurityGroup where
         parseJSON
           = withObject "InputSecurityGroup"
@@ -5115,7 +7427,8 @@ instance FromJSON InputSecurityGroup where
                    (x .:? "state") <*> (x .:? "arn") <*>
                      (x .:? "inputs" .!= mempty)
                      <*> (x .:? "id")
-                     <*> (x .:? "whitelistRules" .!= mempty))
+                     <*> (x .:? "whitelistRules" .!= mempty)
+                     <*> (x .:? "tags" .!= mempty))
 
 instance Hashable InputSecurityGroup where
 
@@ -5124,24 +7437,33 @@ instance NFData InputSecurityGroup where
 -- | Live Event input parameters. There can be multiple inputs in a single Live Event.
 --
 -- /See:/ 'inputSettings' smart constructor.
-data InputSettings = InputSettings'
-  { _isVideoSelector        :: !(Maybe VideoSelector)
-  , _isNetworkInputSettings :: !(Maybe NetworkInputSettings)
-  , _isAudioSelectors       :: !(Maybe [AudioSelector])
-  , _isDeblockFilter        :: !(Maybe InputDeblockFilter)
-  , _isDenoiseFilter        :: !(Maybe InputDenoiseFilter)
-  , _isFilterStrength       :: !(Maybe Nat)
-  , _isCaptionSelectors     :: !(Maybe [CaptionSelector])
-  , _isInputFilter          :: !(Maybe InputFilter)
-  , _isSourceEndBehavior    :: !(Maybe InputSourceEndBehavior)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data InputSettings = InputSettings'{_isVideoSelector
+                                    :: !(Maybe VideoSelector),
+                                    _isSmpte2038DataPreference ::
+                                    !(Maybe Smpte2038DataPreference),
+                                    _isNetworkInputSettings ::
+                                    !(Maybe NetworkInputSettings),
+                                    _isAudioSelectors ::
+                                    !(Maybe [AudioSelector]),
+                                    _isDeblockFilter ::
+                                    !(Maybe InputDeblockFilter),
+                                    _isDenoiseFilter ::
+                                    !(Maybe InputDenoiseFilter),
+                                    _isFilterStrength :: !(Maybe Nat),
+                                    _isCaptionSelectors ::
+                                    !(Maybe [CaptionSelector]),
+                                    _isInputFilter :: !(Maybe InputFilter),
+                                    _isSourceEndBehavior ::
+                                    !(Maybe InputSourceEndBehavior)}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'InputSettings' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'isVideoSelector' - Informs which video elementary stream to decode for input types that have multiple available.
+--
+-- * 'isSmpte2038DataPreference' - Specifies whether to extract applicable ancillary data from a SMPTE-2038 source in this input. Applicable data types are captions, timecode, AFD, and SCTE-104 messages. - PREFER: Extract from SMPTE-2038 if present in this input, otherwise extract from another source (if any). - IGNORE: Never extract any ancillary data from SMPTE-2038.
 --
 -- * 'isNetworkInputSettings' - Input settings.
 --
@@ -5160,23 +7482,25 @@ data InputSettings = InputSettings'
 -- * 'isSourceEndBehavior' - Loop input if it is a file. This allows a file input to be streamed indefinitely.
 inputSettings
     :: InputSettings
-inputSettings =
-  InputSettings'
-    { _isVideoSelector = Nothing
-    , _isNetworkInputSettings = Nothing
-    , _isAudioSelectors = Nothing
-    , _isDeblockFilter = Nothing
-    , _isDenoiseFilter = Nothing
-    , _isFilterStrength = Nothing
-    , _isCaptionSelectors = Nothing
-    , _isInputFilter = Nothing
-    , _isSourceEndBehavior = Nothing
-    }
-
+inputSettings
+  = InputSettings'{_isVideoSelector = Nothing,
+                   _isSmpte2038DataPreference = Nothing,
+                   _isNetworkInputSettings = Nothing,
+                   _isAudioSelectors = Nothing,
+                   _isDeblockFilter = Nothing,
+                   _isDenoiseFilter = Nothing,
+                   _isFilterStrength = Nothing,
+                   _isCaptionSelectors = Nothing,
+                   _isInputFilter = Nothing,
+                   _isSourceEndBehavior = Nothing}
 
 -- | Informs which video elementary stream to decode for input types that have multiple available.
 isVideoSelector :: Lens' InputSettings (Maybe VideoSelector)
 isVideoSelector = lens _isVideoSelector (\ s a -> s{_isVideoSelector = a})
+
+-- | Specifies whether to extract applicable ancillary data from a SMPTE-2038 source in this input. Applicable data types are captions, timecode, AFD, and SCTE-104 messages. - PREFER: Extract from SMPTE-2038 if present in this input, otherwise extract from another source (if any). - IGNORE: Never extract any ancillary data from SMPTE-2038.
+isSmpte2038DataPreference :: Lens' InputSettings (Maybe Smpte2038DataPreference)
+isSmpte2038DataPreference = lens _isSmpte2038DataPreference (\ s a -> s{_isSmpte2038DataPreference = a})
 
 -- | Input settings.
 isNetworkInputSettings :: Lens' InputSettings (Maybe NetworkInputSettings)
@@ -5216,7 +7540,8 @@ instance FromJSON InputSettings where
               (\ x ->
                  InputSettings' <$>
                    (x .:? "videoSelector") <*>
-                     (x .:? "networkInputSettings")
+                     (x .:? "smpte2038DataPreference")
+                     <*> (x .:? "networkInputSettings")
                      <*> (x .:? "audioSelectors" .!= mempty)
                      <*> (x .:? "deblockFilter")
                      <*> (x .:? "denoiseFilter")
@@ -5234,6 +7559,8 @@ instance ToJSON InputSettings where
           = object
               (catMaybes
                  [("videoSelector" .=) <$> _isVideoSelector,
+                  ("smpte2038DataPreference" .=) <$>
+                    _isSmpte2038DataPreference,
                   ("networkInputSettings" .=) <$>
                     _isNetworkInputSettings,
                   ("audioSelectors" .=) <$> _isAudioSelectors,
@@ -5247,12 +7574,11 @@ instance ToJSON InputSettings where
 -- | The settings for a PULL type input.
 --
 -- /See:/ 'inputSource' smart constructor.
-data InputSource = InputSource'
-  { _isURL           :: !(Maybe Text)
-  , _isUsername      :: !(Maybe Text)
-  , _isPasswordParam :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data InputSource = InputSource'{_isURL ::
+                                !(Maybe Text),
+                                _isUsername :: !(Maybe Text),
+                                _isPasswordParam :: !(Maybe Text)}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'InputSource' with the minimum fields required to make a request.
 --
@@ -5265,10 +7591,9 @@ data InputSource = InputSource'
 -- * 'isPasswordParam' - The key used to extract the password from EC2 Parameter store.
 inputSource
     :: InputSource
-inputSource =
-  InputSource'
-    {_isURL = Nothing, _isUsername = Nothing, _isPasswordParam = Nothing}
-
+inputSource
+  = InputSource'{_isURL = Nothing,
+                 _isUsername = Nothing, _isPasswordParam = Nothing}
 
 -- | This represents the customer's source URL where stream is pulled from.
 isURL :: Lens' InputSource (Maybe Text)
@@ -5297,12 +7622,12 @@ instance NFData InputSource where
 -- | Settings for for a PULL type input.
 --
 -- /See:/ 'inputSourceRequest' smart constructor.
-data InputSourceRequest = InputSourceRequest'
-  { _isrURL           :: !(Maybe Text)
-  , _isrUsername      :: !(Maybe Text)
-  , _isrPasswordParam :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data InputSourceRequest = InputSourceRequest'{_isrURL
+                                              :: !(Maybe Text),
+                                              _isrUsername :: !(Maybe Text),
+                                              _isrPasswordParam ::
+                                              !(Maybe Text)}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'InputSourceRequest' with the minimum fields required to make a request.
 --
@@ -5315,10 +7640,9 @@ data InputSourceRequest = InputSourceRequest'
 -- * 'isrPasswordParam' - The key used to extract the password from EC2 Parameter store.
 inputSourceRequest
     :: InputSourceRequest
-inputSourceRequest =
-  InputSourceRequest'
-    {_isrURL = Nothing, _isrUsername = Nothing, _isrPasswordParam = Nothing}
-
+inputSourceRequest
+  = InputSourceRequest'{_isrURL = Nothing,
+                        _isrUsername = Nothing, _isrPasswordParam = Nothing}
 
 -- | This represents the customer's source URL where stream is pulled from.
 isrURL :: Lens' InputSourceRequest (Maybe Text)
@@ -5347,12 +7671,12 @@ instance ToJSON InputSourceRequest where
 -- | Placeholder documentation for InputSpecification
 --
 -- /See:/ 'inputSpecification' smart constructor.
-data InputSpecification = InputSpecification'
-  { _isResolution     :: !(Maybe InputResolution)
-  , _isCodec          :: !(Maybe InputCodec)
-  , _isMaximumBitrate :: !(Maybe InputMaximumBitrate)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data InputSpecification = InputSpecification'{_isResolution
+                                              :: !(Maybe InputResolution),
+                                              _isCodec :: !(Maybe InputCodec),
+                                              _isMaximumBitrate ::
+                                              !(Maybe InputMaximumBitrate)}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'InputSpecification' with the minimum fields required to make a request.
 --
@@ -5365,10 +7689,9 @@ data InputSpecification = InputSpecification'
 -- * 'isMaximumBitrate' - Maximum input bitrate, categorized coarsely
 inputSpecification
     :: InputSpecification
-inputSpecification =
-  InputSpecification'
-    {_isResolution = Nothing, _isCodec = Nothing, _isMaximumBitrate = Nothing}
-
+inputSpecification
+  = InputSpecification'{_isResolution = Nothing,
+                        _isCodec = Nothing, _isMaximumBitrate = Nothing}
 
 -- | Input resolution, categorized coarsely
 isResolution :: Lens' InputSpecification (Maybe InputResolution)
@@ -5402,13 +7725,134 @@ instance ToJSON InputSpecification where
                   ("codec" .=) <$> _isCodec,
                   ("maximumBitrate" .=) <$> _isMaximumBitrate])
 
+-- | Settings for the "switch input" action: to switch from ingesting one input to ingesting another input.
+--
+-- /See:/ 'inputSwitchScheduleActionSettings' smart constructor.
+data InputSwitchScheduleActionSettings = InputSwitchScheduleActionSettings'{_issasInputClippingSettings
+                                                                            ::
+                                                                            !(Maybe
+                                                                                InputClippingSettings),
+                                                                            _issasURLPath
+                                                                            ::
+                                                                            !(Maybe
+                                                                                [Text]),
+                                                                            _issasInputAttachmentNameReference
+                                                                            ::
+                                                                            !Text}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
+
+-- | Creates a value of 'InputSwitchScheduleActionSettings' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'issasInputClippingSettings' - Settings to let you create a clip of the file input, in order to set up the input to ingest only a portion of the file.
+--
+-- * 'issasURLPath' - The value for the variable portion of the URL for the dynamic input, for this instance of the input. Each time you use the same dynamic input in an input switch action, you can provide a different value, in order to connect the input to a different content source.
+--
+-- * 'issasInputAttachmentNameReference' - The name of the input attachment (not the name of the input!) to switch to. The name is specified in the channel configuration.
+inputSwitchScheduleActionSettings
+    :: Text -- ^ 'issasInputAttachmentNameReference'
+    -> InputSwitchScheduleActionSettings
+inputSwitchScheduleActionSettings
+  pInputAttachmentNameReference_
+  = InputSwitchScheduleActionSettings'{_issasInputClippingSettings
+                                         = Nothing,
+                                       _issasURLPath = Nothing,
+                                       _issasInputAttachmentNameReference =
+                                         pInputAttachmentNameReference_}
+
+-- | Settings to let you create a clip of the file input, in order to set up the input to ingest only a portion of the file.
+issasInputClippingSettings :: Lens' InputSwitchScheduleActionSettings (Maybe InputClippingSettings)
+issasInputClippingSettings = lens _issasInputClippingSettings (\ s a -> s{_issasInputClippingSettings = a})
+
+-- | The value for the variable portion of the URL for the dynamic input, for this instance of the input. Each time you use the same dynamic input in an input switch action, you can provide a different value, in order to connect the input to a different content source.
+issasURLPath :: Lens' InputSwitchScheduleActionSettings [Text]
+issasURLPath = lens _issasURLPath (\ s a -> s{_issasURLPath = a}) . _Default . _Coerce
+
+-- | The name of the input attachment (not the name of the input!) to switch to. The name is specified in the channel configuration.
+issasInputAttachmentNameReference :: Lens' InputSwitchScheduleActionSettings Text
+issasInputAttachmentNameReference = lens _issasInputAttachmentNameReference (\ s a -> s{_issasInputAttachmentNameReference = a})
+
+instance FromJSON InputSwitchScheduleActionSettings
+         where
+        parseJSON
+          = withObject "InputSwitchScheduleActionSettings"
+              (\ x ->
+                 InputSwitchScheduleActionSettings' <$>
+                   (x .:? "inputClippingSettings") <*>
+                     (x .:? "urlPath" .!= mempty)
+                     <*> (x .: "inputAttachmentNameReference"))
+
+instance Hashable InputSwitchScheduleActionSettings
+         where
+
+instance NFData InputSwitchScheduleActionSettings
+         where
+
+instance ToJSON InputSwitchScheduleActionSettings
+         where
+        toJSON InputSwitchScheduleActionSettings'{..}
+          = object
+              (catMaybes
+                 [("inputClippingSettings" .=) <$>
+                    _issasInputClippingSettings,
+                  ("urlPath" .=) <$> _issasURLPath,
+                  Just
+                    ("inputAttachmentNameReference" .=
+                       _issasInputAttachmentNameReference)])
+
+-- | Settings for a private VPC Input.
+--
+-- When this property is specified, the input destination addresses will be created in a VPC rather than with public Internet addresses.
+-- This property requires setting the roleArn property on Input creation.
+-- Not compatible with the inputSecurityGroups property.
+--
+-- /See:/ 'inputVPCRequest' smart constructor.
+data InputVPCRequest = InputVPCRequest'{_ivrSecurityGroupIds
+                                        :: !(Maybe [Text]),
+                                        _ivrSubnetIds :: ![Text]}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+-- | Creates a value of 'InputVPCRequest' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'ivrSecurityGroupIds' - A list of up to 5 EC2 VPC security group IDs to attach to the Input VPC network interfaces. Requires subnetIds. If none are specified then the VPC default security group will be used.
+--
+-- * 'ivrSubnetIds' - A list of 2 VPC subnet IDs from the same VPC. Subnet IDs must be mapped to two unique availability zones (AZ).
+inputVPCRequest
+    :: InputVPCRequest
+inputVPCRequest
+  = InputVPCRequest'{_ivrSecurityGroupIds = Nothing,
+                     _ivrSubnetIds = mempty}
+
+-- | A list of up to 5 EC2 VPC security group IDs to attach to the Input VPC network interfaces. Requires subnetIds. If none are specified then the VPC default security group will be used.
+ivrSecurityGroupIds :: Lens' InputVPCRequest [Text]
+ivrSecurityGroupIds = lens _ivrSecurityGroupIds (\ s a -> s{_ivrSecurityGroupIds = a}) . _Default . _Coerce
+
+-- | A list of 2 VPC subnet IDs from the same VPC. Subnet IDs must be mapped to two unique availability zones (AZ).
+ivrSubnetIds :: Lens' InputVPCRequest [Text]
+ivrSubnetIds = lens _ivrSubnetIds (\ s a -> s{_ivrSubnetIds = a}) . _Coerce
+
+instance Hashable InputVPCRequest where
+
+instance NFData InputVPCRequest where
+
+instance ToJSON InputVPCRequest where
+        toJSON InputVPCRequest'{..}
+          = object
+              (catMaybes
+                 [("securityGroupIds" .=) <$> _ivrSecurityGroupIds,
+                  Just ("subnetIds" .= _ivrSubnetIds)])
+
 -- | Whitelist rule
 --
 -- /See:/ 'inputWhitelistRule' smart constructor.
-newtype InputWhitelistRule = InputWhitelistRule'
-  { _iwrCidr :: Maybe Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype InputWhitelistRule = InputWhitelistRule'{_iwrCidr
+                                                 :: Maybe Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'InputWhitelistRule' with the minimum fields required to make a request.
 --
@@ -5417,8 +7861,8 @@ newtype InputWhitelistRule = InputWhitelistRule'
 -- * 'iwrCidr' - The IPv4 CIDR that's whitelisted.
 inputWhitelistRule
     :: InputWhitelistRule
-inputWhitelistRule = InputWhitelistRule' {_iwrCidr = Nothing}
-
+inputWhitelistRule
+  = InputWhitelistRule'{_iwrCidr = Nothing}
 
 -- | The IPv4 CIDR that's whitelisted.
 iwrCidr :: Lens' InputWhitelistRule (Maybe Text)
@@ -5436,10 +7880,10 @@ instance NFData InputWhitelistRule where
 -- | An IPv4 CIDR to whitelist.
 --
 -- /See:/ 'inputWhitelistRuleCidr' smart constructor.
-newtype InputWhitelistRuleCidr = InputWhitelistRuleCidr'
-  { _iwrcCidr :: Maybe Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype InputWhitelistRuleCidr = InputWhitelistRuleCidr'{_iwrcCidr
+                                                         :: Maybe Text}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'InputWhitelistRuleCidr' with the minimum fields required to make a request.
 --
@@ -5448,8 +7892,8 @@ newtype InputWhitelistRuleCidr = InputWhitelistRuleCidr'
 -- * 'iwrcCidr' - The IPv4 CIDR to whitelist.
 inputWhitelistRuleCidr
     :: InputWhitelistRuleCidr
-inputWhitelistRuleCidr = InputWhitelistRuleCidr' {_iwrcCidr = Nothing}
-
+inputWhitelistRuleCidr
+  = InputWhitelistRuleCidr'{_iwrcCidr = Nothing}
 
 -- | The IPv4 CIDR to whitelist.
 iwrcCidr :: Lens' InputWhitelistRuleCidr (Maybe Text)
@@ -5463,13 +7907,13 @@ instance ToJSON InputWhitelistRuleCidr where
         toJSON InputWhitelistRuleCidr'{..}
           = object (catMaybes [("cidr" .=) <$> _iwrcCidr])
 
--- | Placeholder documentation for KeyProviderSettings
+-- | Key Provider Settings
 --
 -- /See:/ 'keyProviderSettings' smart constructor.
-newtype KeyProviderSettings = KeyProviderSettings'
-  { _kpsStaticKeySettings :: Maybe StaticKeySettings
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype KeyProviderSettings = KeyProviderSettings'{_kpsStaticKeySettings
+                                                   :: Maybe StaticKeySettings}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'KeyProviderSettings' with the minimum fields required to make a request.
 --
@@ -5478,8 +7922,9 @@ newtype KeyProviderSettings = KeyProviderSettings'
 -- * 'kpsStaticKeySettings' - Undocumented member.
 keyProviderSettings
     :: KeyProviderSettings
-keyProviderSettings = KeyProviderSettings' {_kpsStaticKeySettings = Nothing}
-
+keyProviderSettings
+  = KeyProviderSettings'{_kpsStaticKeySettings =
+                           Nothing}
 
 -- | Undocumented member.
 kpsStaticKeySettings :: Lens' KeyProviderSettings (Maybe StaticKeySettings)
@@ -5501,390 +7946,386 @@ instance ToJSON KeyProviderSettings where
               (catMaybes
                  [("staticKeySettings" .=) <$> _kpsStaticKeySettings])
 
--- | Placeholder documentation for M2tsSettings
+-- | M2ts Settings
 --
 -- /See:/ 'm2tsSettings' smart constructor.
-data M2tsSettings = M2tsSettings'
-  { _msPmtPid                   :: !(Maybe Text)
-  , _msEtvSignalPid             :: !(Maybe Text)
-  , _msVideoPid                 :: !(Maybe Text)
-  , _msBufferModel              :: !(Maybe M2tsBufferModel)
-  , _msScte35Pid                :: !(Maybe Text)
-  , _msTransportStreamId        :: !(Maybe Nat)
-  , _msProgramNum               :: !(Maybe Nat)
-  , _msFragmentTime             :: !(Maybe Double)
-  , _msTimedMetadataBehavior    :: !(Maybe M2tsTimedMetadataBehavior)
-  , _msCCDescriptor             :: !(Maybe M2tsCCDescriptor)
-  , _msPmtInterval              :: !(Maybe Nat)
-  , _msDvbSdtSettings           :: !(Maybe DvbSdtSettings)
-  , _msEcmPid                   :: !(Maybe Text)
-  , _msNullPacketBitrate        :: !(Maybe Double)
-  , _msAudioBufferModel         :: !(Maybe M2tsAudioBufferModel)
-  , _msTimedMetadataPid         :: !(Maybe Text)
-  , _msKlv                      :: !(Maybe M2tsKlv)
-  , _msAudioFramesPerPes        :: !(Maybe Nat)
-  , _msPcrPeriod                :: !(Maybe Nat)
-  , _msPcrPid                   :: !(Maybe Text)
-  , _msSegmentationMarkers      :: !(Maybe M2tsSegmentationMarkers)
-  , _msAribCaptionsPidControl   :: !(Maybe M2tsAribCaptionsPidControl)
-  , _msKlvDataPids              :: !(Maybe Text)
-  , _msEbpLookaheadMs           :: !(Maybe Nat)
-  , _msDvbSubPids               :: !(Maybe Text)
-  , _msScte27Pids               :: !(Maybe Text)
-  , _msPatInterval              :: !(Maybe Nat)
-  , _msAudioStreamType          :: !(Maybe M2tsAudioStreamType)
-  , _msEsRateInPes              :: !(Maybe M2tsEsRateInPes)
-  , _msEtvPlatformPid           :: !(Maybe Text)
-  , _msBitrate                  :: !(Maybe Nat)
-  , _msScte35Control            :: !(Maybe M2tsScte35Control)
-  , _msAudioPids                :: !(Maybe Text)
-  , _msDvbTeletextPid           :: !(Maybe Text)
-  , _msEbif                     :: !(Maybe M2tsEbifControl)
-  , _msArib                     :: !(Maybe M2tsArib)
-  , _msAribCaptionsPid          :: !(Maybe Text)
-  , _msAbsentInputAudioBehavior :: !(Maybe M2tsAbsentInputAudioBehavior)
-  , _msSegmentationTime         :: !(Maybe Double)
-  , _msEbpAudioInterval         :: !(Maybe M2tsAudioInterval)
-  , _msDvbNitSettings           :: !(Maybe DvbNitSettings)
-  , _msPcrControl               :: !(Maybe M2tsPcrControl)
-  , _msEbpPlacement             :: !(Maybe M2tsEbpPlacement)
-  , _msRateMode                 :: !(Maybe M2tsRateMode)
-  , _msSegmentationStyle        :: !(Maybe M2tsSegmentationStyle)
-  , _msDvbTdtSettings           :: !(Maybe DvbTdtSettings)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data M2tsSettings = M2tsSettings'{_mPmtPid ::
+                                  !(Maybe Text),
+                                  _mEtvSignalPid :: !(Maybe Text),
+                                  _mVideoPid :: !(Maybe Text),
+                                  _mNielsenId3Behavior ::
+                                  !(Maybe M2tsNielsenId3Behavior),
+                                  _mBufferModel :: !(Maybe M2tsBufferModel),
+                                  _mScte35Pid :: !(Maybe Text),
+                                  _mTransportStreamId :: !(Maybe Nat),
+                                  _mProgramNum :: !(Maybe Nat),
+                                  _mFragmentTime :: !(Maybe Double),
+                                  _mTimedMetadataBehavior ::
+                                  !(Maybe M2tsTimedMetadataBehavior),
+                                  _mCCDescriptor :: !(Maybe M2tsCCDescriptor),
+                                  _mPmtInterval :: !(Maybe Nat),
+                                  _mDvbSdtSettings :: !(Maybe DvbSdtSettings),
+                                  _mEcmPid :: !(Maybe Text),
+                                  _mNullPacketBitrate :: !(Maybe Double),
+                                  _mAudioBufferModel ::
+                                  !(Maybe M2tsAudioBufferModel),
+                                  _mTimedMetadataPid :: !(Maybe Text),
+                                  _mKlv :: !(Maybe M2tsKlv),
+                                  _mAudioFramesPerPes :: !(Maybe Nat),
+                                  _mPcrPeriod :: !(Maybe Nat),
+                                  _mPcrPid :: !(Maybe Text),
+                                  _mSegmentationMarkers ::
+                                  !(Maybe M2tsSegmentationMarkers),
+                                  _mAribCaptionsPidControl ::
+                                  !(Maybe M2tsAribCaptionsPidControl),
+                                  _mKlvDataPids :: !(Maybe Text),
+                                  _mEbpLookaheadMs :: !(Maybe Nat),
+                                  _mDvbSubPids :: !(Maybe Text),
+                                  _mScte27Pids :: !(Maybe Text),
+                                  _mPatInterval :: !(Maybe Nat),
+                                  _mAudioStreamType ::
+                                  !(Maybe M2tsAudioStreamType),
+                                  _mEsRateInPes :: !(Maybe M2tsEsRateInPes),
+                                  _mEtvPlatformPid :: !(Maybe Text),
+                                  _mBitrate :: !(Maybe Nat),
+                                  _mScte35Control :: !(Maybe M2tsScte35Control),
+                                  _mAudioPids :: !(Maybe Text),
+                                  _mDvbTeletextPid :: !(Maybe Text),
+                                  _mEbif :: !(Maybe M2tsEbifControl),
+                                  _mArib :: !(Maybe M2tsArib),
+                                  _mAribCaptionsPid :: !(Maybe Text),
+                                  _mAbsentInputAudioBehavior ::
+                                  !(Maybe M2tsAbsentInputAudioBehavior),
+                                  _mSegmentationTime :: !(Maybe Double),
+                                  _mEbpAudioInterval ::
+                                  !(Maybe M2tsAudioInterval),
+                                  _mDvbNitSettings :: !(Maybe DvbNitSettings),
+                                  _mPcrControl :: !(Maybe M2tsPcrControl),
+                                  _mEbpPlacement :: !(Maybe M2tsEbpPlacement),
+                                  _mRateMode :: !(Maybe M2tsRateMode),
+                                  _mSegmentationStyle ::
+                                  !(Maybe M2tsSegmentationStyle),
+                                  _mDvbTdtSettings :: !(Maybe DvbTdtSettings)}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'M2tsSettings' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'msPmtPid' - Packet Identifier (PID) for the Program Map Table (PMT) in the transport stream. Can be entered as a decimal or hexadecimal value. Valid values are 32 (or 0x20)..8182 (or 0x1ff6).
+-- * 'mPmtPid' - Packet Identifier (PID) for the Program Map Table (PMT) in the transport stream. Can be entered as a decimal or hexadecimal value. Valid values are 32 (or 0x20)..8182 (or 0x1ff6).
 --
--- * 'msEtvSignalPid' - Packet Identifier (PID) for input source ETV Signal data to this output. Can be entered as a decimal or hexadecimal value.  Valid values are 32 (or 0x20)..8182 (or 0x1ff6).
+-- * 'mEtvSignalPid' - Packet Identifier (PID) for input source ETV Signal data to this output. Can be entered as a decimal or hexadecimal value.  Valid values are 32 (or 0x20)..8182 (or 0x1ff6).
 --
--- * 'msVideoPid' - Packet Identifier (PID) of the elementary video stream in the transport stream. Can be entered as a decimal or hexadecimal value.  Valid values are 32 (or 0x20)..8182 (or 0x1ff6).
+-- * 'mVideoPid' - Packet Identifier (PID) of the elementary video stream in the transport stream. Can be entered as a decimal or hexadecimal value.  Valid values are 32 (or 0x20)..8182 (or 0x1ff6).
 --
--- * 'msBufferModel' - If set to multiplex, use multiplex buffer model for accurate interleaving.  Setting to bufferModel to none can lead to lower latency, but low-memory devices may not be able to play back the stream without interruptions.
+-- * 'mNielsenId3Behavior' - If set to passthrough, Nielsen inaudible tones for media tracking will be detected in the input audio and an equivalent ID3 tag will be inserted in the output.
 --
--- * 'msScte35Pid' - Packet Identifier (PID) of the SCTE-35 stream in the transport stream. Can be entered as a decimal or hexadecimal value.  Valid values are 32 (or 0x20)..8182 (or 0x1ff6).
+-- * 'mBufferModel' - If set to multiplex, use multiplex buffer model for accurate interleaving.  Setting to bufferModel to none can lead to lower latency, but low-memory devices may not be able to play back the stream without interruptions.
 --
--- * 'msTransportStreamId' - The value of the transport stream ID field in the Program Map Table.
+-- * 'mScte35Pid' - Packet Identifier (PID) of the SCTE-35 stream in the transport stream. Can be entered as a decimal or hexadecimal value.  Valid values are 32 (or 0x20)..8182 (or 0x1ff6).
 --
--- * 'msProgramNum' - The value of the program number field in the Program Map Table.
+-- * 'mTransportStreamId' - The value of the transport stream ID field in the Program Map Table.
 --
--- * 'msFragmentTime' - The length in seconds of each fragment. Only used with EBP markers.
+-- * 'mProgramNum' - The value of the program number field in the Program Map Table.
 --
--- * 'msTimedMetadataBehavior' - When set to passthrough, timed metadata will be passed through from input to output.
+-- * 'mFragmentTime' - The length in seconds of each fragment. Only used with EBP markers.
 --
--- * 'msCCDescriptor' - When set to enabled, generates captionServiceDescriptor in PMT.
+-- * 'mTimedMetadataBehavior' - When set to passthrough, timed metadata will be passed through from input to output.
 --
--- * 'msPmtInterval' - The number of milliseconds between instances of this table in the output transport stream. Valid values are 0, 10..1000.
+-- * 'mCCDescriptor' - When set to enabled, generates captionServiceDescriptor in PMT.
 --
--- * 'msDvbSdtSettings' - Inserts DVB Service Description Table (SDT) at the specified table repetition interval.
+-- * 'mPmtInterval' - The number of milliseconds between instances of this table in the output transport stream. Valid values are 0, 10..1000.
 --
--- * 'msEcmPid' - This field is unused and deprecated.
+-- * 'mDvbSdtSettings' - Inserts DVB Service Description Table (SDT) at the specified table repetition interval.
 --
--- * 'msNullPacketBitrate' - Value in bits per second of extra null packets to insert into the transport stream. This can be used if a downstream encryption system requires periodic null packets.
+-- * 'mEcmPid' - This field is unused and deprecated.
 --
--- * 'msAudioBufferModel' - When set to dvb, uses DVB buffer model for Dolby Digital audio.  When set to atsc, the ATSC model is used.
+-- * 'mNullPacketBitrate' - Value in bits per second of extra null packets to insert into the transport stream. This can be used if a downstream encryption system requires periodic null packets.
 --
--- * 'msTimedMetadataPid' - Packet Identifier (PID) of the timed metadata stream in the transport stream. Can be entered as a decimal or hexadecimal value.  Valid values are 32 (or 0x20)..8182 (or 0x1ff6).
+-- * 'mAudioBufferModel' - When set to dvb, uses DVB buffer model for Dolby Digital audio.  When set to atsc, the ATSC model is used.
 --
--- * 'msKlv' - If set to passthrough, passes any KLV data from the input source to this output.
+-- * 'mTimedMetadataPid' - Packet Identifier (PID) of the timed metadata stream in the transport stream. Can be entered as a decimal or hexadecimal value.  Valid values are 32 (or 0x20)..8182 (or 0x1ff6).
 --
--- * 'msAudioFramesPerPes' - The number of audio frames to insert for each PES packet.
+-- * 'mKlv' - If set to passthrough, passes any KLV data from the input source to this output.
 --
--- * 'msPcrPeriod' - Maximum time in milliseconds between Program Clock Reference (PCRs) inserted into the transport stream.
+-- * 'mAudioFramesPerPes' - The number of audio frames to insert for each PES packet.
 --
--- * 'msPcrPid' - Packet Identifier (PID) of the Program Clock Reference (PCR) in the transport stream. When no value is given, the encoder will assign the same value as the Video PID. Can be entered as a decimal or hexadecimal value.  Valid values are 32 (or 0x20)..8182 (or 0x1ff6).
+-- * 'mPcrPeriod' - Maximum time in milliseconds between Program Clock Reference (PCRs) inserted into the transport stream.
 --
--- * 'msSegmentationMarkers' - Inserts segmentation markers at each segmentationTime period. raiSegstart sets the Random Access Indicator bit in the adaptation field. raiAdapt sets the RAI bit and adds the current timecode in the private data bytes. psiSegstart inserts PAT and PMT tables at the start of segments. ebp adds Encoder Boundary Point information to the adaptation field as per OpenCable specification OC-SP-EBP-I01-130118. ebpLegacy adds Encoder Boundary Point information to the adaptation field using a legacy proprietary format.
+-- * 'mPcrPid' - Packet Identifier (PID) of the Program Clock Reference (PCR) in the transport stream. When no value is given, the encoder will assign the same value as the Video PID. Can be entered as a decimal or hexadecimal value.  Valid values are 32 (or 0x20)..8182 (or 0x1ff6).
 --
--- * 'msAribCaptionsPidControl' - If set to auto, pid number used for ARIB Captions will be auto-selected from unused pids.  If set to useConfigured, ARIB Captions will be on the configured pid number.
+-- * 'mSegmentationMarkers' - Inserts segmentation markers at each segmentationTime period. raiSegstart sets the Random Access Indicator bit in the adaptation field. raiAdapt sets the RAI bit and adds the current timecode in the private data bytes. psiSegstart inserts PAT and PMT tables at the start of segments. ebp adds Encoder Boundary Point information to the adaptation field as per OpenCable specification OC-SP-EBP-I01-130118. ebpLegacy adds Encoder Boundary Point information to the adaptation field using a legacy proprietary format.
 --
--- * 'msKlvDataPids' - Packet Identifier (PID) for input source KLV data to this output. Multiple values are accepted, and can be entered in ranges and/or by comma separation. Can be entered as decimal or hexadecimal values.  Each PID specified must be in the range of 32 (or 0x20)..8182 (or 0x1ff6).
+-- * 'mAribCaptionsPidControl' - If set to auto, pid number used for ARIB Captions will be auto-selected from unused pids.  If set to useConfigured, ARIB Captions will be on the configured pid number.
 --
--- * 'msEbpLookaheadMs' - When set, enforces that Encoder Boundary Points do not come within the specified time interval of each other by looking ahead at input video. If another EBP is going to come in within the specified time interval, the current EBP is not emitted, and the segment is "stretched" to the next marker.  The lookahead value does not add latency to the system. The Live Event must be configured elsewhere to create sufficient latency to make the lookahead accurate.
+-- * 'mKlvDataPids' - Packet Identifier (PID) for input source KLV data to this output. Multiple values are accepted, and can be entered in ranges and/or by comma separation. Can be entered as decimal or hexadecimal values.  Each PID specified must be in the range of 32 (or 0x20)..8182 (or 0x1ff6).
 --
--- * 'msDvbSubPids' - Packet Identifier (PID) for input source DVB Subtitle data to this output. Multiple values are accepted, and can be entered in ranges and/or by comma separation. Can be entered as decimal or hexadecimal values.  Each PID specified must be in the range of 32 (or 0x20)..8182 (or 0x1ff6).
+-- * 'mEbpLookaheadMs' - When set, enforces that Encoder Boundary Points do not come within the specified time interval of each other by looking ahead at input video. If another EBP is going to come in within the specified time interval, the current EBP is not emitted, and the segment is "stretched" to the next marker.  The lookahead value does not add latency to the system. The Live Event must be configured elsewhere to create sufficient latency to make the lookahead accurate.
 --
--- * 'msScte27Pids' - Packet Identifier (PID) for input source SCTE-27 data to this output. Multiple values are accepted, and can be entered in ranges and/or by comma separation. Can be entered as decimal or hexadecimal values.  Each PID specified must be in the range of 32 (or 0x20)..8182 (or 0x1ff6).
+-- * 'mDvbSubPids' - Packet Identifier (PID) for input source DVB Subtitle data to this output. Multiple values are accepted, and can be entered in ranges and/or by comma separation. Can be entered as decimal or hexadecimal values.  Each PID specified must be in the range of 32 (or 0x20)..8182 (or 0x1ff6).
 --
--- * 'msPatInterval' - The number of milliseconds between instances of this table in the output transport stream.  Valid values are 0, 10..1000.
+-- * 'mScte27Pids' - Packet Identifier (PID) for input source SCTE-27 data to this output. Multiple values are accepted, and can be entered in ranges and/or by comma separation. Can be entered as decimal or hexadecimal values.  Each PID specified must be in the range of 32 (or 0x20)..8182 (or 0x1ff6).
 --
--- * 'msAudioStreamType' - When set to atsc, uses stream type = 0x81 for AC3 and stream type = 0x87 for EAC3. When set to dvb, uses stream type = 0x06.
+-- * 'mPatInterval' - The number of milliseconds between instances of this table in the output transport stream.  Valid values are 0, 10..1000.
 --
--- * 'msEsRateInPes' - Include or exclude the ES Rate field in the PES header.
+-- * 'mAudioStreamType' - When set to atsc, uses stream type = 0x81 for AC3 and stream type = 0x87 for EAC3. When set to dvb, uses stream type = 0x06.
 --
--- * 'msEtvPlatformPid' - Packet Identifier (PID) for input source ETV Platform data to this output. Can be entered as a decimal or hexadecimal value.  Valid values are 32 (or 0x20)..8182 (or 0x1ff6).
+-- * 'mEsRateInPes' - Include or exclude the ES Rate field in the PES header.
 --
--- * 'msBitrate' - The output bitrate of the transport stream in bits per second. Setting to 0 lets the muxer automatically determine the appropriate bitrate.
+-- * 'mEtvPlatformPid' - Packet Identifier (PID) for input source ETV Platform data to this output. Can be entered as a decimal or hexadecimal value.  Valid values are 32 (or 0x20)..8182 (or 0x1ff6).
 --
--- * 'msScte35Control' - Optionally pass SCTE-35 signals from the input source to this output.
+-- * 'mBitrate' - The output bitrate of the transport stream in bits per second. Setting to 0 lets the muxer automatically determine the appropriate bitrate.
 --
--- * 'msAudioPids' - Packet Identifier (PID) of the elementary audio stream(s) in the transport stream. Multiple values are accepted, and can be entered in ranges and/or by comma separation. Can be entered as decimal or hexadecimal values. Each PID specified must be in the range of 32 (or 0x20)..8182 (or 0x1ff6).
+-- * 'mScte35Control' - Optionally pass SCTE-35 signals from the input source to this output.
 --
--- * 'msDvbTeletextPid' - Packet Identifier (PID) for input source DVB Teletext data to this output. Can be entered as a decimal or hexadecimal value.  Valid values are 32 (or 0x20)..8182 (or 0x1ff6).
+-- * 'mAudioPids' - Packet Identifier (PID) of the elementary audio stream(s) in the transport stream. Multiple values are accepted, and can be entered in ranges and/or by comma separation. Can be entered as decimal or hexadecimal values. Each PID specified must be in the range of 32 (or 0x20)..8182 (or 0x1ff6).
 --
--- * 'msEbif' - If set to passthrough, passes any EBIF data from the input source to this output.
+-- * 'mDvbTeletextPid' - Packet Identifier (PID) for input source DVB Teletext data to this output. Can be entered as a decimal or hexadecimal value.  Valid values are 32 (or 0x20)..8182 (or 0x1ff6).
 --
--- * 'msArib' - When set to enabled, uses ARIB-compliant field muxing and removes video descriptor.
+-- * 'mEbif' - If set to passthrough, passes any EBIF data from the input source to this output.
 --
--- * 'msAribCaptionsPid' - Packet Identifier (PID) for ARIB Captions in the transport stream. Can be entered as a decimal or hexadecimal value.  Valid values are 32 (or 0x20)..8182 (or 0x1ff6).
+-- * 'mArib' - When set to enabled, uses ARIB-compliant field muxing and removes video descriptor.
 --
--- * 'msAbsentInputAudioBehavior' - When set to drop, output audio streams will be removed from the program if the selected input audio stream is removed from the input. This allows the output audio configuration to dynamically change based on input configuration. If this is set to encodeSilence, all output audio streams will output encoded silence when not connected to an active input stream.
+-- * 'mAribCaptionsPid' - Packet Identifier (PID) for ARIB Captions in the transport stream. Can be entered as a decimal or hexadecimal value.  Valid values are 32 (or 0x20)..8182 (or 0x1ff6).
 --
--- * 'msSegmentationTime' - The length in seconds of each segment. Required unless markers is set to None_.
+-- * 'mAbsentInputAudioBehavior' - When set to drop, output audio streams will be removed from the program if the selected input audio stream is removed from the input. This allows the output audio configuration to dynamically change based on input configuration. If this is set to encodeSilence, all output audio streams will output encoded silence when not connected to an active input stream.
 --
--- * 'msEbpAudioInterval' - When videoAndFixedIntervals is selected, audio EBP markers will be added to partitions 3 and 4. The interval between these additional markers will be fixed, and will be slightly shorter than the video EBP marker interval. Only available when EBP Cablelabs segmentation markers are selected.  Partitions 1 and 2 will always follow the video interval.
+-- * 'mSegmentationTime' - The length in seconds of each segment. Required unless markers is set to _none_.
 --
--- * 'msDvbNitSettings' - Inserts DVB Network Information Table (NIT) at the specified table repetition interval.
+-- * 'mEbpAudioInterval' - When videoAndFixedIntervals is selected, audio EBP markers will be added to partitions 3 and 4. The interval between these additional markers will be fixed, and will be slightly shorter than the video EBP marker interval. Only available when EBP Cablelabs segmentation markers are selected.  Partitions 1 and 2 will always follow the video interval.
 --
--- * 'msPcrControl' - When set to pcrEveryPesPacket, a Program Clock Reference value is inserted for every Packetized Elementary Stream (PES) header. This parameter is effective only when the PCR PID is the same as the video or audio elementary stream.
+-- * 'mDvbNitSettings' - Inserts DVB Network Information Table (NIT) at the specified table repetition interval.
 --
--- * 'msEbpPlacement' - Controls placement of EBP on Audio PIDs. If set to videoAndAudioPids, EBP markers will be placed on the video PID and all audio PIDs.  If set to videoPid, EBP markers will be placed on only the video PID.
+-- * 'mPcrControl' - When set to pcrEveryPesPacket, a Program Clock Reference value is inserted for every Packetized Elementary Stream (PES) header. This parameter is effective only when the PCR PID is the same as the video or audio elementary stream.
 --
--- * 'msRateMode' - When vbr, does not insert null packets into transport stream to fill specified bitrate. The bitrate setting acts as the maximum bitrate when vbr is set.
+-- * 'mEbpPlacement' - Controls placement of EBP on Audio PIDs. If set to videoAndAudioPids, EBP markers will be placed on the video PID and all audio PIDs.  If set to videoPid, EBP markers will be placed on only the video PID.
 --
--- * 'msSegmentationStyle' - The segmentation style parameter controls how segmentation markers are inserted into the transport stream. With avails, it is possible that segments may be truncated, which can influence where future segmentation markers are inserted. When a segmentation style of "resetCadence" is selected and a segment is truncated due to an avail, we will reset the segmentation cadence. This means the subsequent segment will have a duration of $segmentationTime seconds. When a segmentation style of "maintainCadence" is selected and a segment is truncated due to an avail, we will not reset the segmentation cadence. This means the subsequent segment will likely be truncated as well. However, all segments after that will have a duration of $segmentationTime seconds. Note that EBP lookahead is a slight exception to this rule.
+-- * 'mRateMode' - When vbr, does not insert null packets into transport stream to fill specified bitrate. The bitrate setting acts as the maximum bitrate when vbr is set.
 --
--- * 'msDvbTdtSettings' - Inserts DVB Time and Date Table (TDT) at the specified table repetition interval.
+-- * 'mSegmentationStyle' - The segmentation style parameter controls how segmentation markers are inserted into the transport stream. With avails, it is possible that segments may be truncated, which can influence where future segmentation markers are inserted. When a segmentation style of "resetCadence" is selected and a segment is truncated due to an avail, we will reset the segmentation cadence. This means the subsequent segment will have a duration of $segmentationTime seconds. When a segmentation style of "maintainCadence" is selected and a segment is truncated due to an avail, we will not reset the segmentation cadence. This means the subsequent segment will likely be truncated as well. However, all segments after that will have a duration of $segmentationTime seconds. Note that EBP lookahead is a slight exception to this rule.
+--
+-- * 'mDvbTdtSettings' - Inserts DVB Time and Date Table (TDT) at the specified table repetition interval.
 m2tsSettings
     :: M2tsSettings
-m2tsSettings =
-  M2tsSettings'
-    { _msPmtPid = Nothing
-    , _msEtvSignalPid = Nothing
-    , _msVideoPid = Nothing
-    , _msBufferModel = Nothing
-    , _msScte35Pid = Nothing
-    , _msTransportStreamId = Nothing
-    , _msProgramNum = Nothing
-    , _msFragmentTime = Nothing
-    , _msTimedMetadataBehavior = Nothing
-    , _msCCDescriptor = Nothing
-    , _msPmtInterval = Nothing
-    , _msDvbSdtSettings = Nothing
-    , _msEcmPid = Nothing
-    , _msNullPacketBitrate = Nothing
-    , _msAudioBufferModel = Nothing
-    , _msTimedMetadataPid = Nothing
-    , _msKlv = Nothing
-    , _msAudioFramesPerPes = Nothing
-    , _msPcrPeriod = Nothing
-    , _msPcrPid = Nothing
-    , _msSegmentationMarkers = Nothing
-    , _msAribCaptionsPidControl = Nothing
-    , _msKlvDataPids = Nothing
-    , _msEbpLookaheadMs = Nothing
-    , _msDvbSubPids = Nothing
-    , _msScte27Pids = Nothing
-    , _msPatInterval = Nothing
-    , _msAudioStreamType = Nothing
-    , _msEsRateInPes = Nothing
-    , _msEtvPlatformPid = Nothing
-    , _msBitrate = Nothing
-    , _msScte35Control = Nothing
-    , _msAudioPids = Nothing
-    , _msDvbTeletextPid = Nothing
-    , _msEbif = Nothing
-    , _msArib = Nothing
-    , _msAribCaptionsPid = Nothing
-    , _msAbsentInputAudioBehavior = Nothing
-    , _msSegmentationTime = Nothing
-    , _msEbpAudioInterval = Nothing
-    , _msDvbNitSettings = Nothing
-    , _msPcrControl = Nothing
-    , _msEbpPlacement = Nothing
-    , _msRateMode = Nothing
-    , _msSegmentationStyle = Nothing
-    , _msDvbTdtSettings = Nothing
-    }
-
+m2tsSettings
+  = M2tsSettings'{_mPmtPid = Nothing,
+                  _mEtvSignalPid = Nothing, _mVideoPid = Nothing,
+                  _mNielsenId3Behavior = Nothing,
+                  _mBufferModel = Nothing, _mScte35Pid = Nothing,
+                  _mTransportStreamId = Nothing,
+                  _mProgramNum = Nothing, _mFragmentTime = Nothing,
+                  _mTimedMetadataBehavior = Nothing,
+                  _mCCDescriptor = Nothing, _mPmtInterval = Nothing,
+                  _mDvbSdtSettings = Nothing, _mEcmPid = Nothing,
+                  _mNullPacketBitrate = Nothing,
+                  _mAudioBufferModel = Nothing,
+                  _mTimedMetadataPid = Nothing, _mKlv = Nothing,
+                  _mAudioFramesPerPes = Nothing, _mPcrPeriod = Nothing,
+                  _mPcrPid = Nothing, _mSegmentationMarkers = Nothing,
+                  _mAribCaptionsPidControl = Nothing,
+                  _mKlvDataPids = Nothing, _mEbpLookaheadMs = Nothing,
+                  _mDvbSubPids = Nothing, _mScte27Pids = Nothing,
+                  _mPatInterval = Nothing, _mAudioStreamType = Nothing,
+                  _mEsRateInPes = Nothing, _mEtvPlatformPid = Nothing,
+                  _mBitrate = Nothing, _mScte35Control = Nothing,
+                  _mAudioPids = Nothing, _mDvbTeletextPid = Nothing,
+                  _mEbif = Nothing, _mArib = Nothing,
+                  _mAribCaptionsPid = Nothing,
+                  _mAbsentInputAudioBehavior = Nothing,
+                  _mSegmentationTime = Nothing,
+                  _mEbpAudioInterval = Nothing,
+                  _mDvbNitSettings = Nothing, _mPcrControl = Nothing,
+                  _mEbpPlacement = Nothing, _mRateMode = Nothing,
+                  _mSegmentationStyle = Nothing,
+                  _mDvbTdtSettings = Nothing}
 
 -- | Packet Identifier (PID) for the Program Map Table (PMT) in the transport stream. Can be entered as a decimal or hexadecimal value. Valid values are 32 (or 0x20)..8182 (or 0x1ff6).
-msPmtPid :: Lens' M2tsSettings (Maybe Text)
-msPmtPid = lens _msPmtPid (\ s a -> s{_msPmtPid = a})
+mPmtPid :: Lens' M2tsSettings (Maybe Text)
+mPmtPid = lens _mPmtPid (\ s a -> s{_mPmtPid = a})
 
 -- | Packet Identifier (PID) for input source ETV Signal data to this output. Can be entered as a decimal or hexadecimal value.  Valid values are 32 (or 0x20)..8182 (or 0x1ff6).
-msEtvSignalPid :: Lens' M2tsSettings (Maybe Text)
-msEtvSignalPid = lens _msEtvSignalPid (\ s a -> s{_msEtvSignalPid = a})
+mEtvSignalPid :: Lens' M2tsSettings (Maybe Text)
+mEtvSignalPid = lens _mEtvSignalPid (\ s a -> s{_mEtvSignalPid = a})
 
 -- | Packet Identifier (PID) of the elementary video stream in the transport stream. Can be entered as a decimal or hexadecimal value.  Valid values are 32 (or 0x20)..8182 (or 0x1ff6).
-msVideoPid :: Lens' M2tsSettings (Maybe Text)
-msVideoPid = lens _msVideoPid (\ s a -> s{_msVideoPid = a})
+mVideoPid :: Lens' M2tsSettings (Maybe Text)
+mVideoPid = lens _mVideoPid (\ s a -> s{_mVideoPid = a})
+
+-- | If set to passthrough, Nielsen inaudible tones for media tracking will be detected in the input audio and an equivalent ID3 tag will be inserted in the output.
+mNielsenId3Behavior :: Lens' M2tsSettings (Maybe M2tsNielsenId3Behavior)
+mNielsenId3Behavior = lens _mNielsenId3Behavior (\ s a -> s{_mNielsenId3Behavior = a})
 
 -- | If set to multiplex, use multiplex buffer model for accurate interleaving.  Setting to bufferModel to none can lead to lower latency, but low-memory devices may not be able to play back the stream without interruptions.
-msBufferModel :: Lens' M2tsSettings (Maybe M2tsBufferModel)
-msBufferModel = lens _msBufferModel (\ s a -> s{_msBufferModel = a})
+mBufferModel :: Lens' M2tsSettings (Maybe M2tsBufferModel)
+mBufferModel = lens _mBufferModel (\ s a -> s{_mBufferModel = a})
 
 -- | Packet Identifier (PID) of the SCTE-35 stream in the transport stream. Can be entered as a decimal or hexadecimal value.  Valid values are 32 (or 0x20)..8182 (or 0x1ff6).
-msScte35Pid :: Lens' M2tsSettings (Maybe Text)
-msScte35Pid = lens _msScte35Pid (\ s a -> s{_msScte35Pid = a})
+mScte35Pid :: Lens' M2tsSettings (Maybe Text)
+mScte35Pid = lens _mScte35Pid (\ s a -> s{_mScte35Pid = a})
 
 -- | The value of the transport stream ID field in the Program Map Table.
-msTransportStreamId :: Lens' M2tsSettings (Maybe Natural)
-msTransportStreamId = lens _msTransportStreamId (\ s a -> s{_msTransportStreamId = a}) . mapping _Nat
+mTransportStreamId :: Lens' M2tsSettings (Maybe Natural)
+mTransportStreamId = lens _mTransportStreamId (\ s a -> s{_mTransportStreamId = a}) . mapping _Nat
 
 -- | The value of the program number field in the Program Map Table.
-msProgramNum :: Lens' M2tsSettings (Maybe Natural)
-msProgramNum = lens _msProgramNum (\ s a -> s{_msProgramNum = a}) . mapping _Nat
+mProgramNum :: Lens' M2tsSettings (Maybe Natural)
+mProgramNum = lens _mProgramNum (\ s a -> s{_mProgramNum = a}) . mapping _Nat
 
 -- | The length in seconds of each fragment. Only used with EBP markers.
-msFragmentTime :: Lens' M2tsSettings (Maybe Double)
-msFragmentTime = lens _msFragmentTime (\ s a -> s{_msFragmentTime = a})
+mFragmentTime :: Lens' M2tsSettings (Maybe Double)
+mFragmentTime = lens _mFragmentTime (\ s a -> s{_mFragmentTime = a})
 
 -- | When set to passthrough, timed metadata will be passed through from input to output.
-msTimedMetadataBehavior :: Lens' M2tsSettings (Maybe M2tsTimedMetadataBehavior)
-msTimedMetadataBehavior = lens _msTimedMetadataBehavior (\ s a -> s{_msTimedMetadataBehavior = a})
+mTimedMetadataBehavior :: Lens' M2tsSettings (Maybe M2tsTimedMetadataBehavior)
+mTimedMetadataBehavior = lens _mTimedMetadataBehavior (\ s a -> s{_mTimedMetadataBehavior = a})
 
 -- | When set to enabled, generates captionServiceDescriptor in PMT.
-msCCDescriptor :: Lens' M2tsSettings (Maybe M2tsCCDescriptor)
-msCCDescriptor = lens _msCCDescriptor (\ s a -> s{_msCCDescriptor = a})
+mCCDescriptor :: Lens' M2tsSettings (Maybe M2tsCCDescriptor)
+mCCDescriptor = lens _mCCDescriptor (\ s a -> s{_mCCDescriptor = a})
 
 -- | The number of milliseconds between instances of this table in the output transport stream. Valid values are 0, 10..1000.
-msPmtInterval :: Lens' M2tsSettings (Maybe Natural)
-msPmtInterval = lens _msPmtInterval (\ s a -> s{_msPmtInterval = a}) . mapping _Nat
+mPmtInterval :: Lens' M2tsSettings (Maybe Natural)
+mPmtInterval = lens _mPmtInterval (\ s a -> s{_mPmtInterval = a}) . mapping _Nat
 
 -- | Inserts DVB Service Description Table (SDT) at the specified table repetition interval.
-msDvbSdtSettings :: Lens' M2tsSettings (Maybe DvbSdtSettings)
-msDvbSdtSettings = lens _msDvbSdtSettings (\ s a -> s{_msDvbSdtSettings = a})
+mDvbSdtSettings :: Lens' M2tsSettings (Maybe DvbSdtSettings)
+mDvbSdtSettings = lens _mDvbSdtSettings (\ s a -> s{_mDvbSdtSettings = a})
 
 -- | This field is unused and deprecated.
-msEcmPid :: Lens' M2tsSettings (Maybe Text)
-msEcmPid = lens _msEcmPid (\ s a -> s{_msEcmPid = a})
+mEcmPid :: Lens' M2tsSettings (Maybe Text)
+mEcmPid = lens _mEcmPid (\ s a -> s{_mEcmPid = a})
 
 -- | Value in bits per second of extra null packets to insert into the transport stream. This can be used if a downstream encryption system requires periodic null packets.
-msNullPacketBitrate :: Lens' M2tsSettings (Maybe Double)
-msNullPacketBitrate = lens _msNullPacketBitrate (\ s a -> s{_msNullPacketBitrate = a})
+mNullPacketBitrate :: Lens' M2tsSettings (Maybe Double)
+mNullPacketBitrate = lens _mNullPacketBitrate (\ s a -> s{_mNullPacketBitrate = a})
 
 -- | When set to dvb, uses DVB buffer model for Dolby Digital audio.  When set to atsc, the ATSC model is used.
-msAudioBufferModel :: Lens' M2tsSettings (Maybe M2tsAudioBufferModel)
-msAudioBufferModel = lens _msAudioBufferModel (\ s a -> s{_msAudioBufferModel = a})
+mAudioBufferModel :: Lens' M2tsSettings (Maybe M2tsAudioBufferModel)
+mAudioBufferModel = lens _mAudioBufferModel (\ s a -> s{_mAudioBufferModel = a})
 
 -- | Packet Identifier (PID) of the timed metadata stream in the transport stream. Can be entered as a decimal or hexadecimal value.  Valid values are 32 (or 0x20)..8182 (or 0x1ff6).
-msTimedMetadataPid :: Lens' M2tsSettings (Maybe Text)
-msTimedMetadataPid = lens _msTimedMetadataPid (\ s a -> s{_msTimedMetadataPid = a})
+mTimedMetadataPid :: Lens' M2tsSettings (Maybe Text)
+mTimedMetadataPid = lens _mTimedMetadataPid (\ s a -> s{_mTimedMetadataPid = a})
 
 -- | If set to passthrough, passes any KLV data from the input source to this output.
-msKlv :: Lens' M2tsSettings (Maybe M2tsKlv)
-msKlv = lens _msKlv (\ s a -> s{_msKlv = a})
+mKlv :: Lens' M2tsSettings (Maybe M2tsKlv)
+mKlv = lens _mKlv (\ s a -> s{_mKlv = a})
 
 -- | The number of audio frames to insert for each PES packet.
-msAudioFramesPerPes :: Lens' M2tsSettings (Maybe Natural)
-msAudioFramesPerPes = lens _msAudioFramesPerPes (\ s a -> s{_msAudioFramesPerPes = a}) . mapping _Nat
+mAudioFramesPerPes :: Lens' M2tsSettings (Maybe Natural)
+mAudioFramesPerPes = lens _mAudioFramesPerPes (\ s a -> s{_mAudioFramesPerPes = a}) . mapping _Nat
 
 -- | Maximum time in milliseconds between Program Clock Reference (PCRs) inserted into the transport stream.
-msPcrPeriod :: Lens' M2tsSettings (Maybe Natural)
-msPcrPeriod = lens _msPcrPeriod (\ s a -> s{_msPcrPeriod = a}) . mapping _Nat
+mPcrPeriod :: Lens' M2tsSettings (Maybe Natural)
+mPcrPeriod = lens _mPcrPeriod (\ s a -> s{_mPcrPeriod = a}) . mapping _Nat
 
 -- | Packet Identifier (PID) of the Program Clock Reference (PCR) in the transport stream. When no value is given, the encoder will assign the same value as the Video PID. Can be entered as a decimal or hexadecimal value.  Valid values are 32 (or 0x20)..8182 (or 0x1ff6).
-msPcrPid :: Lens' M2tsSettings (Maybe Text)
-msPcrPid = lens _msPcrPid (\ s a -> s{_msPcrPid = a})
+mPcrPid :: Lens' M2tsSettings (Maybe Text)
+mPcrPid = lens _mPcrPid (\ s a -> s{_mPcrPid = a})
 
 -- | Inserts segmentation markers at each segmentationTime period. raiSegstart sets the Random Access Indicator bit in the adaptation field. raiAdapt sets the RAI bit and adds the current timecode in the private data bytes. psiSegstart inserts PAT and PMT tables at the start of segments. ebp adds Encoder Boundary Point information to the adaptation field as per OpenCable specification OC-SP-EBP-I01-130118. ebpLegacy adds Encoder Boundary Point information to the adaptation field using a legacy proprietary format.
-msSegmentationMarkers :: Lens' M2tsSettings (Maybe M2tsSegmentationMarkers)
-msSegmentationMarkers = lens _msSegmentationMarkers (\ s a -> s{_msSegmentationMarkers = a})
+mSegmentationMarkers :: Lens' M2tsSettings (Maybe M2tsSegmentationMarkers)
+mSegmentationMarkers = lens _mSegmentationMarkers (\ s a -> s{_mSegmentationMarkers = a})
 
 -- | If set to auto, pid number used for ARIB Captions will be auto-selected from unused pids.  If set to useConfigured, ARIB Captions will be on the configured pid number.
-msAribCaptionsPidControl :: Lens' M2tsSettings (Maybe M2tsAribCaptionsPidControl)
-msAribCaptionsPidControl = lens _msAribCaptionsPidControl (\ s a -> s{_msAribCaptionsPidControl = a})
+mAribCaptionsPidControl :: Lens' M2tsSettings (Maybe M2tsAribCaptionsPidControl)
+mAribCaptionsPidControl = lens _mAribCaptionsPidControl (\ s a -> s{_mAribCaptionsPidControl = a})
 
 -- | Packet Identifier (PID) for input source KLV data to this output. Multiple values are accepted, and can be entered in ranges and/or by comma separation. Can be entered as decimal or hexadecimal values.  Each PID specified must be in the range of 32 (or 0x20)..8182 (or 0x1ff6).
-msKlvDataPids :: Lens' M2tsSettings (Maybe Text)
-msKlvDataPids = lens _msKlvDataPids (\ s a -> s{_msKlvDataPids = a})
+mKlvDataPids :: Lens' M2tsSettings (Maybe Text)
+mKlvDataPids = lens _mKlvDataPids (\ s a -> s{_mKlvDataPids = a})
 
 -- | When set, enforces that Encoder Boundary Points do not come within the specified time interval of each other by looking ahead at input video. If another EBP is going to come in within the specified time interval, the current EBP is not emitted, and the segment is "stretched" to the next marker.  The lookahead value does not add latency to the system. The Live Event must be configured elsewhere to create sufficient latency to make the lookahead accurate.
-msEbpLookaheadMs :: Lens' M2tsSettings (Maybe Natural)
-msEbpLookaheadMs = lens _msEbpLookaheadMs (\ s a -> s{_msEbpLookaheadMs = a}) . mapping _Nat
+mEbpLookaheadMs :: Lens' M2tsSettings (Maybe Natural)
+mEbpLookaheadMs = lens _mEbpLookaheadMs (\ s a -> s{_mEbpLookaheadMs = a}) . mapping _Nat
 
 -- | Packet Identifier (PID) for input source DVB Subtitle data to this output. Multiple values are accepted, and can be entered in ranges and/or by comma separation. Can be entered as decimal or hexadecimal values.  Each PID specified must be in the range of 32 (or 0x20)..8182 (or 0x1ff6).
-msDvbSubPids :: Lens' M2tsSettings (Maybe Text)
-msDvbSubPids = lens _msDvbSubPids (\ s a -> s{_msDvbSubPids = a})
+mDvbSubPids :: Lens' M2tsSettings (Maybe Text)
+mDvbSubPids = lens _mDvbSubPids (\ s a -> s{_mDvbSubPids = a})
 
 -- | Packet Identifier (PID) for input source SCTE-27 data to this output. Multiple values are accepted, and can be entered in ranges and/or by comma separation. Can be entered as decimal or hexadecimal values.  Each PID specified must be in the range of 32 (or 0x20)..8182 (or 0x1ff6).
-msScte27Pids :: Lens' M2tsSettings (Maybe Text)
-msScte27Pids = lens _msScte27Pids (\ s a -> s{_msScte27Pids = a})
+mScte27Pids :: Lens' M2tsSettings (Maybe Text)
+mScte27Pids = lens _mScte27Pids (\ s a -> s{_mScte27Pids = a})
 
 -- | The number of milliseconds between instances of this table in the output transport stream.  Valid values are 0, 10..1000.
-msPatInterval :: Lens' M2tsSettings (Maybe Natural)
-msPatInterval = lens _msPatInterval (\ s a -> s{_msPatInterval = a}) . mapping _Nat
+mPatInterval :: Lens' M2tsSettings (Maybe Natural)
+mPatInterval = lens _mPatInterval (\ s a -> s{_mPatInterval = a}) . mapping _Nat
 
 -- | When set to atsc, uses stream type = 0x81 for AC3 and stream type = 0x87 for EAC3. When set to dvb, uses stream type = 0x06.
-msAudioStreamType :: Lens' M2tsSettings (Maybe M2tsAudioStreamType)
-msAudioStreamType = lens _msAudioStreamType (\ s a -> s{_msAudioStreamType = a})
+mAudioStreamType :: Lens' M2tsSettings (Maybe M2tsAudioStreamType)
+mAudioStreamType = lens _mAudioStreamType (\ s a -> s{_mAudioStreamType = a})
 
 -- | Include or exclude the ES Rate field in the PES header.
-msEsRateInPes :: Lens' M2tsSettings (Maybe M2tsEsRateInPes)
-msEsRateInPes = lens _msEsRateInPes (\ s a -> s{_msEsRateInPes = a})
+mEsRateInPes :: Lens' M2tsSettings (Maybe M2tsEsRateInPes)
+mEsRateInPes = lens _mEsRateInPes (\ s a -> s{_mEsRateInPes = a})
 
 -- | Packet Identifier (PID) for input source ETV Platform data to this output. Can be entered as a decimal or hexadecimal value.  Valid values are 32 (or 0x20)..8182 (or 0x1ff6).
-msEtvPlatformPid :: Lens' M2tsSettings (Maybe Text)
-msEtvPlatformPid = lens _msEtvPlatformPid (\ s a -> s{_msEtvPlatformPid = a})
+mEtvPlatformPid :: Lens' M2tsSettings (Maybe Text)
+mEtvPlatformPid = lens _mEtvPlatformPid (\ s a -> s{_mEtvPlatformPid = a})
 
 -- | The output bitrate of the transport stream in bits per second. Setting to 0 lets the muxer automatically determine the appropriate bitrate.
-msBitrate :: Lens' M2tsSettings (Maybe Natural)
-msBitrate = lens _msBitrate (\ s a -> s{_msBitrate = a}) . mapping _Nat
+mBitrate :: Lens' M2tsSettings (Maybe Natural)
+mBitrate = lens _mBitrate (\ s a -> s{_mBitrate = a}) . mapping _Nat
 
 -- | Optionally pass SCTE-35 signals from the input source to this output.
-msScte35Control :: Lens' M2tsSettings (Maybe M2tsScte35Control)
-msScte35Control = lens _msScte35Control (\ s a -> s{_msScte35Control = a})
+mScte35Control :: Lens' M2tsSettings (Maybe M2tsScte35Control)
+mScte35Control = lens _mScte35Control (\ s a -> s{_mScte35Control = a})
 
 -- | Packet Identifier (PID) of the elementary audio stream(s) in the transport stream. Multiple values are accepted, and can be entered in ranges and/or by comma separation. Can be entered as decimal or hexadecimal values. Each PID specified must be in the range of 32 (or 0x20)..8182 (or 0x1ff6).
-msAudioPids :: Lens' M2tsSettings (Maybe Text)
-msAudioPids = lens _msAudioPids (\ s a -> s{_msAudioPids = a})
+mAudioPids :: Lens' M2tsSettings (Maybe Text)
+mAudioPids = lens _mAudioPids (\ s a -> s{_mAudioPids = a})
 
 -- | Packet Identifier (PID) for input source DVB Teletext data to this output. Can be entered as a decimal or hexadecimal value.  Valid values are 32 (or 0x20)..8182 (or 0x1ff6).
-msDvbTeletextPid :: Lens' M2tsSettings (Maybe Text)
-msDvbTeletextPid = lens _msDvbTeletextPid (\ s a -> s{_msDvbTeletextPid = a})
+mDvbTeletextPid :: Lens' M2tsSettings (Maybe Text)
+mDvbTeletextPid = lens _mDvbTeletextPid (\ s a -> s{_mDvbTeletextPid = a})
 
 -- | If set to passthrough, passes any EBIF data from the input source to this output.
-msEbif :: Lens' M2tsSettings (Maybe M2tsEbifControl)
-msEbif = lens _msEbif (\ s a -> s{_msEbif = a})
+mEbif :: Lens' M2tsSettings (Maybe M2tsEbifControl)
+mEbif = lens _mEbif (\ s a -> s{_mEbif = a})
 
 -- | When set to enabled, uses ARIB-compliant field muxing and removes video descriptor.
-msArib :: Lens' M2tsSettings (Maybe M2tsArib)
-msArib = lens _msArib (\ s a -> s{_msArib = a})
+mArib :: Lens' M2tsSettings (Maybe M2tsArib)
+mArib = lens _mArib (\ s a -> s{_mArib = a})
 
 -- | Packet Identifier (PID) for ARIB Captions in the transport stream. Can be entered as a decimal or hexadecimal value.  Valid values are 32 (or 0x20)..8182 (or 0x1ff6).
-msAribCaptionsPid :: Lens' M2tsSettings (Maybe Text)
-msAribCaptionsPid = lens _msAribCaptionsPid (\ s a -> s{_msAribCaptionsPid = a})
+mAribCaptionsPid :: Lens' M2tsSettings (Maybe Text)
+mAribCaptionsPid = lens _mAribCaptionsPid (\ s a -> s{_mAribCaptionsPid = a})
 
 -- | When set to drop, output audio streams will be removed from the program if the selected input audio stream is removed from the input. This allows the output audio configuration to dynamically change based on input configuration. If this is set to encodeSilence, all output audio streams will output encoded silence when not connected to an active input stream.
-msAbsentInputAudioBehavior :: Lens' M2tsSettings (Maybe M2tsAbsentInputAudioBehavior)
-msAbsentInputAudioBehavior = lens _msAbsentInputAudioBehavior (\ s a -> s{_msAbsentInputAudioBehavior = a})
+mAbsentInputAudioBehavior :: Lens' M2tsSettings (Maybe M2tsAbsentInputAudioBehavior)
+mAbsentInputAudioBehavior = lens _mAbsentInputAudioBehavior (\ s a -> s{_mAbsentInputAudioBehavior = a})
 
--- | The length in seconds of each segment. Required unless markers is set to None_.
-msSegmentationTime :: Lens' M2tsSettings (Maybe Double)
-msSegmentationTime = lens _msSegmentationTime (\ s a -> s{_msSegmentationTime = a})
+-- | The length in seconds of each segment. Required unless markers is set to _none_.
+mSegmentationTime :: Lens' M2tsSettings (Maybe Double)
+mSegmentationTime = lens _mSegmentationTime (\ s a -> s{_mSegmentationTime = a})
 
 -- | When videoAndFixedIntervals is selected, audio EBP markers will be added to partitions 3 and 4. The interval between these additional markers will be fixed, and will be slightly shorter than the video EBP marker interval. Only available when EBP Cablelabs segmentation markers are selected.  Partitions 1 and 2 will always follow the video interval.
-msEbpAudioInterval :: Lens' M2tsSettings (Maybe M2tsAudioInterval)
-msEbpAudioInterval = lens _msEbpAudioInterval (\ s a -> s{_msEbpAudioInterval = a})
+mEbpAudioInterval :: Lens' M2tsSettings (Maybe M2tsAudioInterval)
+mEbpAudioInterval = lens _mEbpAudioInterval (\ s a -> s{_mEbpAudioInterval = a})
 
 -- | Inserts DVB Network Information Table (NIT) at the specified table repetition interval.
-msDvbNitSettings :: Lens' M2tsSettings (Maybe DvbNitSettings)
-msDvbNitSettings = lens _msDvbNitSettings (\ s a -> s{_msDvbNitSettings = a})
+mDvbNitSettings :: Lens' M2tsSettings (Maybe DvbNitSettings)
+mDvbNitSettings = lens _mDvbNitSettings (\ s a -> s{_mDvbNitSettings = a})
 
 -- | When set to pcrEveryPesPacket, a Program Clock Reference value is inserted for every Packetized Elementary Stream (PES) header. This parameter is effective only when the PCR PID is the same as the video or audio elementary stream.
-msPcrControl :: Lens' M2tsSettings (Maybe M2tsPcrControl)
-msPcrControl = lens _msPcrControl (\ s a -> s{_msPcrControl = a})
+mPcrControl :: Lens' M2tsSettings (Maybe M2tsPcrControl)
+mPcrControl = lens _mPcrControl (\ s a -> s{_mPcrControl = a})
 
 -- | Controls placement of EBP on Audio PIDs. If set to videoAndAudioPids, EBP markers will be placed on the video PID and all audio PIDs.  If set to videoPid, EBP markers will be placed on only the video PID.
-msEbpPlacement :: Lens' M2tsSettings (Maybe M2tsEbpPlacement)
-msEbpPlacement = lens _msEbpPlacement (\ s a -> s{_msEbpPlacement = a})
+mEbpPlacement :: Lens' M2tsSettings (Maybe M2tsEbpPlacement)
+mEbpPlacement = lens _mEbpPlacement (\ s a -> s{_mEbpPlacement = a})
 
 -- | When vbr, does not insert null packets into transport stream to fill specified bitrate. The bitrate setting acts as the maximum bitrate when vbr is set.
-msRateMode :: Lens' M2tsSettings (Maybe M2tsRateMode)
-msRateMode = lens _msRateMode (\ s a -> s{_msRateMode = a})
+mRateMode :: Lens' M2tsSettings (Maybe M2tsRateMode)
+mRateMode = lens _mRateMode (\ s a -> s{_mRateMode = a})
 
 -- | The segmentation style parameter controls how segmentation markers are inserted into the transport stream. With avails, it is possible that segments may be truncated, which can influence where future segmentation markers are inserted. When a segmentation style of "resetCadence" is selected and a segment is truncated due to an avail, we will reset the segmentation cadence. This means the subsequent segment will have a duration of $segmentationTime seconds. When a segmentation style of "maintainCadence" is selected and a segment is truncated due to an avail, we will not reset the segmentation cadence. This means the subsequent segment will likely be truncated as well. However, all segments after that will have a duration of $segmentationTime seconds. Note that EBP lookahead is a slight exception to this rule.
-msSegmentationStyle :: Lens' M2tsSettings (Maybe M2tsSegmentationStyle)
-msSegmentationStyle = lens _msSegmentationStyle (\ s a -> s{_msSegmentationStyle = a})
+mSegmentationStyle :: Lens' M2tsSettings (Maybe M2tsSegmentationStyle)
+mSegmentationStyle = lens _mSegmentationStyle (\ s a -> s{_mSegmentationStyle = a})
 
 -- | Inserts DVB Time and Date Table (TDT) at the specified table repetition interval.
-msDvbTdtSettings :: Lens' M2tsSettings (Maybe DvbTdtSettings)
-msDvbTdtSettings = lens _msDvbTdtSettings (\ s a -> s{_msDvbTdtSettings = a})
+mDvbTdtSettings :: Lens' M2tsSettings (Maybe DvbTdtSettings)
+mDvbTdtSettings = lens _mDvbTdtSettings (\ s a -> s{_mDvbTdtSettings = a})
 
 instance FromJSON M2tsSettings where
         parseJSON
@@ -5893,6 +8334,7 @@ instance FromJSON M2tsSettings where
                  M2tsSettings' <$>
                    (x .:? "pmtPid") <*> (x .:? "etvSignalPid") <*>
                      (x .:? "videoPid")
+                     <*> (x .:? "nielsenId3Behavior")
                      <*> (x .:? "bufferModel")
                      <*> (x .:? "scte35Pid")
                      <*> (x .:? "transportStreamId")
@@ -5945,200 +8387,204 @@ instance ToJSON M2tsSettings where
         toJSON M2tsSettings'{..}
           = object
               (catMaybes
-                 [("pmtPid" .=) <$> _msPmtPid,
-                  ("etvSignalPid" .=) <$> _msEtvSignalPid,
-                  ("videoPid" .=) <$> _msVideoPid,
-                  ("bufferModel" .=) <$> _msBufferModel,
-                  ("scte35Pid" .=) <$> _msScte35Pid,
-                  ("transportStreamId" .=) <$> _msTransportStreamId,
-                  ("programNum" .=) <$> _msProgramNum,
-                  ("fragmentTime" .=) <$> _msFragmentTime,
+                 [("pmtPid" .=) <$> _mPmtPid,
+                  ("etvSignalPid" .=) <$> _mEtvSignalPid,
+                  ("videoPid" .=) <$> _mVideoPid,
+                  ("nielsenId3Behavior" .=) <$> _mNielsenId3Behavior,
+                  ("bufferModel" .=) <$> _mBufferModel,
+                  ("scte35Pid" .=) <$> _mScte35Pid,
+                  ("transportStreamId" .=) <$> _mTransportStreamId,
+                  ("programNum" .=) <$> _mProgramNum,
+                  ("fragmentTime" .=) <$> _mFragmentTime,
                   ("timedMetadataBehavior" .=) <$>
-                    _msTimedMetadataBehavior,
-                  ("ccDescriptor" .=) <$> _msCCDescriptor,
-                  ("pmtInterval" .=) <$> _msPmtInterval,
-                  ("dvbSdtSettings" .=) <$> _msDvbSdtSettings,
-                  ("ecmPid" .=) <$> _msEcmPid,
-                  ("nullPacketBitrate" .=) <$> _msNullPacketBitrate,
-                  ("audioBufferModel" .=) <$> _msAudioBufferModel,
-                  ("timedMetadataPid" .=) <$> _msTimedMetadataPid,
-                  ("klv" .=) <$> _msKlv,
-                  ("audioFramesPerPes" .=) <$> _msAudioFramesPerPes,
-                  ("pcrPeriod" .=) <$> _msPcrPeriod,
-                  ("pcrPid" .=) <$> _msPcrPid,
-                  ("segmentationMarkers" .=) <$>
-                    _msSegmentationMarkers,
+                    _mTimedMetadataBehavior,
+                  ("ccDescriptor" .=) <$> _mCCDescriptor,
+                  ("pmtInterval" .=) <$> _mPmtInterval,
+                  ("dvbSdtSettings" .=) <$> _mDvbSdtSettings,
+                  ("ecmPid" .=) <$> _mEcmPid,
+                  ("nullPacketBitrate" .=) <$> _mNullPacketBitrate,
+                  ("audioBufferModel" .=) <$> _mAudioBufferModel,
+                  ("timedMetadataPid" .=) <$> _mTimedMetadataPid,
+                  ("klv" .=) <$> _mKlv,
+                  ("audioFramesPerPes" .=) <$> _mAudioFramesPerPes,
+                  ("pcrPeriod" .=) <$> _mPcrPeriod,
+                  ("pcrPid" .=) <$> _mPcrPid,
+                  ("segmentationMarkers" .=) <$> _mSegmentationMarkers,
                   ("aribCaptionsPidControl" .=) <$>
-                    _msAribCaptionsPidControl,
-                  ("klvDataPids" .=) <$> _msKlvDataPids,
-                  ("ebpLookaheadMs" .=) <$> _msEbpLookaheadMs,
-                  ("dvbSubPids" .=) <$> _msDvbSubPids,
-                  ("scte27Pids" .=) <$> _msScte27Pids,
-                  ("patInterval" .=) <$> _msPatInterval,
-                  ("audioStreamType" .=) <$> _msAudioStreamType,
-                  ("esRateInPes" .=) <$> _msEsRateInPes,
-                  ("etvPlatformPid" .=) <$> _msEtvPlatformPid,
-                  ("bitrate" .=) <$> _msBitrate,
-                  ("scte35Control" .=) <$> _msScte35Control,
-                  ("audioPids" .=) <$> _msAudioPids,
-                  ("dvbTeletextPid" .=) <$> _msDvbTeletextPid,
-                  ("ebif" .=) <$> _msEbif, ("arib" .=) <$> _msArib,
-                  ("aribCaptionsPid" .=) <$> _msAribCaptionsPid,
+                    _mAribCaptionsPidControl,
+                  ("klvDataPids" .=) <$> _mKlvDataPids,
+                  ("ebpLookaheadMs" .=) <$> _mEbpLookaheadMs,
+                  ("dvbSubPids" .=) <$> _mDvbSubPids,
+                  ("scte27Pids" .=) <$> _mScte27Pids,
+                  ("patInterval" .=) <$> _mPatInterval,
+                  ("audioStreamType" .=) <$> _mAudioStreamType,
+                  ("esRateInPes" .=) <$> _mEsRateInPes,
+                  ("etvPlatformPid" .=) <$> _mEtvPlatformPid,
+                  ("bitrate" .=) <$> _mBitrate,
+                  ("scte35Control" .=) <$> _mScte35Control,
+                  ("audioPids" .=) <$> _mAudioPids,
+                  ("dvbTeletextPid" .=) <$> _mDvbTeletextPid,
+                  ("ebif" .=) <$> _mEbif, ("arib" .=) <$> _mArib,
+                  ("aribCaptionsPid" .=) <$> _mAribCaptionsPid,
                   ("absentInputAudioBehavior" .=) <$>
-                    _msAbsentInputAudioBehavior,
-                  ("segmentationTime" .=) <$> _msSegmentationTime,
-                  ("ebpAudioInterval" .=) <$> _msEbpAudioInterval,
-                  ("dvbNitSettings" .=) <$> _msDvbNitSettings,
-                  ("pcrControl" .=) <$> _msPcrControl,
-                  ("ebpPlacement" .=) <$> _msEbpPlacement,
-                  ("rateMode" .=) <$> _msRateMode,
-                  ("segmentationStyle" .=) <$> _msSegmentationStyle,
-                  ("dvbTdtSettings" .=) <$> _msDvbTdtSettings])
+                    _mAbsentInputAudioBehavior,
+                  ("segmentationTime" .=) <$> _mSegmentationTime,
+                  ("ebpAudioInterval" .=) <$> _mEbpAudioInterval,
+                  ("dvbNitSettings" .=) <$> _mDvbNitSettings,
+                  ("pcrControl" .=) <$> _mPcrControl,
+                  ("ebpPlacement" .=) <$> _mEbpPlacement,
+                  ("rateMode" .=) <$> _mRateMode,
+                  ("segmentationStyle" .=) <$> _mSegmentationStyle,
+                  ("dvbTdtSettings" .=) <$> _mDvbTdtSettings])
 
 -- | Settings information for the .m3u8 container
 --
 -- /See:/ 'm3u8Settings' smart constructor.
-data M3u8Settings = M3u8Settings'
-  { _mPmtPid                :: !(Maybe Text)
-  , _mVideoPid              :: !(Maybe Text)
-  , _mScte35Pid             :: !(Maybe Text)
-  , _mTransportStreamId     :: !(Maybe Nat)
-  , _mProgramNum            :: !(Maybe Nat)
-  , _mTimedMetadataBehavior :: !(Maybe M3u8TimedMetadataBehavior)
-  , _mPmtInterval           :: !(Maybe Nat)
-  , _mEcmPid                :: !(Maybe Text)
-  , _mTimedMetadataPid      :: !(Maybe Text)
-  , _mAudioFramesPerPes     :: !(Maybe Nat)
-  , _mPcrPeriod             :: !(Maybe Nat)
-  , _mPcrPid                :: !(Maybe Text)
-  , _mPatInterval           :: !(Maybe Nat)
-  , _mAudioPids             :: !(Maybe Text)
-  , _mScte35Behavior        :: !(Maybe M3u8Scte35Behavior)
-  , _mPcrControl            :: !(Maybe M3u8PcrControl)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data M3u8Settings = M3u8Settings'{_mssPmtPid ::
+                                  !(Maybe Text),
+                                  _mssVideoPid :: !(Maybe Text),
+                                  _mssNielsenId3Behavior ::
+                                  !(Maybe M3u8NielsenId3Behavior),
+                                  _mssScte35Pid :: !(Maybe Text),
+                                  _mssTransportStreamId :: !(Maybe Nat),
+                                  _mssProgramNum :: !(Maybe Nat),
+                                  _mssTimedMetadataBehavior ::
+                                  !(Maybe M3u8TimedMetadataBehavior),
+                                  _mssPmtInterval :: !(Maybe Nat),
+                                  _mssEcmPid :: !(Maybe Text),
+                                  _mssTimedMetadataPid :: !(Maybe Text),
+                                  _mssAudioFramesPerPes :: !(Maybe Nat),
+                                  _mssPcrPeriod :: !(Maybe Nat),
+                                  _mssPcrPid :: !(Maybe Text),
+                                  _mssPatInterval :: !(Maybe Nat),
+                                  _mssAudioPids :: !(Maybe Text),
+                                  _mssScte35Behavior ::
+                                  !(Maybe M3u8Scte35Behavior),
+                                  _mssPcrControl :: !(Maybe M3u8PcrControl)}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'M3u8Settings' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'mPmtPid' - Packet Identifier (PID) for the Program Map Table (PMT) in the transport stream. Can be entered as a decimal or hexadecimal value.
+-- * 'mssPmtPid' - Packet Identifier (PID) for the Program Map Table (PMT) in the transport stream. Can be entered as a decimal or hexadecimal value.
 --
--- * 'mVideoPid' - Packet Identifier (PID) of the elementary video stream in the transport stream. Can be entered as a decimal or hexadecimal value.
+-- * 'mssVideoPid' - Packet Identifier (PID) of the elementary video stream in the transport stream. Can be entered as a decimal or hexadecimal value.
 --
--- * 'mScte35Pid' - Packet Identifier (PID) of the SCTE-35 stream in the transport stream. Can be entered as a decimal or hexadecimal value.
+-- * 'mssNielsenId3Behavior' - If set to passthrough, Nielsen inaudible tones for media tracking will be detected in the input audio and an equivalent ID3 tag will be inserted in the output.
 --
--- * 'mTransportStreamId' - The value of the transport stream ID field in the Program Map Table.
+-- * 'mssScte35Pid' - Packet Identifier (PID) of the SCTE-35 stream in the transport stream. Can be entered as a decimal or hexadecimal value.
 --
--- * 'mProgramNum' - The value of the program number field in the Program Map Table.
+-- * 'mssTransportStreamId' - The value of the transport stream ID field in the Program Map Table.
 --
--- * 'mTimedMetadataBehavior' - When set to passthrough, timed metadata is passed through from input to output.
+-- * 'mssProgramNum' - The value of the program number field in the Program Map Table.
 --
--- * 'mPmtInterval' - The number of milliseconds between instances of this table in the output transport stream. A value of \"0\" writes out the PMT once per segment file.
+-- * 'mssTimedMetadataBehavior' - When set to passthrough, timed metadata is passed through from input to output.
 --
--- * 'mEcmPid' - This parameter is unused and deprecated.
+-- * 'mssPmtInterval' - The number of milliseconds between instances of this table in the output transport stream. A value of \"0\" writes out the PMT once per segment file.
 --
--- * 'mTimedMetadataPid' - Packet Identifier (PID) of the timed metadata stream in the transport stream. Can be entered as a decimal or hexadecimal value.  Valid values are 32 (or 0x20)..8182 (or 0x1ff6).
+-- * 'mssEcmPid' - This parameter is unused and deprecated.
 --
--- * 'mAudioFramesPerPes' - The number of audio frames to insert for each PES packet.
+-- * 'mssTimedMetadataPid' - Packet Identifier (PID) of the timed metadata stream in the transport stream. Can be entered as a decimal or hexadecimal value.  Valid values are 32 (or 0x20)..8182 (or 0x1ff6).
 --
--- * 'mPcrPeriod' - Maximum time in milliseconds between Program Clock References (PCRs) inserted into the transport stream.
+-- * 'mssAudioFramesPerPes' - The number of audio frames to insert for each PES packet.
 --
--- * 'mPcrPid' - Packet Identifier (PID) of the Program Clock Reference (PCR) in the transport stream. When no value is given, the encoder will assign the same value as the Video PID. Can be entered as a decimal or hexadecimal value.
+-- * 'mssPcrPeriod' - Maximum time in milliseconds between Program Clock References (PCRs) inserted into the transport stream.
 --
--- * 'mPatInterval' - The number of milliseconds between instances of this table in the output transport stream. A value of \"0\" writes out the PMT once per segment file.
+-- * 'mssPcrPid' - Packet Identifier (PID) of the Program Clock Reference (PCR) in the transport stream. When no value is given, the encoder will assign the same value as the Video PID. Can be entered as a decimal or hexadecimal value.
 --
--- * 'mAudioPids' - Packet Identifier (PID) of the elementary audio stream(s) in the transport stream. Multiple values are accepted, and can be entered in ranges and/or by comma separation. Can be entered as decimal or hexadecimal values.
+-- * 'mssPatInterval' - The number of milliseconds between instances of this table in the output transport stream. A value of \"0\" writes out the PMT once per segment file.
 --
--- * 'mScte35Behavior' - If set to passthrough, passes any SCTE-35 signals from the input source to this output.
+-- * 'mssAudioPids' - Packet Identifier (PID) of the elementary audio stream(s) in the transport stream. Multiple values are accepted, and can be entered in ranges and/or by comma separation. Can be entered as decimal or hexadecimal values.
 --
--- * 'mPcrControl' - When set to pcrEveryPesPacket, a Program Clock Reference value is inserted for every Packetized Elementary Stream (PES) header. This parameter is effective only when the PCR PID is the same as the video or audio elementary stream.
+-- * 'mssScte35Behavior' - If set to passthrough, passes any SCTE-35 signals from the input source to this output.
+--
+-- * 'mssPcrControl' - When set to pcrEveryPesPacket, a Program Clock Reference value is inserted for every Packetized Elementary Stream (PES) header. This parameter is effective only when the PCR PID is the same as the video or audio elementary stream.
 m3u8Settings
     :: M3u8Settings
-m3u8Settings =
-  M3u8Settings'
-    { _mPmtPid = Nothing
-    , _mVideoPid = Nothing
-    , _mScte35Pid = Nothing
-    , _mTransportStreamId = Nothing
-    , _mProgramNum = Nothing
-    , _mTimedMetadataBehavior = Nothing
-    , _mPmtInterval = Nothing
-    , _mEcmPid = Nothing
-    , _mTimedMetadataPid = Nothing
-    , _mAudioFramesPerPes = Nothing
-    , _mPcrPeriod = Nothing
-    , _mPcrPid = Nothing
-    , _mPatInterval = Nothing
-    , _mAudioPids = Nothing
-    , _mScte35Behavior = Nothing
-    , _mPcrControl = Nothing
-    }
-
+m3u8Settings
+  = M3u8Settings'{_mssPmtPid = Nothing,
+                  _mssVideoPid = Nothing,
+                  _mssNielsenId3Behavior = Nothing,
+                  _mssScte35Pid = Nothing,
+                  _mssTransportStreamId = Nothing,
+                  _mssProgramNum = Nothing,
+                  _mssTimedMetadataBehavior = Nothing,
+                  _mssPmtInterval = Nothing, _mssEcmPid = Nothing,
+                  _mssTimedMetadataPid = Nothing,
+                  _mssAudioFramesPerPes = Nothing,
+                  _mssPcrPeriod = Nothing, _mssPcrPid = Nothing,
+                  _mssPatInterval = Nothing, _mssAudioPids = Nothing,
+                  _mssScte35Behavior = Nothing,
+                  _mssPcrControl = Nothing}
 
 -- | Packet Identifier (PID) for the Program Map Table (PMT) in the transport stream. Can be entered as a decimal or hexadecimal value.
-mPmtPid :: Lens' M3u8Settings (Maybe Text)
-mPmtPid = lens _mPmtPid (\ s a -> s{_mPmtPid = a})
+mssPmtPid :: Lens' M3u8Settings (Maybe Text)
+mssPmtPid = lens _mssPmtPid (\ s a -> s{_mssPmtPid = a})
 
 -- | Packet Identifier (PID) of the elementary video stream in the transport stream. Can be entered as a decimal or hexadecimal value.
-mVideoPid :: Lens' M3u8Settings (Maybe Text)
-mVideoPid = lens _mVideoPid (\ s a -> s{_mVideoPid = a})
+mssVideoPid :: Lens' M3u8Settings (Maybe Text)
+mssVideoPid = lens _mssVideoPid (\ s a -> s{_mssVideoPid = a})
+
+-- | If set to passthrough, Nielsen inaudible tones for media tracking will be detected in the input audio and an equivalent ID3 tag will be inserted in the output.
+mssNielsenId3Behavior :: Lens' M3u8Settings (Maybe M3u8NielsenId3Behavior)
+mssNielsenId3Behavior = lens _mssNielsenId3Behavior (\ s a -> s{_mssNielsenId3Behavior = a})
 
 -- | Packet Identifier (PID) of the SCTE-35 stream in the transport stream. Can be entered as a decimal or hexadecimal value.
-mScte35Pid :: Lens' M3u8Settings (Maybe Text)
-mScte35Pid = lens _mScte35Pid (\ s a -> s{_mScte35Pid = a})
+mssScte35Pid :: Lens' M3u8Settings (Maybe Text)
+mssScte35Pid = lens _mssScte35Pid (\ s a -> s{_mssScte35Pid = a})
 
 -- | The value of the transport stream ID field in the Program Map Table.
-mTransportStreamId :: Lens' M3u8Settings (Maybe Natural)
-mTransportStreamId = lens _mTransportStreamId (\ s a -> s{_mTransportStreamId = a}) . mapping _Nat
+mssTransportStreamId :: Lens' M3u8Settings (Maybe Natural)
+mssTransportStreamId = lens _mssTransportStreamId (\ s a -> s{_mssTransportStreamId = a}) . mapping _Nat
 
 -- | The value of the program number field in the Program Map Table.
-mProgramNum :: Lens' M3u8Settings (Maybe Natural)
-mProgramNum = lens _mProgramNum (\ s a -> s{_mProgramNum = a}) . mapping _Nat
+mssProgramNum :: Lens' M3u8Settings (Maybe Natural)
+mssProgramNum = lens _mssProgramNum (\ s a -> s{_mssProgramNum = a}) . mapping _Nat
 
 -- | When set to passthrough, timed metadata is passed through from input to output.
-mTimedMetadataBehavior :: Lens' M3u8Settings (Maybe M3u8TimedMetadataBehavior)
-mTimedMetadataBehavior = lens _mTimedMetadataBehavior (\ s a -> s{_mTimedMetadataBehavior = a})
+mssTimedMetadataBehavior :: Lens' M3u8Settings (Maybe M3u8TimedMetadataBehavior)
+mssTimedMetadataBehavior = lens _mssTimedMetadataBehavior (\ s a -> s{_mssTimedMetadataBehavior = a})
 
 -- | The number of milliseconds between instances of this table in the output transport stream. A value of \"0\" writes out the PMT once per segment file.
-mPmtInterval :: Lens' M3u8Settings (Maybe Natural)
-mPmtInterval = lens _mPmtInterval (\ s a -> s{_mPmtInterval = a}) . mapping _Nat
+mssPmtInterval :: Lens' M3u8Settings (Maybe Natural)
+mssPmtInterval = lens _mssPmtInterval (\ s a -> s{_mssPmtInterval = a}) . mapping _Nat
 
 -- | This parameter is unused and deprecated.
-mEcmPid :: Lens' M3u8Settings (Maybe Text)
-mEcmPid = lens _mEcmPid (\ s a -> s{_mEcmPid = a})
+mssEcmPid :: Lens' M3u8Settings (Maybe Text)
+mssEcmPid = lens _mssEcmPid (\ s a -> s{_mssEcmPid = a})
 
 -- | Packet Identifier (PID) of the timed metadata stream in the transport stream. Can be entered as a decimal or hexadecimal value.  Valid values are 32 (or 0x20)..8182 (or 0x1ff6).
-mTimedMetadataPid :: Lens' M3u8Settings (Maybe Text)
-mTimedMetadataPid = lens _mTimedMetadataPid (\ s a -> s{_mTimedMetadataPid = a})
+mssTimedMetadataPid :: Lens' M3u8Settings (Maybe Text)
+mssTimedMetadataPid = lens _mssTimedMetadataPid (\ s a -> s{_mssTimedMetadataPid = a})
 
 -- | The number of audio frames to insert for each PES packet.
-mAudioFramesPerPes :: Lens' M3u8Settings (Maybe Natural)
-mAudioFramesPerPes = lens _mAudioFramesPerPes (\ s a -> s{_mAudioFramesPerPes = a}) . mapping _Nat
+mssAudioFramesPerPes :: Lens' M3u8Settings (Maybe Natural)
+mssAudioFramesPerPes = lens _mssAudioFramesPerPes (\ s a -> s{_mssAudioFramesPerPes = a}) . mapping _Nat
 
 -- | Maximum time in milliseconds between Program Clock References (PCRs) inserted into the transport stream.
-mPcrPeriod :: Lens' M3u8Settings (Maybe Natural)
-mPcrPeriod = lens _mPcrPeriod (\ s a -> s{_mPcrPeriod = a}) . mapping _Nat
+mssPcrPeriod :: Lens' M3u8Settings (Maybe Natural)
+mssPcrPeriod = lens _mssPcrPeriod (\ s a -> s{_mssPcrPeriod = a}) . mapping _Nat
 
 -- | Packet Identifier (PID) of the Program Clock Reference (PCR) in the transport stream. When no value is given, the encoder will assign the same value as the Video PID. Can be entered as a decimal or hexadecimal value.
-mPcrPid :: Lens' M3u8Settings (Maybe Text)
-mPcrPid = lens _mPcrPid (\ s a -> s{_mPcrPid = a})
+mssPcrPid :: Lens' M3u8Settings (Maybe Text)
+mssPcrPid = lens _mssPcrPid (\ s a -> s{_mssPcrPid = a})
 
 -- | The number of milliseconds between instances of this table in the output transport stream. A value of \"0\" writes out the PMT once per segment file.
-mPatInterval :: Lens' M3u8Settings (Maybe Natural)
-mPatInterval = lens _mPatInterval (\ s a -> s{_mPatInterval = a}) . mapping _Nat
+mssPatInterval :: Lens' M3u8Settings (Maybe Natural)
+mssPatInterval = lens _mssPatInterval (\ s a -> s{_mssPatInterval = a}) . mapping _Nat
 
 -- | Packet Identifier (PID) of the elementary audio stream(s) in the transport stream. Multiple values are accepted, and can be entered in ranges and/or by comma separation. Can be entered as decimal or hexadecimal values.
-mAudioPids :: Lens' M3u8Settings (Maybe Text)
-mAudioPids = lens _mAudioPids (\ s a -> s{_mAudioPids = a})
+mssAudioPids :: Lens' M3u8Settings (Maybe Text)
+mssAudioPids = lens _mssAudioPids (\ s a -> s{_mssAudioPids = a})
 
 -- | If set to passthrough, passes any SCTE-35 signals from the input source to this output.
-mScte35Behavior :: Lens' M3u8Settings (Maybe M3u8Scte35Behavior)
-mScte35Behavior = lens _mScte35Behavior (\ s a -> s{_mScte35Behavior = a})
+mssScte35Behavior :: Lens' M3u8Settings (Maybe M3u8Scte35Behavior)
+mssScte35Behavior = lens _mssScte35Behavior (\ s a -> s{_mssScte35Behavior = a})
 
 -- | When set to pcrEveryPesPacket, a Program Clock Reference value is inserted for every Packetized Elementary Stream (PES) header. This parameter is effective only when the PCR PID is the same as the video or audio elementary stream.
-mPcrControl :: Lens' M3u8Settings (Maybe M3u8PcrControl)
-mPcrControl = lens _mPcrControl (\ s a -> s{_mPcrControl = a})
+mssPcrControl :: Lens' M3u8Settings (Maybe M3u8PcrControl)
+mssPcrControl = lens _mssPcrControl (\ s a -> s{_mssPcrControl = a})
 
 instance FromJSON M3u8Settings where
         parseJSON
@@ -6146,7 +8592,8 @@ instance FromJSON M3u8Settings where
               (\ x ->
                  M3u8Settings' <$>
                    (x .:? "pmtPid") <*> (x .:? "videoPid") <*>
-                     (x .:? "scte35Pid")
+                     (x .:? "nielsenId3Behavior")
+                     <*> (x .:? "scte35Pid")
                      <*> (x .:? "transportStreamId")
                      <*> (x .:? "programNum")
                      <*> (x .:? "timedMetadataBehavior")
@@ -6169,61 +8616,236 @@ instance ToJSON M3u8Settings where
         toJSON M3u8Settings'{..}
           = object
               (catMaybes
-                 [("pmtPid" .=) <$> _mPmtPid,
-                  ("videoPid" .=) <$> _mVideoPid,
-                  ("scte35Pid" .=) <$> _mScte35Pid,
-                  ("transportStreamId" .=) <$> _mTransportStreamId,
-                  ("programNum" .=) <$> _mProgramNum,
+                 [("pmtPid" .=) <$> _mssPmtPid,
+                  ("videoPid" .=) <$> _mssVideoPid,
+                  ("nielsenId3Behavior" .=) <$> _mssNielsenId3Behavior,
+                  ("scte35Pid" .=) <$> _mssScte35Pid,
+                  ("transportStreamId" .=) <$> _mssTransportStreamId,
+                  ("programNum" .=) <$> _mssProgramNum,
                   ("timedMetadataBehavior" .=) <$>
-                    _mTimedMetadataBehavior,
-                  ("pmtInterval" .=) <$> _mPmtInterval,
-                  ("ecmPid" .=) <$> _mEcmPid,
-                  ("timedMetadataPid" .=) <$> _mTimedMetadataPid,
-                  ("audioFramesPerPes" .=) <$> _mAudioFramesPerPes,
-                  ("pcrPeriod" .=) <$> _mPcrPeriod,
-                  ("pcrPid" .=) <$> _mPcrPid,
-                  ("patInterval" .=) <$> _mPatInterval,
-                  ("audioPids" .=) <$> _mAudioPids,
-                  ("scte35Behavior" .=) <$> _mScte35Behavior,
-                  ("pcrControl" .=) <$> _mPcrControl])
+                    _mssTimedMetadataBehavior,
+                  ("pmtInterval" .=) <$> _mssPmtInterval,
+                  ("ecmPid" .=) <$> _mssEcmPid,
+                  ("timedMetadataPid" .=) <$> _mssTimedMetadataPid,
+                  ("audioFramesPerPes" .=) <$> _mssAudioFramesPerPes,
+                  ("pcrPeriod" .=) <$> _mssPcrPeriod,
+                  ("pcrPid" .=) <$> _mssPcrPid,
+                  ("patInterval" .=) <$> _mssPatInterval,
+                  ("audioPids" .=) <$> _mssAudioPids,
+                  ("scte35Behavior" .=) <$> _mssScte35Behavior,
+                  ("pcrControl" .=) <$> _mssPcrControl])
 
--- | Placeholder documentation for Mp2Settings
+-- | The settings for a MediaConnect Flow.
+--
+-- /See:/ 'mediaConnectFlow' smart constructor.
+newtype MediaConnectFlow = MediaConnectFlow'{_mcfFlowARN
+                                             :: Maybe Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+-- | Creates a value of 'MediaConnectFlow' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'mcfFlowARN' - The unique ARN of the MediaConnect Flow being used as a source.
+mediaConnectFlow
+    :: MediaConnectFlow
+mediaConnectFlow
+  = MediaConnectFlow'{_mcfFlowARN = Nothing}
+
+-- | The unique ARN of the MediaConnect Flow being used as a source.
+mcfFlowARN :: Lens' MediaConnectFlow (Maybe Text)
+mcfFlowARN = lens _mcfFlowARN (\ s a -> s{_mcfFlowARN = a})
+
+instance FromJSON MediaConnectFlow where
+        parseJSON
+          = withObject "MediaConnectFlow"
+              (\ x -> MediaConnectFlow' <$> (x .:? "flowArn"))
+
+instance Hashable MediaConnectFlow where
+
+instance NFData MediaConnectFlow where
+
+-- | The settings for a MediaConnect Flow.
+--
+-- /See:/ 'mediaConnectFlowRequest' smart constructor.
+newtype MediaConnectFlowRequest = MediaConnectFlowRequest'{_mcfrFlowARN
+                                                           :: Maybe Text}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
+
+-- | Creates a value of 'MediaConnectFlowRequest' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'mcfrFlowARN' - The ARN of the MediaConnect Flow that you want to use as a source.
+mediaConnectFlowRequest
+    :: MediaConnectFlowRequest
+mediaConnectFlowRequest
+  = MediaConnectFlowRequest'{_mcfrFlowARN = Nothing}
+
+-- | The ARN of the MediaConnect Flow that you want to use as a source.
+mcfrFlowARN :: Lens' MediaConnectFlowRequest (Maybe Text)
+mcfrFlowARN = lens _mcfrFlowARN (\ s a -> s{_mcfrFlowARN = a})
+
+instance Hashable MediaConnectFlowRequest where
+
+instance NFData MediaConnectFlowRequest where
+
+instance ToJSON MediaConnectFlowRequest where
+        toJSON MediaConnectFlowRequest'{..}
+          = object
+              (catMaybes [("flowArn" .=) <$> _mcfrFlowARN])
+
+-- | Media Package Group Settings
+--
+-- /See:/ 'mediaPackageGroupSettings' smart constructor.
+newtype MediaPackageGroupSettings = MediaPackageGroupSettings'{_mpgsDestination
+                                                               ::
+                                                               OutputLocationRef}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
+
+-- | Creates a value of 'MediaPackageGroupSettings' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'mpgsDestination' - MediaPackage channel destination.
+mediaPackageGroupSettings
+    :: OutputLocationRef -- ^ 'mpgsDestination'
+    -> MediaPackageGroupSettings
+mediaPackageGroupSettings pDestination_
+  = MediaPackageGroupSettings'{_mpgsDestination =
+                                 pDestination_}
+
+-- | MediaPackage channel destination.
+mpgsDestination :: Lens' MediaPackageGroupSettings OutputLocationRef
+mpgsDestination = lens _mpgsDestination (\ s a -> s{_mpgsDestination = a})
+
+instance FromJSON MediaPackageGroupSettings where
+        parseJSON
+          = withObject "MediaPackageGroupSettings"
+              (\ x ->
+                 MediaPackageGroupSettings' <$> (x .: "destination"))
+
+instance Hashable MediaPackageGroupSettings where
+
+instance NFData MediaPackageGroupSettings where
+
+instance ToJSON MediaPackageGroupSettings where
+        toJSON MediaPackageGroupSettings'{..}
+          = object
+              (catMaybes
+                 [Just ("destination" .= _mpgsDestination)])
+
+-- | MediaPackage Output Destination Settings
+--
+-- /See:/ 'mediaPackageOutputDestinationSettings' smart constructor.
+newtype MediaPackageOutputDestinationSettings = MediaPackageOutputDestinationSettings'{_mpodsChannelId
+                                                                                       ::
+                                                                                       Maybe
+                                                                                         Text}
+                                                  deriving (Eq, Read, Show,
+                                                            Data, Typeable,
+                                                            Generic)
+
+-- | Creates a value of 'MediaPackageOutputDestinationSettings' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'mpodsChannelId' - ID of the channel in MediaPackage that is the destination for this output group. You do not need to specify the individual inputs in MediaPackage; MediaLive will handle the connection of the two MediaLive pipelines to the two MediaPackage inputs. The MediaPackage channel and MediaLive channel must be in the same region.
+mediaPackageOutputDestinationSettings
+    :: MediaPackageOutputDestinationSettings
+mediaPackageOutputDestinationSettings
+  = MediaPackageOutputDestinationSettings'{_mpodsChannelId
+                                             = Nothing}
+
+-- | ID of the channel in MediaPackage that is the destination for this output group. You do not need to specify the individual inputs in MediaPackage; MediaLive will handle the connection of the two MediaLive pipelines to the two MediaPackage inputs. The MediaPackage channel and MediaLive channel must be in the same region.
+mpodsChannelId :: Lens' MediaPackageOutputDestinationSettings (Maybe Text)
+mpodsChannelId = lens _mpodsChannelId (\ s a -> s{_mpodsChannelId = a})
+
+instance FromJSON
+           MediaPackageOutputDestinationSettings
+         where
+        parseJSON
+          = withObject "MediaPackageOutputDestinationSettings"
+              (\ x ->
+                 MediaPackageOutputDestinationSettings' <$>
+                   (x .:? "channelId"))
+
+instance Hashable
+           MediaPackageOutputDestinationSettings
+         where
+
+instance NFData MediaPackageOutputDestinationSettings
+         where
+
+instance ToJSON MediaPackageOutputDestinationSettings
+         where
+        toJSON MediaPackageOutputDestinationSettings'{..}
+          = object
+              (catMaybes [("channelId" .=) <$> _mpodsChannelId])
+
+-- | Media Package Output Settings
+--
+-- /See:/ 'mediaPackageOutputSettings' smart constructor.
+data MediaPackageOutputSettings = MediaPackageOutputSettings'
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
+
+-- | Creates a value of 'MediaPackageOutputSettings' with the minimum fields required to make a request.
+--
+mediaPackageOutputSettings
+    :: MediaPackageOutputSettings
+mediaPackageOutputSettings
+  = MediaPackageOutputSettings'
+
+instance FromJSON MediaPackageOutputSettings where
+        parseJSON
+          = withObject "MediaPackageOutputSettings"
+              (\ x -> pure MediaPackageOutputSettings')
+
+instance Hashable MediaPackageOutputSettings where
+
+instance NFData MediaPackageOutputSettings where
+
+instance ToJSON MediaPackageOutputSettings where
+        toJSON = const (Object mempty)
+
+-- | Mp2 Settings
 --
 -- /See:/ 'mp2Settings' smart constructor.
-data Mp2Settings = Mp2Settings'
-  { _mCodingMode :: !(Maybe Mp2CodingMode)
-  , _mSampleRate :: !(Maybe Double)
-  , _mBitrate    :: !(Maybe Double)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data Mp2Settings = Mp2Settings'{_msCodingMode ::
+                                !(Maybe Mp2CodingMode),
+                                _msSampleRate :: !(Maybe Double),
+                                _msBitrate :: !(Maybe Double)}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'Mp2Settings' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'mCodingMode' - The MPEG2 Audio coding mode.  Valid values are codingMode10 (for mono) or codingMode20 (for stereo).
+-- * 'msCodingMode' - The MPEG2 Audio coding mode.  Valid values are codingMode10 (for mono) or codingMode20 (for stereo).
 --
--- * 'mSampleRate' - Sample rate in Hz.
+-- * 'msSampleRate' - Sample rate in Hz.
 --
--- * 'mBitrate' - Average bitrate in bits/second.
+-- * 'msBitrate' - Average bitrate in bits/second.
 mp2Settings
     :: Mp2Settings
-mp2Settings =
-  Mp2Settings'
-    {_mCodingMode = Nothing, _mSampleRate = Nothing, _mBitrate = Nothing}
-
+mp2Settings
+  = Mp2Settings'{_msCodingMode = Nothing,
+                 _msSampleRate = Nothing, _msBitrate = Nothing}
 
 -- | The MPEG2 Audio coding mode.  Valid values are codingMode10 (for mono) or codingMode20 (for stereo).
-mCodingMode :: Lens' Mp2Settings (Maybe Mp2CodingMode)
-mCodingMode = lens _mCodingMode (\ s a -> s{_mCodingMode = a})
+msCodingMode :: Lens' Mp2Settings (Maybe Mp2CodingMode)
+msCodingMode = lens _msCodingMode (\ s a -> s{_msCodingMode = a})
 
 -- | Sample rate in Hz.
-mSampleRate :: Lens' Mp2Settings (Maybe Double)
-mSampleRate = lens _mSampleRate (\ s a -> s{_mSampleRate = a})
+msSampleRate :: Lens' Mp2Settings (Maybe Double)
+msSampleRate = lens _msSampleRate (\ s a -> s{_msSampleRate = a})
 
 -- | Average bitrate in bits/second.
-mBitrate :: Lens' Mp2Settings (Maybe Double)
-mBitrate = lens _mBitrate (\ s a -> s{_mBitrate = a})
+msBitrate :: Lens' Mp2Settings (Maybe Double)
+msBitrate = lens _msBitrate (\ s a -> s{_msBitrate = a})
 
 instance FromJSON Mp2Settings where
         parseJSON
@@ -6241,35 +8863,64 @@ instance ToJSON Mp2Settings where
         toJSON Mp2Settings'{..}
           = object
               (catMaybes
-                 [("codingMode" .=) <$> _mCodingMode,
-                  ("sampleRate" .=) <$> _mSampleRate,
-                  ("bitrate" .=) <$> _mBitrate])
+                 [("codingMode" .=) <$> _msCodingMode,
+                  ("sampleRate" .=) <$> _msSampleRate,
+                  ("bitrate" .=) <$> _msBitrate])
 
--- | Placeholder documentation for MsSmoothGroupSettings
+-- | Ms Smooth Group Settings
 --
 -- /See:/ 'msSmoothGroupSettings' smart constructor.
-data MsSmoothGroupSettings = MsSmoothGroupSettings'
-  { _msgsFragmentLength :: !(Maybe Nat)
-  , _msgsStreamManifestBehavior :: !(Maybe SmoothGroupStreamManifestBehavior)
-  , _msgsSendDelayMs :: !(Maybe Nat)
-  , _msgsEventStopBehavior :: !(Maybe SmoothGroupEventStopBehavior)
-  , _msgsTimestampOffsetMode :: !(Maybe SmoothGroupTimestampOffsetMode)
-  , _msgsNumRetries :: !(Maybe Nat)
-  , _msgsAcquisitionPointId :: !(Maybe Text)
-  , _msgsInputLossAction :: !(Maybe InputLossActionForMsSmoothOut)
-  , _msgsTimestampOffset :: !(Maybe Text)
-  , _msgsCertificateMode :: !(Maybe SmoothGroupCertificateMode)
-  , _msgsSparseTrackType :: !(Maybe SmoothGroupSparseTrackType)
-  , _msgsConnectionRetryInterval :: !(Maybe Nat)
-  , _msgsFilecacheDuration :: !(Maybe Nat)
-  , _msgsRestartDelay :: !(Maybe Nat)
-  , _msgsEventIdMode :: !(Maybe SmoothGroupEventIdMode)
-  , _msgsAudioOnlyTimecodeControl :: !(Maybe SmoothGroupAudioOnlyTimecodeControl)
-  , _msgsSegmentationMode :: !(Maybe SmoothGroupSegmentationMode)
-  , _msgsEventId :: !(Maybe Text)
-  , _msgsDestination :: !OutputLocationRef
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data MsSmoothGroupSettings = MsSmoothGroupSettings'{_msgsFragmentLength
+                                                    :: !(Maybe Nat),
+                                                    _msgsStreamManifestBehavior
+                                                    ::
+                                                    !(Maybe
+                                                        SmoothGroupStreamManifestBehavior),
+                                                    _msgsSendDelayMs ::
+                                                    !(Maybe Nat),
+                                                    _msgsEventStopBehavior ::
+                                                    !(Maybe
+                                                        SmoothGroupEventStopBehavior),
+                                                    _msgsTimestampOffsetMode ::
+                                                    !(Maybe
+                                                        SmoothGroupTimestampOffsetMode),
+                                                    _msgsNumRetries ::
+                                                    !(Maybe Nat),
+                                                    _msgsAcquisitionPointId ::
+                                                    !(Maybe Text),
+                                                    _msgsInputLossAction ::
+                                                    !(Maybe
+                                                        InputLossActionForMsSmoothOut),
+                                                    _msgsTimestampOffset ::
+                                                    !(Maybe Text),
+                                                    _msgsCertificateMode ::
+                                                    !(Maybe
+                                                        SmoothGroupCertificateMode),
+                                                    _msgsSparseTrackType ::
+                                                    !(Maybe
+                                                        SmoothGroupSparseTrackType),
+                                                    _msgsConnectionRetryInterval
+                                                    :: !(Maybe Nat),
+                                                    _msgsFilecacheDuration ::
+                                                    !(Maybe Nat),
+                                                    _msgsRestartDelay ::
+                                                    !(Maybe Nat),
+                                                    _msgsEventIdMode ::
+                                                    !(Maybe
+                                                        SmoothGroupEventIdMode),
+                                                    _msgsAudioOnlyTimecodeControl
+                                                    ::
+                                                    !(Maybe
+                                                        SmoothGroupAudioOnlyTimecodeControl),
+                                                    _msgsSegmentationMode ::
+                                                    !(Maybe
+                                                        SmoothGroupSegmentationMode),
+                                                    _msgsEventId ::
+                                                    !(Maybe Text),
+                                                    _msgsDestination ::
+                                                    !OutputLocationRef}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'MsSmoothGroupSettings' with the minimum fields required to make a request.
 --
@@ -6279,7 +8930,7 @@ data MsSmoothGroupSettings = MsSmoothGroupSettings'
 --
 -- * 'msgsStreamManifestBehavior' - When set to send, send stream manifest so publishing point doesn't start until all streams start.
 --
--- * 'msgsSendDelayMs' - Outputs that are "output locked" can use this delay. Assign a delay to the output that is "secondary".  Do not assign a delay to the "primary" output. The delay means that the primary output will always reach the downstream system before the secondary, which helps ensure that the downstream system always uses the primary output. (If there were no delay, the downstream system might flip-flop between whichever output happens to arrive first.) If the primary fails, the downstream system will switch to the secondary output. When the primary is restarted, the downstream system will switch back to the primary (because once again it is always arriving first)
+-- * 'msgsSendDelayMs' - Number of milliseconds to delay the output from the second pipeline.
 --
 -- * 'msgsEventStopBehavior' - When set to sendEos, send EOS signal to IIS server when stopping the event
 --
@@ -6287,7 +8938,7 @@ data MsSmoothGroupSettings = MsSmoothGroupSettings'
 --
 -- * 'msgsNumRetries' - Number of retry attempts.
 --
--- * 'msgsAcquisitionPointId' - The value of the "Acquisition Point Identity" element used in each message placed in the sparse track.  Only enabled if sparseTrackType is not "none".
+-- * 'msgsAcquisitionPointId' - The ID to include in each message in the sparse track. Ignored if sparseTrackType is NONE.
 --
 -- * 'msgsInputLossAction' - Parameter that control output group behavior on input loss.
 --
@@ -6295,7 +8946,7 @@ data MsSmoothGroupSettings = MsSmoothGroupSettings'
 --
 -- * 'msgsCertificateMode' - If set to verifyAuthenticity, verify the https certificate chain to a trusted Certificate Authority (CA).  This will cause https outputs to self-signed certificates to fail.
 --
--- * 'msgsSparseTrackType' - If set to scte35, use incoming SCTE-35 messages to generate a sparse track in this group of MS-Smooth outputs.
+-- * 'msgsSparseTrackType' - Identifies the type of data to place in the sparse track: - SCTE35: Insert SCTE-35 messages from the source content. With each message, insert an IDR frame to start a new segment. - SCTE35_WITHOUT_SEGMENTATION: Insert SCTE-35 messages from the source content. With each message, insert an IDR frame but don't start a new segment. - NONE: Don't generate a sparse track for any outputs in this output group.
 --
 -- * 'msgsConnectionRetryInterval' - Number of seconds to wait before retrying connection to the IIS server if the connection is lost. Content will be cached during this time and the cache will be be delivered to the IIS server once the connection is re-established.
 --
@@ -6307,7 +8958,7 @@ data MsSmoothGroupSettings = MsSmoothGroupSettings'
 --
 -- * 'msgsAudioOnlyTimecodeControl' - If set to passthrough for an audio-only MS Smooth output, the fragment absolute time will be set to the current timecode. This option does not write timecodes to the audio elementary stream.
 --
--- * 'msgsSegmentationMode' - When set to useInputSegmentation, the output segment or fragment points are set by the RAI markers from the input streams.
+-- * 'msgsSegmentationMode' - useInputSegmentation has been deprecated. The configured segment size is always used.
 --
 -- * 'msgsEventId' - MS Smooth event ID to be sent to the IIS server. Should only be specified if eventIdMode is set to useConfigured.
 --
@@ -6315,29 +8966,27 @@ data MsSmoothGroupSettings = MsSmoothGroupSettings'
 msSmoothGroupSettings
     :: OutputLocationRef -- ^ 'msgsDestination'
     -> MsSmoothGroupSettings
-msSmoothGroupSettings pDestination_ =
-  MsSmoothGroupSettings'
-    { _msgsFragmentLength = Nothing
-    , _msgsStreamManifestBehavior = Nothing
-    , _msgsSendDelayMs = Nothing
-    , _msgsEventStopBehavior = Nothing
-    , _msgsTimestampOffsetMode = Nothing
-    , _msgsNumRetries = Nothing
-    , _msgsAcquisitionPointId = Nothing
-    , _msgsInputLossAction = Nothing
-    , _msgsTimestampOffset = Nothing
-    , _msgsCertificateMode = Nothing
-    , _msgsSparseTrackType = Nothing
-    , _msgsConnectionRetryInterval = Nothing
-    , _msgsFilecacheDuration = Nothing
-    , _msgsRestartDelay = Nothing
-    , _msgsEventIdMode = Nothing
-    , _msgsAudioOnlyTimecodeControl = Nothing
-    , _msgsSegmentationMode = Nothing
-    , _msgsEventId = Nothing
-    , _msgsDestination = pDestination_
-    }
-
+msSmoothGroupSettings pDestination_
+  = MsSmoothGroupSettings'{_msgsFragmentLength =
+                             Nothing,
+                           _msgsStreamManifestBehavior = Nothing,
+                           _msgsSendDelayMs = Nothing,
+                           _msgsEventStopBehavior = Nothing,
+                           _msgsTimestampOffsetMode = Nothing,
+                           _msgsNumRetries = Nothing,
+                           _msgsAcquisitionPointId = Nothing,
+                           _msgsInputLossAction = Nothing,
+                           _msgsTimestampOffset = Nothing,
+                           _msgsCertificateMode = Nothing,
+                           _msgsSparseTrackType = Nothing,
+                           _msgsConnectionRetryInterval = Nothing,
+                           _msgsFilecacheDuration = Nothing,
+                           _msgsRestartDelay = Nothing,
+                           _msgsEventIdMode = Nothing,
+                           _msgsAudioOnlyTimecodeControl = Nothing,
+                           _msgsSegmentationMode = Nothing,
+                           _msgsEventId = Nothing,
+                           _msgsDestination = pDestination_}
 
 -- | Length of mp4 fragments to generate (in seconds). Fragment length must be compatible with GOP size and framerate.
 msgsFragmentLength :: Lens' MsSmoothGroupSettings (Maybe Natural)
@@ -6347,7 +8996,7 @@ msgsFragmentLength = lens _msgsFragmentLength (\ s a -> s{_msgsFragmentLength = 
 msgsStreamManifestBehavior :: Lens' MsSmoothGroupSettings (Maybe SmoothGroupStreamManifestBehavior)
 msgsStreamManifestBehavior = lens _msgsStreamManifestBehavior (\ s a -> s{_msgsStreamManifestBehavior = a})
 
--- | Outputs that are "output locked" can use this delay. Assign a delay to the output that is "secondary".  Do not assign a delay to the "primary" output. The delay means that the primary output will always reach the downstream system before the secondary, which helps ensure that the downstream system always uses the primary output. (If there were no delay, the downstream system might flip-flop between whichever output happens to arrive first.) If the primary fails, the downstream system will switch to the secondary output. When the primary is restarted, the downstream system will switch back to the primary (because once again it is always arriving first)
+-- | Number of milliseconds to delay the output from the second pipeline.
 msgsSendDelayMs :: Lens' MsSmoothGroupSettings (Maybe Natural)
 msgsSendDelayMs = lens _msgsSendDelayMs (\ s a -> s{_msgsSendDelayMs = a}) . mapping _Nat
 
@@ -6363,7 +9012,7 @@ msgsTimestampOffsetMode = lens _msgsTimestampOffsetMode (\ s a -> s{_msgsTimesta
 msgsNumRetries :: Lens' MsSmoothGroupSettings (Maybe Natural)
 msgsNumRetries = lens _msgsNumRetries (\ s a -> s{_msgsNumRetries = a}) . mapping _Nat
 
--- | The value of the "Acquisition Point Identity" element used in each message placed in the sparse track.  Only enabled if sparseTrackType is not "none".
+-- | The ID to include in each message in the sparse track. Ignored if sparseTrackType is NONE.
 msgsAcquisitionPointId :: Lens' MsSmoothGroupSettings (Maybe Text)
 msgsAcquisitionPointId = lens _msgsAcquisitionPointId (\ s a -> s{_msgsAcquisitionPointId = a})
 
@@ -6379,7 +9028,7 @@ msgsTimestampOffset = lens _msgsTimestampOffset (\ s a -> s{_msgsTimestampOffset
 msgsCertificateMode :: Lens' MsSmoothGroupSettings (Maybe SmoothGroupCertificateMode)
 msgsCertificateMode = lens _msgsCertificateMode (\ s a -> s{_msgsCertificateMode = a})
 
--- | If set to scte35, use incoming SCTE-35 messages to generate a sparse track in this group of MS-Smooth outputs.
+-- | Identifies the type of data to place in the sparse track: - SCTE35: Insert SCTE-35 messages from the source content. With each message, insert an IDR frame to start a new segment. - SCTE35_WITHOUT_SEGMENTATION: Insert SCTE-35 messages from the source content. With each message, insert an IDR frame but don't start a new segment. - NONE: Don't generate a sparse track for any outputs in this output group.
 msgsSparseTrackType :: Lens' MsSmoothGroupSettings (Maybe SmoothGroupSparseTrackType)
 msgsSparseTrackType = lens _msgsSparseTrackType (\ s a -> s{_msgsSparseTrackType = a})
 
@@ -6403,7 +9052,7 @@ msgsEventIdMode = lens _msgsEventIdMode (\ s a -> s{_msgsEventIdMode = a})
 msgsAudioOnlyTimecodeControl :: Lens' MsSmoothGroupSettings (Maybe SmoothGroupAudioOnlyTimecodeControl)
 msgsAudioOnlyTimecodeControl = lens _msgsAudioOnlyTimecodeControl (\ s a -> s{_msgsAudioOnlyTimecodeControl = a})
 
--- | When set to useInputSegmentation, the output segment or fragment points are set by the RAI markers from the input streams.
+-- | useInputSegmentation has been deprecated. The configured segment size is always used.
 msgsSegmentationMode :: Lens' MsSmoothGroupSettings (Maybe SmoothGroupSegmentationMode)
 msgsSegmentationMode = lens _msgsSegmentationMode (\ s a -> s{_msgsSegmentationMode = a})
 
@@ -6473,23 +9122,35 @@ instance ToJSON MsSmoothGroupSettings where
                   ("eventId" .=) <$> _msgsEventId,
                   Just ("destination" .= _msgsDestination)])
 
--- | Placeholder documentation for MsSmoothOutputSettings
+-- | Ms Smooth Output Settings
 --
 -- /See:/ 'msSmoothOutputSettings' smart constructor.
-newtype MsSmoothOutputSettings = MsSmoothOutputSettings'
-  { _msosNameModifier :: Maybe Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data MsSmoothOutputSettings = MsSmoothOutputSettings'{_msosH265PackagingType
+                                                      ::
+                                                      !(Maybe
+                                                          MsSmoothH265PackagingType),
+                                                      _msosNameModifier ::
+                                                      !(Maybe Text)}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'MsSmoothOutputSettings' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
+-- * 'msosH265PackagingType' - Only applicable when this output is referencing an H.265 video description. Specifies whether MP4 segments should be packaged as HEV1 or HVC1.
+--
 -- * 'msosNameModifier' - String concatenated to the end of the destination filename.  Required for multiple outputs of the same type.
 msSmoothOutputSettings
     :: MsSmoothOutputSettings
-msSmoothOutputSettings = MsSmoothOutputSettings' {_msosNameModifier = Nothing}
+msSmoothOutputSettings
+  = MsSmoothOutputSettings'{_msosH265PackagingType =
+                              Nothing,
+                            _msosNameModifier = Nothing}
 
+-- | Only applicable when this output is referencing an H.265 video description. Specifies whether MP4 segments should be packaged as HEV1 or HVC1.
+msosH265PackagingType :: Lens' MsSmoothOutputSettings (Maybe MsSmoothH265PackagingType)
+msosH265PackagingType = lens _msosH265PackagingType (\ s a -> s{_msosH265PackagingType = a})
 
 -- | String concatenated to the end of the destination filename.  Required for multiple outputs of the same type.
 msosNameModifier :: Lens' MsSmoothOutputSettings (Maybe Text)
@@ -6499,7 +9160,9 @@ instance FromJSON MsSmoothOutputSettings where
         parseJSON
           = withObject "MsSmoothOutputSettings"
               (\ x ->
-                 MsSmoothOutputSettings' <$> (x .:? "nameModifier"))
+                 MsSmoothOutputSettings' <$>
+                   (x .:? "h265PackagingType") <*>
+                     (x .:? "nameModifier"))
 
 instance Hashable MsSmoothOutputSettings where
 
@@ -6509,16 +9172,1086 @@ instance ToJSON MsSmoothOutputSettings where
         toJSON MsSmoothOutputSettings'{..}
           = object
               (catMaybes
-                 [("nameModifier" .=) <$> _msosNameModifier])
+                 [("h265PackagingType" .=) <$> _msosH265PackagingType,
+                  ("nameModifier" .=) <$> _msosNameModifier])
+
+-- | The multiplex object.
+--
+-- /See:/ 'multiplex' smart constructor.
+data Multiplex = Multiplex'{_mState ::
+                            !(Maybe MultiplexState),
+                            _mARN :: !(Maybe Text),
+                            _mPipelinesRunningCount :: !(Maybe Int),
+                            _mAvailabilityZones :: !(Maybe [Text]),
+                            _mProgramCount :: !(Maybe Int),
+                            _mDestinations ::
+                            !(Maybe [MultiplexOutputDestination]),
+                            _mName :: !(Maybe Text), _mId :: !(Maybe Text),
+                            _mMultiplexSettings :: !(Maybe MultiplexSettings),
+                            _mTags :: !(Maybe (Map Text Text))}
+                   deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+-- | Creates a value of 'Multiplex' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'mState' - The current state of the multiplex.
+--
+-- * 'mARN' - The unique arn of the multiplex.
+--
+-- * 'mPipelinesRunningCount' - The number of currently healthy pipelines.
+--
+-- * 'mAvailabilityZones' - A list of availability zones for the multiplex.
+--
+-- * 'mProgramCount' - The number of programs in the multiplex.
+--
+-- * 'mDestinations' - A list of the multiplex output destinations.
+--
+-- * 'mName' - The name of the multiplex.
+--
+-- * 'mId' - The unique id of the multiplex.
+--
+-- * 'mMultiplexSettings' - Configuration for a multiplex event.
+--
+-- * 'mTags' - A collection of key-value pairs.
+multiplex
+    :: Multiplex
+multiplex
+  = Multiplex'{_mState = Nothing, _mARN = Nothing,
+               _mPipelinesRunningCount = Nothing,
+               _mAvailabilityZones = Nothing,
+               _mProgramCount = Nothing, _mDestinations = Nothing,
+               _mName = Nothing, _mId = Nothing,
+               _mMultiplexSettings = Nothing, _mTags = Nothing}
+
+-- | The current state of the multiplex.
+mState :: Lens' Multiplex (Maybe MultiplexState)
+mState = lens _mState (\ s a -> s{_mState = a})
+
+-- | The unique arn of the multiplex.
+mARN :: Lens' Multiplex (Maybe Text)
+mARN = lens _mARN (\ s a -> s{_mARN = a})
+
+-- | The number of currently healthy pipelines.
+mPipelinesRunningCount :: Lens' Multiplex (Maybe Int)
+mPipelinesRunningCount = lens _mPipelinesRunningCount (\ s a -> s{_mPipelinesRunningCount = a})
+
+-- | A list of availability zones for the multiplex.
+mAvailabilityZones :: Lens' Multiplex [Text]
+mAvailabilityZones = lens _mAvailabilityZones (\ s a -> s{_mAvailabilityZones = a}) . _Default . _Coerce
+
+-- | The number of programs in the multiplex.
+mProgramCount :: Lens' Multiplex (Maybe Int)
+mProgramCount = lens _mProgramCount (\ s a -> s{_mProgramCount = a})
+
+-- | A list of the multiplex output destinations.
+mDestinations :: Lens' Multiplex [MultiplexOutputDestination]
+mDestinations = lens _mDestinations (\ s a -> s{_mDestinations = a}) . _Default . _Coerce
+
+-- | The name of the multiplex.
+mName :: Lens' Multiplex (Maybe Text)
+mName = lens _mName (\ s a -> s{_mName = a})
+
+-- | The unique id of the multiplex.
+mId :: Lens' Multiplex (Maybe Text)
+mId = lens _mId (\ s a -> s{_mId = a})
+
+-- | Configuration for a multiplex event.
+mMultiplexSettings :: Lens' Multiplex (Maybe MultiplexSettings)
+mMultiplexSettings = lens _mMultiplexSettings (\ s a -> s{_mMultiplexSettings = a})
+
+-- | A collection of key-value pairs.
+mTags :: Lens' Multiplex (HashMap Text Text)
+mTags = lens _mTags (\ s a -> s{_mTags = a}) . _Default . _Map
+
+instance FromJSON Multiplex where
+        parseJSON
+          = withObject "Multiplex"
+              (\ x ->
+                 Multiplex' <$>
+                   (x .:? "state") <*> (x .:? "arn") <*>
+                     (x .:? "pipelinesRunningCount")
+                     <*> (x .:? "availabilityZones" .!= mempty)
+                     <*> (x .:? "programCount")
+                     <*> (x .:? "destinations" .!= mempty)
+                     <*> (x .:? "name")
+                     <*> (x .:? "id")
+                     <*> (x .:? "multiplexSettings")
+                     <*> (x .:? "tags" .!= mempty))
+
+instance Hashable Multiplex where
+
+instance NFData Multiplex where
+
+-- | Multiplex Group Settings
+--
+-- /See:/ 'multiplexGroupSettings' smart constructor.
+data MultiplexGroupSettings = MultiplexGroupSettings'
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
+
+-- | Creates a value of 'MultiplexGroupSettings' with the minimum fields required to make a request.
+--
+multiplexGroupSettings
+    :: MultiplexGroupSettings
+multiplexGroupSettings = MultiplexGroupSettings'
+
+instance FromJSON MultiplexGroupSettings where
+        parseJSON
+          = withObject "MultiplexGroupSettings"
+              (\ x -> pure MultiplexGroupSettings')
+
+instance Hashable MultiplexGroupSettings where
+
+instance NFData MultiplexGroupSettings where
+
+instance ToJSON MultiplexGroupSettings where
+        toJSON = const (Object mempty)
+
+-- | Multiplex MediaConnect output destination settings.
+--
+-- /See:/ 'multiplexMediaConnectOutputDestinationSettings' smart constructor.
+newtype MultiplexMediaConnectOutputDestinationSettings = MultiplexMediaConnectOutputDestinationSettings'{_mmcodsEntitlementARN
+                                                                                                         ::
+                                                                                                         Maybe
+                                                                                                           Text}
+                                                           deriving (Eq, Read,
+                                                                     Show, Data,
+                                                                     Typeable,
+                                                                     Generic)
+
+-- | Creates a value of 'MultiplexMediaConnectOutputDestinationSettings' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'mmcodsEntitlementARN' - The MediaConnect entitlement ARN available as a Flow source.
+multiplexMediaConnectOutputDestinationSettings
+    :: MultiplexMediaConnectOutputDestinationSettings
+multiplexMediaConnectOutputDestinationSettings
+  = MultiplexMediaConnectOutputDestinationSettings'{_mmcodsEntitlementARN
+                                                      = Nothing}
+
+-- | The MediaConnect entitlement ARN available as a Flow source.
+mmcodsEntitlementARN :: Lens' MultiplexMediaConnectOutputDestinationSettings (Maybe Text)
+mmcodsEntitlementARN = lens _mmcodsEntitlementARN (\ s a -> s{_mmcodsEntitlementARN = a})
+
+instance FromJSON
+           MultiplexMediaConnectOutputDestinationSettings
+         where
+        parseJSON
+          = withObject
+              "MultiplexMediaConnectOutputDestinationSettings"
+              (\ x ->
+                 MultiplexMediaConnectOutputDestinationSettings' <$>
+                   (x .:? "entitlementArn"))
+
+instance Hashable
+           MultiplexMediaConnectOutputDestinationSettings
+         where
+
+instance NFData
+           MultiplexMediaConnectOutputDestinationSettings
+         where
+
+-- | Multiplex output destination settings
+--
+-- /See:/ 'multiplexOutputDestination' smart constructor.
+newtype MultiplexOutputDestination = MultiplexOutputDestination'{_modMediaConnectSettings
+                                                                 ::
+                                                                 Maybe
+                                                                   MultiplexMediaConnectOutputDestinationSettings}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
+
+-- | Creates a value of 'MultiplexOutputDestination' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'modMediaConnectSettings' - Multiplex MediaConnect output destination settings.
+multiplexOutputDestination
+    :: MultiplexOutputDestination
+multiplexOutputDestination
+  = MultiplexOutputDestination'{_modMediaConnectSettings
+                                  = Nothing}
+
+-- | Multiplex MediaConnect output destination settings.
+modMediaConnectSettings :: Lens' MultiplexOutputDestination (Maybe MultiplexMediaConnectOutputDestinationSettings)
+modMediaConnectSettings = lens _modMediaConnectSettings (\ s a -> s{_modMediaConnectSettings = a})
+
+instance FromJSON MultiplexOutputDestination where
+        parseJSON
+          = withObject "MultiplexOutputDestination"
+              (\ x ->
+                 MultiplexOutputDestination' <$>
+                   (x .:? "mediaConnectSettings"))
+
+instance Hashable MultiplexOutputDestination where
+
+instance NFData MultiplexOutputDestination where
+
+-- | Multiplex Output Settings
+--
+-- /See:/ 'multiplexOutputSettings' smart constructor.
+newtype MultiplexOutputSettings = MultiplexOutputSettings'{_mosDestination
+                                                           :: OutputLocationRef}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
+
+-- | Creates a value of 'MultiplexOutputSettings' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'mosDestination' - Destination is a Multiplex.
+multiplexOutputSettings
+    :: OutputLocationRef -- ^ 'mosDestination'
+    -> MultiplexOutputSettings
+multiplexOutputSettings pDestination_
+  = MultiplexOutputSettings'{_mosDestination =
+                               pDestination_}
+
+-- | Destination is a Multiplex.
+mosDestination :: Lens' MultiplexOutputSettings OutputLocationRef
+mosDestination = lens _mosDestination (\ s a -> s{_mosDestination = a})
+
+instance FromJSON MultiplexOutputSettings where
+        parseJSON
+          = withObject "MultiplexOutputSettings"
+              (\ x ->
+                 MultiplexOutputSettings' <$> (x .: "destination"))
+
+instance Hashable MultiplexOutputSettings where
+
+instance NFData MultiplexOutputSettings where
+
+instance ToJSON MultiplexOutputSettings where
+        toJSON MultiplexOutputSettings'{..}
+          = object
+              (catMaybes [Just ("destination" .= _mosDestination)])
+
+-- | The multiplex program object.
+--
+-- /See:/ 'multiplexProgram' smart constructor.
+data MultiplexProgram = MultiplexProgram'{_mpPacketIdentifiersMap
+                                          ::
+                                          !(Maybe
+                                              MultiplexProgramPacketIdentifiersMap),
+                                          _mpProgramName :: !(Maybe Text),
+                                          _mpChannelId :: !(Maybe Text),
+                                          _mpMultiplexProgramSettings ::
+                                          !(Maybe MultiplexProgramSettings)}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+-- | Creates a value of 'MultiplexProgram' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'mpPacketIdentifiersMap' - The packet identifier map for this multiplex program.
+--
+-- * 'mpProgramName' - The name of the multiplex program.
+--
+-- * 'mpChannelId' - The MediaLive channel associated with the program.
+--
+-- * 'mpMultiplexProgramSettings' - The settings for this multiplex program.
+multiplexProgram
+    :: MultiplexProgram
+multiplexProgram
+  = MultiplexProgram'{_mpPacketIdentifiersMap =
+                        Nothing,
+                      _mpProgramName = Nothing, _mpChannelId = Nothing,
+                      _mpMultiplexProgramSettings = Nothing}
+
+-- | The packet identifier map for this multiplex program.
+mpPacketIdentifiersMap :: Lens' MultiplexProgram (Maybe MultiplexProgramPacketIdentifiersMap)
+mpPacketIdentifiersMap = lens _mpPacketIdentifiersMap (\ s a -> s{_mpPacketIdentifiersMap = a})
+
+-- | The name of the multiplex program.
+mpProgramName :: Lens' MultiplexProgram (Maybe Text)
+mpProgramName = lens _mpProgramName (\ s a -> s{_mpProgramName = a})
+
+-- | The MediaLive channel associated with the program.
+mpChannelId :: Lens' MultiplexProgram (Maybe Text)
+mpChannelId = lens _mpChannelId (\ s a -> s{_mpChannelId = a})
+
+-- | The settings for this multiplex program.
+mpMultiplexProgramSettings :: Lens' MultiplexProgram (Maybe MultiplexProgramSettings)
+mpMultiplexProgramSettings = lens _mpMultiplexProgramSettings (\ s a -> s{_mpMultiplexProgramSettings = a})
+
+instance FromJSON MultiplexProgram where
+        parseJSON
+          = withObject "MultiplexProgram"
+              (\ x ->
+                 MultiplexProgram' <$>
+                   (x .:? "packetIdentifiersMap") <*>
+                     (x .:? "programName")
+                     <*> (x .:? "channelId")
+                     <*> (x .:? "multiplexProgramSettings"))
+
+instance Hashable MultiplexProgram where
+
+instance NFData MultiplexProgram where
+
+-- | Multiplex Program Input Destination Settings for outputting a Channel to a Multiplex
+--
+-- /See:/ 'multiplexProgramChannelDestinationSettings' smart constructor.
+data MultiplexProgramChannelDestinationSettings = MultiplexProgramChannelDestinationSettings'{_mpcdsMultiplexId
+                                                                                              ::
+                                                                                              !(Maybe
+                                                                                                  Text),
+                                                                                              _mpcdsProgramName
+                                                                                              ::
+                                                                                              !(Maybe
+                                                                                                  Text)}
+                                                    deriving (Eq, Read, Show,
+                                                              Data, Typeable,
+                                                              Generic)
+
+-- | Creates a value of 'MultiplexProgramChannelDestinationSettings' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'mpcdsMultiplexId' - The ID of the Multiplex that the encoder is providing output to. You do not need to specify the individual inputs to the Multiplex; MediaLive will handle the connection of the two MediaLive pipelines to the two Multiplex instances. The Multiplex must be in the same region as the Channel.
+--
+-- * 'mpcdsProgramName' - The program name of the Multiplex program that the encoder is providing output to.
+multiplexProgramChannelDestinationSettings
+    :: MultiplexProgramChannelDestinationSettings
+multiplexProgramChannelDestinationSettings
+  = MultiplexProgramChannelDestinationSettings'{_mpcdsMultiplexId
+                                                  = Nothing,
+                                                _mpcdsProgramName = Nothing}
+
+-- | The ID of the Multiplex that the encoder is providing output to. You do not need to specify the individual inputs to the Multiplex; MediaLive will handle the connection of the two MediaLive pipelines to the two Multiplex instances. The Multiplex must be in the same region as the Channel.
+mpcdsMultiplexId :: Lens' MultiplexProgramChannelDestinationSettings (Maybe Text)
+mpcdsMultiplexId = lens _mpcdsMultiplexId (\ s a -> s{_mpcdsMultiplexId = a})
+
+-- | The program name of the Multiplex program that the encoder is providing output to.
+mpcdsProgramName :: Lens' MultiplexProgramChannelDestinationSettings (Maybe Text)
+mpcdsProgramName = lens _mpcdsProgramName (\ s a -> s{_mpcdsProgramName = a})
+
+instance FromJSON
+           MultiplexProgramChannelDestinationSettings
+         where
+        parseJSON
+          = withObject
+              "MultiplexProgramChannelDestinationSettings"
+              (\ x ->
+                 MultiplexProgramChannelDestinationSettings' <$>
+                   (x .:? "multiplexId") <*> (x .:? "programName"))
+
+instance Hashable
+           MultiplexProgramChannelDestinationSettings
+         where
+
+instance NFData
+           MultiplexProgramChannelDestinationSettings
+         where
+
+instance ToJSON
+           MultiplexProgramChannelDestinationSettings
+         where
+        toJSON
+          MultiplexProgramChannelDestinationSettings'{..}
+          = object
+              (catMaybes
+                 [("multiplexId" .=) <$> _mpcdsMultiplexId,
+                  ("programName" .=) <$> _mpcdsProgramName])
+
+-- | Packet identifiers map for a given Multiplex program.
+--
+-- /See:/ 'multiplexProgramPacketIdentifiersMap' smart constructor.
+data MultiplexProgramPacketIdentifiersMap = MultiplexProgramPacketIdentifiersMap'{_mppimPmtPid
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Int),
+                                                                                  _mppimEtvSignalPid
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Int),
+                                                                                  _mppimVideoPid
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Int),
+                                                                                  _mppimScte35Pid
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Int),
+                                                                                  _mppimPrivateMetadataPid
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Int),
+                                                                                  _mppimTimedMetadataPid
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Int),
+                                                                                  _mppimPcrPid
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Int),
+                                                                                  _mppimKlvDataPids
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      [Int]),
+                                                                                  _mppimDvbSubPids
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      [Int]),
+                                                                                  _mppimScte27Pids
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      [Int]),
+                                                                                  _mppimEtvPlatformPid
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Int),
+                                                                                  _mppimAudioPids
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      [Int]),
+                                                                                  _mppimDvbTeletextPid
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Int)}
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
+
+-- | Creates a value of 'MultiplexProgramPacketIdentifiersMap' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'mppimPmtPid' - Undocumented member.
+--
+-- * 'mppimEtvSignalPid' - Undocumented member.
+--
+-- * 'mppimVideoPid' - Undocumented member.
+--
+-- * 'mppimScte35Pid' - Undocumented member.
+--
+-- * 'mppimPrivateMetadataPid' - Undocumented member.
+--
+-- * 'mppimTimedMetadataPid' - Undocumented member.
+--
+-- * 'mppimPcrPid' - Undocumented member.
+--
+-- * 'mppimKlvDataPids' - Undocumented member.
+--
+-- * 'mppimDvbSubPids' - Undocumented member.
+--
+-- * 'mppimScte27Pids' - Undocumented member.
+--
+-- * 'mppimEtvPlatformPid' - Undocumented member.
+--
+-- * 'mppimAudioPids' - Undocumented member.
+--
+-- * 'mppimDvbTeletextPid' - Undocumented member.
+multiplexProgramPacketIdentifiersMap
+    :: MultiplexProgramPacketIdentifiersMap
+multiplexProgramPacketIdentifiersMap
+  = MultiplexProgramPacketIdentifiersMap'{_mppimPmtPid
+                                            = Nothing,
+                                          _mppimEtvSignalPid = Nothing,
+                                          _mppimVideoPid = Nothing,
+                                          _mppimScte35Pid = Nothing,
+                                          _mppimPrivateMetadataPid = Nothing,
+                                          _mppimTimedMetadataPid = Nothing,
+                                          _mppimPcrPid = Nothing,
+                                          _mppimKlvDataPids = Nothing,
+                                          _mppimDvbSubPids = Nothing,
+                                          _mppimScte27Pids = Nothing,
+                                          _mppimEtvPlatformPid = Nothing,
+                                          _mppimAudioPids = Nothing,
+                                          _mppimDvbTeletextPid = Nothing}
+
+-- | Undocumented member.
+mppimPmtPid :: Lens' MultiplexProgramPacketIdentifiersMap (Maybe Int)
+mppimPmtPid = lens _mppimPmtPid (\ s a -> s{_mppimPmtPid = a})
+
+-- | Undocumented member.
+mppimEtvSignalPid :: Lens' MultiplexProgramPacketIdentifiersMap (Maybe Int)
+mppimEtvSignalPid = lens _mppimEtvSignalPid (\ s a -> s{_mppimEtvSignalPid = a})
+
+-- | Undocumented member.
+mppimVideoPid :: Lens' MultiplexProgramPacketIdentifiersMap (Maybe Int)
+mppimVideoPid = lens _mppimVideoPid (\ s a -> s{_mppimVideoPid = a})
+
+-- | Undocumented member.
+mppimScte35Pid :: Lens' MultiplexProgramPacketIdentifiersMap (Maybe Int)
+mppimScte35Pid = lens _mppimScte35Pid (\ s a -> s{_mppimScte35Pid = a})
+
+-- | Undocumented member.
+mppimPrivateMetadataPid :: Lens' MultiplexProgramPacketIdentifiersMap (Maybe Int)
+mppimPrivateMetadataPid = lens _mppimPrivateMetadataPid (\ s a -> s{_mppimPrivateMetadataPid = a})
+
+-- | Undocumented member.
+mppimTimedMetadataPid :: Lens' MultiplexProgramPacketIdentifiersMap (Maybe Int)
+mppimTimedMetadataPid = lens _mppimTimedMetadataPid (\ s a -> s{_mppimTimedMetadataPid = a})
+
+-- | Undocumented member.
+mppimPcrPid :: Lens' MultiplexProgramPacketIdentifiersMap (Maybe Int)
+mppimPcrPid = lens _mppimPcrPid (\ s a -> s{_mppimPcrPid = a})
+
+-- | Undocumented member.
+mppimKlvDataPids :: Lens' MultiplexProgramPacketIdentifiersMap [Int]
+mppimKlvDataPids = lens _mppimKlvDataPids (\ s a -> s{_mppimKlvDataPids = a}) . _Default . _Coerce
+
+-- | Undocumented member.
+mppimDvbSubPids :: Lens' MultiplexProgramPacketIdentifiersMap [Int]
+mppimDvbSubPids = lens _mppimDvbSubPids (\ s a -> s{_mppimDvbSubPids = a}) . _Default . _Coerce
+
+-- | Undocumented member.
+mppimScte27Pids :: Lens' MultiplexProgramPacketIdentifiersMap [Int]
+mppimScte27Pids = lens _mppimScte27Pids (\ s a -> s{_mppimScte27Pids = a}) . _Default . _Coerce
+
+-- | Undocumented member.
+mppimEtvPlatformPid :: Lens' MultiplexProgramPacketIdentifiersMap (Maybe Int)
+mppimEtvPlatformPid = lens _mppimEtvPlatformPid (\ s a -> s{_mppimEtvPlatformPid = a})
+
+-- | Undocumented member.
+mppimAudioPids :: Lens' MultiplexProgramPacketIdentifiersMap [Int]
+mppimAudioPids = lens _mppimAudioPids (\ s a -> s{_mppimAudioPids = a}) . _Default . _Coerce
+
+-- | Undocumented member.
+mppimDvbTeletextPid :: Lens' MultiplexProgramPacketIdentifiersMap (Maybe Int)
+mppimDvbTeletextPid = lens _mppimDvbTeletextPid (\ s a -> s{_mppimDvbTeletextPid = a})
+
+instance FromJSON
+           MultiplexProgramPacketIdentifiersMap
+         where
+        parseJSON
+          = withObject "MultiplexProgramPacketIdentifiersMap"
+              (\ x ->
+                 MultiplexProgramPacketIdentifiersMap' <$>
+                   (x .:? "pmtPid") <*> (x .:? "etvSignalPid") <*>
+                     (x .:? "videoPid")
+                     <*> (x .:? "scte35Pid")
+                     <*> (x .:? "privateMetadataPid")
+                     <*> (x .:? "timedMetadataPid")
+                     <*> (x .:? "pcrPid")
+                     <*> (x .:? "klvDataPids" .!= mempty)
+                     <*> (x .:? "dvbSubPids" .!= mempty)
+                     <*> (x .:? "scte27Pids" .!= mempty)
+                     <*> (x .:? "etvPlatformPid")
+                     <*> (x .:? "audioPids" .!= mempty)
+                     <*> (x .:? "dvbTeletextPid"))
+
+instance Hashable
+           MultiplexProgramPacketIdentifiersMap
+         where
+
+instance NFData MultiplexProgramPacketIdentifiersMap
+         where
+
+-- | Transport stream service descriptor configuration for the Multiplex program.
+--
+-- /See:/ 'multiplexProgramServiceDescriptor' smart constructor.
+data MultiplexProgramServiceDescriptor = MultiplexProgramServiceDescriptor'{_mpsdProviderName
+                                                                            ::
+                                                                            !Text,
+                                                                            _mpsdServiceName
+                                                                            ::
+                                                                            !Text}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
+
+-- | Creates a value of 'MultiplexProgramServiceDescriptor' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'mpsdProviderName' - Name of the provider.
+--
+-- * 'mpsdServiceName' - Name of the service.
+multiplexProgramServiceDescriptor
+    :: Text -- ^ 'mpsdProviderName'
+    -> Text -- ^ 'mpsdServiceName'
+    -> MultiplexProgramServiceDescriptor
+multiplexProgramServiceDescriptor pProviderName_
+  pServiceName_
+  = MultiplexProgramServiceDescriptor'{_mpsdProviderName
+                                         = pProviderName_,
+                                       _mpsdServiceName = pServiceName_}
+
+-- | Name of the provider.
+mpsdProviderName :: Lens' MultiplexProgramServiceDescriptor Text
+mpsdProviderName = lens _mpsdProviderName (\ s a -> s{_mpsdProviderName = a})
+
+-- | Name of the service.
+mpsdServiceName :: Lens' MultiplexProgramServiceDescriptor Text
+mpsdServiceName = lens _mpsdServiceName (\ s a -> s{_mpsdServiceName = a})
+
+instance FromJSON MultiplexProgramServiceDescriptor
+         where
+        parseJSON
+          = withObject "MultiplexProgramServiceDescriptor"
+              (\ x ->
+                 MultiplexProgramServiceDescriptor' <$>
+                   (x .: "providerName") <*> (x .: "serviceName"))
+
+instance Hashable MultiplexProgramServiceDescriptor
+         where
+
+instance NFData MultiplexProgramServiceDescriptor
+         where
+
+instance ToJSON MultiplexProgramServiceDescriptor
+         where
+        toJSON MultiplexProgramServiceDescriptor'{..}
+          = object
+              (catMaybes
+                 [Just ("providerName" .= _mpsdProviderName),
+                  Just ("serviceName" .= _mpsdServiceName)])
+
+-- | Multiplex Program settings configuration.
+--
+-- /See:/ 'multiplexProgramSettings' smart constructor.
+data MultiplexProgramSettings = MultiplexProgramSettings'{_mpsPreferredChannelPipeline
+                                                          ::
+                                                          !(Maybe
+                                                              PreferredChannelPipeline),
+                                                          _mpsVideoSettings ::
+                                                          !(Maybe
+                                                              MultiplexVideoSettings),
+                                                          _mpsServiceDescriptor
+                                                          ::
+                                                          !(Maybe
+                                                              MultiplexProgramServiceDescriptor),
+                                                          _mpsProgramNumber ::
+                                                          !Nat}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
+
+-- | Creates a value of 'MultiplexProgramSettings' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'mpsPreferredChannelPipeline' - Indicates which pipeline is preferred by the multiplex for program ingest.
+--
+-- * 'mpsVideoSettings' - Program video settings configuration.
+--
+-- * 'mpsServiceDescriptor' - Transport stream service descriptor configuration for the Multiplex program.
+--
+-- * 'mpsProgramNumber' - Unique program number.
+multiplexProgramSettings
+    :: Natural -- ^ 'mpsProgramNumber'
+    -> MultiplexProgramSettings
+multiplexProgramSettings pProgramNumber_
+  = MultiplexProgramSettings'{_mpsPreferredChannelPipeline
+                                = Nothing,
+                              _mpsVideoSettings = Nothing,
+                              _mpsServiceDescriptor = Nothing,
+                              _mpsProgramNumber = _Nat # pProgramNumber_}
+
+-- | Indicates which pipeline is preferred by the multiplex for program ingest.
+mpsPreferredChannelPipeline :: Lens' MultiplexProgramSettings (Maybe PreferredChannelPipeline)
+mpsPreferredChannelPipeline = lens _mpsPreferredChannelPipeline (\ s a -> s{_mpsPreferredChannelPipeline = a})
+
+-- | Program video settings configuration.
+mpsVideoSettings :: Lens' MultiplexProgramSettings (Maybe MultiplexVideoSettings)
+mpsVideoSettings = lens _mpsVideoSettings (\ s a -> s{_mpsVideoSettings = a})
+
+-- | Transport stream service descriptor configuration for the Multiplex program.
+mpsServiceDescriptor :: Lens' MultiplexProgramSettings (Maybe MultiplexProgramServiceDescriptor)
+mpsServiceDescriptor = lens _mpsServiceDescriptor (\ s a -> s{_mpsServiceDescriptor = a})
+
+-- | Unique program number.
+mpsProgramNumber :: Lens' MultiplexProgramSettings Natural
+mpsProgramNumber = lens _mpsProgramNumber (\ s a -> s{_mpsProgramNumber = a}) . _Nat
+
+instance FromJSON MultiplexProgramSettings where
+        parseJSON
+          = withObject "MultiplexProgramSettings"
+              (\ x ->
+                 MultiplexProgramSettings' <$>
+                   (x .:? "preferredChannelPipeline") <*>
+                     (x .:? "videoSettings")
+                     <*> (x .:? "serviceDescriptor")
+                     <*> (x .: "programNumber"))
+
+instance Hashable MultiplexProgramSettings where
+
+instance NFData MultiplexProgramSettings where
+
+instance ToJSON MultiplexProgramSettings where
+        toJSON MultiplexProgramSettings'{..}
+          = object
+              (catMaybes
+                 [("preferredChannelPipeline" .=) <$>
+                    _mpsPreferredChannelPipeline,
+                  ("videoSettings" .=) <$> _mpsVideoSettings,
+                  ("serviceDescriptor" .=) <$> _mpsServiceDescriptor,
+                  Just ("programNumber" .= _mpsProgramNumber)])
+
+-- | Placeholder documentation for MultiplexProgramSummary
+--
+-- /See:/ 'multiplexProgramSummary' smart constructor.
+data MultiplexProgramSummary = MultiplexProgramSummary'{_mpsProgramName
+                                                        :: !(Maybe Text),
+                                                        _mpsChannelId ::
+                                                        !(Maybe Text)}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
+
+-- | Creates a value of 'MultiplexProgramSummary' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'mpsProgramName' - The name of the multiplex program.
+--
+-- * 'mpsChannelId' - The MediaLive Channel associated with the program.
+multiplexProgramSummary
+    :: MultiplexProgramSummary
+multiplexProgramSummary
+  = MultiplexProgramSummary'{_mpsProgramName = Nothing,
+                             _mpsChannelId = Nothing}
+
+-- | The name of the multiplex program.
+mpsProgramName :: Lens' MultiplexProgramSummary (Maybe Text)
+mpsProgramName = lens _mpsProgramName (\ s a -> s{_mpsProgramName = a})
+
+-- | The MediaLive Channel associated with the program.
+mpsChannelId :: Lens' MultiplexProgramSummary (Maybe Text)
+mpsChannelId = lens _mpsChannelId (\ s a -> s{_mpsChannelId = a})
+
+instance FromJSON MultiplexProgramSummary where
+        parseJSON
+          = withObject "MultiplexProgramSummary"
+              (\ x ->
+                 MultiplexProgramSummary' <$>
+                   (x .:? "programName") <*> (x .:? "channelId"))
+
+instance Hashable MultiplexProgramSummary where
+
+instance NFData MultiplexProgramSummary where
+
+-- | Contains configuration for a Multiplex event
+--
+-- /See:/ 'multiplexSettings' smart constructor.
+data MultiplexSettings = MultiplexSettings'{_msMaximumVideoBufferDelayMilliseconds
+                                            :: !(Maybe Nat),
+                                            _msTransportStreamReservedBitrate ::
+                                            !(Maybe Nat),
+                                            _msTransportStreamBitrate :: !Nat,
+                                            _msTransportStreamId :: !Nat}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+-- | Creates a value of 'MultiplexSettings' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'msMaximumVideoBufferDelayMilliseconds' - Maximum video buffer delay in milliseconds.
+--
+-- * 'msTransportStreamReservedBitrate' - Transport stream reserved bit rate.
+--
+-- * 'msTransportStreamBitrate' - Transport stream bit rate.
+--
+-- * 'msTransportStreamId' - Transport stream ID.
+multiplexSettings
+    :: Natural -- ^ 'msTransportStreamBitrate'
+    -> Natural -- ^ 'msTransportStreamId'
+    -> MultiplexSettings
+multiplexSettings pTransportStreamBitrate_
+  pTransportStreamId_
+  = MultiplexSettings'{_msMaximumVideoBufferDelayMilliseconds
+                         = Nothing,
+                       _msTransportStreamReservedBitrate = Nothing,
+                       _msTransportStreamBitrate =
+                         _Nat # pTransportStreamBitrate_,
+                       _msTransportStreamId = _Nat # pTransportStreamId_}
+
+-- | Maximum video buffer delay in milliseconds.
+msMaximumVideoBufferDelayMilliseconds :: Lens' MultiplexSettings (Maybe Natural)
+msMaximumVideoBufferDelayMilliseconds = lens _msMaximumVideoBufferDelayMilliseconds (\ s a -> s{_msMaximumVideoBufferDelayMilliseconds = a}) . mapping _Nat
+
+-- | Transport stream reserved bit rate.
+msTransportStreamReservedBitrate :: Lens' MultiplexSettings (Maybe Natural)
+msTransportStreamReservedBitrate = lens _msTransportStreamReservedBitrate (\ s a -> s{_msTransportStreamReservedBitrate = a}) . mapping _Nat
+
+-- | Transport stream bit rate.
+msTransportStreamBitrate :: Lens' MultiplexSettings Natural
+msTransportStreamBitrate = lens _msTransportStreamBitrate (\ s a -> s{_msTransportStreamBitrate = a}) . _Nat
+
+-- | Transport stream ID.
+msTransportStreamId :: Lens' MultiplexSettings Natural
+msTransportStreamId = lens _msTransportStreamId (\ s a -> s{_msTransportStreamId = a}) . _Nat
+
+instance FromJSON MultiplexSettings where
+        parseJSON
+          = withObject "MultiplexSettings"
+              (\ x ->
+                 MultiplexSettings' <$>
+                   (x .:? "maximumVideoBufferDelayMilliseconds") <*>
+                     (x .:? "transportStreamReservedBitrate")
+                     <*> (x .: "transportStreamBitrate")
+                     <*> (x .: "transportStreamId"))
+
+instance Hashable MultiplexSettings where
+
+instance NFData MultiplexSettings where
+
+instance ToJSON MultiplexSettings where
+        toJSON MultiplexSettings'{..}
+          = object
+              (catMaybes
+                 [("maximumVideoBufferDelayMilliseconds" .=) <$>
+                    _msMaximumVideoBufferDelayMilliseconds,
+                  ("transportStreamReservedBitrate" .=) <$>
+                    _msTransportStreamReservedBitrate,
+                  Just
+                    ("transportStreamBitrate" .=
+                       _msTransportStreamBitrate),
+                  Just ("transportStreamId" .= _msTransportStreamId)])
+
+-- | Contains summary configuration for a Multiplex event.
+--
+-- /See:/ 'multiplexSettingsSummary' smart constructor.
+newtype MultiplexSettingsSummary = MultiplexSettingsSummary'{_mssTransportStreamBitrate
+                                                             :: Maybe Nat}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
+
+-- | Creates a value of 'MultiplexSettingsSummary' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'mssTransportStreamBitrate' - Transport stream bit rate.
+multiplexSettingsSummary
+    :: MultiplexSettingsSummary
+multiplexSettingsSummary
+  = MultiplexSettingsSummary'{_mssTransportStreamBitrate
+                                = Nothing}
+
+-- | Transport stream bit rate.
+mssTransportStreamBitrate :: Lens' MultiplexSettingsSummary (Maybe Natural)
+mssTransportStreamBitrate = lens _mssTransportStreamBitrate (\ s a -> s{_mssTransportStreamBitrate = a}) . mapping _Nat
+
+instance FromJSON MultiplexSettingsSummary where
+        parseJSON
+          = withObject "MultiplexSettingsSummary"
+              (\ x ->
+                 MultiplexSettingsSummary' <$>
+                   (x .:? "transportStreamBitrate"))
+
+instance Hashable MultiplexSettingsSummary where
+
+instance NFData MultiplexSettingsSummary where
+
+-- | Statmux rate control settings
+--
+-- /See:/ 'multiplexStatmuxVideoSettings' smart constructor.
+data MultiplexStatmuxVideoSettings = MultiplexStatmuxVideoSettings'{_msvsMinimumBitrate
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Nat),
+                                                                    _msvsMaximumBitrate
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Nat)}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
+
+-- | Creates a value of 'MultiplexStatmuxVideoSettings' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'msvsMinimumBitrate' - Minimum statmux bitrate.
+--
+-- * 'msvsMaximumBitrate' - Maximum statmux bitrate.
+multiplexStatmuxVideoSettings
+    :: MultiplexStatmuxVideoSettings
+multiplexStatmuxVideoSettings
+  = MultiplexStatmuxVideoSettings'{_msvsMinimumBitrate
+                                     = Nothing,
+                                   _msvsMaximumBitrate = Nothing}
+
+-- | Minimum statmux bitrate.
+msvsMinimumBitrate :: Lens' MultiplexStatmuxVideoSettings (Maybe Natural)
+msvsMinimumBitrate = lens _msvsMinimumBitrate (\ s a -> s{_msvsMinimumBitrate = a}) . mapping _Nat
+
+-- | Maximum statmux bitrate.
+msvsMaximumBitrate :: Lens' MultiplexStatmuxVideoSettings (Maybe Natural)
+msvsMaximumBitrate = lens _msvsMaximumBitrate (\ s a -> s{_msvsMaximumBitrate = a}) . mapping _Nat
+
+instance FromJSON MultiplexStatmuxVideoSettings where
+        parseJSON
+          = withObject "MultiplexStatmuxVideoSettings"
+              (\ x ->
+                 MultiplexStatmuxVideoSettings' <$>
+                   (x .:? "minimumBitrate") <*>
+                     (x .:? "maximumBitrate"))
+
+instance Hashable MultiplexStatmuxVideoSettings where
+
+instance NFData MultiplexStatmuxVideoSettings where
+
+instance ToJSON MultiplexStatmuxVideoSettings where
+        toJSON MultiplexStatmuxVideoSettings'{..}
+          = object
+              (catMaybes
+                 [("minimumBitrate" .=) <$> _msvsMinimumBitrate,
+                  ("maximumBitrate" .=) <$> _msvsMaximumBitrate])
+
+-- | Placeholder documentation for MultiplexSummary
+--
+-- /See:/ 'multiplexSummary' smart constructor.
+data MultiplexSummary = MultiplexSummary'{_msState ::
+                                          !(Maybe MultiplexState),
+                                          _msARN :: !(Maybe Text),
+                                          _msPipelinesRunningCount ::
+                                          !(Maybe Int),
+                                          _msAvailabilityZones ::
+                                          !(Maybe [Text]),
+                                          _msProgramCount :: !(Maybe Int),
+                                          _msName :: !(Maybe Text),
+                                          _msId :: !(Maybe Text),
+                                          _msMultiplexSettings ::
+                                          !(Maybe MultiplexSettingsSummary),
+                                          _msTags :: !(Maybe (Map Text Text))}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+-- | Creates a value of 'MultiplexSummary' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'msState' - The current state of the multiplex.
+--
+-- * 'msARN' - The unique arn of the multiplex.
+--
+-- * 'msPipelinesRunningCount' - The number of currently healthy pipelines.
+--
+-- * 'msAvailabilityZones' - A list of availability zones for the multiplex.
+--
+-- * 'msProgramCount' - The number of programs in the multiplex.
+--
+-- * 'msName' - The name of the multiplex.
+--
+-- * 'msId' - The unique id of the multiplex.
+--
+-- * 'msMultiplexSettings' - Configuration for a multiplex event.
+--
+-- * 'msTags' - A collection of key-value pairs.
+multiplexSummary
+    :: MultiplexSummary
+multiplexSummary
+  = MultiplexSummary'{_msState = Nothing,
+                      _msARN = Nothing, _msPipelinesRunningCount = Nothing,
+                      _msAvailabilityZones = Nothing,
+                      _msProgramCount = Nothing, _msName = Nothing,
+                      _msId = Nothing, _msMultiplexSettings = Nothing,
+                      _msTags = Nothing}
+
+-- | The current state of the multiplex.
+msState :: Lens' MultiplexSummary (Maybe MultiplexState)
+msState = lens _msState (\ s a -> s{_msState = a})
+
+-- | The unique arn of the multiplex.
+msARN :: Lens' MultiplexSummary (Maybe Text)
+msARN = lens _msARN (\ s a -> s{_msARN = a})
+
+-- | The number of currently healthy pipelines.
+msPipelinesRunningCount :: Lens' MultiplexSummary (Maybe Int)
+msPipelinesRunningCount = lens _msPipelinesRunningCount (\ s a -> s{_msPipelinesRunningCount = a})
+
+-- | A list of availability zones for the multiplex.
+msAvailabilityZones :: Lens' MultiplexSummary [Text]
+msAvailabilityZones = lens _msAvailabilityZones (\ s a -> s{_msAvailabilityZones = a}) . _Default . _Coerce
+
+-- | The number of programs in the multiplex.
+msProgramCount :: Lens' MultiplexSummary (Maybe Int)
+msProgramCount = lens _msProgramCount (\ s a -> s{_msProgramCount = a})
+
+-- | The name of the multiplex.
+msName :: Lens' MultiplexSummary (Maybe Text)
+msName = lens _msName (\ s a -> s{_msName = a})
+
+-- | The unique id of the multiplex.
+msId :: Lens' MultiplexSummary (Maybe Text)
+msId = lens _msId (\ s a -> s{_msId = a})
+
+-- | Configuration for a multiplex event.
+msMultiplexSettings :: Lens' MultiplexSummary (Maybe MultiplexSettingsSummary)
+msMultiplexSettings = lens _msMultiplexSettings (\ s a -> s{_msMultiplexSettings = a})
+
+-- | A collection of key-value pairs.
+msTags :: Lens' MultiplexSummary (HashMap Text Text)
+msTags = lens _msTags (\ s a -> s{_msTags = a}) . _Default . _Map
+
+instance FromJSON MultiplexSummary where
+        parseJSON
+          = withObject "MultiplexSummary"
+              (\ x ->
+                 MultiplexSummary' <$>
+                   (x .:? "state") <*> (x .:? "arn") <*>
+                     (x .:? "pipelinesRunningCount")
+                     <*> (x .:? "availabilityZones" .!= mempty)
+                     <*> (x .:? "programCount")
+                     <*> (x .:? "name")
+                     <*> (x .:? "id")
+                     <*> (x .:? "multiplexSettings")
+                     <*> (x .:? "tags" .!= mempty))
+
+instance Hashable MultiplexSummary where
+
+instance NFData MultiplexSummary where
+
+-- | The video configuration for each program in a multiplex.
+--
+-- /See:/ 'multiplexVideoSettings' smart constructor.
+data MultiplexVideoSettings = MultiplexVideoSettings'{_mvsStatmuxSettings
+                                                      ::
+                                                      !(Maybe
+                                                          MultiplexStatmuxVideoSettings),
+                                                      _mvsConstantBitrate ::
+                                                      !(Maybe Nat)}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
+
+-- | Creates a value of 'MultiplexVideoSettings' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'mvsStatmuxSettings' - Statmux rate control settings. When this field is defined, ConstantBitrate must be undefined.
+--
+-- * 'mvsConstantBitrate' - The constant bitrate configuration for the video encode. When this field is defined, StatmuxSettings must be undefined.
+multiplexVideoSettings
+    :: MultiplexVideoSettings
+multiplexVideoSettings
+  = MultiplexVideoSettings'{_mvsStatmuxSettings =
+                              Nothing,
+                            _mvsConstantBitrate = Nothing}
+
+-- | Statmux rate control settings. When this field is defined, ConstantBitrate must be undefined.
+mvsStatmuxSettings :: Lens' MultiplexVideoSettings (Maybe MultiplexStatmuxVideoSettings)
+mvsStatmuxSettings = lens _mvsStatmuxSettings (\ s a -> s{_mvsStatmuxSettings = a})
+
+-- | The constant bitrate configuration for the video encode. When this field is defined, StatmuxSettings must be undefined.
+mvsConstantBitrate :: Lens' MultiplexVideoSettings (Maybe Natural)
+mvsConstantBitrate = lens _mvsConstantBitrate (\ s a -> s{_mvsConstantBitrate = a}) . mapping _Nat
+
+instance FromJSON MultiplexVideoSettings where
+        parseJSON
+          = withObject "MultiplexVideoSettings"
+              (\ x ->
+                 MultiplexVideoSettings' <$>
+                   (x .:? "statmuxSettings") <*>
+                     (x .:? "constantBitrate"))
+
+instance Hashable MultiplexVideoSettings where
+
+instance NFData MultiplexVideoSettings where
+
+instance ToJSON MultiplexVideoSettings where
+        toJSON MultiplexVideoSettings'{..}
+          = object
+              (catMaybes
+                 [("statmuxSettings" .=) <$> _mvsStatmuxSettings,
+                  ("constantBitrate" .=) <$> _mvsConstantBitrate])
 
 -- | Network source to transcode. Must be accessible to the Elemental Live node that is running the live event through a network connection.
 --
 -- /See:/ 'networkInputSettings' smart constructor.
-data NetworkInputSettings = NetworkInputSettings'
-  { _nisHlsInputSettings :: !(Maybe HlsInputSettings)
-  , _nisServerValidation :: !(Maybe NetworkInputServerValidation)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data NetworkInputSettings = NetworkInputSettings'{_nisHlsInputSettings
+                                                  :: !(Maybe HlsInputSettings),
+                                                  _nisServerValidation ::
+                                                  !(Maybe
+                                                      NetworkInputServerValidation)}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'NetworkInputSettings' with the minimum fields required to make a request.
 --
@@ -6529,10 +10262,10 @@ data NetworkInputSettings = NetworkInputSettings'
 -- * 'nisServerValidation' - Check HTTPS server certificates. When set to checkCryptographyOnly, cryptography in the certificate will be checked, but not the server's name. Certain subdomains (notably S3 buckets that use dots in the bucket name) do not strictly match the corresponding certificate's wildcard pattern and would otherwise cause the event to error. This setting is ignored for protocols that do not use https.
 networkInputSettings
     :: NetworkInputSettings
-networkInputSettings =
-  NetworkInputSettings'
-    {_nisHlsInputSettings = Nothing, _nisServerValidation = Nothing}
-
+networkInputSettings
+  = NetworkInputSettings'{_nisHlsInputSettings =
+                            Nothing,
+                          _nisServerValidation = Nothing}
 
 -- | Specifies HLS input settings when the uri is for a HLS manifest.
 nisHlsInputSettings :: Lens' NetworkInputSettings (Maybe HlsInputSettings)
@@ -6561,17 +10294,185 @@ instance ToJSON NetworkInputSettings where
                  [("hlsInputSettings" .=) <$> _nisHlsInputSettings,
                   ("serverValidation" .=) <$> _nisServerValidation])
 
+-- | Nielsen Configuration
+--
+-- /See:/ 'nielsenConfiguration' smart constructor.
+data NielsenConfiguration = NielsenConfiguration'{_ncDistributorId
+                                                  :: !(Maybe Text),
+                                                  _ncNielsenPcmToId3Tagging ::
+                                                  !(Maybe
+                                                      NielsenPcmToId3TaggingState)}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+-- | Creates a value of 'NielsenConfiguration' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'ncDistributorId' - Enter the Distributor ID assigned to your organization by Nielsen.
+--
+-- * 'ncNielsenPcmToId3Tagging' - Enables Nielsen PCM to ID3 tagging
+nielsenConfiguration
+    :: NielsenConfiguration
+nielsenConfiguration
+  = NielsenConfiguration'{_ncDistributorId = Nothing,
+                          _ncNielsenPcmToId3Tagging = Nothing}
+
+-- | Enter the Distributor ID assigned to your organization by Nielsen.
+ncDistributorId :: Lens' NielsenConfiguration (Maybe Text)
+ncDistributorId = lens _ncDistributorId (\ s a -> s{_ncDistributorId = a})
+
+-- | Enables Nielsen PCM to ID3 tagging
+ncNielsenPcmToId3Tagging :: Lens' NielsenConfiguration (Maybe NielsenPcmToId3TaggingState)
+ncNielsenPcmToId3Tagging = lens _ncNielsenPcmToId3Tagging (\ s a -> s{_ncNielsenPcmToId3Tagging = a})
+
+instance FromJSON NielsenConfiguration where
+        parseJSON
+          = withObject "NielsenConfiguration"
+              (\ x ->
+                 NielsenConfiguration' <$>
+                   (x .:? "distributorId") <*>
+                     (x .:? "nielsenPcmToId3Tagging"))
+
+instance Hashable NielsenConfiguration where
+
+instance NFData NielsenConfiguration where
+
+instance ToJSON NielsenConfiguration where
+        toJSON NielsenConfiguration'{..}
+          = object
+              (catMaybes
+                 [("distributorId" .=) <$> _ncDistributorId,
+                  ("nielsenPcmToId3Tagging" .=) <$>
+                    _ncNielsenPcmToId3Tagging])
+
+-- | Reserved resources available for purchase
+--
+-- /See:/ 'offering' smart constructor.
+data Offering = Offering'{_oResourceSpecification ::
+                          !(Maybe ReservationResourceSpecification),
+                          _oCurrencyCode :: !(Maybe Text),
+                          _oARN :: !(Maybe Text),
+                          _oOfferingId :: !(Maybe Text),
+                          _oRegion :: !(Maybe Text),
+                          _oOfferingType :: !(Maybe OfferingType),
+                          _oUsagePrice :: !(Maybe Double),
+                          _oFixedPrice :: !(Maybe Double),
+                          _oDurationUnits :: !(Maybe OfferingDurationUnits),
+                          _oOfferingDescription :: !(Maybe Text),
+                          _oDuration :: !(Maybe Int)}
+                  deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+-- | Creates a value of 'Offering' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'oResourceSpecification' - Resource configuration details
+--
+-- * 'oCurrencyCode' - Currency code for usagePrice and fixedPrice in ISO-4217 format, e.g. 'USD'
+--
+-- * 'oARN' - Unique offering ARN, e.g. 'arn:aws:medialive:us-west-2:123456789012:offering:87654321'
+--
+-- * 'oOfferingId' - Unique offering ID, e.g. '87654321'
+--
+-- * 'oRegion' - AWS region, e.g. 'us-west-2'
+--
+-- * 'oOfferingType' - Offering type, e.g. 'NO_UPFRONT'
+--
+-- * 'oUsagePrice' - Recurring usage charge for each reserved resource, e.g. '157.0'
+--
+-- * 'oFixedPrice' - One-time charge for each reserved resource, e.g. '0.0' for a NO_UPFRONT offering
+--
+-- * 'oDurationUnits' - Units for duration, e.g. 'MONTHS'
+--
+-- * 'oOfferingDescription' - Offering description, e.g. 'HD AVC output at 10-20 Mbps, 30 fps, and standard VQ in US West (Oregon)'
+--
+-- * 'oDuration' - Lease duration, e.g. '12'
+offering
+    :: Offering
+offering
+  = Offering'{_oResourceSpecification = Nothing,
+              _oCurrencyCode = Nothing, _oARN = Nothing,
+              _oOfferingId = Nothing, _oRegion = Nothing,
+              _oOfferingType = Nothing, _oUsagePrice = Nothing,
+              _oFixedPrice = Nothing, _oDurationUnits = Nothing,
+              _oOfferingDescription = Nothing,
+              _oDuration = Nothing}
+
+-- | Resource configuration details
+oResourceSpecification :: Lens' Offering (Maybe ReservationResourceSpecification)
+oResourceSpecification = lens _oResourceSpecification (\ s a -> s{_oResourceSpecification = a})
+
+-- | Currency code for usagePrice and fixedPrice in ISO-4217 format, e.g. 'USD'
+oCurrencyCode :: Lens' Offering (Maybe Text)
+oCurrencyCode = lens _oCurrencyCode (\ s a -> s{_oCurrencyCode = a})
+
+-- | Unique offering ARN, e.g. 'arn:aws:medialive:us-west-2:123456789012:offering:87654321'
+oARN :: Lens' Offering (Maybe Text)
+oARN = lens _oARN (\ s a -> s{_oARN = a})
+
+-- | Unique offering ID, e.g. '87654321'
+oOfferingId :: Lens' Offering (Maybe Text)
+oOfferingId = lens _oOfferingId (\ s a -> s{_oOfferingId = a})
+
+-- | AWS region, e.g. 'us-west-2'
+oRegion :: Lens' Offering (Maybe Text)
+oRegion = lens _oRegion (\ s a -> s{_oRegion = a})
+
+-- | Offering type, e.g. 'NO_UPFRONT'
+oOfferingType :: Lens' Offering (Maybe OfferingType)
+oOfferingType = lens _oOfferingType (\ s a -> s{_oOfferingType = a})
+
+-- | Recurring usage charge for each reserved resource, e.g. '157.0'
+oUsagePrice :: Lens' Offering (Maybe Double)
+oUsagePrice = lens _oUsagePrice (\ s a -> s{_oUsagePrice = a})
+
+-- | One-time charge for each reserved resource, e.g. '0.0' for a NO_UPFRONT offering
+oFixedPrice :: Lens' Offering (Maybe Double)
+oFixedPrice = lens _oFixedPrice (\ s a -> s{_oFixedPrice = a})
+
+-- | Units for duration, e.g. 'MONTHS'
+oDurationUnits :: Lens' Offering (Maybe OfferingDurationUnits)
+oDurationUnits = lens _oDurationUnits (\ s a -> s{_oDurationUnits = a})
+
+-- | Offering description, e.g. 'HD AVC output at 10-20 Mbps, 30 fps, and standard VQ in US West (Oregon)'
+oOfferingDescription :: Lens' Offering (Maybe Text)
+oOfferingDescription = lens _oOfferingDescription (\ s a -> s{_oOfferingDescription = a})
+
+-- | Lease duration, e.g. '12'
+oDuration :: Lens' Offering (Maybe Int)
+oDuration = lens _oDuration (\ s a -> s{_oDuration = a})
+
+instance FromJSON Offering where
+        parseJSON
+          = withObject "Offering"
+              (\ x ->
+                 Offering' <$>
+                   (x .:? "resourceSpecification") <*>
+                     (x .:? "currencyCode")
+                     <*> (x .:? "arn")
+                     <*> (x .:? "offeringId")
+                     <*> (x .:? "region")
+                     <*> (x .:? "offeringType")
+                     <*> (x .:? "usagePrice")
+                     <*> (x .:? "fixedPrice")
+                     <*> (x .:? "durationUnits")
+                     <*> (x .:? "offeringDescription")
+                     <*> (x .:? "duration"))
+
+instance Hashable Offering where
+
+instance NFData Offering where
+
 -- | Output settings. There can be multiple outputs within a group.
 --
 -- /See:/ 'output' smart constructor.
-data Output = Output'
-  { _oCaptionDescriptionNames :: !(Maybe [Text])
-  , _oVideoDescriptionName    :: !(Maybe Text)
-  , _oOutputName              :: !(Maybe Text)
-  , _oAudioDescriptionNames   :: !(Maybe [Text])
-  , _oOutputSettings          :: !OutputSettings
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data Output = Output'{_oCaptionDescriptionNames ::
+                      !(Maybe [Text]),
+                      _oVideoDescriptionName :: !(Maybe Text),
+                      _oOutputName :: !(Maybe Text),
+                      _oAudioDescriptionNames :: !(Maybe [Text]),
+                      _oOutputSettings :: !OutputSettings}
+                deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'Output' with the minimum fields required to make a request.
 --
@@ -6589,15 +10490,12 @@ data Output = Output'
 output
     :: OutputSettings -- ^ 'oOutputSettings'
     -> Output
-output pOutputSettings_ =
-  Output'
-    { _oCaptionDescriptionNames = Nothing
-    , _oVideoDescriptionName = Nothing
-    , _oOutputName = Nothing
-    , _oAudioDescriptionNames = Nothing
-    , _oOutputSettings = pOutputSettings_
-    }
-
+output pOutputSettings_
+  = Output'{_oCaptionDescriptionNames = Nothing,
+            _oVideoDescriptionName = Nothing,
+            _oOutputName = Nothing,
+            _oAudioDescriptionNames = Nothing,
+            _oOutputSettings = pOutputSettings_}
 
 -- | The names of the CaptionDescriptions used as caption sources for this output.
 oCaptionDescriptionNames :: Lens' Output [Text]
@@ -6650,38 +10548,62 @@ instance ToJSON Output where
 -- | Placeholder documentation for OutputDestination
 --
 -- /See:/ 'outputDestination' smart constructor.
-data OutputDestination = OutputDestination'
-  { _odSettings :: !(Maybe [OutputDestinationSettings])
-  , _odId       :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data OutputDestination = OutputDestination'{_odSettings
+                                            ::
+                                            !(Maybe
+                                                [OutputDestinationSettings]),
+                                            _odMediaPackageSettings ::
+                                            !(Maybe
+                                                [MediaPackageOutputDestinationSettings]),
+                                            _odId :: !(Maybe Text),
+                                            _odMultiplexSettings ::
+                                            !(Maybe
+                                                MultiplexProgramChannelDestinationSettings)}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'OutputDestination' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'odSettings' - Destination settings for output; one for each redundant encoder.
+-- * 'odSettings' - Destination settings for a standard output; one destination for each redundant encoder.
+--
+-- * 'odMediaPackageSettings' - Destination settings for a MediaPackage output; one destination for both encoders.
 --
 -- * 'odId' - User-specified id. This is used in an output group or an output.
+--
+-- * 'odMultiplexSettings' - Destination settings for a Multiplex output; one destination for both encoders.
 outputDestination
     :: OutputDestination
-outputDestination = OutputDestination' {_odSettings = Nothing, _odId = Nothing}
+outputDestination
+  = OutputDestination'{_odSettings = Nothing,
+                       _odMediaPackageSettings = Nothing, _odId = Nothing,
+                       _odMultiplexSettings = Nothing}
 
-
--- | Destination settings for output; one for each redundant encoder.
+-- | Destination settings for a standard output; one destination for each redundant encoder.
 odSettings :: Lens' OutputDestination [OutputDestinationSettings]
 odSettings = lens _odSettings (\ s a -> s{_odSettings = a}) . _Default . _Coerce
+
+-- | Destination settings for a MediaPackage output; one destination for both encoders.
+odMediaPackageSettings :: Lens' OutputDestination [MediaPackageOutputDestinationSettings]
+odMediaPackageSettings = lens _odMediaPackageSettings (\ s a -> s{_odMediaPackageSettings = a}) . _Default . _Coerce
 
 -- | User-specified id. This is used in an output group or an output.
 odId :: Lens' OutputDestination (Maybe Text)
 odId = lens _odId (\ s a -> s{_odId = a})
+
+-- | Destination settings for a Multiplex output; one destination for both encoders.
+odMultiplexSettings :: Lens' OutputDestination (Maybe MultiplexProgramChannelDestinationSettings)
+odMultiplexSettings = lens _odMultiplexSettings (\ s a -> s{_odMultiplexSettings = a})
 
 instance FromJSON OutputDestination where
         parseJSON
           = withObject "OutputDestination"
               (\ x ->
                  OutputDestination' <$>
-                   (x .:? "settings" .!= mempty) <*> (x .:? "id"))
+                   (x .:? "settings" .!= mempty) <*>
+                     (x .:? "mediaPackageSettings" .!= mempty)
+                     <*> (x .:? "id")
+                     <*> (x .:? "multiplexSettings"))
 
 instance Hashable OutputDestination where
 
@@ -6692,18 +10614,24 @@ instance ToJSON OutputDestination where
           = object
               (catMaybes
                  [("settings" .=) <$> _odSettings,
-                  ("id" .=) <$> _odId])
+                  ("mediaPackageSettings" .=) <$>
+                    _odMediaPackageSettings,
+                  ("id" .=) <$> _odId,
+                  ("multiplexSettings" .=) <$> _odMultiplexSettings])
 
 -- | Placeholder documentation for OutputDestinationSettings
 --
 -- /See:/ 'outputDestinationSettings' smart constructor.
-data OutputDestinationSettings = OutputDestinationSettings'
-  { _odsURL           :: !(Maybe Text)
-  , _odsUsername      :: !(Maybe Text)
-  , _odsPasswordParam :: !(Maybe Text)
-  , _odsStreamName    :: !(Maybe Text)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data OutputDestinationSettings = OutputDestinationSettings'{_odsURL
+                                                            :: !(Maybe Text),
+                                                            _odsUsername ::
+                                                            !(Maybe Text),
+                                                            _odsPasswordParam ::
+                                                            !(Maybe Text),
+                                                            _odsStreamName ::
+                                                            !(Maybe Text)}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'OutputDestinationSettings' with the minimum fields required to make a request.
 --
@@ -6718,14 +10646,11 @@ data OutputDestinationSettings = OutputDestinationSettings'
 -- * 'odsStreamName' - Stream name for RTMP destinations (URLs of type rtmp://)
 outputDestinationSettings
     :: OutputDestinationSettings
-outputDestinationSettings =
-  OutputDestinationSettings'
-    { _odsURL = Nothing
-    , _odsUsername = Nothing
-    , _odsPasswordParam = Nothing
-    , _odsStreamName = Nothing
-    }
-
+outputDestinationSettings
+  = OutputDestinationSettings'{_odsURL = Nothing,
+                               _odsUsername = Nothing,
+                               _odsPasswordParam = Nothing,
+                               _odsStreamName = Nothing}
 
 -- | A URL specifying a destination
 odsURL :: Lens' OutputDestinationSettings (Maybe Text)
@@ -6768,12 +10693,11 @@ instance ToJSON OutputDestinationSettings where
 -- | Output groups for this Live Event. Output groups contain information about where streams should be distributed.
 --
 -- /See:/ 'outputGroup' smart constructor.
-data OutputGroup = OutputGroup'
-  { _ogName                :: !(Maybe Text)
-  , _ogOutputs             :: ![Output]
-  , _ogOutputGroupSettings :: !OutputGroupSettings
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data OutputGroup = OutputGroup'{_ogName ::
+                                !(Maybe Text),
+                                _ogOutputs :: ![Output],
+                                _ogOutputGroupSettings :: !OutputGroupSettings}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'OutputGroup' with the minimum fields required to make a request.
 --
@@ -6787,13 +10711,10 @@ data OutputGroup = OutputGroup'
 outputGroup
     :: OutputGroupSettings -- ^ 'ogOutputGroupSettings'
     -> OutputGroup
-outputGroup pOutputGroupSettings_ =
-  OutputGroup'
-    { _ogName = Nothing
-    , _ogOutputs = mempty
-    , _ogOutputGroupSettings = pOutputGroupSettings_
-    }
-
+outputGroup pOutputGroupSettings_
+  = OutputGroup'{_ogName = Nothing,
+                 _ogOutputs = mempty,
+                 _ogOutputGroupSettings = pOutputGroupSettings_}
 
 -- | Custom output group name optionally defined by the user.  Only letters, numbers, and the underscore character allowed; only 32 characters allowed.
 ogName :: Lens' OutputGroup (Maybe Text)
@@ -6828,42 +10749,65 @@ instance ToJSON OutputGroup where
                   Just
                     ("outputGroupSettings" .= _ogOutputGroupSettings)])
 
--- | Placeholder documentation for OutputGroupSettings
+-- | Output Group Settings
 --
 -- /See:/ 'outputGroupSettings' smart constructor.
-data OutputGroupSettings = OutputGroupSettings'
-  { _ogsMsSmoothGroupSettings :: !(Maybe MsSmoothGroupSettings)
-  , _ogsRtmpGroupSettings     :: !(Maybe RtmpGroupSettings)
-  , _ogsHlsGroupSettings      :: !(Maybe HlsGroupSettings)
-  , _ogsArchiveGroupSettings  :: !(Maybe ArchiveGroupSettings)
-  , _ogsUdpGroupSettings      :: !(Maybe UdpGroupSettings)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data OutputGroupSettings = OutputGroupSettings'{_ogsMediaPackageGroupSettings
+                                                ::
+                                                !(Maybe
+                                                    MediaPackageGroupSettings),
+                                                _ogsMsSmoothGroupSettings ::
+                                                !(Maybe MsSmoothGroupSettings),
+                                                _ogsRtmpGroupSettings ::
+                                                !(Maybe RtmpGroupSettings),
+                                                _ogsMultiplexGroupSettings ::
+                                                !(Maybe MultiplexGroupSettings),
+                                                _ogsHlsGroupSettings ::
+                                                !(Maybe HlsGroupSettings),
+                                                _ogsArchiveGroupSettings ::
+                                                !(Maybe ArchiveGroupSettings),
+                                                _ogsUdpGroupSettings ::
+                                                !(Maybe UdpGroupSettings),
+                                                _ogsFrameCaptureGroupSettings ::
+                                                !(Maybe
+                                                    FrameCaptureGroupSettings)}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'OutputGroupSettings' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
+-- * 'ogsMediaPackageGroupSettings' - Undocumented member.
+--
 -- * 'ogsMsSmoothGroupSettings' - Undocumented member.
 --
 -- * 'ogsRtmpGroupSettings' - Undocumented member.
+--
+-- * 'ogsMultiplexGroupSettings' - Undocumented member.
 --
 -- * 'ogsHlsGroupSettings' - Undocumented member.
 --
 -- * 'ogsArchiveGroupSettings' - Undocumented member.
 --
 -- * 'ogsUdpGroupSettings' - Undocumented member.
+--
+-- * 'ogsFrameCaptureGroupSettings' - Undocumented member.
 outputGroupSettings
     :: OutputGroupSettings
-outputGroupSettings =
-  OutputGroupSettings'
-    { _ogsMsSmoothGroupSettings = Nothing
-    , _ogsRtmpGroupSettings = Nothing
-    , _ogsHlsGroupSettings = Nothing
-    , _ogsArchiveGroupSettings = Nothing
-    , _ogsUdpGroupSettings = Nothing
-    }
+outputGroupSettings
+  = OutputGroupSettings'{_ogsMediaPackageGroupSettings
+                           = Nothing,
+                         _ogsMsSmoothGroupSettings = Nothing,
+                         _ogsRtmpGroupSettings = Nothing,
+                         _ogsMultiplexGroupSettings = Nothing,
+                         _ogsHlsGroupSettings = Nothing,
+                         _ogsArchiveGroupSettings = Nothing,
+                         _ogsUdpGroupSettings = Nothing,
+                         _ogsFrameCaptureGroupSettings = Nothing}
 
+-- | Undocumented member.
+ogsMediaPackageGroupSettings :: Lens' OutputGroupSettings (Maybe MediaPackageGroupSettings)
+ogsMediaPackageGroupSettings = lens _ogsMediaPackageGroupSettings (\ s a -> s{_ogsMediaPackageGroupSettings = a})
 
 -- | Undocumented member.
 ogsMsSmoothGroupSettings :: Lens' OutputGroupSettings (Maybe MsSmoothGroupSettings)
@@ -6872,6 +10816,10 @@ ogsMsSmoothGroupSettings = lens _ogsMsSmoothGroupSettings (\ s a -> s{_ogsMsSmoo
 -- | Undocumented member.
 ogsRtmpGroupSettings :: Lens' OutputGroupSettings (Maybe RtmpGroupSettings)
 ogsRtmpGroupSettings = lens _ogsRtmpGroupSettings (\ s a -> s{_ogsRtmpGroupSettings = a})
+
+-- | Undocumented member.
+ogsMultiplexGroupSettings :: Lens' OutputGroupSettings (Maybe MultiplexGroupSettings)
+ogsMultiplexGroupSettings = lens _ogsMultiplexGroupSettings (\ s a -> s{_ogsMultiplexGroupSettings = a})
 
 -- | Undocumented member.
 ogsHlsGroupSettings :: Lens' OutputGroupSettings (Maybe HlsGroupSettings)
@@ -6885,16 +10833,23 @@ ogsArchiveGroupSettings = lens _ogsArchiveGroupSettings (\ s a -> s{_ogsArchiveG
 ogsUdpGroupSettings :: Lens' OutputGroupSettings (Maybe UdpGroupSettings)
 ogsUdpGroupSettings = lens _ogsUdpGroupSettings (\ s a -> s{_ogsUdpGroupSettings = a})
 
+-- | Undocumented member.
+ogsFrameCaptureGroupSettings :: Lens' OutputGroupSettings (Maybe FrameCaptureGroupSettings)
+ogsFrameCaptureGroupSettings = lens _ogsFrameCaptureGroupSettings (\ s a -> s{_ogsFrameCaptureGroupSettings = a})
+
 instance FromJSON OutputGroupSettings where
         parseJSON
           = withObject "OutputGroupSettings"
               (\ x ->
                  OutputGroupSettings' <$>
-                   (x .:? "msSmoothGroupSettings") <*>
-                     (x .:? "rtmpGroupSettings")
+                   (x .:? "mediaPackageGroupSettings") <*>
+                     (x .:? "msSmoothGroupSettings")
+                     <*> (x .:? "rtmpGroupSettings")
+                     <*> (x .:? "multiplexGroupSettings")
                      <*> (x .:? "hlsGroupSettings")
                      <*> (x .:? "archiveGroupSettings")
-                     <*> (x .:? "udpGroupSettings"))
+                     <*> (x .:? "udpGroupSettings")
+                     <*> (x .:? "frameCaptureGroupSettings"))
 
 instance Hashable OutputGroupSettings where
 
@@ -6904,21 +10859,26 @@ instance ToJSON OutputGroupSettings where
         toJSON OutputGroupSettings'{..}
           = object
               (catMaybes
-                 [("msSmoothGroupSettings" .=) <$>
+                 [("mediaPackageGroupSettings" .=) <$>
+                    _ogsMediaPackageGroupSettings,
+                  ("msSmoothGroupSettings" .=) <$>
                     _ogsMsSmoothGroupSettings,
                   ("rtmpGroupSettings" .=) <$> _ogsRtmpGroupSettings,
+                  ("multiplexGroupSettings" .=) <$>
+                    _ogsMultiplexGroupSettings,
                   ("hlsGroupSettings" .=) <$> _ogsHlsGroupSettings,
                   ("archiveGroupSettings" .=) <$>
                     _ogsArchiveGroupSettings,
-                  ("udpGroupSettings" .=) <$> _ogsUdpGroupSettings])
+                  ("udpGroupSettings" .=) <$> _ogsUdpGroupSettings,
+                  ("frameCaptureGroupSettings" .=) <$>
+                    _ogsFrameCaptureGroupSettings])
 
 -- | Reference to an OutputDestination ID defined in the channel
 --
 -- /See:/ 'outputLocationRef' smart constructor.
-newtype OutputLocationRef = OutputLocationRef'
-  { _olrDestinationRefId :: Maybe Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype OutputLocationRef = OutputLocationRef'{_olrDestinationRefId
+                                               :: Maybe Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'OutputLocationRef' with the minimum fields required to make a request.
 --
@@ -6927,8 +10887,8 @@ newtype OutputLocationRef = OutputLocationRef'
 -- * 'olrDestinationRefId' - Undocumented member.
 outputLocationRef
     :: OutputLocationRef
-outputLocationRef = OutputLocationRef' {_olrDestinationRefId = Nothing}
-
+outputLocationRef
+  = OutputLocationRef'{_olrDestinationRefId = Nothing}
 
 -- | Undocumented member.
 olrDestinationRefId :: Lens' OutputLocationRef (Maybe Text)
@@ -6950,42 +10910,62 @@ instance ToJSON OutputLocationRef where
               (catMaybes
                  [("destinationRefId" .=) <$> _olrDestinationRefId])
 
--- | Placeholder documentation for OutputSettings
+-- | Output Settings
 --
 -- /See:/ 'outputSettings' smart constructor.
-data OutputSettings = OutputSettings'
-  { _osArchiveOutputSettings  :: !(Maybe ArchiveOutputSettings)
-  , _osRtmpOutputSettings     :: !(Maybe RtmpOutputSettings)
-  , _osHlsOutputSettings      :: !(Maybe HlsOutputSettings)
-  , _osUdpOutputSettings      :: !(Maybe UdpOutputSettings)
-  , _osMsSmoothOutputSettings :: !(Maybe MsSmoothOutputSettings)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data OutputSettings = OutputSettings'{_osMultiplexOutputSettings
+                                      :: !(Maybe MultiplexOutputSettings),
+                                      _osArchiveOutputSettings ::
+                                      !(Maybe ArchiveOutputSettings),
+                                      _osRtmpOutputSettings ::
+                                      !(Maybe RtmpOutputSettings),
+                                      _osMediaPackageOutputSettings ::
+                                      !(Maybe MediaPackageOutputSettings),
+                                      _osHlsOutputSettings ::
+                                      !(Maybe HlsOutputSettings),
+                                      _osFrameCaptureOutputSettings ::
+                                      !(Maybe FrameCaptureOutputSettings),
+                                      _osUdpOutputSettings ::
+                                      !(Maybe UdpOutputSettings),
+                                      _osMsSmoothOutputSettings ::
+                                      !(Maybe MsSmoothOutputSettings)}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'OutputSettings' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
+-- * 'osMultiplexOutputSettings' - Undocumented member.
+--
 -- * 'osArchiveOutputSettings' - Undocumented member.
 --
 -- * 'osRtmpOutputSettings' - Undocumented member.
 --
+-- * 'osMediaPackageOutputSettings' - Undocumented member.
+--
 -- * 'osHlsOutputSettings' - Undocumented member.
+--
+-- * 'osFrameCaptureOutputSettings' - Undocumented member.
 --
 -- * 'osUdpOutputSettings' - Undocumented member.
 --
 -- * 'osMsSmoothOutputSettings' - Undocumented member.
 outputSettings
     :: OutputSettings
-outputSettings =
-  OutputSettings'
-    { _osArchiveOutputSettings = Nothing
-    , _osRtmpOutputSettings = Nothing
-    , _osHlsOutputSettings = Nothing
-    , _osUdpOutputSettings = Nothing
-    , _osMsSmoothOutputSettings = Nothing
-    }
+outputSettings
+  = OutputSettings'{_osMultiplexOutputSettings =
+                      Nothing,
+                    _osArchiveOutputSettings = Nothing,
+                    _osRtmpOutputSettings = Nothing,
+                    _osMediaPackageOutputSettings = Nothing,
+                    _osHlsOutputSettings = Nothing,
+                    _osFrameCaptureOutputSettings = Nothing,
+                    _osUdpOutputSettings = Nothing,
+                    _osMsSmoothOutputSettings = Nothing}
 
+-- | Undocumented member.
+osMultiplexOutputSettings :: Lens' OutputSettings (Maybe MultiplexOutputSettings)
+osMultiplexOutputSettings = lens _osMultiplexOutputSettings (\ s a -> s{_osMultiplexOutputSettings = a})
 
 -- | Undocumented member.
 osArchiveOutputSettings :: Lens' OutputSettings (Maybe ArchiveOutputSettings)
@@ -6996,8 +10976,16 @@ osRtmpOutputSettings :: Lens' OutputSettings (Maybe RtmpOutputSettings)
 osRtmpOutputSettings = lens _osRtmpOutputSettings (\ s a -> s{_osRtmpOutputSettings = a})
 
 -- | Undocumented member.
+osMediaPackageOutputSettings :: Lens' OutputSettings (Maybe MediaPackageOutputSettings)
+osMediaPackageOutputSettings = lens _osMediaPackageOutputSettings (\ s a -> s{_osMediaPackageOutputSettings = a})
+
+-- | Undocumented member.
 osHlsOutputSettings :: Lens' OutputSettings (Maybe HlsOutputSettings)
 osHlsOutputSettings = lens _osHlsOutputSettings (\ s a -> s{_osHlsOutputSettings = a})
+
+-- | Undocumented member.
+osFrameCaptureOutputSettings :: Lens' OutputSettings (Maybe FrameCaptureOutputSettings)
+osFrameCaptureOutputSettings = lens _osFrameCaptureOutputSettings (\ s a -> s{_osFrameCaptureOutputSettings = a})
 
 -- | Undocumented member.
 osUdpOutputSettings :: Lens' OutputSettings (Maybe UdpOutputSettings)
@@ -7012,9 +11000,12 @@ instance FromJSON OutputSettings where
           = withObject "OutputSettings"
               (\ x ->
                  OutputSettings' <$>
-                   (x .:? "archiveOutputSettings") <*>
-                     (x .:? "rtmpOutputSettings")
+                   (x .:? "multiplexOutputSettings") <*>
+                     (x .:? "archiveOutputSettings")
+                     <*> (x .:? "rtmpOutputSettings")
+                     <*> (x .:? "mediaPackageOutputSettings")
                      <*> (x .:? "hlsOutputSettings")
+                     <*> (x .:? "frameCaptureOutputSettings")
                      <*> (x .:? "udpOutputSettings")
                      <*> (x .:? "msSmoothOutputSettings"))
 
@@ -7026,28 +11017,31 @@ instance ToJSON OutputSettings where
         toJSON OutputSettings'{..}
           = object
               (catMaybes
-                 [("archiveOutputSettings" .=) <$>
+                 [("multiplexOutputSettings" .=) <$>
+                    _osMultiplexOutputSettings,
+                  ("archiveOutputSettings" .=) <$>
                     _osArchiveOutputSettings,
                   ("rtmpOutputSettings" .=) <$> _osRtmpOutputSettings,
+                  ("mediaPackageOutputSettings" .=) <$>
+                    _osMediaPackageOutputSettings,
                   ("hlsOutputSettings" .=) <$> _osHlsOutputSettings,
+                  ("frameCaptureOutputSettings" .=) <$>
+                    _osFrameCaptureOutputSettings,
                   ("udpOutputSettings" .=) <$> _osUdpOutputSettings,
                   ("msSmoothOutputSettings" .=) <$>
                     _osMsSmoothOutputSettings])
 
--- | Placeholder documentation for PassThroughSettings
+-- | Pass Through Settings
 --
 -- /See:/ 'passThroughSettings' smart constructor.
-data PassThroughSettings =
-  PassThroughSettings'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PassThroughSettings = PassThroughSettings'
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PassThroughSettings' with the minimum fields required to make a request.
 --
 passThroughSettings
     :: PassThroughSettings
 passThroughSettings = PassThroughSettings'
-
 
 instance FromJSON PassThroughSettings where
         parseJSON
@@ -7061,15 +11055,199 @@ instance NFData PassThroughSettings where
 instance ToJSON PassThroughSettings where
         toJSON = const (Object mempty)
 
--- | Placeholder documentation for RemixSettings
+-- | Settings for the action to set pause state of a channel.
+--
+-- /See:/ 'pauseStateScheduleActionSettings' smart constructor.
+newtype PauseStateScheduleActionSettings = PauseStateScheduleActionSettings'{_pssasPipelines
+                                                                             ::
+                                                                             Maybe
+                                                                               [PipelinePauseStateSettings]}
+                                             deriving (Eq, Read, Show, Data,
+                                                       Typeable, Generic)
+
+-- | Creates a value of 'PauseStateScheduleActionSettings' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'pssasPipelines' - Undocumented member.
+pauseStateScheduleActionSettings
+    :: PauseStateScheduleActionSettings
+pauseStateScheduleActionSettings
+  = PauseStateScheduleActionSettings'{_pssasPipelines =
+                                        Nothing}
+
+-- | Undocumented member.
+pssasPipelines :: Lens' PauseStateScheduleActionSettings [PipelinePauseStateSettings]
+pssasPipelines = lens _pssasPipelines (\ s a -> s{_pssasPipelines = a}) . _Default . _Coerce
+
+instance FromJSON PauseStateScheduleActionSettings
+         where
+        parseJSON
+          = withObject "PauseStateScheduleActionSettings"
+              (\ x ->
+                 PauseStateScheduleActionSettings' <$>
+                   (x .:? "pipelines" .!= mempty))
+
+instance Hashable PauseStateScheduleActionSettings
+         where
+
+instance NFData PauseStateScheduleActionSettings
+         where
+
+instance ToJSON PauseStateScheduleActionSettings
+         where
+        toJSON PauseStateScheduleActionSettings'{..}
+          = object
+              (catMaybes [("pipelines" .=) <$> _pssasPipelines])
+
+-- | Runtime details of a pipeline when a channel is running.
+--
+-- /See:/ 'pipelineDetail' smart constructor.
+data PipelineDetail = PipelineDetail'{_pdPipelineId
+                                      :: !(Maybe Text),
+                                      _pdActiveInputSwitchActionName ::
+                                      !(Maybe Text),
+                                      _pdActiveInputAttachmentName ::
+                                      !(Maybe Text)}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+-- | Creates a value of 'PipelineDetail' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'pdPipelineId' - Pipeline ID
+--
+-- * 'pdActiveInputSwitchActionName' - The name of the input switch schedule action that occurred most recently and that resulted in the switch to the current input attachment for this pipeline.
+--
+-- * 'pdActiveInputAttachmentName' - The name of the active input attachment currently being ingested by this pipeline.
+pipelineDetail
+    :: PipelineDetail
+pipelineDetail
+  = PipelineDetail'{_pdPipelineId = Nothing,
+                    _pdActiveInputSwitchActionName = Nothing,
+                    _pdActiveInputAttachmentName = Nothing}
+
+-- | Pipeline ID
+pdPipelineId :: Lens' PipelineDetail (Maybe Text)
+pdPipelineId = lens _pdPipelineId (\ s a -> s{_pdPipelineId = a})
+
+-- | The name of the input switch schedule action that occurred most recently and that resulted in the switch to the current input attachment for this pipeline.
+pdActiveInputSwitchActionName :: Lens' PipelineDetail (Maybe Text)
+pdActiveInputSwitchActionName = lens _pdActiveInputSwitchActionName (\ s a -> s{_pdActiveInputSwitchActionName = a})
+
+-- | The name of the active input attachment currently being ingested by this pipeline.
+pdActiveInputAttachmentName :: Lens' PipelineDetail (Maybe Text)
+pdActiveInputAttachmentName = lens _pdActiveInputAttachmentName (\ s a -> s{_pdActiveInputAttachmentName = a})
+
+instance FromJSON PipelineDetail where
+        parseJSON
+          = withObject "PipelineDetail"
+              (\ x ->
+                 PipelineDetail' <$>
+                   (x .:? "pipelineId") <*>
+                     (x .:? "activeInputSwitchActionName")
+                     <*> (x .:? "activeInputAttachmentName"))
+
+instance Hashable PipelineDetail where
+
+instance NFData PipelineDetail where
+
+-- | Settings for pausing a pipeline.
+--
+-- /See:/ 'pipelinePauseStateSettings' smart constructor.
+newtype PipelinePauseStateSettings = PipelinePauseStateSettings'{_ppssPipelineId
+                                                                 :: PipelineId}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
+
+-- | Creates a value of 'PipelinePauseStateSettings' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'ppssPipelineId' - Pipeline ID to pause ("PIPELINE_0" or "PIPELINE_1").
+pipelinePauseStateSettings
+    :: PipelineId -- ^ 'ppssPipelineId'
+    -> PipelinePauseStateSettings
+pipelinePauseStateSettings pPipelineId_
+  = PipelinePauseStateSettings'{_ppssPipelineId =
+                                  pPipelineId_}
+
+-- | Pipeline ID to pause ("PIPELINE_0" or "PIPELINE_1").
+ppssPipelineId :: Lens' PipelinePauseStateSettings PipelineId
+ppssPipelineId = lens _ppssPipelineId (\ s a -> s{_ppssPipelineId = a})
+
+instance FromJSON PipelinePauseStateSettings where
+        parseJSON
+          = withObject "PipelinePauseStateSettings"
+              (\ x ->
+                 PipelinePauseStateSettings' <$> (x .: "pipelineId"))
+
+instance Hashable PipelinePauseStateSettings where
+
+instance NFData PipelinePauseStateSettings where
+
+instance ToJSON PipelinePauseStateSettings where
+        toJSON PipelinePauseStateSettings'{..}
+          = object
+              (catMaybes [Just ("pipelineId" .= _ppssPipelineId)])
+
+-- | Rec601 Settings
+--
+-- /See:/ 'rec601Settings' smart constructor.
+data Rec601Settings = Rec601Settings'
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+-- | Creates a value of 'Rec601Settings' with the minimum fields required to make a request.
+--
+rec601Settings
+    :: Rec601Settings
+rec601Settings = Rec601Settings'
+
+instance FromJSON Rec601Settings where
+        parseJSON
+          = withObject "Rec601Settings"
+              (\ x -> pure Rec601Settings')
+
+instance Hashable Rec601Settings where
+
+instance NFData Rec601Settings where
+
+instance ToJSON Rec601Settings where
+        toJSON = const (Object mempty)
+
+-- | Rec709 Settings
+--
+-- /See:/ 'rec709Settings' smart constructor.
+data Rec709Settings = Rec709Settings'
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+-- | Creates a value of 'Rec709Settings' with the minimum fields required to make a request.
+--
+rec709Settings
+    :: Rec709Settings
+rec709Settings = Rec709Settings'
+
+instance FromJSON Rec709Settings where
+        parseJSON
+          = withObject "Rec709Settings"
+              (\ x -> pure Rec709Settings')
+
+instance Hashable Rec709Settings where
+
+instance NFData Rec709Settings where
+
+instance ToJSON Rec709Settings where
+        toJSON = const (Object mempty)
+
+-- | Remix Settings
 --
 -- /See:/ 'remixSettings' smart constructor.
-data RemixSettings = RemixSettings'
-  { _rsChannelsIn      :: !(Maybe Nat)
-  , _rsChannelsOut     :: !(Maybe Nat)
-  , _rsChannelMappings :: ![AudioChannelMapping]
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RemixSettings = RemixSettings'{_rsChannelsIn ::
+                                    !(Maybe Nat),
+                                    _rsChannelsOut :: !(Maybe Nat),
+                                    _rsChannelMappings ::
+                                    ![AudioChannelMapping]}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'RemixSettings' with the minimum fields required to make a request.
 --
@@ -7082,13 +11260,10 @@ data RemixSettings = RemixSettings'
 -- * 'rsChannelMappings' - Mapping of input channels to output channels, with appropriate gain adjustments.
 remixSettings
     :: RemixSettings
-remixSettings =
-  RemixSettings'
-    { _rsChannelsIn = Nothing
-    , _rsChannelsOut = Nothing
-    , _rsChannelMappings = mempty
-    }
-
+remixSettings
+  = RemixSettings'{_rsChannelsIn = Nothing,
+                   _rsChannelsOut = Nothing,
+                   _rsChannelMappings = mempty}
 
 -- | Number of input channels to be used.
 rsChannelsIn :: Lens' RemixSettings (Maybe Natural)
@@ -7122,20 +11297,319 @@ instance ToJSON RemixSettings where
                   ("channelsOut" .=) <$> _rsChannelsOut,
                   Just ("channelMappings" .= _rsChannelMappings)])
 
--- | Placeholder documentation for RtmpCaptionInfoDestinationSettings
+-- | Reserved resources available to use
+--
+-- /See:/ 'reservation' smart constructor.
+data Reservation = Reservation'{_rState ::
+                                !(Maybe ReservationState),
+                                _rResourceSpecification ::
+                                !(Maybe ReservationResourceSpecification),
+                                _rCurrencyCode :: !(Maybe Text),
+                                _rARN :: !(Maybe Text),
+                                _rStart :: !(Maybe Text),
+                                _rCount :: !(Maybe Int), _rEnd :: !(Maybe Text),
+                                _rName :: !(Maybe Text),
+                                _rReservationId :: !(Maybe Text),
+                                _rOfferingId :: !(Maybe Text),
+                                _rRegion :: !(Maybe Text),
+                                _rOfferingType :: !(Maybe OfferingType),
+                                _rUsagePrice :: !(Maybe Double),
+                                _rFixedPrice :: !(Maybe Double),
+                                _rDurationUnits ::
+                                !(Maybe OfferingDurationUnits),
+                                _rOfferingDescription :: !(Maybe Text),
+                                _rDuration :: !(Maybe Int),
+                                _rTags :: !(Maybe (Map Text Text))}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+-- | Creates a value of 'Reservation' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'rState' - Current state of reservation, e.g. 'ACTIVE'
+--
+-- * 'rResourceSpecification' - Resource configuration details
+--
+-- * 'rCurrencyCode' - Currency code for usagePrice and fixedPrice in ISO-4217 format, e.g. 'USD'
+--
+-- * 'rARN' - Unique reservation ARN, e.g. 'arn:aws:medialive:us-west-2:123456789012:reservation:1234567'
+--
+-- * 'rStart' - Reservation UTC start date and time in ISO-8601 format, e.g. '2018-03-01T00:00:00'
+--
+-- * 'rCount' - Number of reserved resources
+--
+-- * 'rEnd' - Reservation UTC end date and time in ISO-8601 format, e.g. '2019-03-01T00:00:00'
+--
+-- * 'rName' - User specified reservation name
+--
+-- * 'rReservationId' - Unique reservation ID, e.g. '1234567'
+--
+-- * 'rOfferingId' - Unique offering ID, e.g. '87654321'
+--
+-- * 'rRegion' - AWS region, e.g. 'us-west-2'
+--
+-- * 'rOfferingType' - Offering type, e.g. 'NO_UPFRONT'
+--
+-- * 'rUsagePrice' - Recurring usage charge for each reserved resource, e.g. '157.0'
+--
+-- * 'rFixedPrice' - One-time charge for each reserved resource, e.g. '0.0' for a NO_UPFRONT offering
+--
+-- * 'rDurationUnits' - Units for duration, e.g. 'MONTHS'
+--
+-- * 'rOfferingDescription' - Offering description, e.g. 'HD AVC output at 10-20 Mbps, 30 fps, and standard VQ in US West (Oregon)'
+--
+-- * 'rDuration' - Lease duration, e.g. '12'
+--
+-- * 'rTags' - A collection of key-value pairs
+reservation
+    :: Reservation
+reservation
+  = Reservation'{_rState = Nothing,
+                 _rResourceSpecification = Nothing,
+                 _rCurrencyCode = Nothing, _rARN = Nothing,
+                 _rStart = Nothing, _rCount = Nothing,
+                 _rEnd = Nothing, _rName = Nothing,
+                 _rReservationId = Nothing, _rOfferingId = Nothing,
+                 _rRegion = Nothing, _rOfferingType = Nothing,
+                 _rUsagePrice = Nothing, _rFixedPrice = Nothing,
+                 _rDurationUnits = Nothing,
+                 _rOfferingDescription = Nothing,
+                 _rDuration = Nothing, _rTags = Nothing}
+
+-- | Current state of reservation, e.g. 'ACTIVE'
+rState :: Lens' Reservation (Maybe ReservationState)
+rState = lens _rState (\ s a -> s{_rState = a})
+
+-- | Resource configuration details
+rResourceSpecification :: Lens' Reservation (Maybe ReservationResourceSpecification)
+rResourceSpecification = lens _rResourceSpecification (\ s a -> s{_rResourceSpecification = a})
+
+-- | Currency code for usagePrice and fixedPrice in ISO-4217 format, e.g. 'USD'
+rCurrencyCode :: Lens' Reservation (Maybe Text)
+rCurrencyCode = lens _rCurrencyCode (\ s a -> s{_rCurrencyCode = a})
+
+-- | Unique reservation ARN, e.g. 'arn:aws:medialive:us-west-2:123456789012:reservation:1234567'
+rARN :: Lens' Reservation (Maybe Text)
+rARN = lens _rARN (\ s a -> s{_rARN = a})
+
+-- | Reservation UTC start date and time in ISO-8601 format, e.g. '2018-03-01T00:00:00'
+rStart :: Lens' Reservation (Maybe Text)
+rStart = lens _rStart (\ s a -> s{_rStart = a})
+
+-- | Number of reserved resources
+rCount :: Lens' Reservation (Maybe Int)
+rCount = lens _rCount (\ s a -> s{_rCount = a})
+
+-- | Reservation UTC end date and time in ISO-8601 format, e.g. '2019-03-01T00:00:00'
+rEnd :: Lens' Reservation (Maybe Text)
+rEnd = lens _rEnd (\ s a -> s{_rEnd = a})
+
+-- | User specified reservation name
+rName :: Lens' Reservation (Maybe Text)
+rName = lens _rName (\ s a -> s{_rName = a})
+
+-- | Unique reservation ID, e.g. '1234567'
+rReservationId :: Lens' Reservation (Maybe Text)
+rReservationId = lens _rReservationId (\ s a -> s{_rReservationId = a})
+
+-- | Unique offering ID, e.g. '87654321'
+rOfferingId :: Lens' Reservation (Maybe Text)
+rOfferingId = lens _rOfferingId (\ s a -> s{_rOfferingId = a})
+
+-- | AWS region, e.g. 'us-west-2'
+rRegion :: Lens' Reservation (Maybe Text)
+rRegion = lens _rRegion (\ s a -> s{_rRegion = a})
+
+-- | Offering type, e.g. 'NO_UPFRONT'
+rOfferingType :: Lens' Reservation (Maybe OfferingType)
+rOfferingType = lens _rOfferingType (\ s a -> s{_rOfferingType = a})
+
+-- | Recurring usage charge for each reserved resource, e.g. '157.0'
+rUsagePrice :: Lens' Reservation (Maybe Double)
+rUsagePrice = lens _rUsagePrice (\ s a -> s{_rUsagePrice = a})
+
+-- | One-time charge for each reserved resource, e.g. '0.0' for a NO_UPFRONT offering
+rFixedPrice :: Lens' Reservation (Maybe Double)
+rFixedPrice = lens _rFixedPrice (\ s a -> s{_rFixedPrice = a})
+
+-- | Units for duration, e.g. 'MONTHS'
+rDurationUnits :: Lens' Reservation (Maybe OfferingDurationUnits)
+rDurationUnits = lens _rDurationUnits (\ s a -> s{_rDurationUnits = a})
+
+-- | Offering description, e.g. 'HD AVC output at 10-20 Mbps, 30 fps, and standard VQ in US West (Oregon)'
+rOfferingDescription :: Lens' Reservation (Maybe Text)
+rOfferingDescription = lens _rOfferingDescription (\ s a -> s{_rOfferingDescription = a})
+
+-- | Lease duration, e.g. '12'
+rDuration :: Lens' Reservation (Maybe Int)
+rDuration = lens _rDuration (\ s a -> s{_rDuration = a})
+
+-- | A collection of key-value pairs
+rTags :: Lens' Reservation (HashMap Text Text)
+rTags = lens _rTags (\ s a -> s{_rTags = a}) . _Default . _Map
+
+instance FromJSON Reservation where
+        parseJSON
+          = withObject "Reservation"
+              (\ x ->
+                 Reservation' <$>
+                   (x .:? "state") <*> (x .:? "resourceSpecification")
+                     <*> (x .:? "currencyCode")
+                     <*> (x .:? "arn")
+                     <*> (x .:? "start")
+                     <*> (x .:? "count")
+                     <*> (x .:? "end")
+                     <*> (x .:? "name")
+                     <*> (x .:? "reservationId")
+                     <*> (x .:? "offeringId")
+                     <*> (x .:? "region")
+                     <*> (x .:? "offeringType")
+                     <*> (x .:? "usagePrice")
+                     <*> (x .:? "fixedPrice")
+                     <*> (x .:? "durationUnits")
+                     <*> (x .:? "offeringDescription")
+                     <*> (x .:? "duration")
+                     <*> (x .:? "tags" .!= mempty))
+
+instance Hashable Reservation where
+
+instance NFData Reservation where
+
+-- | Resource configuration (codec, resolution, bitrate, ...)
+--
+-- /See:/ 'reservationResourceSpecification' smart constructor.
+data ReservationResourceSpecification = ReservationResourceSpecification'{_rrsVideoQuality
+                                                                          ::
+                                                                          !(Maybe
+                                                                              ReservationVideoQuality),
+                                                                          _rrsMaximumFramerate
+                                                                          ::
+                                                                          !(Maybe
+                                                                              ReservationMaximumFramerate),
+                                                                          _rrsResourceType
+                                                                          ::
+                                                                          !(Maybe
+                                                                              ReservationResourceType),
+                                                                          _rrsResolution
+                                                                          ::
+                                                                          !(Maybe
+                                                                              ReservationResolution),
+                                                                          _rrsCodec
+                                                                          ::
+                                                                          !(Maybe
+                                                                              ReservationCodec),
+                                                                          _rrsSpecialFeature
+                                                                          ::
+                                                                          !(Maybe
+                                                                              ReservationSpecialFeature),
+                                                                          _rrsChannelClass
+                                                                          ::
+                                                                          !(Maybe
+                                                                              ChannelClass),
+                                                                          _rrsMaximumBitrate
+                                                                          ::
+                                                                          !(Maybe
+                                                                              ReservationMaximumBitrate)}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
+
+-- | Creates a value of 'ReservationResourceSpecification' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'rrsVideoQuality' - Video quality, e.g. 'STANDARD' (Outputs only)
+--
+-- * 'rrsMaximumFramerate' - Maximum framerate, e.g. 'MAX_30_FPS' (Outputs only)
+--
+-- * 'rrsResourceType' - Resource type, 'INPUT', 'OUTPUT', 'MULTIPLEX', or 'CHANNEL'
+--
+-- * 'rrsResolution' - Resolution, e.g. 'HD'
+--
+-- * 'rrsCodec' - Codec, e.g. 'AVC'
+--
+-- * 'rrsSpecialFeature' - Special feature, e.g. 'AUDIO_NORMALIZATION' (Channels only)
+--
+-- * 'rrsChannelClass' - Channel class, e.g. 'STANDARD'
+--
+-- * 'rrsMaximumBitrate' - Maximum bitrate, e.g. 'MAX_20_MBPS'
+reservationResourceSpecification
+    :: ReservationResourceSpecification
+reservationResourceSpecification
+  = ReservationResourceSpecification'{_rrsVideoQuality
+                                        = Nothing,
+                                      _rrsMaximumFramerate = Nothing,
+                                      _rrsResourceType = Nothing,
+                                      _rrsResolution = Nothing,
+                                      _rrsCodec = Nothing,
+                                      _rrsSpecialFeature = Nothing,
+                                      _rrsChannelClass = Nothing,
+                                      _rrsMaximumBitrate = Nothing}
+
+-- | Video quality, e.g. 'STANDARD' (Outputs only)
+rrsVideoQuality :: Lens' ReservationResourceSpecification (Maybe ReservationVideoQuality)
+rrsVideoQuality = lens _rrsVideoQuality (\ s a -> s{_rrsVideoQuality = a})
+
+-- | Maximum framerate, e.g. 'MAX_30_FPS' (Outputs only)
+rrsMaximumFramerate :: Lens' ReservationResourceSpecification (Maybe ReservationMaximumFramerate)
+rrsMaximumFramerate = lens _rrsMaximumFramerate (\ s a -> s{_rrsMaximumFramerate = a})
+
+-- | Resource type, 'INPUT', 'OUTPUT', 'MULTIPLEX', or 'CHANNEL'
+rrsResourceType :: Lens' ReservationResourceSpecification (Maybe ReservationResourceType)
+rrsResourceType = lens _rrsResourceType (\ s a -> s{_rrsResourceType = a})
+
+-- | Resolution, e.g. 'HD'
+rrsResolution :: Lens' ReservationResourceSpecification (Maybe ReservationResolution)
+rrsResolution = lens _rrsResolution (\ s a -> s{_rrsResolution = a})
+
+-- | Codec, e.g. 'AVC'
+rrsCodec :: Lens' ReservationResourceSpecification (Maybe ReservationCodec)
+rrsCodec = lens _rrsCodec (\ s a -> s{_rrsCodec = a})
+
+-- | Special feature, e.g. 'AUDIO_NORMALIZATION' (Channels only)
+rrsSpecialFeature :: Lens' ReservationResourceSpecification (Maybe ReservationSpecialFeature)
+rrsSpecialFeature = lens _rrsSpecialFeature (\ s a -> s{_rrsSpecialFeature = a})
+
+-- | Channel class, e.g. 'STANDARD'
+rrsChannelClass :: Lens' ReservationResourceSpecification (Maybe ChannelClass)
+rrsChannelClass = lens _rrsChannelClass (\ s a -> s{_rrsChannelClass = a})
+
+-- | Maximum bitrate, e.g. 'MAX_20_MBPS'
+rrsMaximumBitrate :: Lens' ReservationResourceSpecification (Maybe ReservationMaximumBitrate)
+rrsMaximumBitrate = lens _rrsMaximumBitrate (\ s a -> s{_rrsMaximumBitrate = a})
+
+instance FromJSON ReservationResourceSpecification
+         where
+        parseJSON
+          = withObject "ReservationResourceSpecification"
+              (\ x ->
+                 ReservationResourceSpecification' <$>
+                   (x .:? "videoQuality") <*> (x .:? "maximumFramerate")
+                     <*> (x .:? "resourceType")
+                     <*> (x .:? "resolution")
+                     <*> (x .:? "codec")
+                     <*> (x .:? "specialFeature")
+                     <*> (x .:? "channelClass")
+                     <*> (x .:? "maximumBitrate"))
+
+instance Hashable ReservationResourceSpecification
+         where
+
+instance NFData ReservationResourceSpecification
+         where
+
+-- | Rtmp Caption Info Destination Settings
 --
 -- /See:/ 'rtmpCaptionInfoDestinationSettings' smart constructor.
-data RtmpCaptionInfoDestinationSettings =
-  RtmpCaptionInfoDestinationSettings'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RtmpCaptionInfoDestinationSettings = RtmpCaptionInfoDestinationSettings'
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'RtmpCaptionInfoDestinationSettings' with the minimum fields required to make a request.
 --
 rtmpCaptionInfoDestinationSettings
     :: RtmpCaptionInfoDestinationSettings
-rtmpCaptionInfoDestinationSettings = RtmpCaptionInfoDestinationSettings'
-
+rtmpCaptionInfoDestinationSettings
+  = RtmpCaptionInfoDestinationSettings'
 
 instance FromJSON RtmpCaptionInfoDestinationSettings
          where
@@ -7153,21 +11627,27 @@ instance ToJSON RtmpCaptionInfoDestinationSettings
          where
         toJSON = const (Object mempty)
 
--- | Placeholder documentation for RtmpGroupSettings
+-- | Rtmp Group Settings
 --
 -- /See:/ 'rtmpGroupSettings' smart constructor.
-data RtmpGroupSettings = RtmpGroupSettings'
-  { _rgsCaptionData          :: !(Maybe RtmpCaptionData)
-  , _rgsRestartDelay         :: !(Maybe Nat)
-  , _rgsAuthenticationScheme :: !(Maybe AuthenticationScheme)
-  , _rgsCacheLength          :: !(Maybe Nat)
-  , _rgsCacheFullBehavior    :: !(Maybe RtmpCacheFullBehavior)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RtmpGroupSettings = RtmpGroupSettings'{_rgsInputLossAction
+                                            ::
+                                            !(Maybe InputLossActionForRtmpOut),
+                                            _rgsCaptionData ::
+                                            !(Maybe RtmpCaptionData),
+                                            _rgsRestartDelay :: !(Maybe Nat),
+                                            _rgsAuthenticationScheme ::
+                                            !(Maybe AuthenticationScheme),
+                                            _rgsCacheLength :: !(Maybe Nat),
+                                            _rgsCacheFullBehavior ::
+                                            !(Maybe RtmpCacheFullBehavior)}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'RtmpGroupSettings' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'rgsInputLossAction' - Controls the behavior of this RTMP group if input becomes unavailable. - emitOutput: Emit a slate until input returns. - pauseOutput: Stop transmitting data until input returns. This does not close the underlying RTMP connection.
 --
 -- * 'rgsCaptionData' - Controls the types of data that passes to onCaptionInfo outputs.  If set to 'all' then 608 and 708 carried DTVCC data will be passed.  If set to 'field1AndField2608' then DTVCC data will be stripped out, but 608 data from both fields will be passed. If set to 'field1608' then only the data carried in 608 from field 1 video will be passed.
 --
@@ -7180,15 +11660,17 @@ data RtmpGroupSettings = RtmpGroupSettings'
 -- * 'rgsCacheFullBehavior' - Controls behavior when content cache fills up. If remote origin server stalls the RTMP connection and does not accept content fast enough the 'Media Cache' will fill up. When the cache reaches the duration specified by cacheLength the cache will stop accepting new content. If set to disconnectImmediately, the RTMP output will force a disconnect. Clear the media cache, and reconnect after restartDelay seconds. If set to waitForServer, the RTMP output will wait up to 5 minutes to allow the origin server to begin accepting data again.
 rtmpGroupSettings
     :: RtmpGroupSettings
-rtmpGroupSettings =
-  RtmpGroupSettings'
-    { _rgsCaptionData = Nothing
-    , _rgsRestartDelay = Nothing
-    , _rgsAuthenticationScheme = Nothing
-    , _rgsCacheLength = Nothing
-    , _rgsCacheFullBehavior = Nothing
-    }
+rtmpGroupSettings
+  = RtmpGroupSettings'{_rgsInputLossAction = Nothing,
+                       _rgsCaptionData = Nothing,
+                       _rgsRestartDelay = Nothing,
+                       _rgsAuthenticationScheme = Nothing,
+                       _rgsCacheLength = Nothing,
+                       _rgsCacheFullBehavior = Nothing}
 
+-- | Controls the behavior of this RTMP group if input becomes unavailable. - emitOutput: Emit a slate until input returns. - pauseOutput: Stop transmitting data until input returns. This does not close the underlying RTMP connection.
+rgsInputLossAction :: Lens' RtmpGroupSettings (Maybe InputLossActionForRtmpOut)
+rgsInputLossAction = lens _rgsInputLossAction (\ s a -> s{_rgsInputLossAction = a})
 
 -- | Controls the types of data that passes to onCaptionInfo outputs.  If set to 'all' then 608 and 708 carried DTVCC data will be passed.  If set to 'field1AndField2608' then DTVCC data will be stripped out, but 608 data from both fields will be passed. If set to 'field1608' then only the data carried in 608 from field 1 video will be passed.
 rgsCaptionData :: Lens' RtmpGroupSettings (Maybe RtmpCaptionData)
@@ -7215,8 +11697,9 @@ instance FromJSON RtmpGroupSettings where
           = withObject "RtmpGroupSettings"
               (\ x ->
                  RtmpGroupSettings' <$>
-                   (x .:? "captionData") <*> (x .:? "restartDelay") <*>
-                     (x .:? "authenticationScheme")
+                   (x .:? "inputLossAction") <*> (x .:? "captionData")
+                     <*> (x .:? "restartDelay")
+                     <*> (x .:? "authenticationScheme")
                      <*> (x .:? "cacheLength")
                      <*> (x .:? "cacheFullBehavior"))
 
@@ -7228,23 +11711,27 @@ instance ToJSON RtmpGroupSettings where
         toJSON RtmpGroupSettings'{..}
           = object
               (catMaybes
-                 [("captionData" .=) <$> _rgsCaptionData,
+                 [("inputLossAction" .=) <$> _rgsInputLossAction,
+                  ("captionData" .=) <$> _rgsCaptionData,
                   ("restartDelay" .=) <$> _rgsRestartDelay,
                   ("authenticationScheme" .=) <$>
                     _rgsAuthenticationScheme,
                   ("cacheLength" .=) <$> _rgsCacheLength,
                   ("cacheFullBehavior" .=) <$> _rgsCacheFullBehavior])
 
--- | Placeholder documentation for RtmpOutputSettings
+-- | Rtmp Output Settings
 --
 -- /See:/ 'rtmpOutputSettings' smart constructor.
-data RtmpOutputSettings = RtmpOutputSettings'
-  { _rosNumRetries              :: !(Maybe Nat)
-  , _rosCertificateMode         :: !(Maybe RtmpOutputCertificateMode)
-  , _rosConnectionRetryInterval :: !(Maybe Nat)
-  , _rosDestination             :: !OutputLocationRef
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RtmpOutputSettings = RtmpOutputSettings'{_rosNumRetries
+                                              :: !(Maybe Nat),
+                                              _rosCertificateMode ::
+                                              !(Maybe
+                                                  RtmpOutputCertificateMode),
+                                              _rosConnectionRetryInterval ::
+                                              !(Maybe Nat),
+                                              _rosDestination ::
+                                              !OutputLocationRef}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'RtmpOutputSettings' with the minimum fields required to make a request.
 --
@@ -7260,14 +11747,11 @@ data RtmpOutputSettings = RtmpOutputSettings'
 rtmpOutputSettings
     :: OutputLocationRef -- ^ 'rosDestination'
     -> RtmpOutputSettings
-rtmpOutputSettings pDestination_ =
-  RtmpOutputSettings'
-    { _rosNumRetries = Nothing
-    , _rosCertificateMode = Nothing
-    , _rosConnectionRetryInterval = Nothing
-    , _rosDestination = pDestination_
-    }
-
+rtmpOutputSettings pDestination_
+  = RtmpOutputSettings'{_rosNumRetries = Nothing,
+                        _rosCertificateMode = Nothing,
+                        _rosConnectionRetryInterval = Nothing,
+                        _rosDestination = pDestination_}
 
 -- | Number of retry attempts.
 rosNumRetries :: Lens' RtmpOutputSettings (Maybe Natural)
@@ -7308,20 +11792,328 @@ instance ToJSON RtmpOutputSettings where
                     _rosConnectionRetryInterval,
                   Just ("destination" .= _rosDestination)])
 
--- | Placeholder documentation for Scte20PlusEmbeddedDestinationSettings
+-- | Contains information on a single schedule action.
+--
+-- /See:/ 'scheduleAction' smart constructor.
+data ScheduleAction = ScheduleAction'{_saActionName
+                                      :: !Text,
+                                      _saScheduleActionStartSettings ::
+                                      !ScheduleActionStartSettings,
+                                      _saScheduleActionSettings ::
+                                      !ScheduleActionSettings}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+-- | Creates a value of 'ScheduleAction' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'saActionName' - The name of the action, must be unique within the schedule. This name provides the main reference to an action once it is added to the schedule. A name is unique if it is no longer in the schedule. The schedule is automatically cleaned up to remove actions with a start time of more than 1 hour ago (approximately) so at that point a name can be reused.
+--
+-- * 'saScheduleActionStartSettings' - The time for the action to start in the channel.
+--
+-- * 'saScheduleActionSettings' - Settings for this schedule action.
+scheduleAction
+    :: Text -- ^ 'saActionName'
+    -> ScheduleActionStartSettings -- ^ 'saScheduleActionStartSettings'
+    -> ScheduleActionSettings -- ^ 'saScheduleActionSettings'
+    -> ScheduleAction
+scheduleAction pActionName_
+  pScheduleActionStartSettings_
+  pScheduleActionSettings_
+  = ScheduleAction'{_saActionName = pActionName_,
+                    _saScheduleActionStartSettings =
+                      pScheduleActionStartSettings_,
+                    _saScheduleActionSettings = pScheduleActionSettings_}
+
+-- | The name of the action, must be unique within the schedule. This name provides the main reference to an action once it is added to the schedule. A name is unique if it is no longer in the schedule. The schedule is automatically cleaned up to remove actions with a start time of more than 1 hour ago (approximately) so at that point a name can be reused.
+saActionName :: Lens' ScheduleAction Text
+saActionName = lens _saActionName (\ s a -> s{_saActionName = a})
+
+-- | The time for the action to start in the channel.
+saScheduleActionStartSettings :: Lens' ScheduleAction ScheduleActionStartSettings
+saScheduleActionStartSettings = lens _saScheduleActionStartSettings (\ s a -> s{_saScheduleActionStartSettings = a})
+
+-- | Settings for this schedule action.
+saScheduleActionSettings :: Lens' ScheduleAction ScheduleActionSettings
+saScheduleActionSettings = lens _saScheduleActionSettings (\ s a -> s{_saScheduleActionSettings = a})
+
+instance FromJSON ScheduleAction where
+        parseJSON
+          = withObject "ScheduleAction"
+              (\ x ->
+                 ScheduleAction' <$>
+                   (x .: "actionName") <*>
+                     (x .: "scheduleActionStartSettings")
+                     <*> (x .: "scheduleActionSettings"))
+
+instance Hashable ScheduleAction where
+
+instance NFData ScheduleAction where
+
+instance ToJSON ScheduleAction where
+        toJSON ScheduleAction'{..}
+          = object
+              (catMaybes
+                 [Just ("actionName" .= _saActionName),
+                  Just
+                    ("scheduleActionStartSettings" .=
+                       _saScheduleActionStartSettings),
+                  Just
+                    ("scheduleActionSettings" .=
+                       _saScheduleActionSettings)])
+
+-- | Holds the settings for a single schedule action.
+--
+-- /See:/ 'scheduleActionSettings' smart constructor.
+data ScheduleActionSettings = ScheduleActionSettings'{_sasStaticImageDeactivateSettings
+                                                      ::
+                                                      !(Maybe
+                                                          StaticImageDeactivateScheduleActionSettings),
+                                                      _sasScte35SpliceInsertSettings
+                                                      ::
+                                                      !(Maybe
+                                                          Scte35SpliceInsertScheduleActionSettings),
+                                                      _sasStaticImageActivateSettings
+                                                      ::
+                                                      !(Maybe
+                                                          StaticImageActivateScheduleActionSettings),
+                                                      _sasScte35TimeSignalSettings
+                                                      ::
+                                                      !(Maybe
+                                                          Scte35TimeSignalScheduleActionSettings),
+                                                      _sasInputPrepareSettings
+                                                      ::
+                                                      !(Maybe
+                                                          InputPrepareScheduleActionSettings),
+                                                      _sasHlsId3SegmentTaggingSettings
+                                                      ::
+                                                      !(Maybe
+                                                          HlsId3SegmentTaggingScheduleActionSettings),
+                                                      _sasScte35ReturnToNetworkSettings
+                                                      ::
+                                                      !(Maybe
+                                                          Scte35ReturnToNetworkScheduleActionSettings),
+                                                      _sasPauseStateSettings ::
+                                                      !(Maybe
+                                                          PauseStateScheduleActionSettings),
+                                                      _sasHlsTimedMetadataSettings
+                                                      ::
+                                                      !(Maybe
+                                                          HlsTimedMetadataScheduleActionSettings),
+                                                      _sasInputSwitchSettings ::
+                                                      !(Maybe
+                                                          InputSwitchScheduleActionSettings)}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
+
+-- | Creates a value of 'ScheduleActionSettings' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'sasStaticImageDeactivateSettings' - Action to deactivate a static image overlay
+--
+-- * 'sasScte35SpliceInsertSettings' - Action to insert SCTE-35 splice_insert message
+--
+-- * 'sasStaticImageActivateSettings' - Action to activate a static image overlay
+--
+-- * 'sasScte35TimeSignalSettings' - Action to insert SCTE-35 time_signal message
+--
+-- * 'sasInputPrepareSettings' - Action to prepare an input for a future immediate input switch
+--
+-- * 'sasHlsId3SegmentTaggingSettings' - Action to insert HLS ID3 segment tagging
+--
+-- * 'sasScte35ReturnToNetworkSettings' - Action to insert SCTE-35 return_to_network message
+--
+-- * 'sasPauseStateSettings' - Action to pause or unpause one or both channel pipelines
+--
+-- * 'sasHlsTimedMetadataSettings' - Action to insert HLS metadata
+--
+-- * 'sasInputSwitchSettings' - Action to switch the input
+scheduleActionSettings
+    :: ScheduleActionSettings
+scheduleActionSettings
+  = ScheduleActionSettings'{_sasStaticImageDeactivateSettings
+                              = Nothing,
+                            _sasScte35SpliceInsertSettings = Nothing,
+                            _sasStaticImageActivateSettings = Nothing,
+                            _sasScte35TimeSignalSettings = Nothing,
+                            _sasInputPrepareSettings = Nothing,
+                            _sasHlsId3SegmentTaggingSettings = Nothing,
+                            _sasScte35ReturnToNetworkSettings = Nothing,
+                            _sasPauseStateSettings = Nothing,
+                            _sasHlsTimedMetadataSettings = Nothing,
+                            _sasInputSwitchSettings = Nothing}
+
+-- | Action to deactivate a static image overlay
+sasStaticImageDeactivateSettings :: Lens' ScheduleActionSettings (Maybe StaticImageDeactivateScheduleActionSettings)
+sasStaticImageDeactivateSettings = lens _sasStaticImageDeactivateSettings (\ s a -> s{_sasStaticImageDeactivateSettings = a})
+
+-- | Action to insert SCTE-35 splice_insert message
+sasScte35SpliceInsertSettings :: Lens' ScheduleActionSettings (Maybe Scte35SpliceInsertScheduleActionSettings)
+sasScte35SpliceInsertSettings = lens _sasScte35SpliceInsertSettings (\ s a -> s{_sasScte35SpliceInsertSettings = a})
+
+-- | Action to activate a static image overlay
+sasStaticImageActivateSettings :: Lens' ScheduleActionSettings (Maybe StaticImageActivateScheduleActionSettings)
+sasStaticImageActivateSettings = lens _sasStaticImageActivateSettings (\ s a -> s{_sasStaticImageActivateSettings = a})
+
+-- | Action to insert SCTE-35 time_signal message
+sasScte35TimeSignalSettings :: Lens' ScheduleActionSettings (Maybe Scte35TimeSignalScheduleActionSettings)
+sasScte35TimeSignalSettings = lens _sasScte35TimeSignalSettings (\ s a -> s{_sasScte35TimeSignalSettings = a})
+
+-- | Action to prepare an input for a future immediate input switch
+sasInputPrepareSettings :: Lens' ScheduleActionSettings (Maybe InputPrepareScheduleActionSettings)
+sasInputPrepareSettings = lens _sasInputPrepareSettings (\ s a -> s{_sasInputPrepareSettings = a})
+
+-- | Action to insert HLS ID3 segment tagging
+sasHlsId3SegmentTaggingSettings :: Lens' ScheduleActionSettings (Maybe HlsId3SegmentTaggingScheduleActionSettings)
+sasHlsId3SegmentTaggingSettings = lens _sasHlsId3SegmentTaggingSettings (\ s a -> s{_sasHlsId3SegmentTaggingSettings = a})
+
+-- | Action to insert SCTE-35 return_to_network message
+sasScte35ReturnToNetworkSettings :: Lens' ScheduleActionSettings (Maybe Scte35ReturnToNetworkScheduleActionSettings)
+sasScte35ReturnToNetworkSettings = lens _sasScte35ReturnToNetworkSettings (\ s a -> s{_sasScte35ReturnToNetworkSettings = a})
+
+-- | Action to pause or unpause one or both channel pipelines
+sasPauseStateSettings :: Lens' ScheduleActionSettings (Maybe PauseStateScheduleActionSettings)
+sasPauseStateSettings = lens _sasPauseStateSettings (\ s a -> s{_sasPauseStateSettings = a})
+
+-- | Action to insert HLS metadata
+sasHlsTimedMetadataSettings :: Lens' ScheduleActionSettings (Maybe HlsTimedMetadataScheduleActionSettings)
+sasHlsTimedMetadataSettings = lens _sasHlsTimedMetadataSettings (\ s a -> s{_sasHlsTimedMetadataSettings = a})
+
+-- | Action to switch the input
+sasInputSwitchSettings :: Lens' ScheduleActionSettings (Maybe InputSwitchScheduleActionSettings)
+sasInputSwitchSettings = lens _sasInputSwitchSettings (\ s a -> s{_sasInputSwitchSettings = a})
+
+instance FromJSON ScheduleActionSettings where
+        parseJSON
+          = withObject "ScheduleActionSettings"
+              (\ x ->
+                 ScheduleActionSettings' <$>
+                   (x .:? "staticImageDeactivateSettings") <*>
+                     (x .:? "scte35SpliceInsertSettings")
+                     <*> (x .:? "staticImageActivateSettings")
+                     <*> (x .:? "scte35TimeSignalSettings")
+                     <*> (x .:? "inputPrepareSettings")
+                     <*> (x .:? "hlsId3SegmentTaggingSettings")
+                     <*> (x .:? "scte35ReturnToNetworkSettings")
+                     <*> (x .:? "pauseStateSettings")
+                     <*> (x .:? "hlsTimedMetadataSettings")
+                     <*> (x .:? "inputSwitchSettings"))
+
+instance Hashable ScheduleActionSettings where
+
+instance NFData ScheduleActionSettings where
+
+instance ToJSON ScheduleActionSettings where
+        toJSON ScheduleActionSettings'{..}
+          = object
+              (catMaybes
+                 [("staticImageDeactivateSettings" .=) <$>
+                    _sasStaticImageDeactivateSettings,
+                  ("scte35SpliceInsertSettings" .=) <$>
+                    _sasScte35SpliceInsertSettings,
+                  ("staticImageActivateSettings" .=) <$>
+                    _sasStaticImageActivateSettings,
+                  ("scte35TimeSignalSettings" .=) <$>
+                    _sasScte35TimeSignalSettings,
+                  ("inputPrepareSettings" .=) <$>
+                    _sasInputPrepareSettings,
+                  ("hlsId3SegmentTaggingSettings" .=) <$>
+                    _sasHlsId3SegmentTaggingSettings,
+                  ("scte35ReturnToNetworkSettings" .=) <$>
+                    _sasScte35ReturnToNetworkSettings,
+                  ("pauseStateSettings" .=) <$> _sasPauseStateSettings,
+                  ("hlsTimedMetadataSettings" .=) <$>
+                    _sasHlsTimedMetadataSettings,
+                  ("inputSwitchSettings" .=) <$>
+                    _sasInputSwitchSettings])
+
+-- | Settings to specify when an action should occur. Only one of the options must be selected.
+--
+-- /See:/ 'scheduleActionStartSettings' smart constructor.
+data ScheduleActionStartSettings = ScheduleActionStartSettings'{_sassImmediateModeScheduleActionStartSettings
+                                                                ::
+                                                                !(Maybe
+                                                                    ImmediateModeScheduleActionStartSettings),
+                                                                _sassFollowModeScheduleActionStartSettings
+                                                                ::
+                                                                !(Maybe
+                                                                    FollowModeScheduleActionStartSettings),
+                                                                _sassFixedModeScheduleActionStartSettings
+                                                                ::
+                                                                !(Maybe
+                                                                    FixedModeScheduleActionStartSettings)}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
+
+-- | Creates a value of 'ScheduleActionStartSettings' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'sassImmediateModeScheduleActionStartSettings' - Option for specifying an action that should be applied immediately.
+--
+-- * 'sassFollowModeScheduleActionStartSettings' - Option for specifying an action as relative to another action.
+--
+-- * 'sassFixedModeScheduleActionStartSettings' - Option for specifying the start time for an action.
+scheduleActionStartSettings
+    :: ScheduleActionStartSettings
+scheduleActionStartSettings
+  = ScheduleActionStartSettings'{_sassImmediateModeScheduleActionStartSettings
+                                   = Nothing,
+                                 _sassFollowModeScheduleActionStartSettings =
+                                   Nothing,
+                                 _sassFixedModeScheduleActionStartSettings =
+                                   Nothing}
+
+-- | Option for specifying an action that should be applied immediately.
+sassImmediateModeScheduleActionStartSettings :: Lens' ScheduleActionStartSettings (Maybe ImmediateModeScheduleActionStartSettings)
+sassImmediateModeScheduleActionStartSettings = lens _sassImmediateModeScheduleActionStartSettings (\ s a -> s{_sassImmediateModeScheduleActionStartSettings = a})
+
+-- | Option for specifying an action as relative to another action.
+sassFollowModeScheduleActionStartSettings :: Lens' ScheduleActionStartSettings (Maybe FollowModeScheduleActionStartSettings)
+sassFollowModeScheduleActionStartSettings = lens _sassFollowModeScheduleActionStartSettings (\ s a -> s{_sassFollowModeScheduleActionStartSettings = a})
+
+-- | Option for specifying the start time for an action.
+sassFixedModeScheduleActionStartSettings :: Lens' ScheduleActionStartSettings (Maybe FixedModeScheduleActionStartSettings)
+sassFixedModeScheduleActionStartSettings = lens _sassFixedModeScheduleActionStartSettings (\ s a -> s{_sassFixedModeScheduleActionStartSettings = a})
+
+instance FromJSON ScheduleActionStartSettings where
+        parseJSON
+          = withObject "ScheduleActionStartSettings"
+              (\ x ->
+                 ScheduleActionStartSettings' <$>
+                   (x .:? "immediateModeScheduleActionStartSettings")
+                     <*> (x .:? "followModeScheduleActionStartSettings")
+                     <*> (x .:? "fixedModeScheduleActionStartSettings"))
+
+instance Hashable ScheduleActionStartSettings where
+
+instance NFData ScheduleActionStartSettings where
+
+instance ToJSON ScheduleActionStartSettings where
+        toJSON ScheduleActionStartSettings'{..}
+          = object
+              (catMaybes
+                 [("immediateModeScheduleActionStartSettings" .=) <$>
+                    _sassImmediateModeScheduleActionStartSettings,
+                  ("followModeScheduleActionStartSettings" .=) <$>
+                    _sassFollowModeScheduleActionStartSettings,
+                  ("fixedModeScheduleActionStartSettings" .=) <$>
+                    _sassFixedModeScheduleActionStartSettings])
+
+-- | Scte20 Plus Embedded Destination Settings
 --
 -- /See:/ 'scte20PlusEmbeddedDestinationSettings' smart constructor.
-data Scte20PlusEmbeddedDestinationSettings =
-  Scte20PlusEmbeddedDestinationSettings'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data Scte20PlusEmbeddedDestinationSettings = Scte20PlusEmbeddedDestinationSettings'
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'Scte20PlusEmbeddedDestinationSettings' with the minimum fields required to make a request.
 --
 scte20PlusEmbeddedDestinationSettings
     :: Scte20PlusEmbeddedDestinationSettings
-scte20PlusEmbeddedDestinationSettings = Scte20PlusEmbeddedDestinationSettings'
-
+scte20PlusEmbeddedDestinationSettings
+  = Scte20PlusEmbeddedDestinationSettings'
 
 instance FromJSON
            Scte20PlusEmbeddedDestinationSettings
@@ -7341,14 +12133,16 @@ instance ToJSON Scte20PlusEmbeddedDestinationSettings
          where
         toJSON = const (Object mempty)
 
--- | Placeholder documentation for Scte20SourceSettings
+-- | Scte20 Source Settings
 --
 -- /See:/ 'scte20SourceSettings' smart constructor.
-data Scte20SourceSettings = Scte20SourceSettings'
-  { _sssConvert608To708        :: !(Maybe Scte20Convert608To708)
-  , _sssSource608ChannelNumber :: !(Maybe Nat)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data Scte20SourceSettings = Scte20SourceSettings'{_sssConvert608To708
+                                                  ::
+                                                  !(Maybe
+                                                      Scte20Convert608To708),
+                                                  _sssSource608ChannelNumber ::
+                                                  !(Maybe Nat)}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'Scte20SourceSettings' with the minimum fields required to make a request.
 --
@@ -7359,10 +12153,10 @@ data Scte20SourceSettings = Scte20SourceSettings'
 -- * 'sssSource608ChannelNumber' - Specifies the 608/708 channel number within the video track from which to extract captions. Unused for passthrough.
 scte20SourceSettings
     :: Scte20SourceSettings
-scte20SourceSettings =
-  Scte20SourceSettings'
-    {_sssConvert608To708 = Nothing, _sssSource608ChannelNumber = Nothing}
-
+scte20SourceSettings
+  = Scte20SourceSettings'{_sssConvert608To708 =
+                            Nothing,
+                          _sssSource608ChannelNumber = Nothing}
 
 -- | If upconvert, 608 data is both passed through via the "608 compatibility bytes" fields of the 708 wrapper as well as translated into 708. 708 data present in the source content will be discarded.
 sssConvert608To708 :: Lens' Scte20SourceSettings (Maybe Scte20Convert608To708)
@@ -7392,20 +12186,19 @@ instance ToJSON Scte20SourceSettings where
                   ("source608ChannelNumber" .=) <$>
                     _sssSource608ChannelNumber])
 
--- | Placeholder documentation for Scte27DestinationSettings
+-- | Scte27 Destination Settings
 --
 -- /See:/ 'scte27DestinationSettings' smart constructor.
-data Scte27DestinationSettings =
-  Scte27DestinationSettings'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data Scte27DestinationSettings = Scte27DestinationSettings'
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'Scte27DestinationSettings' with the minimum fields required to make a request.
 --
 scte27DestinationSettings
     :: Scte27DestinationSettings
-scte27DestinationSettings = Scte27DestinationSettings'
-
+scte27DestinationSettings
+  = Scte27DestinationSettings'
 
 instance FromJSON Scte27DestinationSettings where
         parseJSON
@@ -7419,13 +12212,13 @@ instance NFData Scte27DestinationSettings where
 instance ToJSON Scte27DestinationSettings where
         toJSON = const (Object mempty)
 
--- | Placeholder documentation for Scte27SourceSettings
+-- | Scte27 Source Settings
 --
 -- /See:/ 'scte27SourceSettings' smart constructor.
-newtype Scte27SourceSettings = Scte27SourceSettings'
-  { _sssPid :: Maybe Nat
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype Scte27SourceSettings = Scte27SourceSettings'{_sssPid
+                                                     :: Maybe Nat}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'Scte27SourceSettings' with the minimum fields required to make a request.
 --
@@ -7434,8 +12227,8 @@ newtype Scte27SourceSettings = Scte27SourceSettings'
 -- * 'sssPid' - The pid field is used in conjunction with the caption selector languageCode field as follows:   - Specify PID and Language: Extracts captions from that PID; the language is "informational".   - Specify PID and omit Language: Extracts the specified PID.   - Omit PID and specify Language: Extracts the specified language, whichever PID that happens to be.   - Omit PID and omit Language: Valid only if source is DVB-Sub that is being passed through; all languages will be passed through.
 scte27SourceSettings
     :: Scte27SourceSettings
-scte27SourceSettings = Scte27SourceSettings' {_sssPid = Nothing}
-
+scte27SourceSettings
+  = Scte27SourceSettings'{_sssPid = Nothing}
 
 -- | The pid field is used in conjunction with the caption selector languageCode field as follows:   - Specify PID and Language: Extracts captions from that PID; the language is "informational".   - Specify PID and omit Language: Extracts the specified PID.   - Omit PID and specify Language: Extracts the specified language, whichever PID that happens to be.   - Omit PID and omit Language: Valid only if source is DVB-Sub that is being passed through; all languages will be passed through.
 sssPid :: Lens' Scte27SourceSettings (Maybe Natural)
@@ -7454,15 +12247,426 @@ instance ToJSON Scte27SourceSettings where
         toJSON Scte27SourceSettings'{..}
           = object (catMaybes [("pid" .=) <$> _sssPid])
 
--- | Placeholder documentation for Scte35SpliceInsert
+-- | Corresponds to SCTE-35 delivery_not_restricted_flag parameter. To declare delivery restrictions, include this element and its four "restriction" flags. To declare that there are no restrictions, omit this element.
+--
+-- /See:/ 'scte35DeliveryRestrictions' smart constructor.
+data Scte35DeliveryRestrictions = Scte35DeliveryRestrictions'{_sdrDeviceRestrictions
+                                                              ::
+                                                              !Scte35DeviceRestrictions,
+                                                              _sdrArchiveAllowedFlag
+                                                              ::
+                                                              !Scte35ArchiveAllowedFlag,
+                                                              _sdrWebDeliveryAllowedFlag
+                                                              ::
+                                                              !Scte35WebDeliveryAllowedFlag,
+                                                              _sdrNoRegionalBlackoutFlag
+                                                              ::
+                                                              !Scte35NoRegionalBlackoutFlag}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
+
+-- | Creates a value of 'Scte35DeliveryRestrictions' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'sdrDeviceRestrictions' - Corresponds to SCTE-35 device_restrictions parameter.
+--
+-- * 'sdrArchiveAllowedFlag' - Corresponds to SCTE-35 archive_allowed_flag.
+--
+-- * 'sdrWebDeliveryAllowedFlag' - Corresponds to SCTE-35 web_delivery_allowed_flag parameter.
+--
+-- * 'sdrNoRegionalBlackoutFlag' - Corresponds to SCTE-35 no_regional_blackout_flag parameter.
+scte35DeliveryRestrictions
+    :: Scte35DeviceRestrictions -- ^ 'sdrDeviceRestrictions'
+    -> Scte35ArchiveAllowedFlag -- ^ 'sdrArchiveAllowedFlag'
+    -> Scte35WebDeliveryAllowedFlag -- ^ 'sdrWebDeliveryAllowedFlag'
+    -> Scte35NoRegionalBlackoutFlag -- ^ 'sdrNoRegionalBlackoutFlag'
+    -> Scte35DeliveryRestrictions
+scte35DeliveryRestrictions pDeviceRestrictions_
+  pArchiveAllowedFlag_ pWebDeliveryAllowedFlag_
+  pNoRegionalBlackoutFlag_
+  = Scte35DeliveryRestrictions'{_sdrDeviceRestrictions
+                                  = pDeviceRestrictions_,
+                                _sdrArchiveAllowedFlag = pArchiveAllowedFlag_,
+                                _sdrWebDeliveryAllowedFlag =
+                                  pWebDeliveryAllowedFlag_,
+                                _sdrNoRegionalBlackoutFlag =
+                                  pNoRegionalBlackoutFlag_}
+
+-- | Corresponds to SCTE-35 device_restrictions parameter.
+sdrDeviceRestrictions :: Lens' Scte35DeliveryRestrictions Scte35DeviceRestrictions
+sdrDeviceRestrictions = lens _sdrDeviceRestrictions (\ s a -> s{_sdrDeviceRestrictions = a})
+
+-- | Corresponds to SCTE-35 archive_allowed_flag.
+sdrArchiveAllowedFlag :: Lens' Scte35DeliveryRestrictions Scte35ArchiveAllowedFlag
+sdrArchiveAllowedFlag = lens _sdrArchiveAllowedFlag (\ s a -> s{_sdrArchiveAllowedFlag = a})
+
+-- | Corresponds to SCTE-35 web_delivery_allowed_flag parameter.
+sdrWebDeliveryAllowedFlag :: Lens' Scte35DeliveryRestrictions Scte35WebDeliveryAllowedFlag
+sdrWebDeliveryAllowedFlag = lens _sdrWebDeliveryAllowedFlag (\ s a -> s{_sdrWebDeliveryAllowedFlag = a})
+
+-- | Corresponds to SCTE-35 no_regional_blackout_flag parameter.
+sdrNoRegionalBlackoutFlag :: Lens' Scte35DeliveryRestrictions Scte35NoRegionalBlackoutFlag
+sdrNoRegionalBlackoutFlag = lens _sdrNoRegionalBlackoutFlag (\ s a -> s{_sdrNoRegionalBlackoutFlag = a})
+
+instance FromJSON Scte35DeliveryRestrictions where
+        parseJSON
+          = withObject "Scte35DeliveryRestrictions"
+              (\ x ->
+                 Scte35DeliveryRestrictions' <$>
+                   (x .: "deviceRestrictions") <*>
+                     (x .: "archiveAllowedFlag")
+                     <*> (x .: "webDeliveryAllowedFlag")
+                     <*> (x .: "noRegionalBlackoutFlag"))
+
+instance Hashable Scte35DeliveryRestrictions where
+
+instance NFData Scte35DeliveryRestrictions where
+
+instance ToJSON Scte35DeliveryRestrictions where
+        toJSON Scte35DeliveryRestrictions'{..}
+          = object
+              (catMaybes
+                 [Just
+                    ("deviceRestrictions" .= _sdrDeviceRestrictions),
+                  Just
+                    ("archiveAllowedFlag" .= _sdrArchiveAllowedFlag),
+                  Just
+                    ("webDeliveryAllowedFlag" .=
+                       _sdrWebDeliveryAllowedFlag),
+                  Just
+                    ("noRegionalBlackoutFlag" .=
+                       _sdrNoRegionalBlackoutFlag)])
+
+-- | Holds one set of SCTE-35 Descriptor Settings.
+--
+-- /See:/ 'scte35Descriptor' smart constructor.
+newtype Scte35Descriptor = Scte35Descriptor'{_sdScte35DescriptorSettings
+                                             :: Scte35DescriptorSettings}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+-- | Creates a value of 'Scte35Descriptor' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'sdScte35DescriptorSettings' - SCTE-35 Descriptor Settings.
+scte35Descriptor
+    :: Scte35DescriptorSettings -- ^ 'sdScte35DescriptorSettings'
+    -> Scte35Descriptor
+scte35Descriptor pScte35DescriptorSettings_
+  = Scte35Descriptor'{_sdScte35DescriptorSettings =
+                        pScte35DescriptorSettings_}
+
+-- | SCTE-35 Descriptor Settings.
+sdScte35DescriptorSettings :: Lens' Scte35Descriptor Scte35DescriptorSettings
+sdScte35DescriptorSettings = lens _sdScte35DescriptorSettings (\ s a -> s{_sdScte35DescriptorSettings = a})
+
+instance FromJSON Scte35Descriptor where
+        parseJSON
+          = withObject "Scte35Descriptor"
+              (\ x ->
+                 Scte35Descriptor' <$>
+                   (x .: "scte35DescriptorSettings"))
+
+instance Hashable Scte35Descriptor where
+
+instance NFData Scte35Descriptor where
+
+instance ToJSON Scte35Descriptor where
+        toJSON Scte35Descriptor'{..}
+          = object
+              (catMaybes
+                 [Just
+                    ("scte35DescriptorSettings" .=
+                       _sdScte35DescriptorSettings)])
+
+-- | SCTE-35 Descriptor settings.
+--
+-- /See:/ 'scte35DescriptorSettings' smart constructor.
+newtype Scte35DescriptorSettings = Scte35DescriptorSettings'{_sdsSegmentationDescriptorScte35DescriptorSettings
+                                                             ::
+                                                             Scte35SegmentationDescriptor}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
+
+-- | Creates a value of 'Scte35DescriptorSettings' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'sdsSegmentationDescriptorScte35DescriptorSettings' - SCTE-35 Segmentation Descriptor.
+scte35DescriptorSettings
+    :: Scte35SegmentationDescriptor -- ^ 'sdsSegmentationDescriptorScte35DescriptorSettings'
+    -> Scte35DescriptorSettings
+scte35DescriptorSettings
+  pSegmentationDescriptorScte35DescriptorSettings_
+  = Scte35DescriptorSettings'{_sdsSegmentationDescriptorScte35DescriptorSettings
+                                =
+                                pSegmentationDescriptorScte35DescriptorSettings_}
+
+-- | SCTE-35 Segmentation Descriptor.
+sdsSegmentationDescriptorScte35DescriptorSettings :: Lens' Scte35DescriptorSettings Scte35SegmentationDescriptor
+sdsSegmentationDescriptorScte35DescriptorSettings = lens _sdsSegmentationDescriptorScte35DescriptorSettings (\ s a -> s{_sdsSegmentationDescriptorScte35DescriptorSettings = a})
+
+instance FromJSON Scte35DescriptorSettings where
+        parseJSON
+          = withObject "Scte35DescriptorSettings"
+              (\ x ->
+                 Scte35DescriptorSettings' <$>
+                   (x .:
+                      "segmentationDescriptorScte35DescriptorSettings"))
+
+instance Hashable Scte35DescriptorSettings where
+
+instance NFData Scte35DescriptorSettings where
+
+instance ToJSON Scte35DescriptorSettings where
+        toJSON Scte35DescriptorSettings'{..}
+          = object
+              (catMaybes
+                 [Just
+                    ("segmentationDescriptorScte35DescriptorSettings" .=
+                       _sdsSegmentationDescriptorScte35DescriptorSettings)])
+
+-- | Settings for a SCTE-35 return_to_network message.
+--
+-- /See:/ 'scte35ReturnToNetworkScheduleActionSettings' smart constructor.
+newtype Scte35ReturnToNetworkScheduleActionSettings = Scte35ReturnToNetworkScheduleActionSettings'{_srtnsasSpliceEventId
+                                                                                                   ::
+                                                                                                   Nat}
+                                                        deriving (Eq, Read,
+                                                                  Show, Data,
+                                                                  Typeable,
+                                                                  Generic)
+
+-- | Creates a value of 'Scte35ReturnToNetworkScheduleActionSettings' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'srtnsasSpliceEventId' - The splice_event_id for the SCTE-35 splice_insert, as defined in SCTE-35.
+scte35ReturnToNetworkScheduleActionSettings
+    :: Natural -- ^ 'srtnsasSpliceEventId'
+    -> Scte35ReturnToNetworkScheduleActionSettings
+scte35ReturnToNetworkScheduleActionSettings
+  pSpliceEventId_
+  = Scte35ReturnToNetworkScheduleActionSettings'{_srtnsasSpliceEventId
+                                                   = _Nat # pSpliceEventId_}
+
+-- | The splice_event_id for the SCTE-35 splice_insert, as defined in SCTE-35.
+srtnsasSpliceEventId :: Lens' Scte35ReturnToNetworkScheduleActionSettings Natural
+srtnsasSpliceEventId = lens _srtnsasSpliceEventId (\ s a -> s{_srtnsasSpliceEventId = a}) . _Nat
+
+instance FromJSON
+           Scte35ReturnToNetworkScheduleActionSettings
+         where
+        parseJSON
+          = withObject
+              "Scte35ReturnToNetworkScheduleActionSettings"
+              (\ x ->
+                 Scte35ReturnToNetworkScheduleActionSettings' <$>
+                   (x .: "spliceEventId"))
+
+instance Hashable
+           Scte35ReturnToNetworkScheduleActionSettings
+         where
+
+instance NFData
+           Scte35ReturnToNetworkScheduleActionSettings
+         where
+
+instance ToJSON
+           Scte35ReturnToNetworkScheduleActionSettings
+         where
+        toJSON
+          Scte35ReturnToNetworkScheduleActionSettings'{..}
+          = object
+              (catMaybes
+                 [Just ("spliceEventId" .= _srtnsasSpliceEventId)])
+
+-- | Corresponds to SCTE-35 segmentation_descriptor.
+--
+-- /See:/ 'scte35SegmentationDescriptor' smart constructor.
+data Scte35SegmentationDescriptor = Scte35SegmentationDescriptor'{_ssdSegmentationUpidType
+                                                                  ::
+                                                                  !(Maybe Nat),
+                                                                  _ssdSegmentsExpected
+                                                                  ::
+                                                                  !(Maybe Nat),
+                                                                  _ssdSubSegmentsExpected
+                                                                  ::
+                                                                  !(Maybe Nat),
+                                                                  _ssdSegmentNum
+                                                                  ::
+                                                                  !(Maybe Nat),
+                                                                  _ssdSegmentationDuration
+                                                                  ::
+                                                                  !(Maybe Nat),
+                                                                  _ssdSegmentationTypeId
+                                                                  ::
+                                                                  !(Maybe Nat),
+                                                                  _ssdDeliveryRestrictions
+                                                                  ::
+                                                                  !(Maybe
+                                                                      Scte35DeliveryRestrictions),
+                                                                  _ssdSegmentationUpid
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _ssdSubSegmentNum
+                                                                  ::
+                                                                  !(Maybe Nat),
+                                                                  _ssdSegmentationEventId
+                                                                  :: !Nat,
+                                                                  _ssdSegmentationCancelIndicator
+                                                                  ::
+                                                                  !Scte35SegmentationCancelIndicator}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
+
+-- | Creates a value of 'Scte35SegmentationDescriptor' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'ssdSegmentationUpidType' - Corresponds to SCTE-35 segmentation_upid_type. On the console, enter one of the types listed in the SCTE-35 specification, converted to a decimal. For example, "0x0C" hex from the specification is "12" in decimal. In the CLI, API, or an SDK, enter one of the types listed in the SCTE-35 specification, in either hex (for example, "0x0C" ) or in decimal (for example, "12").
+--
+-- * 'ssdSegmentsExpected' - Corresponds to SCTE-35 segments_expected. A value that is valid for the specified segmentation_type_id.
+--
+-- * 'ssdSubSegmentsExpected' - Corresponds to SCTE-35 sub_segments_expected. A value that is valid for the specified segmentation_type_id.
+--
+-- * 'ssdSegmentNum' - Corresponds to SCTE-35 segment_num. A value that is valid for the specified segmentation_type_id.
+--
+-- * 'ssdSegmentationDuration' - Corresponds to SCTE-35 segmentation_duration. Optional. The duration for the time_signal, in 90 KHz ticks. To convert seconds to ticks, multiple the seconds by 90,000. Enter time in 90 KHz clock ticks. If you do not enter a duration, the time_signal will continue until you insert a cancellation message.
+--
+-- * 'ssdSegmentationTypeId' - Corresponds to SCTE-35 segmentation_type_id. One of the segmentation_type_id values listed in the SCTE-35 specification. On the console, enter the ID in decimal (for example, "52"). In the CLI, API, or an SDK, enter the ID in hex (for example, "0x34") or decimal (for example, "52").
+--
+-- * 'ssdDeliveryRestrictions' - Holds the four SCTE-35 delivery restriction parameters.
+--
+-- * 'ssdSegmentationUpid' - Corresponds to SCTE-35 segmentation_upid. Enter a string containing the hexadecimal representation of the characters that make up the SCTE-35 segmentation_upid value. Must contain an even number of hex characters. Do not include spaces between each hex pair. For example, the ASCII "ADS Information" becomes hex "41445320496e666f726d6174696f6e.
+--
+-- * 'ssdSubSegmentNum' - Corresponds to SCTE-35 sub_segment_num. A value that is valid for the specified segmentation_type_id.
+--
+-- * 'ssdSegmentationEventId' - Corresponds to SCTE-35 segmentation_event_id. 
+--
+-- * 'ssdSegmentationCancelIndicator' - Corresponds to SCTE-35 segmentation_event_cancel_indicator.
+scte35SegmentationDescriptor
+    :: Natural -- ^ 'ssdSegmentationEventId'
+    -> Scte35SegmentationCancelIndicator -- ^ 'ssdSegmentationCancelIndicator'
+    -> Scte35SegmentationDescriptor
+scte35SegmentationDescriptor pSegmentationEventId_
+  pSegmentationCancelIndicator_
+  = Scte35SegmentationDescriptor'{_ssdSegmentationUpidType
+                                    = Nothing,
+                                  _ssdSegmentsExpected = Nothing,
+                                  _ssdSubSegmentsExpected = Nothing,
+                                  _ssdSegmentNum = Nothing,
+                                  _ssdSegmentationDuration = Nothing,
+                                  _ssdSegmentationTypeId = Nothing,
+                                  _ssdDeliveryRestrictions = Nothing,
+                                  _ssdSegmentationUpid = Nothing,
+                                  _ssdSubSegmentNum = Nothing,
+                                  _ssdSegmentationEventId =
+                                    _Nat # pSegmentationEventId_,
+                                  _ssdSegmentationCancelIndicator =
+                                    pSegmentationCancelIndicator_}
+
+-- | Corresponds to SCTE-35 segmentation_upid_type. On the console, enter one of the types listed in the SCTE-35 specification, converted to a decimal. For example, "0x0C" hex from the specification is "12" in decimal. In the CLI, API, or an SDK, enter one of the types listed in the SCTE-35 specification, in either hex (for example, "0x0C" ) or in decimal (for example, "12").
+ssdSegmentationUpidType :: Lens' Scte35SegmentationDescriptor (Maybe Natural)
+ssdSegmentationUpidType = lens _ssdSegmentationUpidType (\ s a -> s{_ssdSegmentationUpidType = a}) . mapping _Nat
+
+-- | Corresponds to SCTE-35 segments_expected. A value that is valid for the specified segmentation_type_id.
+ssdSegmentsExpected :: Lens' Scte35SegmentationDescriptor (Maybe Natural)
+ssdSegmentsExpected = lens _ssdSegmentsExpected (\ s a -> s{_ssdSegmentsExpected = a}) . mapping _Nat
+
+-- | Corresponds to SCTE-35 sub_segments_expected. A value that is valid for the specified segmentation_type_id.
+ssdSubSegmentsExpected :: Lens' Scte35SegmentationDescriptor (Maybe Natural)
+ssdSubSegmentsExpected = lens _ssdSubSegmentsExpected (\ s a -> s{_ssdSubSegmentsExpected = a}) . mapping _Nat
+
+-- | Corresponds to SCTE-35 segment_num. A value that is valid for the specified segmentation_type_id.
+ssdSegmentNum :: Lens' Scte35SegmentationDescriptor (Maybe Natural)
+ssdSegmentNum = lens _ssdSegmentNum (\ s a -> s{_ssdSegmentNum = a}) . mapping _Nat
+
+-- | Corresponds to SCTE-35 segmentation_duration. Optional. The duration for the time_signal, in 90 KHz ticks. To convert seconds to ticks, multiple the seconds by 90,000. Enter time in 90 KHz clock ticks. If you do not enter a duration, the time_signal will continue until you insert a cancellation message.
+ssdSegmentationDuration :: Lens' Scte35SegmentationDescriptor (Maybe Natural)
+ssdSegmentationDuration = lens _ssdSegmentationDuration (\ s a -> s{_ssdSegmentationDuration = a}) . mapping _Nat
+
+-- | Corresponds to SCTE-35 segmentation_type_id. One of the segmentation_type_id values listed in the SCTE-35 specification. On the console, enter the ID in decimal (for example, "52"). In the CLI, API, or an SDK, enter the ID in hex (for example, "0x34") or decimal (for example, "52").
+ssdSegmentationTypeId :: Lens' Scte35SegmentationDescriptor (Maybe Natural)
+ssdSegmentationTypeId = lens _ssdSegmentationTypeId (\ s a -> s{_ssdSegmentationTypeId = a}) . mapping _Nat
+
+-- | Holds the four SCTE-35 delivery restriction parameters.
+ssdDeliveryRestrictions :: Lens' Scte35SegmentationDescriptor (Maybe Scte35DeliveryRestrictions)
+ssdDeliveryRestrictions = lens _ssdDeliveryRestrictions (\ s a -> s{_ssdDeliveryRestrictions = a})
+
+-- | Corresponds to SCTE-35 segmentation_upid. Enter a string containing the hexadecimal representation of the characters that make up the SCTE-35 segmentation_upid value. Must contain an even number of hex characters. Do not include spaces between each hex pair. For example, the ASCII "ADS Information" becomes hex "41445320496e666f726d6174696f6e.
+ssdSegmentationUpid :: Lens' Scte35SegmentationDescriptor (Maybe Text)
+ssdSegmentationUpid = lens _ssdSegmentationUpid (\ s a -> s{_ssdSegmentationUpid = a})
+
+-- | Corresponds to SCTE-35 sub_segment_num. A value that is valid for the specified segmentation_type_id.
+ssdSubSegmentNum :: Lens' Scte35SegmentationDescriptor (Maybe Natural)
+ssdSubSegmentNum = lens _ssdSubSegmentNum (\ s a -> s{_ssdSubSegmentNum = a}) . mapping _Nat
+
+-- | Corresponds to SCTE-35 segmentation_event_id. 
+ssdSegmentationEventId :: Lens' Scte35SegmentationDescriptor Natural
+ssdSegmentationEventId = lens _ssdSegmentationEventId (\ s a -> s{_ssdSegmentationEventId = a}) . _Nat
+
+-- | Corresponds to SCTE-35 segmentation_event_cancel_indicator.
+ssdSegmentationCancelIndicator :: Lens' Scte35SegmentationDescriptor Scte35SegmentationCancelIndicator
+ssdSegmentationCancelIndicator = lens _ssdSegmentationCancelIndicator (\ s a -> s{_ssdSegmentationCancelIndicator = a})
+
+instance FromJSON Scte35SegmentationDescriptor where
+        parseJSON
+          = withObject "Scte35SegmentationDescriptor"
+              (\ x ->
+                 Scte35SegmentationDescriptor' <$>
+                   (x .:? "segmentationUpidType") <*>
+                     (x .:? "segmentsExpected")
+                     <*> (x .:? "subSegmentsExpected")
+                     <*> (x .:? "segmentNum")
+                     <*> (x .:? "segmentationDuration")
+                     <*> (x .:? "segmentationTypeId")
+                     <*> (x .:? "deliveryRestrictions")
+                     <*> (x .:? "segmentationUpid")
+                     <*> (x .:? "subSegmentNum")
+                     <*> (x .: "segmentationEventId")
+                     <*> (x .: "segmentationCancelIndicator"))
+
+instance Hashable Scte35SegmentationDescriptor where
+
+instance NFData Scte35SegmentationDescriptor where
+
+instance ToJSON Scte35SegmentationDescriptor where
+        toJSON Scte35SegmentationDescriptor'{..}
+          = object
+              (catMaybes
+                 [("segmentationUpidType" .=) <$>
+                    _ssdSegmentationUpidType,
+                  ("segmentsExpected" .=) <$> _ssdSegmentsExpected,
+                  ("subSegmentsExpected" .=) <$>
+                    _ssdSubSegmentsExpected,
+                  ("segmentNum" .=) <$> _ssdSegmentNum,
+                  ("segmentationDuration" .=) <$>
+                    _ssdSegmentationDuration,
+                  ("segmentationTypeId" .=) <$> _ssdSegmentationTypeId,
+                  ("deliveryRestrictions" .=) <$>
+                    _ssdDeliveryRestrictions,
+                  ("segmentationUpid" .=) <$> _ssdSegmentationUpid,
+                  ("subSegmentNum" .=) <$> _ssdSubSegmentNum,
+                  Just
+                    ("segmentationEventId" .= _ssdSegmentationEventId),
+                  Just
+                    ("segmentationCancelIndicator" .=
+                       _ssdSegmentationCancelIndicator)])
+
+-- | Scte35 Splice Insert
 --
 -- /See:/ 'scte35SpliceInsert' smart constructor.
-data Scte35SpliceInsert = Scte35SpliceInsert'
-  { _ssiWebDeliveryAllowedFlag :: !(Maybe Scte35SpliceInsertWebDeliveryAllowedBehavior)
-  , _ssiAdAvailOffset :: !(Maybe Int)
-  , _ssiNoRegionalBlackoutFlag :: !(Maybe Scte35SpliceInsertNoRegionalBlackoutBehavior)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data Scte35SpliceInsert = Scte35SpliceInsert'{_ssiWebDeliveryAllowedFlag
+                                              ::
+                                              !(Maybe
+                                                  Scte35SpliceInsertWebDeliveryAllowedBehavior),
+                                              _ssiAdAvailOffset :: !(Maybe Int),
+                                              _ssiNoRegionalBlackoutFlag ::
+                                              !(Maybe
+                                                  Scte35SpliceInsertNoRegionalBlackoutBehavior)}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'Scte35SpliceInsert' with the minimum fields required to make a request.
 --
@@ -7475,13 +12679,11 @@ data Scte35SpliceInsert = Scte35SpliceInsert'
 -- * 'ssiNoRegionalBlackoutFlag' - When set to ignore, Segment Descriptors with noRegionalBlackoutFlag set to 0 will no longer trigger blackouts or Ad Avail slates
 scte35SpliceInsert
     :: Scte35SpliceInsert
-scte35SpliceInsert =
-  Scte35SpliceInsert'
-    { _ssiWebDeliveryAllowedFlag = Nothing
-    , _ssiAdAvailOffset = Nothing
-    , _ssiNoRegionalBlackoutFlag = Nothing
-    }
-
+scte35SpliceInsert
+  = Scte35SpliceInsert'{_ssiWebDeliveryAllowedFlag =
+                          Nothing,
+                        _ssiAdAvailOffset = Nothing,
+                        _ssiNoRegionalBlackoutFlag = Nothing}
 
 -- | When set to ignore, Segment Descriptors with webDeliveryAllowedFlag set to 0 will no longer trigger blackouts or Ad Avail slates
 ssiWebDeliveryAllowedFlag :: Lens' Scte35SpliceInsert (Maybe Scte35SpliceInsertWebDeliveryAllowedBehavior)
@@ -7518,15 +12720,85 @@ instance ToJSON Scte35SpliceInsert where
                   ("noRegionalBlackoutFlag" .=) <$>
                     _ssiNoRegionalBlackoutFlag])
 
--- | Placeholder documentation for Scte35TimeSignalApos
+-- | Settings for a SCTE-35 splice_insert message.
+--
+-- /See:/ 'scte35SpliceInsertScheduleActionSettings' smart constructor.
+data Scte35SpliceInsertScheduleActionSettings = Scte35SpliceInsertScheduleActionSettings'{_ssisasDuration
+                                                                                          ::
+                                                                                          !(Maybe
+                                                                                              Nat),
+                                                                                          _ssisasSpliceEventId
+                                                                                          ::
+                                                                                          !Nat}
+                                                  deriving (Eq, Read, Show,
+                                                            Data, Typeable,
+                                                            Generic)
+
+-- | Creates a value of 'Scte35SpliceInsertScheduleActionSettings' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'ssisasDuration' - Optional, the duration for the splice_insert, in 90 KHz ticks. To convert seconds to ticks, multiple the seconds by 90,000. If you enter a duration, there is an expectation that the downstream system can read the duration and cue in at that time. If you do not enter a duration, the splice_insert will continue indefinitely and there is an expectation that you will enter a return_to_network to end the splice_insert at the appropriate time.
+--
+-- * 'ssisasSpliceEventId' - The splice_event_id for the SCTE-35 splice_insert, as defined in SCTE-35.
+scte35SpliceInsertScheduleActionSettings
+    :: Natural -- ^ 'ssisasSpliceEventId'
+    -> Scte35SpliceInsertScheduleActionSettings
+scte35SpliceInsertScheduleActionSettings
+  pSpliceEventId_
+  = Scte35SpliceInsertScheduleActionSettings'{_ssisasDuration
+                                                = Nothing,
+                                              _ssisasSpliceEventId =
+                                                _Nat # pSpliceEventId_}
+
+-- | Optional, the duration for the splice_insert, in 90 KHz ticks. To convert seconds to ticks, multiple the seconds by 90,000. If you enter a duration, there is an expectation that the downstream system can read the duration and cue in at that time. If you do not enter a duration, the splice_insert will continue indefinitely and there is an expectation that you will enter a return_to_network to end the splice_insert at the appropriate time.
+ssisasDuration :: Lens' Scte35SpliceInsertScheduleActionSettings (Maybe Natural)
+ssisasDuration = lens _ssisasDuration (\ s a -> s{_ssisasDuration = a}) . mapping _Nat
+
+-- | The splice_event_id for the SCTE-35 splice_insert, as defined in SCTE-35.
+ssisasSpliceEventId :: Lens' Scte35SpliceInsertScheduleActionSettings Natural
+ssisasSpliceEventId = lens _ssisasSpliceEventId (\ s a -> s{_ssisasSpliceEventId = a}) . _Nat
+
+instance FromJSON
+           Scte35SpliceInsertScheduleActionSettings
+         where
+        parseJSON
+          = withObject
+              "Scte35SpliceInsertScheduleActionSettings"
+              (\ x ->
+                 Scte35SpliceInsertScheduleActionSettings' <$>
+                   (x .:? "duration") <*> (x .: "spliceEventId"))
+
+instance Hashable
+           Scte35SpliceInsertScheduleActionSettings
+         where
+
+instance NFData
+           Scte35SpliceInsertScheduleActionSettings
+         where
+
+instance ToJSON
+           Scte35SpliceInsertScheduleActionSettings
+         where
+        toJSON Scte35SpliceInsertScheduleActionSettings'{..}
+          = object
+              (catMaybes
+                 [("duration" .=) <$> _ssisasDuration,
+                  Just ("spliceEventId" .= _ssisasSpliceEventId)])
+
+-- | Scte35 Time Signal Apos
 --
 -- /See:/ 'scte35TimeSignalApos' smart constructor.
-data Scte35TimeSignalApos = Scte35TimeSignalApos'
-  { _stsaWebDeliveryAllowedFlag :: !(Maybe Scte35AposWebDeliveryAllowedBehavior)
-  , _stsaAdAvailOffset          :: !(Maybe Int)
-  , _stsaNoRegionalBlackoutFlag :: !(Maybe Scte35AposNoRegionalBlackoutBehavior)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data Scte35TimeSignalApos = Scte35TimeSignalApos'{_stsaWebDeliveryAllowedFlag
+                                                  ::
+                                                  !(Maybe
+                                                      Scte35AposWebDeliveryAllowedBehavior),
+                                                  _stsaAdAvailOffset ::
+                                                  !(Maybe Int),
+                                                  _stsaNoRegionalBlackoutFlag ::
+                                                  !(Maybe
+                                                      Scte35AposNoRegionalBlackoutBehavior)}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'Scte35TimeSignalApos' with the minimum fields required to make a request.
 --
@@ -7539,13 +12811,11 @@ data Scte35TimeSignalApos = Scte35TimeSignalApos'
 -- * 'stsaNoRegionalBlackoutFlag' - When set to ignore, Segment Descriptors with noRegionalBlackoutFlag set to 0 will no longer trigger blackouts or Ad Avail slates
 scte35TimeSignalApos
     :: Scte35TimeSignalApos
-scte35TimeSignalApos =
-  Scte35TimeSignalApos'
-    { _stsaWebDeliveryAllowedFlag = Nothing
-    , _stsaAdAvailOffset = Nothing
-    , _stsaNoRegionalBlackoutFlag = Nothing
-    }
-
+scte35TimeSignalApos
+  = Scte35TimeSignalApos'{_stsaWebDeliveryAllowedFlag =
+                            Nothing,
+                          _stsaAdAvailOffset = Nothing,
+                          _stsaNoRegionalBlackoutFlag = Nothing}
 
 -- | When set to ignore, Segment Descriptors with webDeliveryAllowedFlag set to 0 will no longer trigger blackouts or Ad Avail slates
 stsaWebDeliveryAllowedFlag :: Lens' Scte35TimeSignalApos (Maybe Scte35AposWebDeliveryAllowedBehavior)
@@ -7582,20 +12852,70 @@ instance ToJSON Scte35TimeSignalApos where
                   ("noRegionalBlackoutFlag" .=) <$>
                     _stsaNoRegionalBlackoutFlag])
 
--- | Placeholder documentation for SmpteTtDestinationSettings
+-- | Settings for a SCTE-35 time_signal.
+--
+-- /See:/ 'scte35TimeSignalScheduleActionSettings' smart constructor.
+newtype Scte35TimeSignalScheduleActionSettings = Scte35TimeSignalScheduleActionSettings'{_stssasScte35Descriptors
+                                                                                         ::
+                                                                                         [Scte35Descriptor]}
+                                                   deriving (Eq, Read, Show,
+                                                             Data, Typeable,
+                                                             Generic)
+
+-- | Creates a value of 'Scte35TimeSignalScheduleActionSettings' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'stssasScte35Descriptors' - The list of SCTE-35 descriptors accompanying the SCTE-35 time_signal.
+scte35TimeSignalScheduleActionSettings
+    :: Scte35TimeSignalScheduleActionSettings
+scte35TimeSignalScheduleActionSettings
+  = Scte35TimeSignalScheduleActionSettings'{_stssasScte35Descriptors
+                                              = mempty}
+
+-- | The list of SCTE-35 descriptors accompanying the SCTE-35 time_signal.
+stssasScte35Descriptors :: Lens' Scte35TimeSignalScheduleActionSettings [Scte35Descriptor]
+stssasScte35Descriptors = lens _stssasScte35Descriptors (\ s a -> s{_stssasScte35Descriptors = a}) . _Coerce
+
+instance FromJSON
+           Scte35TimeSignalScheduleActionSettings
+         where
+        parseJSON
+          = withObject "Scte35TimeSignalScheduleActionSettings"
+              (\ x ->
+                 Scte35TimeSignalScheduleActionSettings' <$>
+                   (x .:? "scte35Descriptors" .!= mempty))
+
+instance Hashable
+           Scte35TimeSignalScheduleActionSettings
+         where
+
+instance NFData
+           Scte35TimeSignalScheduleActionSettings
+         where
+
+instance ToJSON
+           Scte35TimeSignalScheduleActionSettings
+         where
+        toJSON Scte35TimeSignalScheduleActionSettings'{..}
+          = object
+              (catMaybes
+                 [Just
+                    ("scte35Descriptors" .= _stssasScte35Descriptors)])
+
+-- | Smpte Tt Destination Settings
 --
 -- /See:/ 'smpteTtDestinationSettings' smart constructor.
-data SmpteTtDestinationSettings =
-  SmpteTtDestinationSettings'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SmpteTtDestinationSettings = SmpteTtDestinationSettings'
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'SmpteTtDestinationSettings' with the minimum fields required to make a request.
 --
 smpteTtDestinationSettings
     :: SmpteTtDestinationSettings
-smpteTtDestinationSettings = SmpteTtDestinationSettings'
-
+smpteTtDestinationSettings
+  = SmpteTtDestinationSettings'
 
 instance FromJSON SmpteTtDestinationSettings where
         parseJSON
@@ -7609,14 +12929,14 @@ instance NFData SmpteTtDestinationSettings where
 instance ToJSON SmpteTtDestinationSettings where
         toJSON = const (Object mempty)
 
--- | Placeholder documentation for StandardHlsSettings
+-- | Standard Hls Settings
 --
 -- /See:/ 'standardHlsSettings' smart constructor.
-data StandardHlsSettings = StandardHlsSettings'
-  { _shsAudioRenditionSets :: !(Maybe Text)
-  , _shsM3u8Settings       :: !M3u8Settings
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StandardHlsSettings = StandardHlsSettings'{_shsAudioRenditionSets
+                                                :: !(Maybe Text),
+                                                _shsM3u8Settings ::
+                                                !M3u8Settings}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'StandardHlsSettings' with the minimum fields required to make a request.
 --
@@ -7628,10 +12948,10 @@ data StandardHlsSettings = StandardHlsSettings'
 standardHlsSettings
     :: M3u8Settings -- ^ 'shsM3u8Settings'
     -> StandardHlsSettings
-standardHlsSettings pM3u8Settings_ =
-  StandardHlsSettings'
-    {_shsAudioRenditionSets = Nothing, _shsM3u8Settings = pM3u8Settings_}
-
+standardHlsSettings pM3u8Settings_
+  = StandardHlsSettings'{_shsAudioRenditionSets =
+                           Nothing,
+                         _shsM3u8Settings = pM3u8Settings_}
 
 -- | List all the audio groups that are used with the video output stream. Input all the audio GROUP-IDs that are associated to the video, separate by ','.
 shsAudioRenditionSets :: Lens' StandardHlsSettings (Maybe Text)
@@ -7661,14 +12981,279 @@ instance ToJSON StandardHlsSettings where
                     _shsAudioRenditionSets,
                   Just ("m3u8Settings" .= _shsM3u8Settings)])
 
--- | Placeholder documentation for StaticKeySettings
+-- | Settings to identify the start of the clip.
+--
+-- /See:/ 'startTimecode' smart constructor.
+newtype StartTimecode = StartTimecode'{_sTimecode ::
+                                       Maybe Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+-- | Creates a value of 'StartTimecode' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'sTimecode' - The timecode for the frame where you want to start the clip. Optional; if not specified, the clip starts at first frame in the file. Enter the timecode as HH:MM:SS:FF or HH:MM:SS;FF.
+startTimecode
+    :: StartTimecode
+startTimecode = StartTimecode'{_sTimecode = Nothing}
+
+-- | The timecode for the frame where you want to start the clip. Optional; if not specified, the clip starts at first frame in the file. Enter the timecode as HH:MM:SS:FF or HH:MM:SS;FF.
+sTimecode :: Lens' StartTimecode (Maybe Text)
+sTimecode = lens _sTimecode (\ s a -> s{_sTimecode = a})
+
+instance FromJSON StartTimecode where
+        parseJSON
+          = withObject "StartTimecode"
+              (\ x -> StartTimecode' <$> (x .:? "timecode"))
+
+instance Hashable StartTimecode where
+
+instance NFData StartTimecode where
+
+instance ToJSON StartTimecode where
+        toJSON StartTimecode'{..}
+          = object (catMaybes [("timecode" .=) <$> _sTimecode])
+
+-- | Settings for the action to activate a static image.
+--
+-- /See:/ 'staticImageActivateScheduleActionSettings' smart constructor.
+data StaticImageActivateScheduleActionSettings = StaticImageActivateScheduleActionSettings'{_siasasImageX
+                                                                                            ::
+                                                                                            !(Maybe
+                                                                                                Nat),
+                                                                                            _siasasHeight
+                                                                                            ::
+                                                                                            !(Maybe
+                                                                                                Nat),
+                                                                                            _siasasFadeOut
+                                                                                            ::
+                                                                                            !(Maybe
+                                                                                                Nat),
+                                                                                            _siasasWidth
+                                                                                            ::
+                                                                                            !(Maybe
+                                                                                                Nat),
+                                                                                            _siasasOpacity
+                                                                                            ::
+                                                                                            !(Maybe
+                                                                                                Nat),
+                                                                                            _siasasLayer
+                                                                                            ::
+                                                                                            !(Maybe
+                                                                                                Nat),
+                                                                                            _siasasDuration
+                                                                                            ::
+                                                                                            !(Maybe
+                                                                                                Nat),
+                                                                                            _siasasImageY
+                                                                                            ::
+                                                                                            !(Maybe
+                                                                                                Nat),
+                                                                                            _siasasFadeIn
+                                                                                            ::
+                                                                                            !(Maybe
+                                                                                                Nat),
+                                                                                            _siasasImage
+                                                                                            ::
+                                                                                            !InputLocation}
+                                                   deriving (Eq, Read, Show,
+                                                             Data, Typeable,
+                                                             Generic)
+
+-- | Creates a value of 'StaticImageActivateScheduleActionSettings' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'siasasImageX' - Placement of the left edge of the overlay relative to the left edge of the video frame, in pixels. 0 (the default) is the left edge of the frame. If the placement causes the overlay to extend beyond the right edge of the underlying video, then the overlay is cropped on the right.
+--
+-- * 'siasasHeight' - The height of the image when inserted into the video, in pixels. The overlay will be scaled up or down to the specified height. Leave blank to use the native height of the overlay.
+--
+-- * 'siasasFadeOut' - Applies only if a duration is specified. The time in milliseconds for the image to fade out. The fade-out starts when the duration time is hit, so it effectively extends the duration. Default is 0 (no fade-out).
+--
+-- * 'siasasWidth' - The width of the image when inserted into the video, in pixels. The overlay will be scaled up or down to the specified width. Leave blank to use the native width of the overlay.
+--
+-- * 'siasasOpacity' - Opacity of image where 0 is transparent and 100 is fully opaque. Default is 100.
+--
+-- * 'siasasLayer' - The number of the layer, 0 to 7. There are 8 layers that can be overlaid on the video, each layer with a different image. The layers are in Z order, which means that overlays with higher values of layer are inserted on top of overlays with lower values of layer. Default is 0.
+--
+-- * 'siasasDuration' - The duration in milliseconds for the image to remain on the video. If omitted or set to 0 the duration is unlimited and the image will remain until it is explicitly deactivated.
+--
+-- * 'siasasImageY' - Placement of the top edge of the overlay relative to the top edge of the video frame, in pixels. 0 (the default) is the top edge of the frame. If the placement causes the overlay to extend beyond the bottom edge of the underlying video, then the overlay is cropped on the bottom.
+--
+-- * 'siasasFadeIn' - The time in milliseconds for the image to fade in. The fade-in starts at the start time of the overlay. Default is 0 (no fade-in).
+--
+-- * 'siasasImage' - The location and filename of the image file to overlay on the video. The file must be a 32-bit BMP, PNG, or TGA file, and must not be larger (in pixels) than the input video.
+staticImageActivateScheduleActionSettings
+    :: InputLocation -- ^ 'siasasImage'
+    -> StaticImageActivateScheduleActionSettings
+staticImageActivateScheduleActionSettings pImage_
+  = StaticImageActivateScheduleActionSettings'{_siasasImageX
+                                                 = Nothing,
+                                               _siasasHeight = Nothing,
+                                               _siasasFadeOut = Nothing,
+                                               _siasasWidth = Nothing,
+                                               _siasasOpacity = Nothing,
+                                               _siasasLayer = Nothing,
+                                               _siasasDuration = Nothing,
+                                               _siasasImageY = Nothing,
+                                               _siasasFadeIn = Nothing,
+                                               _siasasImage = pImage_}
+
+-- | Placement of the left edge of the overlay relative to the left edge of the video frame, in pixels. 0 (the default) is the left edge of the frame. If the placement causes the overlay to extend beyond the right edge of the underlying video, then the overlay is cropped on the right.
+siasasImageX :: Lens' StaticImageActivateScheduleActionSettings (Maybe Natural)
+siasasImageX = lens _siasasImageX (\ s a -> s{_siasasImageX = a}) . mapping _Nat
+
+-- | The height of the image when inserted into the video, in pixels. The overlay will be scaled up or down to the specified height. Leave blank to use the native height of the overlay.
+siasasHeight :: Lens' StaticImageActivateScheduleActionSettings (Maybe Natural)
+siasasHeight = lens _siasasHeight (\ s a -> s{_siasasHeight = a}) . mapping _Nat
+
+-- | Applies only if a duration is specified. The time in milliseconds for the image to fade out. The fade-out starts when the duration time is hit, so it effectively extends the duration. Default is 0 (no fade-out).
+siasasFadeOut :: Lens' StaticImageActivateScheduleActionSettings (Maybe Natural)
+siasasFadeOut = lens _siasasFadeOut (\ s a -> s{_siasasFadeOut = a}) . mapping _Nat
+
+-- | The width of the image when inserted into the video, in pixels. The overlay will be scaled up or down to the specified width. Leave blank to use the native width of the overlay.
+siasasWidth :: Lens' StaticImageActivateScheduleActionSettings (Maybe Natural)
+siasasWidth = lens _siasasWidth (\ s a -> s{_siasasWidth = a}) . mapping _Nat
+
+-- | Opacity of image where 0 is transparent and 100 is fully opaque. Default is 100.
+siasasOpacity :: Lens' StaticImageActivateScheduleActionSettings (Maybe Natural)
+siasasOpacity = lens _siasasOpacity (\ s a -> s{_siasasOpacity = a}) . mapping _Nat
+
+-- | The number of the layer, 0 to 7. There are 8 layers that can be overlaid on the video, each layer with a different image. The layers are in Z order, which means that overlays with higher values of layer are inserted on top of overlays with lower values of layer. Default is 0.
+siasasLayer :: Lens' StaticImageActivateScheduleActionSettings (Maybe Natural)
+siasasLayer = lens _siasasLayer (\ s a -> s{_siasasLayer = a}) . mapping _Nat
+
+-- | The duration in milliseconds for the image to remain on the video. If omitted or set to 0 the duration is unlimited and the image will remain until it is explicitly deactivated.
+siasasDuration :: Lens' StaticImageActivateScheduleActionSettings (Maybe Natural)
+siasasDuration = lens _siasasDuration (\ s a -> s{_siasasDuration = a}) . mapping _Nat
+
+-- | Placement of the top edge of the overlay relative to the top edge of the video frame, in pixels. 0 (the default) is the top edge of the frame. If the placement causes the overlay to extend beyond the bottom edge of the underlying video, then the overlay is cropped on the bottom.
+siasasImageY :: Lens' StaticImageActivateScheduleActionSettings (Maybe Natural)
+siasasImageY = lens _siasasImageY (\ s a -> s{_siasasImageY = a}) . mapping _Nat
+
+-- | The time in milliseconds for the image to fade in. The fade-in starts at the start time of the overlay. Default is 0 (no fade-in).
+siasasFadeIn :: Lens' StaticImageActivateScheduleActionSettings (Maybe Natural)
+siasasFadeIn = lens _siasasFadeIn (\ s a -> s{_siasasFadeIn = a}) . mapping _Nat
+
+-- | The location and filename of the image file to overlay on the video. The file must be a 32-bit BMP, PNG, or TGA file, and must not be larger (in pixels) than the input video.
+siasasImage :: Lens' StaticImageActivateScheduleActionSettings InputLocation
+siasasImage = lens _siasasImage (\ s a -> s{_siasasImage = a})
+
+instance FromJSON
+           StaticImageActivateScheduleActionSettings
+         where
+        parseJSON
+          = withObject
+              "StaticImageActivateScheduleActionSettings"
+              (\ x ->
+                 StaticImageActivateScheduleActionSettings' <$>
+                   (x .:? "imageX") <*> (x .:? "height") <*>
+                     (x .:? "fadeOut")
+                     <*> (x .:? "width")
+                     <*> (x .:? "opacity")
+                     <*> (x .:? "layer")
+                     <*> (x .:? "duration")
+                     <*> (x .:? "imageY")
+                     <*> (x .:? "fadeIn")
+                     <*> (x .: "image"))
+
+instance Hashable
+           StaticImageActivateScheduleActionSettings
+         where
+
+instance NFData
+           StaticImageActivateScheduleActionSettings
+         where
+
+instance ToJSON
+           StaticImageActivateScheduleActionSettings
+         where
+        toJSON StaticImageActivateScheduleActionSettings'{..}
+          = object
+              (catMaybes
+                 [("imageX" .=) <$> _siasasImageX,
+                  ("height" .=) <$> _siasasHeight,
+                  ("fadeOut" .=) <$> _siasasFadeOut,
+                  ("width" .=) <$> _siasasWidth,
+                  ("opacity" .=) <$> _siasasOpacity,
+                  ("layer" .=) <$> _siasasLayer,
+                  ("duration" .=) <$> _siasasDuration,
+                  ("imageY" .=) <$> _siasasImageY,
+                  ("fadeIn" .=) <$> _siasasFadeIn,
+                  Just ("image" .= _siasasImage)])
+
+-- | Settings for the action to deactivate the image in a specific layer.
+--
+-- /See:/ 'staticImageDeactivateScheduleActionSettings' smart constructor.
+data StaticImageDeactivateScheduleActionSettings = StaticImageDeactivateScheduleActionSettings'{_sidsasFadeOut
+                                                                                                ::
+                                                                                                !(Maybe
+                                                                                                    Nat),
+                                                                                                _sidsasLayer
+                                                                                                ::
+                                                                                                !(Maybe
+                                                                                                    Nat)}
+                                                     deriving (Eq, Read, Show,
+                                                               Data, Typeable,
+                                                               Generic)
+
+-- | Creates a value of 'StaticImageDeactivateScheduleActionSettings' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'sidsasFadeOut' - The time in milliseconds for the image to fade out. Default is 0 (no fade-out).
+--
+-- * 'sidsasLayer' - The image overlay layer to deactivate, 0 to 7. Default is 0.
+staticImageDeactivateScheduleActionSettings
+    :: StaticImageDeactivateScheduleActionSettings
+staticImageDeactivateScheduleActionSettings
+  = StaticImageDeactivateScheduleActionSettings'{_sidsasFadeOut
+                                                   = Nothing,
+                                                 _sidsasLayer = Nothing}
+
+-- | The time in milliseconds for the image to fade out. Default is 0 (no fade-out).
+sidsasFadeOut :: Lens' StaticImageDeactivateScheduleActionSettings (Maybe Natural)
+sidsasFadeOut = lens _sidsasFadeOut (\ s a -> s{_sidsasFadeOut = a}) . mapping _Nat
+
+-- | The image overlay layer to deactivate, 0 to 7. Default is 0.
+sidsasLayer :: Lens' StaticImageDeactivateScheduleActionSettings (Maybe Natural)
+sidsasLayer = lens _sidsasLayer (\ s a -> s{_sidsasLayer = a}) . mapping _Nat
+
+instance FromJSON
+           StaticImageDeactivateScheduleActionSettings
+         where
+        parseJSON
+          = withObject
+              "StaticImageDeactivateScheduleActionSettings"
+              (\ x ->
+                 StaticImageDeactivateScheduleActionSettings' <$>
+                   (x .:? "fadeOut") <*> (x .:? "layer"))
+
+instance Hashable
+           StaticImageDeactivateScheduleActionSettings
+         where
+
+instance NFData
+           StaticImageDeactivateScheduleActionSettings
+         where
+
+instance ToJSON
+           StaticImageDeactivateScheduleActionSettings
+         where
+        toJSON
+          StaticImageDeactivateScheduleActionSettings'{..}
+          = object
+              (catMaybes
+                 [("fadeOut" .=) <$> _sidsasFadeOut,
+                  ("layer" .=) <$> _sidsasLayer])
+
+-- | Static Key Settings
 --
 -- /See:/ 'staticKeySettings' smart constructor.
-data StaticKeySettings = StaticKeySettings'
-  { _sksKeyProviderServer :: !(Maybe InputLocation)
-  , _sksStaticKeyValue    :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StaticKeySettings = StaticKeySettings'{_sksKeyProviderServer
+                                            :: !(Maybe InputLocation),
+                                            _sksStaticKeyValue :: !Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'StaticKeySettings' with the minimum fields required to make a request.
 --
@@ -7680,10 +13265,9 @@ data StaticKeySettings = StaticKeySettings'
 staticKeySettings
     :: Text -- ^ 'sksStaticKeyValue'
     -> StaticKeySettings
-staticKeySettings pStaticKeyValue_ =
-  StaticKeySettings'
-    {_sksKeyProviderServer = Nothing, _sksStaticKeyValue = pStaticKeyValue_}
-
+staticKeySettings pStaticKeyValue_
+  = StaticKeySettings'{_sksKeyProviderServer = Nothing,
+                       _sksStaticKeyValue = pStaticKeyValue_}
 
 -- | The URL of the license server used for protecting content.
 sksKeyProviderServer :: Lens' StaticKeySettings (Maybe InputLocation)
@@ -7712,20 +13296,69 @@ instance ToJSON StaticKeySettings where
                  [("keyProviderServer" .=) <$> _sksKeyProviderServer,
                   Just ("staticKeyValue" .= _sksStaticKeyValue)])
 
--- | Placeholder documentation for TeletextDestinationSettings
+-- | Settings to identify the end of the clip.
+--
+-- /See:/ 'stopTimecode' smart constructor.
+data StopTimecode = StopTimecode'{_stLastFrameClippingBehavior
+                                  :: !(Maybe LastFrameClippingBehavior),
+                                  _stTimecode :: !(Maybe Text)}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+-- | Creates a value of 'StopTimecode' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'stLastFrameClippingBehavior' - If you specify a StopTimecode in an input (in order to clip the file), you can specify if you want the clip to exclude (the default) or include the frame specified by the timecode.
+--
+-- * 'stTimecode' - The timecode for the frame where you want to stop the clip. Optional; if not specified, the clip continues to the end of the file. Enter the timecode as HH:MM:SS:FF or HH:MM:SS;FF.
+stopTimecode
+    :: StopTimecode
+stopTimecode
+  = StopTimecode'{_stLastFrameClippingBehavior =
+                    Nothing,
+                  _stTimecode = Nothing}
+
+-- | If you specify a StopTimecode in an input (in order to clip the file), you can specify if you want the clip to exclude (the default) or include the frame specified by the timecode.
+stLastFrameClippingBehavior :: Lens' StopTimecode (Maybe LastFrameClippingBehavior)
+stLastFrameClippingBehavior = lens _stLastFrameClippingBehavior (\ s a -> s{_stLastFrameClippingBehavior = a})
+
+-- | The timecode for the frame where you want to stop the clip. Optional; if not specified, the clip continues to the end of the file. Enter the timecode as HH:MM:SS:FF or HH:MM:SS;FF.
+stTimecode :: Lens' StopTimecode (Maybe Text)
+stTimecode = lens _stTimecode (\ s a -> s{_stTimecode = a})
+
+instance FromJSON StopTimecode where
+        parseJSON
+          = withObject "StopTimecode"
+              (\ x ->
+                 StopTimecode' <$>
+                   (x .:? "lastFrameClippingBehavior") <*>
+                     (x .:? "timecode"))
+
+instance Hashable StopTimecode where
+
+instance NFData StopTimecode where
+
+instance ToJSON StopTimecode where
+        toJSON StopTimecode'{..}
+          = object
+              (catMaybes
+                 [("lastFrameClippingBehavior" .=) <$>
+                    _stLastFrameClippingBehavior,
+                  ("timecode" .=) <$> _stTimecode])
+
+-- | Teletext Destination Settings
 --
 -- /See:/ 'teletextDestinationSettings' smart constructor.
-data TeletextDestinationSettings =
-  TeletextDestinationSettings'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data TeletextDestinationSettings = TeletextDestinationSettings'
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'TeletextDestinationSettings' with the minimum fields required to make a request.
 --
 teletextDestinationSettings
     :: TeletextDestinationSettings
-teletextDestinationSettings = TeletextDestinationSettings'
-
+teletextDestinationSettings
+  = TeletextDestinationSettings'
 
 instance FromJSON TeletextDestinationSettings where
         parseJSON
@@ -7739,13 +13372,13 @@ instance NFData TeletextDestinationSettings where
 instance ToJSON TeletextDestinationSettings where
         toJSON = const (Object mempty)
 
--- | Placeholder documentation for TeletextSourceSettings
+-- | Teletext Source Settings
 --
 -- /See:/ 'teletextSourceSettings' smart constructor.
-newtype TeletextSourceSettings = TeletextSourceSettings'
-  { _tssPageNumber :: Maybe Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype TeletextSourceSettings = TeletextSourceSettings'{_tssPageNumber
+                                                         :: Maybe Text}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'TeletextSourceSettings' with the minimum fields required to make a request.
 --
@@ -7754,8 +13387,8 @@ newtype TeletextSourceSettings = TeletextSourceSettings'
 -- * 'tssPageNumber' - Specifies the teletext page number within the data stream from which to extract captions. Range of 0x100 (256) to 0x8FF (2303). Unused for passthrough. Should be specified as a hexadecimal string with no "0x" prefix.
 teletextSourceSettings
     :: TeletextSourceSettings
-teletextSourceSettings = TeletextSourceSettings' {_tssPageNumber = Nothing}
-
+teletextSourceSettings
+  = TeletextSourceSettings'{_tssPageNumber = Nothing}
 
 -- | Specifies the teletext page number within the data stream from which to extract captions. Range of 0x100 (256) to 0x8FF (2303). Unused for passthrough. Should be specified as a hexadecimal string with no "0x" prefix.
 tssPageNumber :: Lens' TeletextSourceSettings (Maybe Text)
@@ -7776,14 +13409,68 @@ instance ToJSON TeletextSourceSettings where
           = object
               (catMaybes [("pageNumber" .=) <$> _tssPageNumber])
 
--- | Placeholder documentation for TimecodeConfig
+-- | Temporal Filter Settings
+--
+-- /See:/ 'temporalFilterSettings' smart constructor.
+data TemporalFilterSettings = TemporalFilterSettings'{_tfsStrength
+                                                      ::
+                                                      !(Maybe
+                                                          TemporalFilterStrength),
+                                                      _tfsPostFilterSharpening
+                                                      ::
+                                                      !(Maybe
+                                                          TemporalFilterPostFilterSharpening)}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
+
+-- | Creates a value of 'TemporalFilterSettings' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'tfsStrength' - Choose a filter strength. We recommend a strength of 1 or 2. A higher strength might take out good information, resulting in an image that is overly soft.
+--
+-- * 'tfsPostFilterSharpening' - If you enable this filter, the results are the following: - If the source content is noisy (it contains excessive digital artifacts), the filter cleans up the source. - If the source content is already clean, the filter tends to decrease the bitrate, especially when the rate control mode is QVBR.
+temporalFilterSettings
+    :: TemporalFilterSettings
+temporalFilterSettings
+  = TemporalFilterSettings'{_tfsStrength = Nothing,
+                            _tfsPostFilterSharpening = Nothing}
+
+-- | Choose a filter strength. We recommend a strength of 1 or 2. A higher strength might take out good information, resulting in an image that is overly soft.
+tfsStrength :: Lens' TemporalFilterSettings (Maybe TemporalFilterStrength)
+tfsStrength = lens _tfsStrength (\ s a -> s{_tfsStrength = a})
+
+-- | If you enable this filter, the results are the following: - If the source content is noisy (it contains excessive digital artifacts), the filter cleans up the source. - If the source content is already clean, the filter tends to decrease the bitrate, especially when the rate control mode is QVBR.
+tfsPostFilterSharpening :: Lens' TemporalFilterSettings (Maybe TemporalFilterPostFilterSharpening)
+tfsPostFilterSharpening = lens _tfsPostFilterSharpening (\ s a -> s{_tfsPostFilterSharpening = a})
+
+instance FromJSON TemporalFilterSettings where
+        parseJSON
+          = withObject "TemporalFilterSettings"
+              (\ x ->
+                 TemporalFilterSettings' <$>
+                   (x .:? "strength") <*>
+                     (x .:? "postFilterSharpening"))
+
+instance Hashable TemporalFilterSettings where
+
+instance NFData TemporalFilterSettings where
+
+instance ToJSON TemporalFilterSettings where
+        toJSON TemporalFilterSettings'{..}
+          = object
+              (catMaybes
+                 [("strength" .=) <$> _tfsStrength,
+                  ("postFilterSharpening" .=) <$>
+                    _tfsPostFilterSharpening])
+
+-- | Timecode Config
 --
 -- /See:/ 'timecodeConfig' smart constructor.
-data TimecodeConfig = TimecodeConfig'
-  { _tcSyncThreshold :: !(Maybe Nat)
-  , _tcSource        :: !TimecodeConfigSource
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data TimecodeConfig = TimecodeConfig'{_tcSyncThreshold
+                                      :: !(Maybe Nat),
+                                      _tcSource :: !TimecodeConfigSource}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'TimecodeConfig' with the minimum fields required to make a request.
 --
@@ -7795,9 +13482,9 @@ data TimecodeConfig = TimecodeConfig'
 timecodeConfig
     :: TimecodeConfigSource -- ^ 'tcSource'
     -> TimecodeConfig
-timecodeConfig pSource_ =
-  TimecodeConfig' {_tcSyncThreshold = Nothing, _tcSource = pSource_}
-
+timecodeConfig pSource_
+  = TimecodeConfig'{_tcSyncThreshold = Nothing,
+                    _tcSource = pSource_}
 
 -- | Threshold in frames beyond which output timecode is resynchronized to the input timecode. Discrepancies below this threshold are permitted to avoid unnecessary discontinuities in the output timecode. No timecode sync when this is not specified.
 tcSyncThreshold :: Lens' TimecodeConfig (Maybe Natural)
@@ -7825,13 +13512,15 @@ instance ToJSON TimecodeConfig where
                  [("syncThreshold" .=) <$> _tcSyncThreshold,
                   Just ("source" .= _tcSource)])
 
--- | Placeholder documentation for TtmlDestinationSettings
+-- | Ttml Destination Settings
 --
 -- /See:/ 'ttmlDestinationSettings' smart constructor.
-newtype TtmlDestinationSettings = TtmlDestinationSettings'
-  { _tdsStyleControl :: Maybe TtmlDestinationStyleControl
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype TtmlDestinationSettings = TtmlDestinationSettings'{_tdsStyleControl
+                                                           ::
+                                                           Maybe
+                                                             TtmlDestinationStyleControl}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'TtmlDestinationSettings' with the minimum fields required to make a request.
 --
@@ -7840,8 +13529,9 @@ newtype TtmlDestinationSettings = TtmlDestinationSettings'
 -- * 'tdsStyleControl' - When set to passthrough, passes through style and position information from a TTML-like input source (TTML, SMPTE-TT, CFF-TT) to the CFF-TT output or TTML output.
 ttmlDestinationSettings
     :: TtmlDestinationSettings
-ttmlDestinationSettings = TtmlDestinationSettings' {_tdsStyleControl = Nothing}
-
+ttmlDestinationSettings
+  = TtmlDestinationSettings'{_tdsStyleControl =
+                               Nothing}
 
 -- | When set to passthrough, passes through style and position information from a TTML-like input source (TTML, SMPTE-TT, CFF-TT) to the CFF-TT output or TTML output.
 tdsStyleControl :: Lens' TtmlDestinationSettings (Maybe TtmlDestinationStyleControl)
@@ -7863,13 +13553,13 @@ instance ToJSON TtmlDestinationSettings where
               (catMaybes
                  [("styleControl" .=) <$> _tdsStyleControl])
 
--- | Placeholder documentation for UdpContainerSettings
+-- | Udp Container Settings
 --
 -- /See:/ 'udpContainerSettings' smart constructor.
-newtype UdpContainerSettings = UdpContainerSettings'
-  { _ucsM2tsSettings :: Maybe M2tsSettings
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype UdpContainerSettings = UdpContainerSettings'{_ucsM2tsSettings
+                                                     :: Maybe M2tsSettings}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'UdpContainerSettings' with the minimum fields required to make a request.
 --
@@ -7878,8 +13568,8 @@ newtype UdpContainerSettings = UdpContainerSettings'
 -- * 'ucsM2tsSettings' - Undocumented member.
 udpContainerSettings
     :: UdpContainerSettings
-udpContainerSettings = UdpContainerSettings' {_ucsM2tsSettings = Nothing}
-
+udpContainerSettings
+  = UdpContainerSettings'{_ucsM2tsSettings = Nothing}
 
 -- | Undocumented member.
 ucsM2tsSettings :: Lens' UdpContainerSettings (Maybe M2tsSettings)
@@ -7901,15 +13591,16 @@ instance ToJSON UdpContainerSettings where
               (catMaybes
                  [("m2tsSettings" .=) <$> _ucsM2tsSettings])
 
--- | Placeholder documentation for UdpGroupSettings
+-- | Udp Group Settings
 --
 -- /See:/ 'udpGroupSettings' smart constructor.
-data UdpGroupSettings = UdpGroupSettings'
-  { _ugsTimedMetadataId3Period :: !(Maybe Nat)
-  , _ugsInputLossAction        :: !(Maybe InputLossActionForUdpOut)
-  , _ugsTimedMetadataId3Frame  :: !(Maybe UdpTimedMetadataId3Frame)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UdpGroupSettings = UdpGroupSettings'{_ugsTimedMetadataId3Period
+                                          :: !(Maybe Nat),
+                                          _ugsInputLossAction ::
+                                          !(Maybe InputLossActionForUdpOut),
+                                          _ugsTimedMetadataId3Frame ::
+                                          !(Maybe UdpTimedMetadataId3Frame)}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UdpGroupSettings' with the minimum fields required to make a request.
 --
@@ -7922,13 +13613,11 @@ data UdpGroupSettings = UdpGroupSettings'
 -- * 'ugsTimedMetadataId3Frame' - Indicates ID3 frame that has the timecode.
 udpGroupSettings
     :: UdpGroupSettings
-udpGroupSettings =
-  UdpGroupSettings'
-    { _ugsTimedMetadataId3Period = Nothing
-    , _ugsInputLossAction = Nothing
-    , _ugsTimedMetadataId3Frame = Nothing
-    }
-
+udpGroupSettings
+  = UdpGroupSettings'{_ugsTimedMetadataId3Period =
+                        Nothing,
+                      _ugsInputLossAction = Nothing,
+                      _ugsTimedMetadataId3Frame = Nothing}
 
 -- | Timed Metadata interval in seconds.
 ugsTimedMetadataId3Period :: Lens' UdpGroupSettings (Maybe Natural)
@@ -7965,16 +13654,17 @@ instance ToJSON UdpGroupSettings where
                   ("timedMetadataId3Frame" .=) <$>
                     _ugsTimedMetadataId3Frame])
 
--- | Placeholder documentation for UdpOutputSettings
+-- | Udp Output Settings
 --
 -- /See:/ 'udpOutputSettings' smart constructor.
-data UdpOutputSettings = UdpOutputSettings'
-  { _uosFecOutputSettings :: !(Maybe FecOutputSettings)
-  , _uosBufferMsec        :: !(Maybe Nat)
-  , _uosDestination       :: !OutputLocationRef
-  , _uosContainerSettings :: !UdpContainerSettings
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UdpOutputSettings = UdpOutputSettings'{_uosFecOutputSettings
+                                            :: !(Maybe FecOutputSettings),
+                                            _uosBufferMsec :: !(Maybe Nat),
+                                            _uosDestination ::
+                                            !OutputLocationRef,
+                                            _uosContainerSettings ::
+                                            !UdpContainerSettings}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UdpOutputSettings' with the minimum fields required to make a request.
 --
@@ -7991,14 +13681,11 @@ udpOutputSettings
     :: OutputLocationRef -- ^ 'uosDestination'
     -> UdpContainerSettings -- ^ 'uosContainerSettings'
     -> UdpOutputSettings
-udpOutputSettings pDestination_ pContainerSettings_ =
-  UdpOutputSettings'
-    { _uosFecOutputSettings = Nothing
-    , _uosBufferMsec = Nothing
-    , _uosDestination = pDestination_
-    , _uosContainerSettings = pContainerSettings_
-    }
-
+udpOutputSettings pDestination_ pContainerSettings_
+  = UdpOutputSettings'{_uosFecOutputSettings = Nothing,
+                       _uosBufferMsec = Nothing,
+                       _uosDestination = pDestination_,
+                       _uosContainerSettings = pContainerSettings_}
 
 -- | Settings for enabling and adjusting Forward Error Correction on UDP outputs.
 uosFecOutputSettings :: Lens' UdpOutputSettings (Maybe FecOutputSettings)
@@ -8038,23 +13725,41 @@ instance ToJSON UdpOutputSettings where
                   Just ("destination" .= _uosDestination),
                   Just ("containerSettings" .= _uosContainerSettings)])
 
--- | Placeholder documentation for VideoCodecSettings
+-- | Video Codec Settings
 --
 -- /See:/ 'videoCodecSettings' smart constructor.
-newtype VideoCodecSettings = VideoCodecSettings'
-  { _vcsH264Settings :: Maybe H264Settings
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data VideoCodecSettings = VideoCodecSettings'{_vcsFrameCaptureSettings
+                                              :: !(Maybe FrameCaptureSettings),
+                                              _vcsH265Settings ::
+                                              !(Maybe H265Settings),
+                                              _vcsH264Settings ::
+                                              !(Maybe H264Settings)}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'VideoCodecSettings' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
+-- * 'vcsFrameCaptureSettings' - Undocumented member.
+--
+-- * 'vcsH265Settings' - Undocumented member.
+--
 -- * 'vcsH264Settings' - Undocumented member.
 videoCodecSettings
     :: VideoCodecSettings
-videoCodecSettings = VideoCodecSettings' {_vcsH264Settings = Nothing}
+videoCodecSettings
+  = VideoCodecSettings'{_vcsFrameCaptureSettings =
+                          Nothing,
+                        _vcsH265Settings = Nothing,
+                        _vcsH264Settings = Nothing}
 
+-- | Undocumented member.
+vcsFrameCaptureSettings :: Lens' VideoCodecSettings (Maybe FrameCaptureSettings)
+vcsFrameCaptureSettings = lens _vcsFrameCaptureSettings (\ s a -> s{_vcsFrameCaptureSettings = a})
+
+-- | Undocumented member.
+vcsH265Settings :: Lens' VideoCodecSettings (Maybe H265Settings)
+vcsH265Settings = lens _vcsH265Settings (\ s a -> s{_vcsH265Settings = a})
 
 -- | Undocumented member.
 vcsH264Settings :: Lens' VideoCodecSettings (Maybe H264Settings)
@@ -8064,7 +13769,10 @@ instance FromJSON VideoCodecSettings where
         parseJSON
           = withObject "VideoCodecSettings"
               (\ x ->
-                 VideoCodecSettings' <$> (x .:? "h264Settings"))
+                 VideoCodecSettings' <$>
+                   (x .:? "frameCaptureSettings") <*>
+                     (x .:? "h265Settings")
+                     <*> (x .:? "h264Settings"))
 
 instance Hashable VideoCodecSettings where
 
@@ -8074,35 +13782,41 @@ instance ToJSON VideoCodecSettings where
         toJSON VideoCodecSettings'{..}
           = object
               (catMaybes
-                 [("h264Settings" .=) <$> _vcsH264Settings])
+                 [("frameCaptureSettings" .=) <$>
+                    _vcsFrameCaptureSettings,
+                  ("h265Settings" .=) <$> _vcsH265Settings,
+                  ("h264Settings" .=) <$> _vcsH264Settings])
 
 -- | Video settings for this stream.
 --
 -- /See:/ 'videoDescription' smart constructor.
-data VideoDescription = VideoDescription'
-  { _vdHeight          :: !(Maybe Int)
-  , _vdSharpness       :: !(Maybe Nat)
-  , _vdWidth           :: !(Maybe Int)
-  , _vdScalingBehavior :: !(Maybe VideoDescriptionScalingBehavior)
-  , _vdRespondToAfd    :: !(Maybe VideoDescriptionRespondToAfd)
-  , _vdCodecSettings   :: !(Maybe VideoCodecSettings)
-  , _vdName            :: !Text
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data VideoDescription = VideoDescription'{_vdHeight
+                                          :: !(Maybe Int),
+                                          _vdSharpness :: !(Maybe Nat),
+                                          _vdWidth :: !(Maybe Int),
+                                          _vdScalingBehavior ::
+                                          !(Maybe
+                                              VideoDescriptionScalingBehavior),
+                                          _vdRespondToAfd ::
+                                          !(Maybe VideoDescriptionRespondToAfd),
+                                          _vdCodecSettings ::
+                                          !(Maybe VideoCodecSettings),
+                                          _vdName :: !Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'VideoDescription' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'vdHeight' - Output video height (in pixels). Leave blank to use source video height. If left blank, width must also be unspecified.
+-- * 'vdHeight' - Output video height, in pixels. Must be an even number. For most codecs, you can leave this field and width blank in order to use the height and width (resolution) from the source. Note, however, that leaving blank is not recommended. For the Frame Capture codec, height and width are required.
 --
--- * 'vdSharpness' - Changes the width of the anti-alias filter kernel used for scaling. Only applies if scaling is being performed and antiAlias is set to true. 0 is the softest setting, 100 the sharpest, and 50 recommended for most content.
+-- * 'vdSharpness' - Changes the strength of the anti-alias filter used for scaling. 0 is the softest setting, 100 is the sharpest. A setting of 50 is recommended for most content.
 --
--- * 'vdWidth' - Output video width (in pixels). Leave out to use source video width.  If left out, height must also be left out. Display aspect ratio is always preserved by letterboxing or pillarboxing when necessary.
+-- * 'vdWidth' - Output video width, in pixels. Must be an even number. For most codecs, you can leave this field and height blank in order to use the height and width (resolution) from the source. Note, however, that leaving blank is not recommended. For the Frame Capture codec, height and width are required.
 --
--- * 'vdScalingBehavior' - When set to "stretchToOutput", automatically configures the output position to stretch the video to the specified output resolution. This option will override any position value.
+-- * 'vdScalingBehavior' - STRETCH_TO_OUTPUT configures the output position to stretch the video to the specified output resolution (height and width). This option will override any position value. DEFAULT may insert black boxes (pillar boxes or letter boxes) around the video to provide the specified output resolution.
 --
--- * 'vdRespondToAfd' - Indicates how to respond to the AFD values in the input stream. Setting to "respond" causes input video to be clipped, depending on AFD value, input display aspect ratio and output display aspect ratio.
+-- * 'vdRespondToAfd' - Indicates how to respond to the AFD values in the input stream. RESPOND causes input video to be clipped, depending on the AFD value, input display aspect ratio, and output display aspect ratio, and (except for FRAME_CAPTURE codec) includes the values in the output. PASSTHROUGH (does not apply to FRAME_CAPTURE codec) ignores the AFD values and includes the values in the output, so input video is not clipped. NONE ignores the AFD values and does not include the values through to the output, so input video is not clipped.
 --
 -- * 'vdCodecSettings' - Video codec settings.
 --
@@ -8110,35 +13824,30 @@ data VideoDescription = VideoDescription'
 videoDescription
     :: Text -- ^ 'vdName'
     -> VideoDescription
-videoDescription pName_ =
-  VideoDescription'
-    { _vdHeight = Nothing
-    , _vdSharpness = Nothing
-    , _vdWidth = Nothing
-    , _vdScalingBehavior = Nothing
-    , _vdRespondToAfd = Nothing
-    , _vdCodecSettings = Nothing
-    , _vdName = pName_
-    }
+videoDescription pName_
+  = VideoDescription'{_vdHeight = Nothing,
+                      _vdSharpness = Nothing, _vdWidth = Nothing,
+                      _vdScalingBehavior = Nothing,
+                      _vdRespondToAfd = Nothing,
+                      _vdCodecSettings = Nothing, _vdName = pName_}
 
-
--- | Output video height (in pixels). Leave blank to use source video height. If left blank, width must also be unspecified.
+-- | Output video height, in pixels. Must be an even number. For most codecs, you can leave this field and width blank in order to use the height and width (resolution) from the source. Note, however, that leaving blank is not recommended. For the Frame Capture codec, height and width are required.
 vdHeight :: Lens' VideoDescription (Maybe Int)
 vdHeight = lens _vdHeight (\ s a -> s{_vdHeight = a})
 
--- | Changes the width of the anti-alias filter kernel used for scaling. Only applies if scaling is being performed and antiAlias is set to true. 0 is the softest setting, 100 the sharpest, and 50 recommended for most content.
+-- | Changes the strength of the anti-alias filter used for scaling. 0 is the softest setting, 100 is the sharpest. A setting of 50 is recommended for most content.
 vdSharpness :: Lens' VideoDescription (Maybe Natural)
 vdSharpness = lens _vdSharpness (\ s a -> s{_vdSharpness = a}) . mapping _Nat
 
--- | Output video width (in pixels). Leave out to use source video width.  If left out, height must also be left out. Display aspect ratio is always preserved by letterboxing or pillarboxing when necessary.
+-- | Output video width, in pixels. Must be an even number. For most codecs, you can leave this field and height blank in order to use the height and width (resolution) from the source. Note, however, that leaving blank is not recommended. For the Frame Capture codec, height and width are required.
 vdWidth :: Lens' VideoDescription (Maybe Int)
 vdWidth = lens _vdWidth (\ s a -> s{_vdWidth = a})
 
--- | When set to "stretchToOutput", automatically configures the output position to stretch the video to the specified output resolution. This option will override any position value.
+-- | STRETCH_TO_OUTPUT configures the output position to stretch the video to the specified output resolution (height and width). This option will override any position value. DEFAULT may insert black boxes (pillar boxes or letter boxes) around the video to provide the specified output resolution.
 vdScalingBehavior :: Lens' VideoDescription (Maybe VideoDescriptionScalingBehavior)
 vdScalingBehavior = lens _vdScalingBehavior (\ s a -> s{_vdScalingBehavior = a})
 
--- | Indicates how to respond to the AFD values in the input stream. Setting to "respond" causes input video to be clipped, depending on AFD value, input display aspect ratio and output display aspect ratio.
+-- | Indicates how to respond to the AFD values in the input stream. RESPOND causes input video to be clipped, depending on the AFD value, input display aspect ratio, and output display aspect ratio, and (except for FRAME_CAPTURE codec) includes the values in the output. PASSTHROUGH (does not apply to FRAME_CAPTURE codec) ignores the AFD values and includes the values in the output, so input video is not clipped. NONE ignores the AFD values and does not include the values through to the output, so input video is not clipped.
 vdRespondToAfd :: Lens' VideoDescription (Maybe VideoDescriptionRespondToAfd)
 vdRespondToAfd = lens _vdRespondToAfd (\ s a -> s{_vdRespondToAfd = a})
 
@@ -8181,12 +13890,13 @@ instance ToJSON VideoDescription where
 -- | Specifies a particular video stream within an input source. An input may have only a single video selector.
 --
 -- /See:/ 'videoSelector' smart constructor.
-data VideoSelector = VideoSelector'
-  { _vsSelectorSettings :: !(Maybe VideoSelectorSettings)
-  , _vsColorSpaceUsage  :: !(Maybe VideoSelectorColorSpaceUsage)
-  , _vsColorSpace       :: !(Maybe VideoSelectorColorSpace)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data VideoSelector = VideoSelector'{_vsSelectorSettings
+                                    :: !(Maybe VideoSelectorSettings),
+                                    _vsColorSpaceUsage ::
+                                    !(Maybe VideoSelectorColorSpaceUsage),
+                                    _vsColorSpace ::
+                                    !(Maybe VideoSelectorColorSpace)}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'VideoSelector' with the minimum fields required to make a request.
 --
@@ -8196,16 +13906,13 @@ data VideoSelector = VideoSelector'
 --
 -- * 'vsColorSpaceUsage' - Applies only if colorSpace is a value other than follow. This field controls how the value in the colorSpace field will be used. fallback means that when the input does include color space data, that data will be used, but when the input has no color space data, the value in colorSpace will be used. Choose fallback if your input is sometimes missing color space data, but when it does have color space data, that data is correct. force means to always use the value in colorSpace. Choose force if your input usually has no color space data or might have unreliable color space data.
 --
--- * 'vsColorSpace' - Specifies the colorspace of an input. This setting works in tandem with colorSpaceConversion to determine if any conversion will be performed.
+-- * 'vsColorSpace' - Specifies the color space of an input. This setting works in tandem with colorSpaceUsage and a video description's colorSpaceSettingsChoice to determine if any conversion will be performed.
 videoSelector
     :: VideoSelector
-videoSelector =
-  VideoSelector'
-    { _vsSelectorSettings = Nothing
-    , _vsColorSpaceUsage = Nothing
-    , _vsColorSpace = Nothing
-    }
-
+videoSelector
+  = VideoSelector'{_vsSelectorSettings = Nothing,
+                   _vsColorSpaceUsage = Nothing,
+                   _vsColorSpace = Nothing}
 
 -- | The video selector settings.
 vsSelectorSettings :: Lens' VideoSelector (Maybe VideoSelectorSettings)
@@ -8215,7 +13922,7 @@ vsSelectorSettings = lens _vsSelectorSettings (\ s a -> s{_vsSelectorSettings = 
 vsColorSpaceUsage :: Lens' VideoSelector (Maybe VideoSelectorColorSpaceUsage)
 vsColorSpaceUsage = lens _vsColorSpaceUsage (\ s a -> s{_vsColorSpaceUsage = a})
 
--- | Specifies the colorspace of an input. This setting works in tandem with colorSpaceConversion to determine if any conversion will be performed.
+-- | Specifies the color space of an input. This setting works in tandem with colorSpaceUsage and a video description's colorSpaceSettingsChoice to determine if any conversion will be performed.
 vsColorSpace :: Lens' VideoSelector (Maybe VideoSelectorColorSpace)
 vsColorSpace = lens _vsColorSpace (\ s a -> s{_vsColorSpace = a})
 
@@ -8240,13 +13947,12 @@ instance ToJSON VideoSelector where
                   ("colorSpaceUsage" .=) <$> _vsColorSpaceUsage,
                   ("colorSpace" .=) <$> _vsColorSpace])
 
--- | Placeholder documentation for VideoSelectorPid
+-- | Video Selector Pid
 --
 -- /See:/ 'videoSelectorPid' smart constructor.
-newtype VideoSelectorPid = VideoSelectorPid'
-  { _vspPid :: Maybe Nat
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype VideoSelectorPid = VideoSelectorPid'{_vspPid
+                                             :: Maybe Nat}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'VideoSelectorPid' with the minimum fields required to make a request.
 --
@@ -8255,8 +13961,8 @@ newtype VideoSelectorPid = VideoSelectorPid'
 -- * 'vspPid' - Selects a specific PID from within a video source.
 videoSelectorPid
     :: VideoSelectorPid
-videoSelectorPid = VideoSelectorPid' {_vspPid = Nothing}
-
+videoSelectorPid
+  = VideoSelectorPid'{_vspPid = Nothing}
 
 -- | Selects a specific PID from within a video source.
 vspPid :: Lens' VideoSelectorPid (Maybe Natural)
@@ -8275,13 +13981,13 @@ instance ToJSON VideoSelectorPid where
         toJSON VideoSelectorPid'{..}
           = object (catMaybes [("pid" .=) <$> _vspPid])
 
--- | Placeholder documentation for VideoSelectorProgramId
+-- | Video Selector Program Id
 --
 -- /See:/ 'videoSelectorProgramId' smart constructor.
-newtype VideoSelectorProgramId = VideoSelectorProgramId'
-  { _vspiProgramId :: Maybe Nat
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype VideoSelectorProgramId = VideoSelectorProgramId'{_vspiProgramId
+                                                         :: Maybe Nat}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'VideoSelectorProgramId' with the minimum fields required to make a request.
 --
@@ -8290,8 +13996,8 @@ newtype VideoSelectorProgramId = VideoSelectorProgramId'
 -- * 'vspiProgramId' - Selects a specific program from within a multi-program transport stream. If the program doesn't exist, the first program within the transport stream will be selected by default.
 videoSelectorProgramId
     :: VideoSelectorProgramId
-videoSelectorProgramId = VideoSelectorProgramId' {_vspiProgramId = Nothing}
-
+videoSelectorProgramId
+  = VideoSelectorProgramId'{_vspiProgramId = Nothing}
 
 -- | Selects a specific program from within a multi-program transport stream. If the program doesn't exist, the first program within the transport stream will be selected by default.
 vspiProgramId :: Lens' VideoSelectorProgramId (Maybe Natural)
@@ -8312,14 +14018,17 @@ instance ToJSON VideoSelectorProgramId where
           = object
               (catMaybes [("programId" .=) <$> _vspiProgramId])
 
--- | Placeholder documentation for VideoSelectorSettings
+-- | Video Selector Settings
 --
 -- /See:/ 'videoSelectorSettings' smart constructor.
-data VideoSelectorSettings = VideoSelectorSettings'
-  { _vssVideoSelectorProgramId :: !(Maybe VideoSelectorProgramId)
-  , _vssVideoSelectorPid       :: !(Maybe VideoSelectorPid)
-  } deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data VideoSelectorSettings = VideoSelectorSettings'{_vssVideoSelectorProgramId
+                                                    ::
+                                                    !(Maybe
+                                                        VideoSelectorProgramId),
+                                                    _vssVideoSelectorPid ::
+                                                    !(Maybe VideoSelectorPid)}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'VideoSelectorSettings' with the minimum fields required to make a request.
 --
@@ -8330,10 +14039,10 @@ data VideoSelectorSettings = VideoSelectorSettings'
 -- * 'vssVideoSelectorPid' - Undocumented member.
 videoSelectorSettings
     :: VideoSelectorSettings
-videoSelectorSettings =
-  VideoSelectorSettings'
-    {_vssVideoSelectorProgramId = Nothing, _vssVideoSelectorPid = Nothing}
-
+videoSelectorSettings
+  = VideoSelectorSettings'{_vssVideoSelectorProgramId =
+                             Nothing,
+                           _vssVideoSelectorPid = Nothing}
 
 -- | Undocumented member.
 vssVideoSelectorProgramId :: Lens' VideoSelectorSettings (Maybe VideoSelectorProgramId)
@@ -8363,20 +14072,19 @@ instance ToJSON VideoSelectorSettings where
                     _vssVideoSelectorProgramId,
                   ("videoSelectorPid" .=) <$> _vssVideoSelectorPid])
 
--- | Placeholder documentation for WebvttDestinationSettings
+-- | Webvtt Destination Settings
 --
 -- /See:/ 'webvttDestinationSettings' smart constructor.
-data WebvttDestinationSettings =
-  WebvttDestinationSettings'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data WebvttDestinationSettings = WebvttDestinationSettings'
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'WebvttDestinationSettings' with the minimum fields required to make a request.
 --
 webvttDestinationSettings
     :: WebvttDestinationSettings
-webvttDestinationSettings = WebvttDestinationSettings'
-
+webvttDestinationSettings
+  = WebvttDestinationSettings'
 
 instance FromJSON WebvttDestinationSettings where
         parseJSON
