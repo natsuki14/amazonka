@@ -1036,6 +1036,36 @@ instance ToJSON BurnInTeletextGridControl where
 instance FromJSON BurnInTeletextGridControl where
     parseJSON = parseJSONText "BurnInTeletextGridControl"
 
+-- | Placeholder documentation for ChannelClass
+data ChannelClass
+  = Standard
+  | SinglePipeline
+  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data, Typeable, Generic)
+
+instance FromText ChannelClass where
+    parser = takeLowerText >>= \case
+        "standard" -> pure Standard
+        "single_pipeline" -> pure SinglePipeline
+        e -> fromTextError $ "Failure parsing ChannelClass from value: '" <> e
+           <> "'. Accepted values: standard, single_pipeline"
+
+instance ToText ChannelClass where
+    toText = \case
+        Standard -> "STANDARD"
+        SinglePipeline -> "SINGLE_PIPELINE"
+
+instance Hashable     ChannelClass
+instance NFData       ChannelClass
+instance ToByteString ChannelClass
+instance ToQuery      ChannelClass
+instance ToHeader     ChannelClass
+
+instance ToJSON ChannelClass where
+    toJSON = toJSONText
+
+instance FromJSON ChannelClass where
+    parseJSON = parseJSONText "ChannelClass"
+
 -- | Placeholder documentation for ChannelState
 data ChannelState
   = CreateFailed
