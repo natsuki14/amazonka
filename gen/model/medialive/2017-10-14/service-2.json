@@ -3891,33 +3891,6 @@
       ],
       "documentation": "Placeholder documentation for CreateMultiplex"
     },
-    "CreateMultiplexProgram": {
-      "type": "structure",
-      "members": {
-        "MultiplexProgramSettings": {
-          "shape": "MultiplexProgramSettings",
-          "locationName": "multiplexProgramSettings",
-          "documentation": "The settings for this multiplex program."
-        },
-        "ProgramName": {
-          "shape": "__string",
-          "locationName": "programName",
-          "documentation": "Name of multiplex program."
-        },
-        "RequestId": {
-          "shape": "__string",
-          "locationName": "requestId",
-          "documentation": "Unique request ID. This prevents retries from creating multiple\nresources.\n",
-          "idempotencyToken": true
-        }
-      },
-      "required": [
-        "RequestId",
-        "MultiplexProgramSettings",
-        "ProgramName"
-      ],
-      "documentation": "Placeholder documentation for CreateMultiplexProgram"
-    },
     "CreateMultiplexProgramRequest": {
       "type": "structure",
       "members": {
@@ -10539,41 +10512,6 @@
         "PIPELINE_1"
       ]
     },
-    "PurchaseOffering": {
-      "type": "structure",
-      "members": {
-        "Count": {
-          "shape": "__integerMin1",
-          "locationName": "count",
-          "documentation": "Number of resources"
-        },
-        "Name": {
-          "shape": "__string",
-          "locationName": "name",
-          "documentation": "Name for the new reservation"
-        },
-        "RequestId": {
-          "shape": "__string",
-          "locationName": "requestId",
-          "documentation": "Unique request ID to be specified. This is needed to prevent retries from creating multiple resources.",
-          "idempotencyToken": true
-        },
-        "Start": {
-          "shape": "__string",
-          "locationName": "start",
-          "documentation": "Requested reservation start time (UTC) in ISO-8601 format. The specified time must be between the first day of the current month and one year from now. If no value is given, the default is now."
-        },
-        "Tags": {
-          "shape": "Tags",
-          "locationName": "tags",
-          "documentation": "A collection of key-value pairs"
-        }
-      },
-      "documentation": "PurchaseOffering request",
-      "required": [
-        "Count"
-      ]
-    },
     "PurchaseOfferingRequest": {
       "type": "structure",
       "members": {
@@ -12413,63 +12351,6 @@
       },
       "documentation": "The updated channel's description."
     },
-    "UpdateInput": {
-      "type": "structure",
-      "members": {
-        "Destinations": {
-          "shape": "__listOfInputDestinationRequest",
-          "locationName": "destinations",
-          "documentation": "Destination settings for PUSH type inputs."
-        },
-        "InputDevices": {
-          "shape": "__listOfInputDeviceRequest",
-          "locationName": "inputDevices",
-          "documentation": "Settings for the devices."
-        },
-        "InputSecurityGroups": {
-          "shape": "__listOf__string",
-          "locationName": "inputSecurityGroups",
-          "documentation": "A list of security groups referenced by IDs to attach to the input."
-        },
-        "MediaConnectFlows": {
-          "shape": "__listOfMediaConnectFlowRequest",
-          "locationName": "mediaConnectFlows",
-          "documentation": "A list of the MediaConnect Flow ARNs that you want to use as the source of the input. You can specify as few as one\nFlow and presently, as many as two. The only requirement is when you have more than one is that each Flow is in a\nseparate Availability Zone as this ensures your EML input is redundant to AZ issues.\n"
-        },
-        "Name": {
-          "shape": "__string",
-          "locationName": "name",
-          "documentation": "Name of the input."
-        },
-        "RoleArn": {
-          "shape": "__string",
-          "locationName": "roleArn",
-          "documentation": "The Amazon Resource Name (ARN) of the role this input assumes during and after creation."
-        },
-        "Sources": {
-          "shape": "__listOfInputSourceRequest",
-          "locationName": "sources",
-          "documentation": "The source URLs for a PULL-type input. Every PULL type input needs\nexactly two source URLs for redundancy.\nOnly specify sources for PULL type Inputs. Leave Destinations empty.\n"
-        }
-      },
-      "documentation": "Placeholder documentation for UpdateInput"
-    },
-    "UpdateInputDevice": {
-      "type": "structure",
-      "members": {
-        "HdDeviceSettings": {
-          "shape": "InputDeviceConfigurableSettings",
-          "locationName": "hdDeviceSettings",
-          "documentation": "The settings that you want to apply to the input device."
-        },
-        "Name": {
-          "shape": "__string",
-          "locationName": "name",
-          "documentation": "The name that you assigned to this input device (not the unique ID)."
-        }
-      },
-      "documentation": "Updates an input device."
-    },
     "UpdateInputDeviceRequest": {
       "type": "structure",
       "members": {
@@ -12666,33 +12547,6 @@
       },
       "documentation": "Placeholder documentation for UpdateInputSecurityGroupResultModel"
     },
-    "UpdateMultiplex": {
-      "type": "structure",
-      "members": {
-        "MultiplexSettings": {
-          "shape": "MultiplexSettings",
-          "locationName": "multiplexSettings",
-          "documentation": "The new settings for a multiplex."
-        },
-        "Name": {
-          "shape": "__string",
-          "locationName": "name",
-          "documentation": "Name of the multiplex."
-        }
-      },
-      "documentation": "Placeholder documentation for UpdateMultiplex"
-    },
-    "UpdateMultiplexProgram": {
-      "type": "structure",
-      "members": {
-        "MultiplexProgramSettings": {
-          "shape": "MultiplexProgramSettings",
-          "locationName": "multiplexProgramSettings",
-          "documentation": "The new settings for a multiplex program."
-        }
-      },
-      "documentation": "Placeholder documentation for UpdateMultiplexProgram"
-    },
     "UpdateMultiplexProgramRequest": {
       "type": "structure",
       "members": {
@@ -12789,25 +12643,9 @@
       },
       "documentation": "Placeholder documentation for UpdateMultiplexResultModel"
     },
-    "UpdateReservation": {
-      "type": "structure",
-      "members": {
-        "Name": {
-          "shape": "__string",
-          "locationName": "name",
-          "documentation": "Name of the reservation"
-        }
-      },
-      "documentation": "UpdateReservation request"
-    },
     "UpdateReservationRequest": {
       "type": "structure",
       "members": {
-        "Name": {
-          "shape": "__string",
-          "locationName": "name",
-          "documentation": "Name of the reservation"
-        },
         "ReservationId": {
           "shape": "__string",
           "location": "uri",
